@@ -1,0 +1,64 @@
+//reset
+@import url('https://fonts.googleapis.com/css?family=Merienda+One');
+@import url('https://fonts.googleapis.com/css?family=Shrikhand');
+
+#mainPart{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#prepare, #counter{
+  width: 100%;
+  font-size: 150%;
+  font-family: 'Merienda One', cursive;
+  animation: anim 4s;
+  animation-fill-mode: forwards;
+  color: #ff0000;
+}
+
+@keyframes anim{
+  0%{ }
+  100%{ color: #008000; text-shadow: 1px 1px black; }
+}
+
+.studioName, .maxim, .title, .subTitle{
+  width: 100%;
+  font-family: 'Shrikhand', cursive;
+  animation: anim2 10s;
+  animation-fill-mode: forwards;
+}
+
+.studioName, .maxim{
+  animation-delay: 4s;
+}
+
+.studioName{
+  color: #000099;
+}
+
+.maxim{
+  color: #000;
+}
+
+.title, .subTitle{
+  animation-delay: 14s;
+}
+
+.title{
+  color: #800000;
+}
+
+.subTitle{
+  color: #808000;
+}
+
+@keyframes anim2{
+  0%{ opacity: 0; }
+  50%{ opacity: 1 }
+  100%{ opacity: 0; }
+}

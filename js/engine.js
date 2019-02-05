@@ -163,6 +163,21 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
       $(".title, .subTitle").remove();
       $("#info, #licence, #tutorial, #game").show();
+      $.ajax({
+        url: './jsonFiles/intro.json',
+        data: {
+          format: 'json'
+        },
+        error: function error() {
+          console.log("coś nie bangla...");
+        },
+        dataType: 'json',
+        success: function success(data) {
+
+          $("#mainDescription").empty().append(data.menu[0].helloText);
+        },
+        type: 'GET'
+      });
     }, 24000);
 
     $("#info").on("click", function () {

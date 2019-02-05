@@ -1,20 +1,21 @@
 //reset
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=New+Rocker');
 
-header, footer{
-  height: 10vh;
-}
-
-#mainPart{
+#mainPart, .firstMenu{
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   align-items: center;
   align-content: center;
+  font-family: 'New Rocker', cursive;
+}
+
+#mainPart{
   margin: 0 auto;
   width: 90%;
-  height: 75vh;
+  font-size: 150%;
 }
 
 #prepare, #counter{
@@ -66,4 +67,68 @@ header, footer{
   0%{ opacity: 0; }
   50%{ opacity: 1 }
   100%{ opacity: 0; }
+}
+
+//styles for first menu
+.firstMenu{
+  position: relative;
+}
+.width24p{
+  width: 24%;
+}
+
+.rotate10deg{
+  transform: rotate(10deg);
+}
+
+.rotate-10deg{
+  transform: rotate(-10deg);
+}
+
+.bcgGreen{
+  background-color: #008000;
+}
+
+.bcgBlue{
+    background-color: #000099;
+}
+
+.bcgCrimson{
+  background-color: #800000;
+}
+
+.bcgGold{
+  background-color: #808000;
+}
+
+.fontsWhite{
+  color: #fff;
+}
+
+#info{
+  position:absolute;
+  z-index: 4;
+  left: 4%;
+}
+#licence{
+  position:absolute;
+  z-index: 3;
+  left: 27%;
+}
+#tutorial{
+  position:absolute;
+  z-index: 2;
+  left: 49%
+}
+#game{
+  position:absolute;
+  z-index: 1;
+  left: 72%;
+}
+
+#mainDescription{
+  text-indent: 5%;
+  text-align: left;
+  font-size: 0.8em;
+  line-height: normal;
 }

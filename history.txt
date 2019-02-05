@@ -278,3 +278,6 @@ Utworzono katalog z plikami w formacie .json.
 
 4 luty 2019 - wersja 0.1.76
 Utworzono animacje nazwy studia oraz nazwy gry.
+
+5 luty 2019 - wesja 0.1.77
+Dodano pierwsze menu oraz tekst powitalny oraz info.

@@ -80,6 +80,7 @@ module.exports = __webpack_require__(1);
 var intro = __webpack_require__(2);
 
 document.addEventListener("DOMContentLoaded", function () {
+  $("#info, #licence, #tutorial, #game").hide();
   intro.intro();
 }); //koniec DOMContentLoaded
 
@@ -158,6 +159,42 @@ document.addEventListener("DOMContentLoaded", function () {
         $("#counter").empty().append(numbers + "%");
       }
     }
+
+    setTimeout(function () {
+      $(".title, .subTitle").remove();
+      $("#info, #licence, #tutorial, #game").show();
+      $.ajax({
+        url: './jsonFiles/intro.json',
+        data: {
+          format: 'json'
+        },
+        error: function error() {
+          console.log("coś nie bangla...");
+        },
+        dataType: 'json',
+        success: function success(data) {
+          $("#mainDescription").empty().append(data.menu[0].helloText);
+        },
+        type: 'GET'
+      });
+    }, 24000);
+
+    $("#info").on("click", function () {
+      $.ajax({
+        url: './jsonFiles/intro.json',
+        data: {
+          format: 'json'
+        },
+        error: function error() {
+          console.log("coś nie bangla...");
+        },
+        dataType: 'json',
+        success: function success(data) {
+          $("#mainDescription").empty().append(data.menu[0].info);
+        },
+        type: 'GET'
+      });
+    });
   };
 }); //koniec DOMContentLoaded
 

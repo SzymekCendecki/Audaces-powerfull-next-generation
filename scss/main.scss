@@ -10,6 +10,14 @@ html, body {
    height: 100%;
  }
 
+ header, footer{
+   height: 10vh;
+ }
+
+ #mainPart{
+     height: 80vh;
+ }
+
 //ustawienie koloru tła dla pierwszego intra gry
 body{
    background-color: #D3D3D3;
@@ -18,9 +26,18 @@ body{
 //ustawienie wysokoci i szerokości dla poszczególnych części strony (gry)
 header, footer{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
 }
 
 #version{
   font-family: 'Merienda One', cursive;
   text-align: center;
+}
+
+#cssValidation{
+  display: none;
 }

@@ -61,12 +61,48 @@ document.addEventListener("DOMContentLoaded", () => {
               type: 'GET'
            });
         }, 10000);
-
       }else{
         numbers++;
         $("#counter").empty().append(numbers + "%");
       }
     }
-  }
 
+    setTimeout(()=> {
+        $(".title, .subTitle").remove();
+        $("#info, #licence, #tutorial, #game").show();
+        $.ajax({
+            url: './jsonFiles/intro.json',
+            data: {
+              format: 'json'
+            },
+            error: ()=>{
+              console.log("coś nie bangla...");
+            },
+            dataType: 'json',
+            success: (data)=> {
+              $("#mainDescription").empty().append(data.menu[0].helloText);
+            },
+            type: 'GET'
+         });
+    }, 24000);
+
+
+    $("#info").on("click", ()=>{
+      $.ajax({
+          url: './jsonFiles/intro.json',
+          data: {
+            format: 'json'
+          },
+          error: ()=>{
+            console.log("coś nie bangla...");
+          },
+          dataType: 'json',
+          success: (data)=> {
+            $("#mainDescription").empty().append(data.menu[0].info);
+          },
+          type: 'GET'
+       });
+    });
+
+  }
 });//koniec DOMContentLoaded

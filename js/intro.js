@@ -70,20 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(()=> {
         $(".title, .subTitle").remove();
         $("#info, #licence, #tutorial, #game").show();
-        $.ajax({
-            url: './jsonFiles/intro.json',
-            data: {
-              format: 'json'
-            },
-            error: ()=>{
-              console.log("coś nie bangla...");
-            },
-            dataType: 'json',
-            success: (data)=> {
-              $("#mainDescription").empty().append(data.menu[0].helloText);
-            },
-            type: 'GET'
-         });
     }, 24000);
 
 
@@ -98,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           dataType: 'json',
           success: (data)=> {
-            $("#mainDescription").empty().append(data.menu[0].info);
+
+              $("#mainDescription").empty().append(data.menu[0].info);
           },
           type: 'GET'
        });

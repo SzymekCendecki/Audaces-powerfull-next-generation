@@ -132,3 +132,13 @@
   font-size: 0.8em;
   line-height: normal;
 }
+
+.chooseHeroCreator{
+	display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  font-family: 'New Rocker', cursive;
+}

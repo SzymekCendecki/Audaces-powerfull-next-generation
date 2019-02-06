@@ -78,11 +78,14 @@ module.exports = __webpack_require__(1);
 
 
 var intro = __webpack_require__(2);
+var heroCreator = __webpack_require__(3);
 
 document.addEventListener("DOMContentLoaded", function () {
-  $("#info, #licence, #tutorial, #game").hide();
+  $("#info, #licence, #tutorial, #game, #mainDescription").hide();
+  $("#randomHero, #manualHero").hide();
   intro.intro();
-}); //koniec DOMContentLoaded
+  heroCreator.heroCreator();
+});
 
 /***/ }),
 /* 2 */
@@ -162,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(function () {
       $(".title, .subTitle").remove();
-      $("#info, #licence, #tutorial, #game").show();
+      $("#info, #licence, #tutorial, #game, #mainDescription").show();
       $.ajax({
         url: './jsonFiles/intro.json',
         data: {
@@ -197,8 +200,63 @@ document.addEventListener("DOMContentLoaded", function () {
         type: 'GET'
       });
     });
+
+    $("#licence").on("click", function () {
+      $.ajax({
+        url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
+        data: {
+          format: 'json'
+        },
+        error: function error() {
+          console.log("coś nie bangla...");
+        },
+        dataType: 'json',
+        success: function success(data) {
+
+          $("#mainDescription").empty().append(data.menu[0].licence);
+        },
+        type: 'GET'
+      });
+    });
+
+    $("#tutorial").on("click", function () {
+      $.ajax({
+        url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
+        data: {
+          format: 'json'
+        },
+        error: function error() {
+          console.log("coś nie bangla...");
+        },
+        dataType: 'json',
+        success: function success(data) {
+
+          $("#mainDescription").empty().append(data.menu[0].tutorial);
+        },
+        type: 'GET'
+      });
+    });
   };
 }); //koniec DOMContentLoaded
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+	module.exports.heroCreator = function () {
+		$("#game").on("click", function () {
+			console.log("działa");
+			$("#info, #licence, #tutorial, #game").hide();
+			$("#randomHero, #manualHero").show();
+			$("#mainDescription").empty();
+		});
+	};
+});
 
 /***/ })
 /******/ ]);

@@ -41,3 +41,14 @@ header, footer{
 #cssValidation{
   display: none;
 }
+
+#mainDescription{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+.overflowScroll60vh{
+	overflow: auto;
+	height: 67vh;
+}

@@ -286,3 +286,4 @@ Dodano pierwsze menu oraz tekst powitalny oraz info.
 Dodano resztę tekstów dla pierwszego menu oraz "przyciski" sposobu stworzenia postaci.
 
 7 luty 2019 - wersja 0.1.79
+Ostylowano pzyciski sposobu tworzenia postaci oraz dodano tekst informacyjny dotyczący tych przycisków.

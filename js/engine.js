@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   module.exports.intro = function () {
     $.ajax({
-      url: './jsonFiles/intro.json',
+      url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
       data: {
         format: 'json'
       },
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(function () {
           $.ajax({
-            url: './jsonFiles/intro.json',
+            url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
             data: {
               format: 'json'
             },
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(function () {
           $.ajax({
-            url: './jsonFiles/intro.json',
+            url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
             data: {
               format: 'json'
             },
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $(".title, .subTitle").remove();
       $("#info, #licence, #tutorial, #game, #mainDescription").show();
       $.ajax({
-        url: './jsonFiles/intro.json',
+        url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
         data: {
           format: 'json'
         },
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#info").on("click", function () {
       $.ajax({
-        url: './jsonFiles/intro.json',
+        url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
         data: {
           format: 'json'
         },
@@ -250,10 +250,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	module.exports.heroCreator = function () {
 		$("#game").on("click", function () {
-			console.log("działa");
 			$("#info, #licence, #tutorial, #game").hide();
 			$("#randomHero, #manualHero").show();
-			$("#mainDescription").empty();
+			$.ajax({
+				url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+				data: {
+					format: 'json'
+				},
+				error: function error() {
+					console.log("coś nie bangla...");
+				},
+				dataType: 'json',
+				success: function success(data) {
+					$("#mainDescription").empty().append(data.heroCreator[0].firstText);
+				},
+				type: 'GET'
+			});
 		});
 	};
 });

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   module.exports.intro=function(){
     $.ajax({
-        url: './jsonFiles/intro.json',
+        url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
         data: {
           format: 'json'
         },
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(()=> {
           $.ajax({
-              url: './jsonFiles/intro.json',
+              url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
               data: {
                 format: 'json'
               },
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(()=> {
           $.ajax({
-              url: './jsonFiles/intro.json',
+              url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
               data: {
                 format: 'json'
               },
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         $(".title, .subTitle").remove();
         $("#info, #licence, #tutorial, #game, #mainDescription").show();
         $.ajax({
-            url: './jsonFiles/intro.json',
+            url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
             data: {
               format: 'json'
             },
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $("#info").on("click", ()=>{
       $.ajax({
-          url: './jsonFiles/intro.json',
+          url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/intro.json',
           data: {
             format: 'json'
           },

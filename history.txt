@@ -287,3 +287,7 @@ Dodano resztę tekstów dla pierwszego menu oraz "przyciski" sposobu stworzenia 
 
 7 luty 2019 - wersja 0.1.79
 Ostylowano pzyciski sposobu tworzenia postaci oraz dodano tekst informacyjny dotyczący tych przycisków.
+
+8 luty 2019 - wersja 0.1.80
+Skopiowano tablice z poprzedniej wersji gry.
+  Testowano losowanie imion względem płci, przy wykorzystaniu obiektów.

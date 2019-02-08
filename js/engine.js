@@ -248,6 +248,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+
+	var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+
+	var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+
+	var occupations = ["wojownik", "złoczyńca", "czarodziej"];
+	var sex = ["kobieta", "mężczyzna", "nie wiadomo"];
+	var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];
+
+	var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
+	var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
+	var equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
+	var equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
+
+	var skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
+	module.exports.skillsWarrior = skillsWarrior;
+
+	var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
+	module.exports.skillsCriminal = skillsCriminal;
+
+	var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
+	module.exports.skillsWizard = skillsWizard;
+
+	//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
+	var warrior = [5, 5, 0, 0, 0];module.exports.warrior = warrior;
+	var criminal = [0, 0, 10, 0, 0];module.exports.criminal = criminal;
+	var wizard = [0, 0, 0, 5, 5];module.exports.wizard = wizard;
+
+	var human = [0, 0, 0, 0, 0];module.exports.human = human;
+	var halfOrc = [3, 3, 0, -3, -3];module.exports.halfOrc = halfOrc;
+	var orc = [5, 5, 0, -5, -5];module.exports.orc = orc;
+	var halfElv = [-3, -3, 0, 3, 3];module.exports.halfElv = halfElv;
+	var elv = [-5, -5, 0, 5, 5];module.exports.elv = elv;
+	var dwarf = [4, 4, 0, -2, -3];module.exports.dwarf = dwarf;
+	var gnome = [-2, -2, 3, 3, 0];module.exports.gnome = gnome;
+	var halfling = [-3, 0, 6, 0, 0];module.exports.halfling = halfling;
+	var goblin = [2, -2, 4, 0, -4];module.exports.goblin = goblin;
+	var troll = [2, 0, 0, -2, -2];module.exports.troll = troll;
+	var semiGiant = [7, 7, -5, -3, 0];module.exports.semiGiant = semiGiant;
+
 	module.exports.heroCreator = function () {
 		$("#game").on("click", function () {
 			$("#info, #licence, #tutorial, #game").hide();

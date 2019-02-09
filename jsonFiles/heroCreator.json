@@ -1,6 +1,5 @@
 {
   "heroCreator": [{
-    "firstText": "<p class='width100p'>Wybierz sposób tworzenia postaci.</p><p class='width100p'><span class='textColorRandom'>wylosuj</span> - automatycznie stworzy losową postać.</p><p class='width100p'><span class='textColorManual'>stwórz</span> - stworzysz własnoręcznie swoją postać.</p>",
-    "random": "`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p>`"
+    "firstText": "<p class='width100p'>Wybierz sposób tworzenia postaci.</p><p class='width100p'><span class='textColorRandom'>wylosuj</span> - automatycznie stworzy losową postać.</p><p class='width100p'><span class='textColorManual'>stwórz</span> - stworzysz własnoręcznie swoją postać.</p>"
   }]
 }

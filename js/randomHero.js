@@ -37,20 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			randomSex(heroCreator.sex, heroCreator.hero);
 			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
 			randomRace(heroCreator.races, heroCreator.hero);
-			$.ajax({
-					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-					data: {
-						format: 'json'
-					},
-					error: ()=>{
-						console.log("coś nie bangla...");
-					},
-					dataType: 'json',
-					success: (data)=>{
-						$("#mainDescription").empty().append(data.heroCreator[0].random);
-				 },
-					type: 'GET'
-			 });
+			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p>`);
 		});
 
 	}

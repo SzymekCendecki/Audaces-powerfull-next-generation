@@ -46,10 +46,17 @@ header, footer{
 #mainDescription{
 	display: flex;
 	flex-wrap: wrap;
-	align-content: center;
+  justify-content: center;
+	align-content: flex-start;
 }
 
 .overflowScroll60vh{
 	overflow: auto;
 	height: 67vh;
 }
+
+p.heroRandom{
+    width: 144px;
+    height: 30px;
+    text-align: center;
+  }

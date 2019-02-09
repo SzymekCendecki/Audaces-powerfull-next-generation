@@ -246,17 +246,22 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var randomHero = __webpack_require__(4);
 document.addEventListener("DOMContentLoaded", function () {
 
-	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];module.exports.namesMan = namesMan;
 
-	var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+	var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];module.exports.namesWomen = namesWomen;
 
-	var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+	var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];module.exports.races = races;
 
-	var occupations = ["wojownik", "złoczyńca", "czarodziej"];
-	var sex = ["kobieta", "mężczyzna", "nie wiadomo"];
-	var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];
+	var occupations = ["wojownik", "złoczyńca", "czarodziej"];module.exports.occupations = occupations;
+	var sex = ["kobieta", "mężczyzna", "nie wiadomo"];module.exports.sex = sex;
+	var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];module.exports.tattoo = tattoo;
 
 	var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
 	var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
@@ -290,6 +295,40 @@ document.addEventListener("DOMContentLoaded", function () {
 	var semiGiant = [7, 7, -5, -3, 0];module.exports.semiGiant = semiGiant;
 
 	module.exports.heroCreator = function () {
+		var Person = function () {
+			function Person(name, sex) {
+				_classCallCheck(this, Person);
+
+				this.name = name;
+				this.sex = sex;
+			}
+
+			_createClass(Person, [{
+				key: "setSex",
+				value: function setSex(sex) {
+					this.sex = sex;
+				}
+			}, {
+				key: "setName",
+				value: function setName(name) {
+					this.name = name;
+				}
+			}, {
+				key: "setRace",
+				value: function setRace(race) {
+					this.race = race;
+				}
+			}]);
+
+			return Person;
+		}();
+
+		//1-name, 2 - sex, 3 - race
+
+
+		var hero = new Person("brak", "brak", "brak");
+		module.exports.hero = hero;
+
 		$("#game").on("click", function () {
 			$("#info, #licence, #tutorial, #game").hide();
 			$("#randomHero, #manualHero").show();
@@ -304,6 +343,72 @@ document.addEventListener("DOMContentLoaded", function () {
 				dataType: 'json',
 				success: function success(data) {
 					$("#mainDescription").empty().append(data.heroCreator[0].firstText);
+				},
+				type: 'GET'
+			});
+		});
+	};
+
+	randomHero.randomHero();
+});
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var heroCreator = __webpack_require__(3);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+	function randomName(table1, table2, hero) {
+		if (heroCreator.hero.sex == "mężczyzna") {
+			var x = Math.round(Math.random() * (table1.length - 1));
+			var name = table1[x];
+			hero.setName(name);
+		} else if (heroCreator.hero.sex == "kobieta") {
+			var _x = Math.round(Math.random() * (table2.length - 1));
+			var _name = table2[_x];
+			hero.setName(_name);
+		} else {
+			var table3 = table1.concat(table2);
+			var _x2 = Math.round(Math.random() * (table3.length - 1));
+			var _name2 = table3[_x2];
+			hero.setName(_name2);
+		}
+	}
+
+	function randomSex(table, hero) {
+		var x = Math.round(Math.random() * (table.length - 1));
+		var sex = table[x];
+		hero.setSex(sex);
+	}
+
+	function randomRace(table, hero) {
+		var x = Math.round(Math.random() * (table.length - 1));
+		var race = table[x];
+		hero.setRace(race);
+	}
+
+	module.exports.randomHero = function () {
+
+		$("#randomHero").on("click", function () {
+			randomSex(heroCreator.sex, heroCreator.hero);
+			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
+			randomRace(heroCreator.races, heroCreator.hero);
+			$.ajax({
+				url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+				data: {
+					format: 'json'
+				},
+				error: function error() {
+					console.log("coś nie bangla...");
+				},
+				dataType: 'json',
+				success: function success(data) {
+					$("#mainDescription").empty().append(data.heroCreator[0].random);
 				},
 				type: 'GET'
 			});

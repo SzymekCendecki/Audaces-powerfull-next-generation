@@ -291,3 +291,6 @@ Ostylowano pzyciski sposobu tworzenia postaci oraz dodano tekst informacyjny dot
 8 luty 2019 - wersja 0.1.80
 Skopiowano tablice z poprzedniej wersji gry.
   Testowano losowanie imion względem płci, przy wykorzystaniu obiektów.
+
+9 luty 2019 - wersja 0.1.81
+Rozpoczęto pracę nad losowaniem postaci.

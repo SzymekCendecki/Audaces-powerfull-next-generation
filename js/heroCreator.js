@@ -1,14 +1,15 @@
+let randomHero = require("./randomHero.js");
 document.addEventListener("DOMContentLoaded", () => {
 
-let namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+let namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"]; module.exports.namesMan = namesMan;
 
-let namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+let namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"]; module.exports.namesWomen = namesWomen;
 
-let races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+let races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"]; module.exports.races = races;
 
-let occupations = ["wojownik", "złoczyńca", "czarodziej"];
-let sex = ["kobieta", "mężczyzna", "nie wiadomo"];
-let tattoo = ["brak", "więzienne", "plemienne", "dziwne"]
+let occupations = ["wojownik", "złoczyńca", "czarodziej"]; module.exports.occupations = occupations;
+let sex = ["kobieta", "mężczyzna", "nie wiadomo"]; module.exports.sex = sex;
+let tattoo = ["brak", "więzienne", "plemienne", "dziwne"]; module.exports.tattoo = tattoo;
 
 let equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
 let equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
@@ -42,6 +43,20 @@ module.exports.skillsWizard = skillsWizard;
   let semiGiant = [7, 7, -5, -3, 0]; module.exports.semiGiant = semiGiant;
 
 	module.exports.heroCreator = function(){
+		class Person{
+			constructor(name, sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			setSex(sex){ this.sex = sex; }
+			setName(name){ this.name = name; }
+			setRace(race){ this.race = race; }
+		}
+
+//1-name, 2 - sex, 3 - race
+		let hero = new Person("brak", "brak", "brak");
+		module.exports.hero = hero;
+
 		$("#game").on("click", ()=>{
 			$("#info, #licence, #tutorial, #game").hide();
 			$("#randomHero, #manualHero").show();
@@ -59,7 +74,9 @@ module.exports.skillsWizard = skillsWizard;
 				 },
 					type: 'GET'
 			 });
-
 		});
 	}
+
+	randomHero.randomHero();
+
 });

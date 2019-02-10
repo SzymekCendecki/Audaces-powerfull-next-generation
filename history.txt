@@ -294,3 +294,6 @@ Skopiowano tablice z poprzedniej wersji gry.
 
 9 luty 2019 - wersja 0.1.81
 Rozpoczęto pracę nad losowaniem postaci.
+
+10 luty 2019 - wersja 0.1.82
+Praca z punktami postaci.

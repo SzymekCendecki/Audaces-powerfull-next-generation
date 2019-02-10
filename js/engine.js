@@ -60,25 +60,160 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1);
+"use strict";
 
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var randomHero = __webpack_require__(4);
+document.addEventListener("DOMContentLoaded", function () {
+
+	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];module.exports.namesMan = namesMan;
+
+	var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];module.exports.namesWomen = namesWomen;
+
+	var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];module.exports.races = races;
+
+	var occupation = ["wojownik", "złoczyńca", "czarodziej"];module.exports.occupation = occupation;
+	var sex = ["kobieta", "mężczyzna", "nie wiadomo"];module.exports.sex = sex;
+	var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];module.exports.tattoo = tattoo;
+
+	var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
+	var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
+	var equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
+	var equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
+
+	var skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
+	module.exports.skillsWarrior = skillsWarrior;
+
+	var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
+	module.exports.skillsCriminal = skillsCriminal;
+
+	var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
+	module.exports.skillsWizard = skillsWizard;
+
+	//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
+	var warrior = [5, 5, 0, 0, 0];module.exports.warrior = warrior;
+	var criminal = [0, 0, 10, 0, 0];module.exports.criminal = criminal;
+	var wizard = [0, 0, 0, 5, 5];module.exports.wizard = wizard;
+
+	var human = [0, 0, 0, 0, 0];module.exports.human = human;
+	var halfOrc = [3, 3, 0, -3, -3];module.exports.halfOrc = halfOrc;
+	var orc = [5, 5, 0, -5, -5];module.exports.orc = orc;
+	var halfElv = [-3, -3, 0, 3, 3];module.exports.halfElv = halfElv;
+	var elv = [-5, -5, 0, 5, 5];module.exports.elv = elv;
+	var dwarf = [4, 4, 0, -2, -3];module.exports.dwarf = dwarf;
+	var gnome = [-2, -2, 3, 3, 0];module.exports.gnome = gnome;
+	var halfling = [-3, 0, 6, 0, 0];module.exports.halfling = halfling;
+	var goblin = [2, -2, 4, 0, -4];module.exports.goblin = goblin;
+	var troll = [2, 0, 0, -2, -2];module.exports.troll = troll;
+	var semiGiant = [7, 7, -5, -3, 0];module.exports.semiGiant = semiGiant;
+
+	module.exports.heroCreator = function () {
+		var Person = function () {
+			function Person(name, sex) {
+				_classCallCheck(this, Person);
+
+				this.name = name;
+				this.sex = sex;
+			}
+
+			_createClass(Person, [{
+				key: "setSex",
+				value: function setSex(sex) {
+					this.sex = sex;
+				}
+			}, {
+				key: "setName",
+				value: function setName(name) {
+					this.name = name;
+				}
+			}, {
+				key: "setRace",
+				value: function setRace(race) {
+					this.race = race;
+				}
+			}, {
+				key: "setOccupation",
+				value: function setOccupation(occupation) {
+					this.occupation = occupation;
+				}
+			}, {
+				key: "setOccupationPoints",
+				value: function setOccupationPoints(occupationPoints) {
+					this.occupationPoints = occupationPoints;
+				}
+			}, {
+				key: "setRacePoints",
+				value: function setRacePoints(racePoints) {
+					this.racePoints = racePoints;
+				}
+			}, {
+				key: "summaryPoints",
+				value: function summaryPoints() {
+					for (var i = 0; i < this.racePoints.length && i < this.occupationPoints.length; i++) {
+						$("#summaryPoints").append(this.racePoints[i] + this.occupationPoints[i] + " ");
+					}
+				}
+			}]);
+
+			return Person;
+		}();
+
+		//1-name, 2 - sex, 3 - race
+
+
+		var hero = new Person();
+		module.exports.hero = hero;
+
+		$("#game").on("click", function () {
+			$("#info, #licence, #tutorial, #game").hide();
+			$("#randomHero, #manualHero").show();
+			$.ajax({
+				url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+				data: {
+					format: 'json'
+				},
+				error: function error() {
+					console.log("coś nie bangla...");
+				},
+				dataType: 'json',
+				success: function success(data) {
+					$("#mainDescription").empty().append(data.heroCreator[0].firstText);
+				},
+				type: 'GET'
+			});
+		});
+	};
+
+	randomHero.randomHero();
+});
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var intro = __webpack_require__(2);
-var heroCreator = __webpack_require__(3);
+var intro = __webpack_require__(3);
+var heroCreator = __webpack_require__(0);
 
 document.addEventListener("DOMContentLoaded", function () {
   $("#info, #licence, #tutorial, #game, #mainDescription").hide();
@@ -88,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -240,126 +375,13 @@ document.addEventListener("DOMContentLoaded", function () {
 }); //koniec DOMContentLoaded
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var randomHero = __webpack_require__(4);
-document.addEventListener("DOMContentLoaded", function () {
-
-	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];module.exports.namesMan = namesMan;
-
-	var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];module.exports.namesWomen = namesWomen;
-
-	var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];module.exports.races = races;
-
-	var occupations = ["wojownik", "złoczyńca", "czarodziej"];module.exports.occupations = occupations;
-	var sex = ["kobieta", "mężczyzna", "nie wiadomo"];module.exports.sex = sex;
-	var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];module.exports.tattoo = tattoo;
-
-	var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
-	var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
-	var equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
-	var equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
-
-	var skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
-	module.exports.skillsWarrior = skillsWarrior;
-
-	var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
-	module.exports.skillsCriminal = skillsCriminal;
-
-	var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
-	module.exports.skillsWizard = skillsWizard;
-
-	//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
-	var warrior = [5, 5, 0, 0, 0];module.exports.warrior = warrior;
-	var criminal = [0, 0, 10, 0, 0];module.exports.criminal = criminal;
-	var wizard = [0, 0, 0, 5, 5];module.exports.wizard = wizard;
-
-	var human = [0, 0, 0, 0, 0];module.exports.human = human;
-	var halfOrc = [3, 3, 0, -3, -3];module.exports.halfOrc = halfOrc;
-	var orc = [5, 5, 0, -5, -5];module.exports.orc = orc;
-	var halfElv = [-3, -3, 0, 3, 3];module.exports.halfElv = halfElv;
-	var elv = [-5, -5, 0, 5, 5];module.exports.elv = elv;
-	var dwarf = [4, 4, 0, -2, -3];module.exports.dwarf = dwarf;
-	var gnome = [-2, -2, 3, 3, 0];module.exports.gnome = gnome;
-	var halfling = [-3, 0, 6, 0, 0];module.exports.halfling = halfling;
-	var goblin = [2, -2, 4, 0, -4];module.exports.goblin = goblin;
-	var troll = [2, 0, 0, -2, -2];module.exports.troll = troll;
-	var semiGiant = [7, 7, -5, -3, 0];module.exports.semiGiant = semiGiant;
-
-	module.exports.heroCreator = function () {
-		var Person = function () {
-			function Person(name, sex) {
-				_classCallCheck(this, Person);
-
-				this.name = name;
-				this.sex = sex;
-			}
-
-			_createClass(Person, [{
-				key: "setSex",
-				value: function setSex(sex) {
-					this.sex = sex;
-				}
-			}, {
-				key: "setName",
-				value: function setName(name) {
-					this.name = name;
-				}
-			}, {
-				key: "setRace",
-				value: function setRace(race) {
-					this.race = race;
-				}
-			}]);
-
-			return Person;
-		}();
-
-		//1-name, 2 - sex, 3 - race
-
-
-		var hero = new Person("brak", "brak", "brak");
-		module.exports.hero = hero;
-
-		$("#game").on("click", function () {
-			$("#info, #licence, #tutorial, #game").hide();
-			$("#randomHero, #manualHero").show();
-			$.ajax({
-				url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-				data: {
-					format: 'json'
-				},
-				error: function error() {
-					console.log("coś nie bangla...");
-				},
-				dataType: 'json',
-				success: function success(data) {
-					$("#mainDescription").empty().append(data.heroCreator[0].firstText);
-				},
-				type: 'GET'
-			});
-		});
-	};
-
-	randomHero.randomHero();
-});
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var heroCreator = __webpack_require__(3);
+var heroCreator = __webpack_require__(0);
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -392,13 +414,69 @@ document.addEventListener("DOMContentLoaded", function () {
 		hero.setRace(race);
 	}
 
+	function randomOccupation(table, hero) {
+		var x = Math.round(Math.random() * (table.length - 1));
+		var occupation = table[x];
+		hero.setOccupation(occupation);
+	}
+
+	function setOccupationPoints(occupation, table, hero) {
+		switch (occupation) {
+			case "wojownik":
+				table = heroCreator.warrior;break;
+			case "czarodziej":
+				table = heroCreator.wizard;break;
+			case "złoczyńca":
+				table = heroCreator.criminal;break;
+			default:
+				table = [0, 0, 0, 0, 0];
+		}
+		hero.setOccupationPoints(table);
+	}
+
+	function setRacePoints(race, table, hero) {
+		switch (race) {
+			case "człowiek":
+				table = heroCreator.human;break;
+			case "półork":
+				table = heroCreator.halfOrc;break;
+			case "ork":
+				table = heroCreator.orc;break;
+			case "półelf":
+				table = heroCreator.halfElv;break;
+			case "elf":
+				table = heroCreator.elv;break;
+			case "krasnolud":
+				table = heroCreator.dwarf;break;
+			case "gnom":
+				table = heroCreator.gnome;break;
+			case "niziołek":
+				table = heroCreator.halfling;break;
+			case "goblin":
+				table = heroCreator.goblin;break;
+			case "trol":
+				table = heroCreator.troll;break;
+			case "półolbrzym":
+				table = heroCreator.semiGiant;break;
+			default:
+				table = [0, 0, 0, 0, 0];
+		}
+		hero.setRacePoints(table);
+	}
+
 	module.exports.randomHero = function () {
 
 		$("#randomHero").on("click", function () {
 			randomSex(heroCreator.sex, heroCreator.hero);
 			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
 			randomRace(heroCreator.races, heroCreator.hero);
-			$("#mainDescription").empty().append("<p class='heroRandom'>imi\u0119</p><p class='heroRandom'>" + heroCreator.hero.name + "</p><p class='heroRandom'>p\u0142e\u0107</p><p class='heroRandom'>" + heroCreator.hero.sex + "</p><p class='heroRandom'>rasa</p><p class='heroRandom'>" + heroCreator.hero.race + "</p>");
+			randomOccupation(heroCreator.occupation, heroCreator.hero);
+			setOccupationPoints(heroCreator.hero.occupation, heroCreator.occupationPoints, heroCreator.hero);
+			setRacePoints(heroCreator.hero.race, heroCreator.racePoints, heroCreator.hero);
+
+			$("#mainDescription").empty().append("<p class='heroRandom'>imi\u0119</p><p class='heroRandom'>" + heroCreator.hero.name + "</p><p class='heroRandom'>p\u0142e\u0107</p><p class='heroRandom'>" + heroCreator.hero.sex + "</p><p class='heroRandom'>rasa</p><p class='heroRandom'>" + heroCreator.hero.race + "</p><p class='heroRandom'>profesja</p><p class='heroRandom'>" + heroCreator.hero.occupation + "</p><p class='heroRandom'>punkty</p><p id=\"summaryPoints\" class='heroRandom'></p>");
+
+			heroCreator.hero.summaryPoints();
 		});
 	};
 });

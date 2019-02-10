@@ -7,7 +7,7 @@ let namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna",
 
 let races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"]; module.exports.races = races;
 
-let occupations = ["wojownik", "złoczyńca", "czarodziej"]; module.exports.occupations = occupations;
+let occupation = ["wojownik", "złoczyńca", "czarodziej"]; module.exports.occupation = occupation;
 let sex = ["kobieta", "mężczyzna", "nie wiadomo"]; module.exports.sex = sex;
 let tattoo = ["brak", "więzienne", "plemienne", "dziwne"]; module.exports.tattoo = tattoo;
 
@@ -31,18 +31,19 @@ module.exports.skillsWizard = skillsWizard;
 	let wizard = [0, 0, 0, 5, 5]; module.exports.wizard = wizard;
 
 	let human = [0, 0, 0, 0, 0]; module.exports.human = human;
-  let halfOrc = [3, 3, 0, -3, -3]; module.exports.halfOrc = halfOrc;
-  let orc = [5, 5, 0, -5, -5]; module.exports.orc = orc;
-  let halfElv = [-3, -3, 0, 3, 3]; module.exports.halfElv = halfElv;
+	let halfOrc = [3, 3, 0, -3, -3]; module.exports.halfOrc = halfOrc;
+	let orc = [5, 5, 0, -5, -5]; module.exports.orc = orc;
+	let halfElv = [-3, -3, 0, 3, 3]; module.exports.halfElv = halfElv;
 	let elv = [-5, -5, 0, 5, 5]; module.exports.elv = elv;
 	let dwarf = [4, 4, 0, -2, -3]; module.exports.dwarf = dwarf;
-  let gnome = [-2, -2, 3, 3, 0]; module.exports.gnome = gnome;
-  let halfling = [-3, 0, 6, 0, 0]; module.exports.halfling = halfling;
-  let goblin = [2, -2, 4, 0, -4]; module.exports.goblin = goblin;
-  let troll = [2, 0, 0, -2, -2]; module.exports.troll = troll;
-  let semiGiant = [7, 7, -5, -3, 0]; module.exports.semiGiant = semiGiant;
-
+	let gnome = [-2, -2, 3, 3, 0]; module.exports.gnome = gnome;
+	let halfling = [-3, 0, 6, 0, 0]; module.exports.halfling = halfling;
+	let goblin = [2, -2, 4, 0, -4]; module.exports.goblin = goblin;
+	let troll = [2, 0, 0, -2, -2]; module.exports.troll = troll;
+	let semiGiant = [7, 7, -5, -3, 0]; module.exports.semiGiant = semiGiant;
+	
 	module.exports.heroCreator = function(){
+
 		class Person{
 			constructor(name, sex){
 				this.name = name;
@@ -51,10 +52,18 @@ module.exports.skillsWizard = skillsWizard;
 			setSex(sex){ this.sex = sex; }
 			setName(name){ this.name = name; }
 			setRace(race){ this.race = race; }
+			setOccupation(occupation){ this.occupation = occupation; }
+			setOccupationPoints(occupationPoints){ this.occupationPoints = occupationPoints; }
+			setRacePoints(racePoints){ this.racePoints = racePoints; }
+			summaryPoints(){
+				for(let i=0; i<this.racePoints.length && i<this.occupationPoints.length; i++){
+					$("#summaryPoints").append(this.racePoints[i] + this.occupationPoints[i] + " ");
+				}
+			}
 		}
 
 //1-name, 2 - sex, 3 - race
-		let hero = new Person("brak", "brak", "brak");
+		let hero = new Person();
 		module.exports.hero = hero;
 
 		$("#game").on("click", ()=>{

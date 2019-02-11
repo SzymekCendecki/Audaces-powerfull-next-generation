@@ -158,11 +158,24 @@ document.addEventListener("DOMContentLoaded", function () {
 					this.racePoints = racePoints;
 				}
 			}, {
+				key: "setRandomPoints",
+				value: function setRandomPoints(randomPoints) {
+					this.randomPoints = randomPoints;
+				}
+			}, {
 				key: "summaryPoints",
 				value: function summaryPoints() {
-					for (var i = 0; i < this.racePoints.length && i < this.occupationPoints.length; i++) {
-						$("#summaryPoints").append(this.racePoints[i] + this.occupationPoints[i] + " ");
+					this.features = features;
+					var element = document.getElementById('summaryPoints');
+					var fragment = document.createDocumentFragment();
+					var features = ["siła", "wytrzym.", "zręczność", "inteligencja", "charyzma"];
+
+					for (var i = 0; i < this.racePoints.length && i < this.occupationPoints.length && i < this.randomPoints.length && i < features.length; i++) {
+						var p = document.createElement('p');
+						p.textContent = features[i] + " " + (this.racePoints[i] + this.occupationPoints[i] + this.randomPoints[i]);
+						fragment.appendChild(p);
 					}
+					element.appendChild(fragment);
 				}
 			}]);
 
@@ -464,6 +477,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		hero.setRacePoints(table);
 	}
 
+	function randomPoints(hero) {
+		var x1 = Math.round(Math.random() * 50);
+		var x2 = Math.round(Math.random() * 50);
+		var x3 = Math.round(Math.random() * 50);
+		var x4 = Math.round(Math.random() * 50);
+		var x5 = Math.round(Math.random() * 50);
+		var randomPoints = [x1, x2, x3, x4, x5];
+		hero.setRandomPoints(randomPoints);
+	}
+
 	module.exports.randomHero = function () {
 
 		$("#randomHero").on("click", function () {
@@ -473,6 +496,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			randomOccupation(heroCreator.occupation, heroCreator.hero);
 			setOccupationPoints(heroCreator.hero.occupation, heroCreator.occupationPoints, heroCreator.hero);
 			setRacePoints(heroCreator.hero.race, heroCreator.racePoints, heroCreator.hero);
+			randomPoints(heroCreator.hero);
 
 			$("#mainDescription").empty().append("<p class='heroRandom'>imi\u0119</p><p class='heroRandom'>" + heroCreator.hero.name + "</p><p class='heroRandom'>p\u0142e\u0107</p><p class='heroRandom'>" + heroCreator.hero.sex + "</p><p class='heroRandom'>rasa</p><p class='heroRandom'>" + heroCreator.hero.race + "</p><p class='heroRandom'>profesja</p><p class='heroRandom'>" + heroCreator.hero.occupation + "</p><p class='heroRandom'>punkty</p><p id=\"summaryPoints\" class='heroRandom'></p>");
 

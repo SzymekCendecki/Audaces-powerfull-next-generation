@@ -55,10 +55,19 @@ module.exports.skillsWizard = skillsWizard;
 			setOccupation(occupation){ this.occupation = occupation; }
 			setOccupationPoints(occupationPoints){ this.occupationPoints = occupationPoints; }
 			setRacePoints(racePoints){ this.racePoints = racePoints; }
+			setRandomPoints(randomPoints){ this.randomPoints = randomPoints; }
 			summaryPoints(){
-				for(let i=0; i<this.racePoints.length && i<this.occupationPoints.length; i++){
-					$("#summaryPoints").append(this.racePoints[i] + this.occupationPoints[i] + " ");
+				this.features = features;
+				let element  = document.getElementById('summaryPoints');
+				let fragment = document.createDocumentFragment();
+				let features = ["siła", "wytrzym.", "zręczność", "inteligencja", "charyzma"];
+										
+				for(let i=0; i<this.racePoints.length && i<this.occupationPoints.length && i<this.randomPoints.length && i<features.length; i++){
+					let p = document.createElement('p');
+					p.textContent = features[i] + " " + (this.racePoints[i] + this.occupationPoints[i] + this.randomPoints[i]);
+					fragment.appendChild(p);
 				}
+				element.appendChild(fragment);
 			}
 		}
 

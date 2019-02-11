@@ -65,6 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		hero.setRacePoints(table);
 	}
 	
+	function randomPoints(hero){
+		let x1 = Math.round(Math.random()*50);
+		let x2 = Math.round(Math.random()*50);
+		let x3 = Math.round(Math.random()*50);
+		let x4 = Math.round(Math.random()*50);
+		let x5 = Math.round(Math.random()*50);
+		let randomPoints = [x1, x2, x3, x4, x5];
+		hero.setRandomPoints(randomPoints);
+	}
+	
 	module.exports.randomHero = function(){
 
 		$("#randomHero").on("click", ()=>{
@@ -74,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			randomOccupation(heroCreator.occupation, heroCreator.hero);
 			setOccupationPoints(heroCreator.hero.occupation, heroCreator.occupationPoints, heroCreator.hero);
 			setRacePoints(heroCreator.hero.race, heroCreator.racePoints, heroCreator.hero);
+			randomPoints(heroCreator.hero);
 				
 			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>punkty</p><p id="summaryPoints" class='heroRandom'></p>`);
 			

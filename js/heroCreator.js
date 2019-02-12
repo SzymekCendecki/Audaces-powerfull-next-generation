@@ -42,6 +42,9 @@ module.exports.skillsWizard = skillsWizard;
 	let troll = [2, 0, 0, -2, -2]; module.exports.troll = troll;
 	let semiGiant = [7, 7, -5, -3, 0]; module.exports.semiGiant = semiGiant;
 	
+	let sumPoints = [0, 0, 0, 0, 0]; module.exports.sumPoints = sumPoints;
+	let features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma']; module.exports.features = features;
+	
 	module.exports.heroCreator = function(){
 
 		class Person{
@@ -56,25 +59,17 @@ module.exports.skillsWizard = skillsWizard;
 			setOccupationPoints(occupationPoints){ this.occupationPoints = occupationPoints; }
 			setRacePoints(racePoints){ this.racePoints = racePoints; }
 			setRandomPoints(randomPoints){ this.randomPoints = randomPoints; }
-			summaryPoints(){
-				this.features = features;
-				let element  = document.getElementById('summaryPoints');
-				let fragment = document.createDocumentFragment();
-				let features = ["siła", "wytrzym.", "zręczność", "inteligencja", "charyzma"];
-										
-				for(let i=0; i<this.racePoints.length && i<this.occupationPoints.length && i<this.randomPoints.length && i<features.length; i++){
-					let p = document.createElement('p');
-					p.textContent = features[i] + " " + (this.racePoints[i] + this.occupationPoints[i] + this.randomPoints[i]);
-					fragment.appendChild(p);
-				}
-				element.appendChild(fragment);
-			}
+			setSummaryPoints(summaryPoints){ this.summaryPoints = summaryPoints; }
 		}
 
 //1-name, 2 - sex, 3 - race
 		let hero = new Person();
 		module.exports.hero = hero;
-
+		
+		let blacksmith = new Person("kowal", "mężczyzna", "krasnolud");
+		blacksmith.setOccupation = "wojownik";
+		module.exports.blacksmith = blacksmith;
+		
 		$("#game").on("click", ()=>{
 			$("#info, #licence, #tutorial, #game").hide();
 			$("#randomHero, #manualHero").show();

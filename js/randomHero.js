@@ -75,6 +75,25 @@ document.addEventListener("DOMContentLoaded", () => {
 		hero.setRandomPoints(randomPoints);
 	}
 	
+	function summaryPoints(hero, tab, tab2){
+		let element = document.getElementById('summaryPoints');
+		var fragment = document.createDocumentFragment();
+		
+		for(let i=0; i<hero.racePoints.length && i<hero.occupationPoints.length && i<hero.randomPoints.length; i++){
+			let x = (hero.racePoints[i] + hero.occupationPoints[i] + hero.randomPoints[i]);
+			tab.splice(i, 1, x);
+		}
+		
+		hero.setSummaryPoints(tab);
+		
+		for(let j=0; j<tab.length && j<tab2.length; j++){
+			var p = document.createElement('p');
+			p.textContent = tab2[j] + " " + tab[j];
+			fragment.appendChild(p);
+		}
+		element.appendChild(fragment);
+	}
+	
 	module.exports.randomHero = function(){
 
 		$("#randomHero").on("click", ()=>{
@@ -85,11 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			setOccupationPoints(heroCreator.hero.occupation, heroCreator.occupationPoints, heroCreator.hero);
 			setRacePoints(heroCreator.hero.race, heroCreator.racePoints, heroCreator.hero);
 			randomPoints(heroCreator.hero);
-				
+									
 			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>punkty</p><p id="summaryPoints" class='heroRandom'></p>`);
 			
-			heroCreator.hero.summaryPoints();
+			summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
 		});
-
 	}
 });

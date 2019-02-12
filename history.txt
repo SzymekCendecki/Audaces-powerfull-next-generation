@@ -300,3 +300,6 @@ Praca z punktami postaci.
 
 11 luty 2019 - wersja 0.1.83
 Praca z sumowaniem punktów postaci cz. II.
+
+12 luty 2019 - wersja 0.1.84
+Przeniesienie funkcji sumującej i wyświetlającej wyniki poza obiekt hero - do osobnej funkcji.

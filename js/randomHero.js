@@ -94,8 +94,41 @@ document.addEventListener("DOMContentLoaded", () => {
 		element.appendChild(fragment);
 	}
 	
+	function randomEyesColor(hero){
+		let eyeColor = [];
+		let a = Math.round(Math.random()*255);
+		let b = Math.round(Math.random()*255);
+		let c = Math.round(Math.random()*255);
+		eyeColor.splice(0, 1, a);
+		eyeColor.splice(1, 1, b);
+		eyeColor.splice(2, 1, c);
+		hero.setEyesColor(eyeColor);
+	}
+	
+	function randomHairColor(hero){
+		let hairColor = [];
+		let a = Math.round(Math.random()*255);
+		let b = Math.round(Math.random()*255);
+		let c = Math.round(Math.random()*255);
+		hairColor.splice(0, 1, a);
+		hairColor.splice(1, 1, b);
+		hairColor.splice(2, 1, c);
+		hero.setHairColor(hairColor);
+	}
+	
+	function randomSkinColor(hero){
+		let skinColor = [];
+		let a = Math.round(Math.random()*255);
+		let b = Math.round(Math.random()*255);
+		let c = Math.round(Math.random()*255);
+		skinColor.splice(0, 1, a);
+		skinColor.splice(1, 1, b);
+		skinColor.splice(2, 1, c);
+		hero.setSkinColor(skinColor);
+	}
+		
 	module.exports.randomHero = function(){
-
+			
 		$("#randomHero").on("click", ()=>{
 			randomSex(heroCreator.sex, heroCreator.hero);
 			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
@@ -104,10 +137,29 @@ document.addEventListener("DOMContentLoaded", () => {
 			setOccupationPoints(heroCreator.hero.occupation, heroCreator.occupationPoints, heroCreator.hero);
 			setRacePoints(heroCreator.hero.race, heroCreator.racePoints, heroCreator.hero);
 			randomPoints(heroCreator.hero);
-									
-			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>punkty</p><p id="summaryPoints" class='heroRandom'></p>`);
+			randomEyesColor(heroCreator.hero);
+			randomHairColor(heroCreator.hero);
+			randomSkinColor(heroCreator.hero);
+			
+			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p><p class='heroRandom'>kolor włosów</p><p id='hairColor' class='heroRandom'></p><p class='heroRandom'>kolor skóry</p><p id='skinColor' class='heroRandom'></p><p class='heroRandom'>punkty cech</p><p id="summaryPoints" class='heroRandom'></p>`);
 			
 			summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
+			console.log(heroCreator.hero);
+			
+			let x1 = heroCreator.hero.colorEyes[0];
+			let x2 = heroCreator.hero.colorEyes[1];
+			let x3 = heroCreator.hero.colorEyes[2];
+			
+			let x4 = heroCreator.hero.colorHair[0];
+			let x5 = heroCreator.hero.colorHair[1];
+			let x6 = heroCreator.hero.colorHair[2];
+			
+			let x7 = heroCreator.hero.colorSkin[0];
+			let x8 = heroCreator.hero.colorSkin[1];
+			let x9 = heroCreator.hero.colorSkin[2];
+			$("#eyesColor").css("background-color", "rgb("+x1+", "+x2 + ", "+x3+")");
+			$("#hairColor").css("background-color", "rgb("+x4+", "+x5 + ", "+x6+")");
+			$("#skinColor").css("background-color", "rgb("+x7+", "+x8 + ", "+x9+")");
 		});
 	}
 });

@@ -60,6 +60,9 @@ module.exports.skillsWizard = skillsWizard;
 			setRacePoints(racePoints){ this.racePoints = racePoints; }
 			setRandomPoints(randomPoints){ this.randomPoints = randomPoints; }
 			setSummaryPoints(summaryPoints){ this.summaryPoints = summaryPoints; }
+			setEyesColor(colorEyes){ this.colorEyes = colorEyes; }
+			setHairColor(colorHair){ this.colorHair = colorHair; }
+			setSkinColor(colorSkin){ this.colorSkin = colorSkin; }
 		}
 
 //1-name, 2 - sex, 3 - race

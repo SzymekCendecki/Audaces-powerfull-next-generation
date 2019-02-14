@@ -306,3 +306,6 @@ Przeniesienie funkcji sumującej i wyświetlającej wyniki poza obiekt hero - do
 
 13 luty 2019 - wersja 0.1.85 
 Dodano losowanie koloru oczu, włosów i skóry.
+
+14 luty 2019 - wersja 0.1.86
+Dodano losowanie wagi.

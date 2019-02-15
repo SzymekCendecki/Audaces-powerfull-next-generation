@@ -144,6 +144,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		hero.setWeight(weight);
 	}
+	
+	function randomHeight(hero){
+		let height = 0;
+		switch(hero.race) {
+			case "człowiek": height = Math.round(Math.random()*60 + 150); break;
+			case "półork": height = Math.round(Math.random()*50 + 170); break;
+			case "ork": height = Math.round(Math.random()*70 + 170); break;
+			case "półelf": height = Math.round(Math.random()*45 + 165); break;
+			case "elf": height = Math.round(Math.random()*30 + 180); break;
+			case "krasnolud": height = Math.round(Math.random()*45 + 100); break;
+			case "gnom": height = Math.round(Math.random()*50 + 90); break;
+			case "niziołek": height = Math.round(Math.random()*45 + 105); break;
+			case "goblin": height = Math.round(Math.random()*40 + 80); break;
+			case "trol": height = Math.round(Math.random()*70 + 190); break;
+			case "półolbrzym": height = Math.round(Math.random()*60 + 260); break;
+		}
+		hero.setHeight(height);
+	}
 		
 	module.exports.randomHero = function(){
 			
@@ -159,9 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			randomHairColor(heroCreator.hero);
 			randomSkinColor(heroCreator.hero);
 			randomWeight(heroCreator.hero);
+			randomHeight(heroCreator.hero);
 			
-			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p><p class='heroRandom'>kolor włosów</p><p id='hairColor' class='heroRandom'></p><p class='heroRandom'>kolor skóry</p><p id='skinColor' class='heroRandom'></p><p class='heroRandom'>waga</p><p class='heroRandom'>${heroCreator.hero.weight} kg</p><p class='heroRandom'>punkty cech</p><p id="summaryPoints" class='heroRandom'></p>`);
+			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p><p class='heroRandom'>kolor włosów</p><p id='hairColor' class='heroRandom'></p><p class='heroRandom'>kolor skóry</p><p id='skinColor' class='heroRandom'></p><p class='heroRandom'>waga</p><p class='heroRandom'>${heroCreator.hero.weight} kg</p><p class='heroRandom'>wzrost</p><p class='heroRandom'>${heroCreator.hero.height} cm</p><p class='heroRandom'>punkty cech</p><p id="summaryPoints" class='heroRandom'></p>`);
 			
+			
+			
+						
 			summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
 			console.log(heroCreator.hero);
 			

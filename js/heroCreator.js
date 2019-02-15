@@ -64,6 +64,7 @@ module.exports.skillsWizard = skillsWizard;
 			setHairColor(colorHair){ this.colorHair = colorHair; }
 			setSkinColor(colorSkin){ this.colorSkin = colorSkin; }
 			setWeight(weight){ this.weight = weight; }
+			setHeight(height){ this.height = height; }
 		}
 
 //1-name, 2 - sex, 3 - race

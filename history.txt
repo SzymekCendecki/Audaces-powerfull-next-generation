@@ -309,3 +309,6 @@ Dodano losowanie koloru oczu, włosów i skóry.
 
 14 luty 2019 - wersja 0.1.86
 Dodano losowanie wagi.
+
+15 luty 2019 - wersja 0.1.87
+Dodano losowanie wzrostu.

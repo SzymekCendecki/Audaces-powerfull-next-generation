@@ -1,0 +1,314 @@
+16 pażdziernika 2018 - wersja 0.0.0
+Przygotowanie plików do pracy.
+
+17 października 2018 - wersja 0.0.1
+Dodaniepierwsze style dla responsywności strony (do 800px i powyżej 800px);
+
+18 października 2018 - wersja 0.0.2
+Utworzono dwa dodatowe pliki: below800px i above800px - dla styli zapewniających responsywność strony (gry).
+  Dodano szare tło oraz nazwę studia z sentencją oraz wstępnie ostylowano je po kątem resposnywności.
+
+7 listopada 2018 - wersja 0.0.3
+Dodano nowe fonty (z google fonts).
+
+11 listopada 2018 - wersja 0.0.4
+Usunięto dwa pliki scss, odpowiadające za responsywność strony (gry) oraz rozpoczęto od nowa tworzenie css'a.
+  Dodano animacje dla nazwy studia (z sentencją) oraz nazwy gry (z podtytułem).
+
+12 listopada 2018 - wersja 0.0.5
+Dodano nowy plik: firstIntro.scss oraz przeniesiono do niego odpowiednie linie kodu.
+  Rozpoczęto pracę nad pierwszym menu.
+
+13 listopada 2018 - wersja 0.0.6
+Dodano style dla przycisków pierwszego menu.
+
+14 listopada 2018 - wersja 0.0.7
+Dodano tekst dla dwóch przyecisków pierwszego menu.
+
+15 listopada 2018 - wersja 0.0.8
+Poprawka szerokości #mainPart (width - 90% zamiast 100%).
+  Dodano tekst powitalny.
+Drobne poprawki w tekście dla tekstu powitalnego i info.
+  Dodano oraz zmodyfikowano tekst dla przycisku tutorial.
+
+16 listopada 2018 - wersja 0.0.9
+Drobna poprawa tekstu dla tutoriala w pierwszym menu.
+  Dodanie animacji znikania dla przycisków i tekstów dla pierwszego menu.
+
+17 listopada 2018 - wersja 0.1.0
+Dodano znacznik meta description do pliku index.html.
+  Usunięto zbędne fonty.
+Poprawiono "animacje" po wciśnięciu przycisku "gra".
+  Przeniesiono z index.html do fonts.scss ścieżki dostępu do font'ów z google fonts.
+Do stopki dodano "oznakę" poprawności css zgodną z W3C.
+
+17 listopada 2018 - wersja 0.1.1
+Przeorganizowano kod firstMenu.js - utworzono obiekt (?) z JSON'em oraz workingFile.js aby można było wszystko "grało".
+
+18 listopada 2018 - wersja 0.1.11
+Zmodyfikowano znacznik meta description.
+  Doadano znacznik meta author.
+Dodano znacznik meta robots.
+  Dodano znacznik meta keywords.
+Dodano licencje dla font'ów.
+  Dodano przyciski dla wyboru stworzenie postaci oraz wstępnie je ostylowano.
+Przeorganizowano delikatnie kod, celem łatwiejszego manipulowania elementami DOM.
+
+19 listopada 2018 - wersja 0.1.12
+Przeniesiono przyciski "wylosuj" i "stwórz" z mainPart do heroBtns, oraz dodano do nich animacje.
+  Przekopiowane zostały wszystkie tablice potrzebne do tworzenia postaci z poprzedniej werji gry.
+Dodano tablicę z tatuażami.
+  Przekopiowano z Audaces - remastered wszystkie rasy.
+Sprawdzono, dodano brakujące oraz uzupełniono tablice z modyfikatorami ras.
+
+21 listopada 2018 - wersja 0.1.13
+Rozpoczęto tworzenie losownia postaci - losowana jest płeć, rasa i profesja - wynik w console.log.
+
+22 listopada 2018 - wersja 0.1.14
+Wyniki losowania wyciągnięte z console.log na ekran. Bez formatowania i dalszego losowania.
+
+23 listopada 2018 - wersja 0.1.15
+Przeorganizowano kod - przeniesiono odpowiedni kod z heroCreator.js do index.html oraz do functions.js.
+  Dodano wyświetlanie pozostałych cech stworzonej postaci - nie dodano żadnego nowego losowania.
+
+24 listopada 2018 - wersja 0.1.16
+Poprawiono wygląd wyników wyboru postaci.
+  Rozpoczęto pracę nad losowaniem punktów postaci (losowanie dla człowieka - wszystie profesje).
+
+25 listopada 2018 - wersja 0.1.17
+Optymalizacja kodu w pliku heroCreator.js.
+  Dodanie losowania pozostałych cech, umiejętności oraz ekwipunu.
+Drobne przerobienie wyświetlania wyników losowania postaci.
+  Rozpoczęcie adaptacji losowania umiejętności z poprzedenij wersji gry.
+
+26 listopada 2018 - wersja 0.1.18
+Dodanie losowania umiejętności dla złoczyńcy.
+
+26 listopada 2018 - wersja 0.1.19
+Dodanie losowania umiejętności dla czarodzieja.
+    Dodano losowanie punktów dla pozostałych ras.
+
+27 listopada 2018 - wersja 0.1.20
+Optymalizacja losowania punktów dla losowanej wersji tworzenia postaci.
+
+28 listopada 2018 - wersja 0.1.21
+Rozpoczęto pracę nad "wyskakującym" okienkiem dla info gry.
+
+29 listopad 2018 - wersja 0.1.22
+Poprawki graficzne dla przycisku "info" oraz dala wyskakującego okna.
+
+30 listopada 2018 - wersja 0.1.23
+Poprawka w umiejscowieniu przycisku zamykania okna info.
+  Rozpoczęcie pracy nad rozwijalnym menu w oknie info - modyfikacja przykładu ze strony http://webkod.pl/kurs-css/lekcje/dzial-4/rozwijane-poziome-menu-css
+
+1 grudnia 2018 - wersja 0.1.24
+Poprawki wizualne dla okna info.
+  Przeniesienie odpowiednich linii kodu do pliku gameInfo.scss oraz gameInfo.js.
+Rozpoczęcie uzupełniania info gry.
+
+2 grudnia 2018 - wersja 0.1.25
+Dodano opisy profesji dla info gry.
+  Dodano opisy puntów cech.
+Dodano wstępnie opisy ras.
+
+3 grudnia 2018 - wersja 0.1.26
+Poprawka literówki - wyeliminowanie błędu.
+
+4 grudnia 2018 - wersja 0.1.27
+Początek nowej wersji losowania wagi i wzrostu.
+
+5 grudnia 2018 - wersja 0.1.28
+Nowa wersja losownia wagi i wzrostu gotowa.
+
+6 grudnia 2018 - wersja 0.1.29
+Rozpoczęto pracę nad "ręcznym" tworzeniem postaci.
+
+8 grudnia 2018 - wersja 0.1.30
+Utworzono menu ręcznego kreatora postaci (nie oskryptowane).
+
+9 grudnia 2018 - wersja 0.1.31
+Dodano "ręczne" wybieranie imienia.
+
+10 grudnia 2018 - wersja 0.1.32
+Poprawka wizualna przycisku zatwierdzającego imię bohatera.
+
+11 grudnia 2018 - wersja 0.1.33
+Dodano wybiernie profeji w "ręcznym" tworzeniu postaci.
+
+12 grudnia 2018 - wersja 0.1.34
+
+13 grudnia 2018 - wersja 0.1.35
+Dodano "ręczne" wybieranie profesji.
+  Optymalizacja kodu.
+
+14 grudnia 2018 - wersja 0.1.36
+Rozpoczęcie pracy nad wybieraniem punktów cech.
+
+15 grudnia 2018 - wersja 0.1.37
+Praca nad wybieraniem punktów.
+
+16 grudnia 2018 - wersja 0.1.38
+Poprawiona wersja wybierania puntów (do dopracowania).
+
+17 grudnia 2018 - wersja 0.1.39
+Drobna poprawka wizualna wybierania ręcznego punktów cech oraz drobna optymalizacja kodu.
+
+18 grudnia 2018 - wersja 0.1.40
+Poprawiono wybieranie punktów cech (przywrócono wybieranie punktów suwakiem).
+  Dodano wybieranie koloru oczu.
+
+19 grudnia 2018 - wersja 0.1.41
+Dodano wybór koloru włosów.
+  Dodano wybór koloru skóry.
+Optymalizacja kodu wybierania koloru oczu, włosów i skóry.
+  Dodano wybieranie tatuaży.
+
+20 grudnia 2018 - wersja 0.1.42
+Dodano wybieranie wagi.
+  Dodano wybieranie wzrostu.
+Rozpoczęto prace nad wyświetlaniem wyników "ręcznego" kreowania postaci.
+
+21 grudnia 2018 - wersja 0.1.44
+Praca nad wyświetlaniem wyników "ręcznego" kreowania postaci.
+
+23 grudnia 2018 - wersja 0.1.45
+Dodano wybieranie umiejętności.
+
+24 grudnia 2018 - wersja 0.1.46
+Poprawki dla wybierania umiejętności.
+  Dodano wybieranie rzeczy.
+Rozpoczęto pracę nad dostosowaniem "losowego" oraz "ręcznego" tworzenia postaci do potrzeb gry.
+
+25 grudnia 2018 - wersja 0.1.47
+Poprawki wyświetlania wyników dla losowego tworzenia postaci.
+  Dodano przycisk rozpoczynający grę po stworzeniu postaci.
+Dodano intro gry.
+
+26 grudnia 2018 - wersja 0.1.48
+Dodano główne przyciski gry - cechy, ekwipunek, umiejętności oraz zadania.
+
+27 grudnia 2018 - wersja 0.1.49
+Praca nad zdarzeniami lokacji: pokój.
+
+28 grudnia 2018 - wersja 0.1.50
+Poprawiony błąd dodawania płaszcza.
+ Dodano wyświetlanie ilości złota w ekwipunku.
+Poprawka graficzna przycisku "wyjdź".
+  Dodano zdarzenie dla zabierania paczki.
+
+29 grudnia 2018 - wersja 0.1.51
+Dodano skróty klawiszowe dla gry: e - ekwipunek, u - umiejętności, z - zadania, c - cechy.
+
+30 grudnia 2018 - wersja 0.1.52
+Dodano zdarzenia dla lokacji ulica.
+
+31 grudnia 2018 - wersja 0.1.53
+Dodano zdarzenia dla lokacji postoju karawan.
+
+1 stycznia 2019 - wersja 0.1.54
+Praca z lokacją targ.
+
+2 stycznia 2019 - wersja 0.1.55
+Praca z lokacją targ - ze sprzedawaniem.
+
+3 stycznia 2019 - wersja 0.1.56
+Naprawienie problemu ze sprzedawaniem.
+
+4 stycznia 2019 - wersja 0.1.57
+Poprawka wyświetlania rzeczy i umiejętności w ekwipunku, części z umiejętnościami oraz na targu (sprzedawanie/kupowanie).
+
+5 stycznia 2019 - wersja 0.1.58
+Rozpoczęcie pracy nad pierwszą walką.
+
+6 stycznia 2019 - wersja 0.1.59
+Naprawiono wybieranie umiejętności/ekwipunku puklerza.
+  Poprawiono wizualnie wyswietlanie wyników ręcznego wybierania.
+Testowanie rozwiązań dla pierwszej walki.
+
+7 stycznia 2019 - wersja 0.1.60
+Ostateczna wersja wybierania rzeczy do walki.
+
+8 stycznia 2019 - wersja 0.1.61
+Dodano akapit po pierwszej walce.
+
+9 stycznia 2019 - wersja 0.1.62
+Dodano przybycie do wioski.
+
+10 stycznia 2019 - wersja 0.1.63
+Dodano wejście na główny plac wioski.
+
+11 stycnia 2019 - wersja 0.1.64
+Praca z interakcjami we wiosce - mnich.
+
+12 stycznia 2019 - wersja 0.1.65
+Praca z wioską - mnich część druga.
+
+13 stycznia 2019 - wersja 0.1.66
+Poprawka wyświetlania tekstu dla wychodzenia od mnicha (w zależności od tego czy oddało się paczkę).
+  Rozpoczęcie pracy nad interakcją z kowalem.
+
+14 stycznia 2019 - wersja 0.1.67
+Praca z kowalem cz. II. - dodanie opcji kupna.
+
+15 stycznia 2019 - wersja 0.1.68
+Praca z kowalem cz. III. - dodanie opcji sprzedaży oraz tekstu wejścia do kowala.
+
+16 stycznia 2019 - wersja 0.1.69
+Praca ze zdarzeniami dla karczmy.
+
+17 stycznia 2019 - wersja 0.1.70
+Rozpoczęcie pracy z zadaniem "Pasikonik".
+
+18 stycznia 2019 - wersja 0.1.71
+Praca z zadaniem "Pasikonik" cz. II.
+
+19 stycznia 2019 - wersja 0.1.72
+Dodano zadanie z wilkiem.
+
+20 stycznia 2019 - wersja 0.1.73.
+Dodano zadanie z trolem.
+
+20 stycznia 2019 - wersja 0.1.74
+Dodano tekst kończący grę.
+
+3 luty 2019  - wersja 0.1.75
+Rozpoczęto pracę nad nową wersją Audaces - powerfull.
+  Utworzono animację ładownia gry.
+Utworzono katalog z plikami w formacie .json.
+
+4 luty 2019 - wersja 0.1.76
+Utworzono animacje nazwy studia oraz nazwy gry.
+
+5 luty 2019 - wesja 0.1.77
+Dodano pierwsze menu oraz tekst powitalny oraz info.
+
+6 luty 2019 - wersja 0.1.78
+Dodano resztę tekstów dla pierwszego menu oraz "przyciski" sposobu stworzenia postaci.
+
+7 luty 2019 - wersja 0.1.79
+Ostylowano pzyciski sposobu tworzenia postaci oraz dodano tekst informacyjny dotyczący tych przycisków.
+
+8 luty 2019 - wersja 0.1.80
+Skopiowano tablice z poprzedniej wersji gry.
+  Testowano losowanie imion względem płci, przy wykorzystaniu obiektów.
+
+9 luty 2019 - wersja 0.1.81
+Rozpoczęto pracę nad losowaniem postaci.
+
+10 luty 2019 - wersja 0.1.82
+Praca z punktami postaci.
+
+11 luty 2019 - wersja 0.1.83
+Praca z sumowaniem punktów postaci cz. II.
+
+12 luty 2019 - wersja 0.1.84
+Przeniesienie funkcji sumującej i wyświetlającej wyniki poza obiekt hero - do osobnej funkcji.
+
+13 luty 2019 - wersja 0.1.85 
+Dodano losowanie koloru oczu, włosów i skóry.
+
+14 luty 2019 - wersja 0.1.86
+Dodano losowanie wagi.
+
+15 luty 2019 - wersja 0.1.87
+Dodano losowanie wzrostu.

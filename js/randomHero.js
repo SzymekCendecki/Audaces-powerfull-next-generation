@@ -166,6 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	module.exports.randomHero = function(){
 			
 		$("#randomHero").on("click", ()=>{
+			$(".btnManualHero").remove(".btnManualHero");
+
 			randomSex(heroCreator.sex, heroCreator.hero);
 			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
 			randomRace(heroCreator.races, heroCreator.hero);
@@ -180,10 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			randomHeight(heroCreator.hero);
 			
 			$("#mainDescription").empty().append(`<p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p><p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p><p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p><p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p><p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p><p class='heroRandom'>kolor włosów</p><p id='hairColor' class='heroRandom'></p><p class='heroRandom'>kolor skóry</p><p id='skinColor' class='heroRandom'></p><p class='heroRandom'>waga</p><p class='heroRandom'>${heroCreator.hero.weight} kg</p><p class='heroRandom'>wzrost</p><p class='heroRandom'>${heroCreator.hero.height} cm</p><p class='heroRandom'>punkty cech</p><p id="summaryPoints" class='heroRandom'></p>`);
-			
-			
-			
-						
+								
 			summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
 			console.log(heroCreator.hero);
 			

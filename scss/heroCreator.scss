@@ -18,3 +18,23 @@
 .width100p{
   width: 100%;
 }
+.width33p{
+  width: 33%;
+}
+
+
+.btnManualHero{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100vw;
+  margin: 2% 0 0 0;
+
+  button{
+    width: 20%;
+    background-color: #008000;
+    color: #fff;
+    padding: 1% 0 1% 0;
+    font-family: 'New Rocker', cursive;
+  }
+}

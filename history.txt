@@ -312,3 +312,6 @@ Dodano losowanie wagi.
 
 15 luty 2019 - wersja 0.1.87
 Dodano losowanie wzrostu.
+
+16 luty 2019 - wersja 0.1.88
+Rozpoczęto prace nad manualnym tworzeniem postaci.

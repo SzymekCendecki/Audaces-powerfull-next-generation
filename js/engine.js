@@ -75,6 +75,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var randomHero = __webpack_require__(4);
+var chooseHero = __webpack_require__(5);
+
 document.addEventListener("DOMContentLoaded", function () {
 
 	var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];module.exports.namesMan = namesMan;
@@ -123,11 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	module.exports.heroCreator = function () {
 		var Person = function () {
-			function Person(name, sex) {
+			function Person() {
 				_classCallCheck(this, Person);
-
-				this.name = name;
-				this.sex = sex;
 			}
 
 			_createClass(Person, [{
@@ -231,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	randomHero.randomHero();
+	chooseHero.manualHero();
 });
 
 /***/ }),
@@ -253,6 +253,7 @@ var heroCreator = __webpack_require__(0);
 document.addEventListener("DOMContentLoaded", function () {
   $("#info, #licence, #tutorial, #game, #mainDescription").hide();
   $("#randomHero, #manualHero").hide();
+  $(".btnManualHero").hide();
   intro.intro();
   heroCreator.heroCreator();
 });
@@ -622,6 +623,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	module.exports.randomHero = function () {
 
 		$("#randomHero").on("click", function () {
+			$(".btnManualHero").remove(".btnManualHero");
+
 			randomSex(heroCreator.sex, heroCreator.hero);
 			randomName(heroCreator.namesMan, heroCreator.namesWomen, heroCreator.hero);
 			randomRace(heroCreator.races, heroCreator.hero);
@@ -656,6 +659,78 @@ document.addEventListener("DOMContentLoaded", function () {
 			$("#skinColor").css("background-color", "rgb(" + x7 + ", " + x8 + ", " + x9 + ")");
 		});
 	};
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var heroCreator = __webpack_require__(0);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    module.exports.manualHero = function () {
+        $("#manualHero").on("click", function () {
+            heroCreator.hero.setSex("wybierz");
+            heroCreator.hero.setName("wybierz");
+            heroCreator.hero.setRace("wybierz");
+            heroCreator.hero.setOccupation("wybierz");
+            heroCreator.hero.setOccupationPoints([0, 0, 0, 0, 0]);
+            heroCreator.hero.setRacePoints([0, 0, 0, 0, 0]);
+            heroCreator.hero.setRandomPoints([0, 0, 0, 0, 0]);
+            heroCreator.hero.setSummaryPoints([0, 0, 0, 0, 0]);
+            heroCreator.hero.setEyesColor("wybierz");
+            heroCreator.hero.setHairColor("wybierz");
+            heroCreator.hero.setSkinColor("wybierz");
+            heroCreator.hero.setWeight("wybierz");
+            heroCreator.hero.setHeight("wybierz");
+
+            $("#mainDescription").empty();
+            $("nav").append("\n            <div class='btnManualHero'>\n                <button id='name'>imi\u0119</button>\n                <button id='sex'>p\u0142e\u0107</button>\n                <button id='race'>rasa</button>\n                <button id='occupation'>profesja</button>\n                <button id='points'>punkty</button>\n                <button id='eyes'>oczy</button>\n                <button id='hair'>w\u0142osy</button>\n                <button id='skin'>sk\xF3ra</button>\n                <button id='weight'>waga</button>\n                <button id='height'>wzrost</button>\n                <button id='hideShow'>poka\u017C</button>\n            </div>");
+
+            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").hide();
+
+            function hide() {
+                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideUp();
+                $("#hideShow").empty().append("pokaż");
+            }
+
+            function show() {
+                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideDown();
+                $("#hideShow").empty().append("ukryj");
+            }
+
+            $("#hideShow").on("click", function () {
+                if ($("#hideShow").text() === "ukryj") {
+                    hide();
+                } else {
+                    show();
+                }
+            });
+
+            $("#name").on("click", function () {
+                hide();
+                $.ajax({
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    data: {
+                        format: 'json'
+                    },
+                    error: function error() {
+                        console.log("coś nie bangla...");
+                    },
+                    dataType: 'json',
+                    success: function success(data) {
+                        $("#mainDescription").empty().append(data.heroCreator[0].name);
+                    },
+                    type: 'GET'
+                });
+            });
+            console.log(heroCreator.hero);
+        });
+    };
 });
 
 /***/ })

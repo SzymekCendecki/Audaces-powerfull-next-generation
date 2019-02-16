@@ -1,4 +1,6 @@
 let randomHero = require("./randomHero.js");
+let chooseHero = require("./chooseHero.js");
+
 document.addEventListener("DOMContentLoaded", () => {
 
 let namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"]; module.exports.namesMan = namesMan;
@@ -48,9 +50,7 @@ module.exports.skillsWizard = skillsWizard;
 	module.exports.heroCreator = function(){
 
 		class Person{
-			constructor(name, sex){
-				this.name = name;
-				this.sex = sex;
+			constructor(){
 			}
 			setSex(sex){ this.sex = sex; }
 			setName(name){ this.name = name; }
@@ -96,5 +96,6 @@ module.exports.skillsWizard = skillsWizard;
 	}
 
 	randomHero.randomHero();
+	chooseHero.manualHero();
 
 });

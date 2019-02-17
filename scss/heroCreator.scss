@@ -22,6 +22,21 @@
   width: 33%;
 }
 
+.btnGreen{
+  background-color: #008000;
+  color: #fff;
+  padding: 1% 0 1% 0;
+  font-family: 'New Rocker', cursive;
+}
+
+.displayCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.textCenter{
+  text-align: center;
+}
 
 .btnManualHero{
   display: flex;

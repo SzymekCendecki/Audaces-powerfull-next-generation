@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     module.exports.manualHero = function(){
         $("#manualHero").on("click", ()=>{
+            
+            if(document.querySelectorAll(".btnManualHero").length > 0){
+                 document.querySelectorAll(".btnManualHero")[0].remove();
+            }
+
             heroCreator.hero.setSex("wybierz");
             heroCreator.hero.setName("wybierz");
             heroCreator.hero.setRace("wybierz");
@@ -31,18 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button id='skin'>skóra</button>
                 <button id='weight'>waga</button>
                 <button id='height'>wzrost</button>
+                <button id='allChooses'>info</button>
                 <button id='hideShow'>pokaż</button>
             </div>`);
 
-        $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").hide();
+        $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").hide();
 
         function hide(){
-            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideUp();
+            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").slideUp();
             $("#hideShow").empty().append("pokaż");
         }
 
         function show(){
-            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideDown();
+            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").slideDown();
             $("#hideShow").empty().append("ukryj");
         }
             
@@ -66,12 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
 					},
 					dataType: 'json',
 					success: (data)=>{
-						$("#mainDescription").empty().append(data.heroCreator[0].name);
+                        $("#mainDescription").empty().append(data.heroCreator[0].name);
+                        $("#acceptName").on("click", ()=>{
+                            let name = $("#nameForInput").val().replace(/\d/g,'');
+                            if(name == ""){
+                                console.log('wpisz imię');
+                            }else{
+                                heroCreator.hero.setName(name);
+                                console.log(heroCreator.hero);
+                            }
+                        });
 				 },
 					type: 'GET'
 			 });
             });
-            console.log(heroCreator.hero);
         });
     }
-   });
+});

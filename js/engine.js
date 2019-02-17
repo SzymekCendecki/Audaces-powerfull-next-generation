@@ -641,7 +641,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			$("#mainDescription").empty().append("<p class='heroRandom'>imi\u0119</p><p class='heroRandom'>" + heroCreator.hero.name + "</p><p class='heroRandom'>p\u0142e\u0107</p><p class='heroRandom'>" + heroCreator.hero.sex + "</p><p class='heroRandom'>rasa</p><p class='heroRandom'>" + heroCreator.hero.race + "</p><p class='heroRandom'>profesja</p><p class='heroRandom'>" + heroCreator.hero.occupation + "</p><p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p><p class='heroRandom'>kolor w\u0142os\xF3w</p><p id='hairColor' class='heroRandom'></p><p class='heroRandom'>kolor sk\xF3ry</p><p id='skinColor' class='heroRandom'></p><p class='heroRandom'>waga</p><p class='heroRandom'>" + heroCreator.hero.weight + " kg</p><p class='heroRandom'>wzrost</p><p class='heroRandom'>" + heroCreator.hero.height + " cm</p><p class='heroRandom'>punkty cech</p><p id=\"summaryPoints\" class='heroRandom'></p>");
 
 			summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
-			console.log(heroCreator.hero);
 
 			var x1 = heroCreator.hero.colorEyes[0];
 			var x2 = heroCreator.hero.colorEyes[1];
@@ -674,6 +673,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     module.exports.manualHero = function () {
         $("#manualHero").on("click", function () {
+
+            if (document.querySelectorAll(".btnManualHero").length > 0) {
+                document.querySelectorAll(".btnManualHero")[0].remove();
+            }
+
             heroCreator.hero.setSex("wybierz");
             heroCreator.hero.setName("wybierz");
             heroCreator.hero.setRace("wybierz");
@@ -689,17 +693,17 @@ document.addEventListener("DOMContentLoaded", function () {
             heroCreator.hero.setHeight("wybierz");
 
             $("#mainDescription").empty();
-            $("nav").append("\n            <div class='btnManualHero'>\n                <button id='name'>imi\u0119</button>\n                <button id='sex'>p\u0142e\u0107</button>\n                <button id='race'>rasa</button>\n                <button id='occupation'>profesja</button>\n                <button id='points'>punkty</button>\n                <button id='eyes'>oczy</button>\n                <button id='hair'>w\u0142osy</button>\n                <button id='skin'>sk\xF3ra</button>\n                <button id='weight'>waga</button>\n                <button id='height'>wzrost</button>\n                <button id='hideShow'>poka\u017C</button>\n            </div>");
+            $("nav").append("\n            <div class='btnManualHero'>\n                <button id='name'>imi\u0119</button>\n                <button id='sex'>p\u0142e\u0107</button>\n                <button id='race'>rasa</button>\n                <button id='occupation'>profesja</button>\n                <button id='points'>punkty</button>\n                <button id='eyes'>oczy</button>\n                <button id='hair'>w\u0142osy</button>\n                <button id='skin'>sk\xF3ra</button>\n                <button id='weight'>waga</button>\n                <button id='height'>wzrost</button>\n                <button id='allChooses'>info</button>\n                <button id='hideShow'>poka\u017C</button>\n            </div>");
 
-            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").hide();
+            $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").hide();
 
             function hide() {
-                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideUp();
+                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").slideUp();
                 $("#hideShow").empty().append("pokaż");
             }
 
             function show() {
-                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height").slideDown();
+                $("#name, #sex, #race, #occupation, #points, #eyes, #hair, #skin, #weight, #height, #allChooses").slideDown();
                 $("#hideShow").empty().append("ukryj");
             }
 
@@ -724,11 +728,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     dataType: 'json',
                     success: function success(data) {
                         $("#mainDescription").empty().append(data.heroCreator[0].name);
+                        $("#acceptName").on("click", function () {
+                            var name = $("#nameForInput").val().replace(/\d/g, '');
+                            if (name == "") {
+                                console.log('wpisz imię');
+                            } else {
+                                heroCreator.hero.setName(name);
+                                console.log(heroCreator.hero);
+                            }
+                        });
                     },
                     type: 'GET'
                 });
             });
-            console.log(heroCreator.hero);
         });
     };
 });

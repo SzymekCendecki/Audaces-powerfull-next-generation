@@ -2,7 +2,7 @@
     "heroCreator": [
         {
             "firstText": "<p class='width100p'>Wybierz sposób tworzenia postaci.</p><p class='width100p'><span class='textColorRandom'>wylosuj</span> - automatycznie stworzy losową postać.</p><p class='width100p'><span class='textColorManual'>stwórz</span> - stworzysz własnoręcznie swoją postać.</p>",
-            "name": "<p class='width100p'>Stwórz imię postaci.</p><p class='width100p'><input class='width33p margin0auto'/></p><p class='width100p'><button class='btnGreen margin0auto'>zatwierdź</button></p>"
+            "name": "<p class='width100p textCenter'>Stwórz imię postaci.</p><p class='width100p displayCenter'><input class='width33p'/></p><p class='width100p displayCenter'><button class='btnGreen'>zatwierdź</button></p>"
         }
     ]
 }

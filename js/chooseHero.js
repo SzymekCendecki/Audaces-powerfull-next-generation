@@ -52,14 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#hideShow").empty().append("ukryj");
         }
             
-            $("#hideShow").on("click", ()=>{
-                if($("#hideShow").text() === "ukryj"){
-                    hide();
-                }else{ 
-                    show();
-                }
-            });
+        $("#hideShow").on("click", ()=>{
+            if($("#hideShow").text() === "ukryj"){
+                hide();
+            }else{ 
+                show();
+            }
+        });
 
+        function summaryPoints(hero, tab, tab2){
+            let element = document.getElementById('summaryPoints');
+            var fragment = document.createDocumentFragment();
+            
+            for(let i=0; i<hero.racePoints.length && i<hero.occupationPoints.length && i<hero.randomPoints.length; i++){
+                let x = (hero.racePoints[i] + hero.occupationPoints[i] + hero.randomPoints[i]);
+                tab.splice(i, 1, x);
+            }
+            
+            hero.setSummaryPoints(tab);
+            
+            for(let j=0; j<tab.length && j<tab2.length; j++){
+                var p = document.createElement('p');
+                p.textContent = tab2[j] + " " + tab[j];
+                fragment.appendChild(p);
+            }
+            element.appendChild(fragment);
+        }
+
+            //wybór imienia
             $("#name").on("click", ()=>{
                 hide();
                 $.ajax({
@@ -76,16 +96,63 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("#acceptName").on("click", ()=>{
                             let name = $("#nameForInput").val().replace(/\d/g,'');
                             if(name == ""){
-                                console.log('wpisz imię');
+                                $("#alerts").empty().append(data.heroCreator[0].warningName);
+                                setTimeout(()=>{ $("#alerts").empty(); }, 3000);
                             }else{
                                 heroCreator.hero.setName(name);
-                                console.log(heroCreator.hero);
+                                $("#alerts").empty().append(data.heroCreator[0].acceptName);
+                                setTimeout(()=>{ $("#alerts").empty(); }, 3000);
                             }
                         });
 				 },
 					type: 'GET'
 			 });
             });
+
+            //przycisk info
+            $("#allChooses").on("click", ()=>{
+                hide();
+                $("#mainDescription").empty().append(`
+                <p class='heroRandom'>imię</p><p class='heroRandom'>${heroCreator.hero.name}</p>
+                <p class='heroRandom'>płeć</p><p class='heroRandom'>${heroCreator.hero.sex}</p>
+                <p class='heroRandom'>rasa</p><p class='heroRandom'>${heroCreator.hero.race}</p>
+                <p class='heroRandom'>profesja</p><p class='heroRandom'>${heroCreator.hero.occupation}</p>
+                <p class='heroRandom'>kolor oczu</p><p id='eyesColor' class='heroRandom'></p>
+                <p class='heroRandom'>kolor włosów</p><p id='hairColor' class='heroRandom'></p>
+                <p class='heroRandom'>kolor skóry</p><p id='skinColor' class='heroRandom'></p>
+                <p class='heroRandom'>waga</p><p class='heroRandom'>${heroCreator.hero.weight} kg</p>
+                <p class='heroRandom'>wzrost</p><p class='heroRandom'>${heroCreator.hero.height} cm</p>
+                <p class='heroRandom'>punkty cech</p><p id="summaryPoints" class='heroRandom'></p>`);
+
+                if(heroCreator.hero.colorEyes === "wybierz"){
+                    $("#eyesColor").empty().append("wybierz");
+                }else{
+                    let x1 = heroCreator.hero.colorEyes[0];
+                    let x2 = heroCreator.hero.colorEyes[1];
+                    let x3 = heroCreator.hero.colorEyes[2];
+                    $("#eyesColor").css("background-color", "rgb("+x1+", "+x2 + ", "+x3+")");
+                }
+
+                if(heroCreator.hero.colorHair === "wybierz"){
+                    $("#hairColor").empty().append("wybierz");
+                }else{
+                    let x4 = heroCreator.hero.colorHair[0];
+			        let x5 = heroCreator.hero.colorHair[1];
+			        let x6 = heroCreator.hero.colorHair[2];
+                    $("#hairColor").empty().css("background-color", "rgb("+x4+", "+x5 + ", "+x6+")");
+                }
+
+                if(heroCreator.hero.colorSkin === "wybierz"){
+                    $("#skinColor").empty().append("wybierz");
+                }else{
+                    let x7 = heroCreator.hero.colorSkin[0];
+                    let x8 = heroCreator.hero.colorSkin[1];
+                    let x9 = heroCreator.hero.colorSkin[2];
+                    $("#skinColor").empty().css("background-color", "rgb("+x7+", "+x8 + ", "+x9+")");
+                }
+                summaryPoints(heroCreator.hero, heroCreator.sumPoints, heroCreator.features);
+                console.log(heroCreator.hero);
+            })
         });
     }
 });

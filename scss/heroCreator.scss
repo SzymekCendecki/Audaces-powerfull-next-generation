@@ -48,6 +48,11 @@
   justify-content: center;
 }
 
+.displaySpaceBetween{
+  display: flex;
+  justify-content: space-between;
+}
+
 .textCenter{
   text-align: center;
 }

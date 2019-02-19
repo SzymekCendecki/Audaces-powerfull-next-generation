@@ -322,3 +322,6 @@ Praca nad wybieraniem imienia.
 18 luty 2019 - wersja 0.1.90
 Dodanie alertów dla wyboru imienia.
   Dodanie zdarzenia dla przycisku info. 
+
+19 luty 2019 - wersja 0.1.91
+Dodano wybór płci.

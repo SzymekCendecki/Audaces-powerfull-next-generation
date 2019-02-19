@@ -768,6 +768,46 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
+            //wybór płci
+            $("#sex").on("click", function () {
+                hide();
+                $.ajax({
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    data: {
+                        format: 'json'
+                    },
+                    error: function error() {
+                        console.log("coś nie bangla...");
+                    },
+                    dataType: 'json',
+                    success: function success(data) {
+                        $("#mainDescription").empty().append(data.heroCreator[0].sex);
+                        $("#woman").on("click", function () {
+                            $("#alerts").empty().append(data.heroCreator[0].woman);
+                            setTimeout(function () {
+                                $("#alerts").empty();
+                            }, 3000);
+                            heroCreator.hero.setSex("kobieta");
+                        });
+                        $("#man").on("click", function () {
+                            $("#alerts").empty().append(data.heroCreator[0].man);
+                            setTimeout(function () {
+                                $("#alerts").empty();
+                            }, 3000);
+                            heroCreator.hero.setSex("mężczyzna");
+                        });
+                        $("#other").on("click", function () {
+                            $("#alerts").empty().append(data.heroCreator[0].other);
+                            setTimeout(function () {
+                                $("#alerts").empty();
+                            }, 3000);
+                            heroCreator.hero.setSex("nie wiadomo");
+                        });
+                    },
+                    type: 'GET'
+                });
+            });
+
             //przycisk info
             $("#allChooses").on("click", function () {
                 hide();

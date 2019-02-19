@@ -5,7 +5,10 @@
             "name": "<p class='width100p textCenter'>Stwórz imię postaci.</p><p class='width100p displayCenter'><input id='nameForInput' class='width33p textCenter textNewRocker'/></p><p class='width100p displayCenter'><button id='acceptName' class='btnGreen'>zatwierdź</button></p>",
             "warningName":"<p class='width100p textCenter redText'>Musisz wybrać imię.</p>",
             "acceptName":"<p class='width100p textCenter greenText'>Imię zostało wybrane.</p>",
-            "sex":"<p class='width100p textCenter'>Wybierz płeć postaci.</p><p class='width100p displaySpaceBetween'><button id='women' class='btnGreen'>kobieta</button><button id='men' class='btnGreen'>mężczyzna</button><button id='other class='btnGreen'>nie wiadomo</button></p>"
+            "sex":"<p class='width100p textCenter'>Wybierz płeć postaci.</p><p class='width100p displaySpaceBetween'><button id='women' class='btnGreen'>kobieta</button><button id='men' class='btnGreen'>mężczyzna</button><button id='other' class='btnGreen'>nie wiadomo</button></p>",
+            "woman":"<p class='width100p textCenter greenText'>Wybrana płeć: kobieta.</p>",
+            "men":"<p class='width100p textCenter greenText'>Wybrana płeć: mężczyzna.</p>",
+            "other":"<p class='width100p textCenter greenText'>Wybrana płeć: nie wiadomo.</p>"
         }
     ]
 }

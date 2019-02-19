@@ -790,7 +790,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             heroCreator.hero.setSex("kobieta");
                         });
                         $("#men").on("click", function () {
-                            $("#alerts").empty().append(data.heroCreator[0].man);
+                            $("#alerts").empty().append(data.heroCreator[0].men);
                             setTimeout(function () {
                                 $("#alerts").empty();
                             }, 3000);

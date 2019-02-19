@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             }, 3000);
                             heroCreator.hero.setSex("kobieta");
                         });
-                        $("#man").on("click", function () {
+                        $("#men").on("click", function () {
                             $("#alerts").empty().append(data.heroCreator[0].man);
                             setTimeout(function () {
                                 $("#alerts").empty();

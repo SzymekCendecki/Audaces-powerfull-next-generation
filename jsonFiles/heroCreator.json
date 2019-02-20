@@ -9,7 +9,17 @@
             "woman":"<p class='width100p textCenter greenText'>Wybrana płeć: kobieta.</p>",
             "men":"<p class='width100p textCenter greenText'>Wybrana płeć: mężczyzna.</p>",
             "other":"<p class='width100p textCenter greenText'>Wybrana płeć: nie wiadomo.</p>",
-            "race":"<p class='width100p textCenter'>Wybierz rasę postaci.</p><p class='width100p displaySpaceBetween'><button id='human' class='btnGreen'>człowiek</button><button id='orc' class='btnGreen'>ork</button><button id='halfOrc' class='btnGreen'>półork</button><button id='halfElv' class='btnGreen'>półelf</button><button id='elv' class='btnGreen'>elf</button>  <button id='dwarf' class='btnGreen'>krasnolud</button><button id='gnome' class='btnGreen'>gnom</button><button id='halfling' class='btnGreen'>niziołek</button>    <button id='goblin' class='btnGreen'>goblin</button><button id='troll' class='btnGreen'>trol</button><button id='semiGiant' class='btnGreen'>półolbrzym</button></p>"
+            "race":"<p class='width100p textCenter'>Wybierz rasę postaci.</p><p class='width100p displaySpaceBetween'><button id='human' class='btnGreen width24p'>człowiek</button><button id='orc' class='btnGreen width24p'>ork</button><button id='halfOrc' class='btnGreen width24p'>półork</button><button id='halfElv' class='btnGreen width24p'>półelf</button><button id='elv' class='btnGreen width24p'>elf</button><button id='dwarf' class='btnGreen width24p'>krasnolud</button><button id='gnome' class='btnGreen width24p'>gnom</button><button id='halfling' class='btnGreen width24p'>niziołek</button><button id='goblin' class='btnGreen width24p'>goblin</button><button id='troll' class='btnGreen width24p'>trol</button><button id='semiGiant' class='btnGreen width24p'>półolbrzym</button></p>", 
+            "human":"<p class='width100p textCenter greenText'>Wybrana rasa: człowiek.</p>", 
+            "halfOrc":"<p class='width100p textCenter greenText'>Wybrana rasa: półork.</p>", 
+            "orc":"<p class='width100p textCenter greenText'>Wybrana rasa: ork.</p>",
+            "halfElv":"<p class='width100p textCenter greenText'>Wybrana rasa: półelf.</p>", 
+            "elv":"<p class='width100p textCenter greenText'>Wybrana rasa: elf.</p>", 
+            "dwarf":"<p class='width100p textCenter greenText'>Wybrana rasa: krasnolud.</p>", 
+            "halfling":"<p class='width100p textCenter greenText'>Wybrana rasa: niziołek.</p>", 
+            "goblin":"<p class='width100p textCenter greenText'>Wybrana rasa: goblin.</p>",
+            "troll":"<p class='width100p textCenter greenText'>Wybrana rasa: trol.</p>", 
+            "semiGiant":"<p class='width100p textCenter greenText'>Wybrana rasa: półolbrzym.</p>"
         }
     ]
 }

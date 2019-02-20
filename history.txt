@@ -325,3 +325,7 @@ Dodanie alertów dla wyboru imienia.
 
 19 luty 2019 - wersja 0.1.91
 Dodano wybór płci.
+
+20 luty 2019 - wersja 0.1.92
+Dodano wybieranie rasy.
+    Optymalizacja kodu.

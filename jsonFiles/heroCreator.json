@@ -16,6 +16,7 @@
             "halfElv":"<p class='width100p textCenter greenText'>Wybrana rasa: półelf.</p>", 
             "elv":"<p class='width100p textCenter greenText'>Wybrana rasa: elf.</p>", 
             "dwarf":"<p class='width100p textCenter greenText'>Wybrana rasa: krasnolud.</p>", 
+            "gnome":"<p class='width100p textCenter greenText'>Wybrana rasa: gnom.</p>", 
             "halfling":"<p class='width100p textCenter greenText'>Wybrana rasa: niziołek.</p>", 
             "goblin":"<p class='width100p textCenter greenText'>Wybrana rasa: goblin.</p>",
             "troll":"<p class='width100p textCenter greenText'>Wybrana rasa: trol.</p>", 

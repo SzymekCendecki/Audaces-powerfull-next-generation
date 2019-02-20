@@ -60,6 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        function alerts(source){ $("#alerts").empty().append(source); setTimeout(()=>{ $("#alerts").empty(); }, 3000); }
+            
+        function chooseSex(sex, source){ alerts(source); heroCreator.hero.setSex(sex); }
+        function chooseRace(race, source){ alerts(source); heroCreator.hero.setRace(race); }
+
         function summaryPoints(hero, tab, tab2){
             let element = document.getElementById('summaryPoints');
             var fragment = document.createDocumentFragment();
@@ -95,13 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("#mainDescription").empty().append(data.heroCreator[0].name);
                         $("#acceptName").on("click", ()=>{
                             let name = $("#nameForInput").val().replace(/\d/g,'');
-                            if(name == ""){
-                                $("#alerts").empty().append(data.heroCreator[0].warningName);
-                                setTimeout(()=>{ $("#alerts").empty(); }, 3000);
-                            }else{
-                                heroCreator.hero.setName(name);
-                                $("#alerts").empty().append(data.heroCreator[0].acceptName);
-                                setTimeout(()=>{ $("#alerts").empty(); }, 3000);
+                            if(name == ""){ alerts(data.heroCreator[0].warningName);
+                            }else{ heroCreator.hero.setName(name); alerts(data.heroCreator[0].acceptName);
                             }
                         });
 				 },
@@ -123,26 +123,88 @@ document.addEventListener("DOMContentLoaded", () => {
 					dataType: 'json',
 					success: (data)=>{
                         $("#mainDescription").empty().append(data.heroCreator[0].sex);
-                        $("#woman").on("click", ()=>{
-                            $("#alerts").empty().append(data.heroCreator[0].woman);
-                            setTimeout(()=>{ $("#alerts").empty(); }, 3000);
-                            heroCreator.hero.setSex("kobieta");
-                        });
-                        $("#men").on("click", ()=>{
-                            $("#alerts").empty().append(data.heroCreator[0].men);
-                            setTimeout(()=>{ $("#alerts").empty(); }, 3000);
-                            heroCreator.hero.setSex("mężczyzna");
-                        });
-                        $("#other").on("click", ()=>{
-                            $("#alerts").empty().append(data.heroCreator[0].other);
-                            setTimeout(()=>{ $("#alerts").empty(); }, 3000);
-                            heroCreator.hero.setSex("nie wiadomo");
-                        });
+                        $("#woman").on("click", ()=>{ chooseSex("kobieta", data.heroCreator[0].woman); });
+                        $("#men").on("click", ()=>{ chooseSex("mężczyzna", data.heroCreator[0].men); });
+                        $("#other").on("click", ()=>{ chooseSex("nie wiadomo", data.heroCreator[0].other);});
                     },
 					type: 'GET'
 			 });
             });
 
+
+            //wybór rasy
+            $("#race").on("click", ()=>{
+                hide();
+                $.ajax({
+					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+					data: {
+						format: 'json'
+					},
+					error: ()=>{
+						console.log("coś nie bangla...");
+					},
+					dataType: 'json',
+					success: (data)=>{
+                        $("#mainDescription").empty().append(data.heroCreator[0].race);
+                        $("#human").on("click", ()=>{
+                            chooseRace("człowiek", data.heroCreator[0].human);
+                            heroCreator.hero.setRacePoints(heroCreator.human);
+                        });
+
+                        $("#halfOrc").on("click", ()=>{
+                            chooseRace("półork", data.heroCreator[0].halfOrc);
+                            heroCreator.hero.setRacePoints(heroCreator.halfOrc);
+                        });
+
+                        $("#orcrc").on("click", ()=>{
+                            chooseRace("ork", data.heroCreator[0].orc);
+                            heroCreator.hero.setRacePoints(heroCreator.orc);
+                            
+                        });
+
+                        $("#halfElv").on("click", ()=>{
+                            chooseRace("półelf", data.heroCreator[0].halfElv);
+                            heroCreator.hero.setRacePoints(heroCreator.halfElv);
+                        });
+
+                        $("#elv").on("click", ()=>{
+                            chooseRace("elf", data.heroCreator[0].elv);
+                            heroCreator.hero.setRacePoints(heroCreator.elv);
+                        });
+
+                        $("#dwarf").on("click", ()=>{
+                            chooseRace("krasnolud", data.heroCreator[0].dwarf);
+                            heroCreator.hero.setRacePoints(heroCreator.dwarf);
+                        });
+
+                        $("#gnome").on("click", ()=>{
+                            chooseRace("gnom", data.heroCreator[0].gnom);
+                            heroCreator.hero.setRacePoints(heroCreator.gnome);
+                        });
+
+                        $("#halfling").on("click", ()=>{
+                            chooseRace("niziołek", data.heroCreator[0].halfling);
+                            heroCreator.hero.setRacePoints(heroCreator.halfling);
+                        });
+
+                        $("#goblin").on("click", ()=>{
+                            chooseRace("goblin", data.heroCreator[0].goblin);
+                            heroCreator.hero.setRacePoints(heroCreator.goblin);
+                        });
+
+                        $("#troll").on("click", ()=>{
+                            chooseRace("trol", data.heroCreator[0].troll);
+                            heroCreator.hero.setRacePoints(heroCreator.troll);
+                        });
+
+                        $("#semiGiant").on("click", ()=>{
+                            chooseRace("półolbrzym", data.heroCreator[0].semiGiant);
+                            heroCreator.hero.setRacePoints(heroCreator.semiGiant);
+                        });
+                    },
+					type: 'GET'
+			 });
+            });
 
 
             //przycisk info

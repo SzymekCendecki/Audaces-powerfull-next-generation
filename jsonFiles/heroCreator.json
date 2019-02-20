@@ -9,7 +9,7 @@
             "woman":"<p class='width100p textCenter greenText'>Wybrana płeć: kobieta.</p>",
             "men":"<p class='width100p textCenter greenText'>Wybrana płeć: mężczyzna.</p>",
             "other":"<p class='width100p textCenter greenText'>Wybrana płeć: nie wiadomo.</p>",
-            "race":"<div class='width100p textCenter'>Wybierz płeć postaci.</div><div class='width100p displaySpaceBetween'><button id='human' class='btnGreen'>człowiek</button><button id='orc' class='btnGreen'>ork</button><button id='halfOrc' class='btnGreen'>półork</button><button id='halfElv' class='btnGreen'>półelf</button><button id='elv' class='btnGreen'>elf</button>  <button id='dwarf' class='btnGreen'>krasnolud</button><button id='gnome' class='btnGreen'>gnom</button><button id='halfling' class='btnGreen'>niziołek</button>    <button id='goblin' class='btnGreen'>goblin</button><button id='troll' class='btnGreen'>trol</button><button id='semiGiant' class='btnGreen'>półolbrzym</button></div>"
+            "race":"<p class='width100p textCenter'>Wybierz rasę postaci.</p><p class='width100p displaySpaceBetween'><button id='human' class='btnGreen'>człowiek</button><button id='orc' class='btnGreen'>ork</button><button id='halfOrc' class='btnGreen'>półork</button><button id='halfElv' class='btnGreen'>półelf</button><button id='elv' class='btnGreen'>elf</button>  <button id='dwarf' class='btnGreen'>krasnolud</button><button id='gnome' class='btnGreen'>gnom</button><button id='halfling' class='btnGreen'>niziołek</button>    <button id='goblin' class='btnGreen'>goblin</button><button id='troll' class='btnGreen'>trol</button><button id='semiGiant' class='btnGreen'>półolbrzym</button></p>"
         }
     ]
 }

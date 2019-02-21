@@ -20,10 +20,11 @@
             "halfling":"<p class='width100p textCenter greenText'>Wybrana rasa: niziołek.</p>", 
             "goblin":"<p class='width100p textCenter greenText'>Wybrana rasa: goblin.</p>",
             "troll":"<p class='width100p textCenter greenText'>Wybrana rasa: trol.</p>", 
-            "semiGiant":"<p class='width100p textCenter greenText'>Wybrana rasa: półolbrzym.</p>"
+            "semiGiant":"<p class='width100p textCenter greenText'>Wybrana rasa: półolbrzym.</p>",
+            "occupation":"<div class='width100p textCenter'>Wybierz płeć postaci.</div><div class='width100p displaySpaceBetween'><button id='warrior' class='btnGreen'>wojownik</button><button id='criminal' class='btnGreen'>złoczyńca</button><button id='wizard' class='btnGreen'>czarodziej</button></div>",
+            "warrior":"<p class='width100p textCenter greenText'>Wybrana profeja: wojownik.</p>", 
+            "criminal":"<p class='width100p textCenter greenText'>Wybrana profeja: złoczyńca.</p>", 
+            "wizard":"<p class='width100p textCenter greenText'>Wybrana profeja: czarodziej.</p>"
         }
     ]
 }
-
-
-           

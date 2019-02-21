@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         function chooseSex(sex, source){ alerts(source); heroCreator.hero.setSex(sex); }
         function chooseRace(race, source){ alerts(source); heroCreator.hero.setRace(race); }
+        function chooseOccupation(occupation, source){ alerts(source); heroCreator.hero.setOccupation(occupation); }
 
         function summaryPoints(hero, tab, tab2){
             let element = document.getElementById('summaryPoints');
@@ -128,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("#other").on("click", ()=>{ chooseSex("nie wiadomo", data.heroCreator[0].other);});
                     },
 					type: 'GET'
-			 });
+			    });
             });
 
 
@@ -156,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             heroCreator.hero.setRacePoints(heroCreator.halfOrc);
                         });
 
-                        $("#orcrc").on("click", ()=>{
+                        $("#orc").on("click", ()=>{
                             chooseRace("ork", data.heroCreator[0].orc);
                             heroCreator.hero.setRacePoints(heroCreator.orc);
                             
@@ -204,6 +205,37 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
 					type: 'GET'
 			 });
+            });
+
+            //wybór profesji
+            $("#occupation").on("click", ()=>{
+                hide();
+                $.ajax({
+					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+					data: {
+						format: 'json'
+					},
+					error: ()=>{
+						console.log("coś nie bangla...");
+					},
+					dataType: 'json',
+					success: (data)=>{
+                        $("#mainDescription").empty().append(data.heroCreator[0].occupation);
+                        $("#warrior").on("click", ()=>{ 
+                            chooseOccupation("wojownik", data.heroCreator[0].warrior); 
+                            heroCreator.hero.setOccupationPoints(heroCreator.warrior);
+                        });
+                        $("#criminal").on("click", ()=>{ 
+                            chooseOccupation("złoczyńca", data.heroCreator[0].criminal); 
+                            heroCreator.hero.setOccupationPoints(heroCreator.criminal);
+                        });
+                        $("#wizard").on("click", ()=>{ 
+                            chooseOccupation("czarodziej", data.heroCreator[0].wizard);
+                            heroCreator.hero.setOccupationPoints(heroCreator.wizard);
+                        });
+                    },
+					type: 'GET'
+			    });
             });
 
 

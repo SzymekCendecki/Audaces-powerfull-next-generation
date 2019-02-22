@@ -332,3 +332,6 @@ Dodano wybieranie rasy.
 
 21 luty 2019 - wersja 0.1.93
 Dodano wybieranie profesji.
+
+22 luty 2019 - wersja 0.1.94
+Poprawka kodu odpowiadającego za Ajax'a.

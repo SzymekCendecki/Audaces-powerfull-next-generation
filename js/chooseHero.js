@@ -89,15 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#name").on("click", ()=>{
                 hide();
                 $.ajax({
-					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-					data: {
-						format: 'json'
-					},
-					error: ()=>{
-						console.log("coś nie bangla...");
-					},
-					dataType: 'json',
-					success: (data)=>{
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    type: 'GET',
+                    dataType: 'json'
+                    }).done((data)=>{
                         $("#mainDescription").empty().append(data.heroCreator[0].name);
                         $("#acceptName").on("click", ()=>{
                             let name = $("#nameForInput").val().replace(/\d/g,'');
@@ -105,47 +100,35 @@ document.addEventListener("DOMContentLoaded", () => {
                             }else{ heroCreator.hero.setName(name); alerts(data.heroCreator[0].acceptName);
                             }
                         });
-				 },
-					type: 'GET'
-			 });
-            });
-            
+                    }).fail(()=>{
+                    console.log("coś nie bangla...");
+                });
+         });  
             //wybór płci
             $("#sex").on("click", ()=>{
                 hide();
                 $.ajax({
-					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-					data: {
-						format: 'json'
-					},
-					error: ()=>{
-						console.log("coś nie bangla...");
-					},
-					dataType: 'json',
-					success: (data)=>{
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    type: 'GET',
+                    dataType: 'json'
+                    }).done((data) => {
                         $("#mainDescription").empty().append(data.heroCreator[0].sex);
                         $("#woman").on("click", ()=>{ chooseSex("kobieta", data.heroCreator[0].woman); });
                         $("#men").on("click", ()=>{ chooseSex("mężczyzna", data.heroCreator[0].men); });
                         $("#other").on("click", ()=>{ chooseSex("nie wiadomo", data.heroCreator[0].other);});
-                    },
-					type: 'GET'
-			    });
+                    }).fail(()=>{
+                    console.log("coś nie bangla...");
+                });
             });
-
 
             //wybór rasy
             $("#race").on("click", ()=>{
                 hide();
                 $.ajax({
-					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-					data: {
-						format: 'json'
-					},
-					error: ()=>{
-						console.log("coś nie bangla...");
-					},
-					dataType: 'json',
-					success: (data)=>{
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    type: 'GET',
+                    dataType: 'json'
+                    }).done((data)=>{
                         $("#mainDescription").empty().append(data.heroCreator[0].race);
                         $("#human").on("click", ()=>{
                             chooseRace("człowiek", data.heroCreator[0].human);
@@ -160,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("#orc").on("click", ()=>{
                             chooseRace("ork", data.heroCreator[0].orc);
                             heroCreator.hero.setRacePoints(heroCreator.orc);
-                            
                         });
 
                         $("#halfElv").on("click", ()=>{
@@ -202,27 +184,22 @@ document.addEventListener("DOMContentLoaded", () => {
                             chooseRace("półolbrzym", data.heroCreator[0].semiGiant);
                             heroCreator.hero.setRacePoints(heroCreator.semiGiant);
                         });
-                    },
-					type: 'GET'
-			 });
+                    }).fail(()=>{
+                    console.log("coś nie bangla...");
+                });
             });
 
             //wybór profesji
             $("#occupation").on("click", ()=>{
                 hide();
                 $.ajax({
-					url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
-					data: {
-						format: 'json'
-					},
-					error: ()=>{
-						console.log("coś nie bangla...");
-					},
-					dataType: 'json',
-					success: (data)=>{
+                    url: 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/jsonFiles/heroCreator.json',
+                    type: 'GET',
+                    dataType: 'json'
+                    }).done((data) => {
                         $("#mainDescription").empty().append(data.heroCreator[0].occupation);
                         $("#warrior").on("click", ()=>{ 
-                            chooseOccupation("wojownik", data.heroCreator[0].warrior); 
+                            chooseOccupation("wojownik", data.response.heroCreator[0].warrior); 
                             heroCreator.hero.setOccupationPoints(heroCreator.warrior);
                         });
                         $("#criminal").on("click", ()=>{ 
@@ -233,11 +210,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             chooseOccupation("czarodziej", data.heroCreator[0].wizard);
                             heroCreator.hero.setOccupationPoints(heroCreator.wizard);
                         });
-                    },
-					type: 'GET'
-			    });
+                    }).fail(()=>{
+                        console.log("coś nie bangla...");
+                    });                
             });
-
 
             //przycisk info
             $("#allChooses").on("click", ()=>{

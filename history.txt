@@ -335,3 +335,6 @@ Dodano wybieranie profesji.
 
 22 luty 2019 - wersja 0.1.94
 Poprawka kodu odpowiadającego za Ajax'a.
+
+11 grudnia 2019 - wersja 0.1.95
+Usunięcie poprzedniej wersji kodu (rezygnacja z jQuery) oraz rozpoczęcie pracy nad nowy kodem.

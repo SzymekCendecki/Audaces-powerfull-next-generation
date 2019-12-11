@@ -1,6 +1,3 @@
-@import "intro";
-@import "heroCreator";
-
 //reset
 *{
    margin: 0; padding: 0;
@@ -11,52 +8,43 @@ html, body {
    height: 100%;
  }
 
- header, footer{
-   height: 10vh;
+ header, nav, footer{
+  width: 100%;  
+}
+
+ header, nav{
+   height: 10%;
  }
 
- #mainPart{
-     height: 80vh;
- }
-
-//ustawienie koloru tła dla pierwszego intra gry
-body{
-   background-color: #D3D3D3;
- }
-
-//ustawienie wysokoci i szerokości dla poszczególnych części strony (gry)
-header, footer{
-  width: 100%;
+ @mixin textCenter{
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   align-items: center;
-  align-content: center;
-}
+  font-weight: bolder;  
+ }
 
-#version{
-  font-family: 'Merienda One', cursive;
+ header{
   text-align: center;
+ }
+
+ footer{
+   height: 5%;
+   font-size: 1em;
+   @include textCenter;
+ }
+
+ #mainContainer{
+   width: 90%;
+   height: 75%;
+   margin: 0 auto;
+   font-size: 1em;
+   @include textCenter;
+ }
+
+body{
+  background-color: 	#A9A9A9;
 }
 
-#cssValidation{
-  display: none;
+@media screen and (min-width: 320px) {
+ 
 }
-
-#mainDescription{
-	display: flex;
-	flex-wrap: wrap;
-  justify-content: center;
-	align-content: flex-start;
-}
-
-.overflowScroll60vh{
-	overflow: auto;
-	height: 67vh;
-}
-
-p.heroRandom{
-    width: 144px;
-    height: 30px;
-    text-align: center;
-  }

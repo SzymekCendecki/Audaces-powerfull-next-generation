@@ -72,10 +72,51 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: C:/Users/User/Desktop/Audaces - powerfull/js/workingFile.js: Duplicate declaration \"occupation\"\n\n  12 | \n  13 | \n> 14 | let occupation = [\"wojownik\", \"złoczyńca\", \"czarodziej\"]; \n     |     ^\n  15 | let sex = [\"kobieta\", \"mężczyzna\", \"nie wiadomo\"]; \n  16 | let tattoo = [\"brak\", \"więzienne\", \"plemienne\", \"dziwne\"]; \n  17 | \n");
+
+
+var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+
+var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+
+var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+
+var occupation = ["wojownik", "złoczyńca", "czarodziej"];
+var sex = ["kobieta", "mężczyzna", "nie wiadomo"];
+var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];
+
+var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
+var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
+var equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
+var equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
+
+var skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
+
+var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
+
+var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
+
+//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
+var warrior = [5, 5, 0, 0, 0];
+var criminal = [0, 0, 10, 0, 0];
+var wizard = [0, 0, 0, 5, 5];
+
+var human = [0, 0, 0, 0, 0];
+var halfOrc = [3, 3, 0, -3, -3];
+var orc = [5, 5, 0, -5, -5];
+var halfElv = [-3, -3, 0, 3, 3];
+var elv = [-5, -5, 0, 5, 5];
+var dwarf = [4, 4, 0, -2, -3];
+var gnome = [-2, -2, 3, 3, 0];
+var halfling = [-3, 0, 6, 0, 0];
+var goblin = [2, -2, 4, 0, -4];
+var troll = [2, 0, 0, -2, -2];
+var semiGiant = [7, 7, -5, -3, 0];
+
+var sumPoints = [0, 0, 0, 0, 0];
+var features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma'];
 
 /***/ })
 /******/ ]);

@@ -4,13 +4,6 @@ const namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna
 
 const races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
 
-let occupation = ["wojownik", "złoczyńca", "czarodziej"];
-
-let sex = ["kobieta", "mężczyzna", "nie wiadomo"]; 
-
-let tattoo = ["brak", "więzienne", "plemienne", "dziwne"]; 
-
-
 let occupation = ["wojownik", "złoczyńca", "czarodziej"]; 
 let sex = ["kobieta", "mężczyzna", "nie wiadomo"]; 
 let tattoo = ["brak", "więzienne", "plemienne", "dziwne"]; 

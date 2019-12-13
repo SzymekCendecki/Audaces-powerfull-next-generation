@@ -72,10 +72,10 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
+throw new Error("Module build failed: C:/Users/User/Desktop/Audaces - powerfull/js/workingFile.js: Duplicate declaration \"occupation\"\n\n  12 | \n  13 | \n> 14 | let occupation = [\"wojownik\", \"złoczyńca\", \"czarodziej\"]; \n     |     ^\n  15 | let sex = [\"kobieta\", \"mężczyzna\", \"nie wiadomo\"]; \n  16 | let tattoo = [\"brak\", \"więzienne\", \"plemienne\", \"dziwne\"]; \n  17 | \n");
 
 /***/ })
 /******/ ]);

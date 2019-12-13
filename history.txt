@@ -337,4 +337,7 @@ Dodano wybieranie profesji.
 Poprawka kodu odpowiadającego za Ajax'a.
 
 11 grudnia 2019 - wersja 0.1.95
-Usunięcie poprzedniej wersji kodu (rezygnacja z jQuery) oraz rozpoczęcie pracy nad nowy kodem.
+Usunięcie poprzedniej wersji kodu (rezygnacja z jQuery) oraz rozpoczęcie pracy nad nowy kodem. Pierwsze linie kodu dla responsywności.
+
+13 grudnia 2019 - wersja 0.1.96
+Dodanie podstawowych tabel dla tworzenia postaci.

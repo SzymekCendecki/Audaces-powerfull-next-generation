@@ -1,6 +1,10 @@
-//reset
+@import url('https://fonts.googleapis.com/css?family=Merienda+One');
+@import url('https://fonts.googleapis.com/css?family=Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=New+Rocker');
+
 *{
-   margin: 0; padding: 0;
+   margin: 0; 
+   padding: 0;
  }
 
 html, body {
@@ -16,35 +20,74 @@ html, body {
    height: 10%;
  }
 
- @mixin textCenter{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bolder;  
- }
-
  header{
   text-align: center;
  }
 
- footer{
-   height: 5%;
-   font-size: 1em;
-   @include textCenter;
- }
-
  #mainContainer{
-   width: 90%;
-   height: 75%;
-   margin: 0 auto;
-   font-size: 1em;
-   @include textCenter;
+  width: 90%;
+  height: 75%;
+  margin: 0 auto;
+  font-size: 1em;
+
+  #infoResolution{
+    font-weight: bolder;
+    text-align: center;
+    padding: 20% 0 0 0;
+  }
+}
+
+#gameTitle, #gameSubTitle{
+  display: none;
+}
+
+ footer{
+  height: 5%;
+  font-size: 1em;
+  font-weight: bolder;
+  text-align: center;
+  
+  #version{
+    margin: 1% 0 0 0;
+  }
  }
 
 body{
   background-color: 	#A9A9A9;
 }
 
-@media screen and (min-width: 320px) {
- 
+@media screen and (min-width: 1920px) {
+  h1, h3, #infoResolution{
+    display: none;
+  }
+
+  #mainContainer{
+    height: 70%;    
+  }
+
+  #gameTitle, #gameSubTitle{
+    display: block;
+    font-weight: bolder;
+    text-align: center;  
+  }
+
+  #gameTitle{
+    font-family: 'New Rocker', cursive;
+    font-size: 5em;
+    color: 		#1E90FF;
+    -webkit-text-stroke: 1px 	#8A2BE2;
+  }
+
+  #gameSubTitle{
+    font-family: 'New Rocker', cursive;
+    font-size: 2.5em;
+    color: 		rgb(180, 44, 20);
+    -webkit-text-stroke: 1px 	#000;
+  }  
+
+  footer{
+    font-size: 1.5em;
+    font-family: 'New Rocker', cursive;
+    text-shadow: 1px 1px #fff;
+  }
 }

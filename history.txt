@@ -328,7 +328,7 @@ Dodano wybór płci.
 
 20 luty 2019 - wersja 0.1.92
 Dodano wybieranie rasy.
-    Optymalizacja kodu.
+Optymalizacja kodu.
 
 21 luty 2019 - wersja 0.1.93
 Dodano wybieranie profesji.
@@ -344,3 +344,6 @@ Dodanie podstawowych tabel dla tworzenia postaci.
 
 14 grudnia 2019 - wersja 0.1.97
 Utworzenie i ostylowanie tytułu i podtytułu gry oraz poprawki w css.
+
+15 grudnia 2019 - wersja 0.1.98
+Poprawka css dla strony z tytułem gry.

@@ -347,3 +347,6 @@ Utworzenie i ostylowanie tytułu i podtytułu gry oraz poprawki w css.
 
 15 grudnia 2019 - wersja 0.1.98
 Poprawka css dla strony z tytułem gry.
+
+16 grudnia 2019 - wersja 0.1.99
+Dodanie przycisku "usuwający" przycisk startujący i tytuł gry.

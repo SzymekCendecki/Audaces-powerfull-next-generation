@@ -118,11 +118,13 @@ var semiGiant = [7, 7, -5, -3, 0];
 var sumPoints = [0, 0, 0, 0, 0];
 var features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma'];
 
-document.querySelector('button').addEventListener('click', function () {
-	document.querySelector("#gameTitle").classList.add("displayNone");
-	document.querySelector("#gameSubTitle").classList.add("displayNone");
-	document.getElementsByName("startBtn")[0].classList.add("displayNone");
-});
+var gameTitle = document.querySelector("#gameTitle");
+var gameSubTitle = document.querySelector("#gameSubTitle");
+
+var info = document.querySelector("#info");
+var licence = document.querySelector("#licence");
+var tutorial = document.querySelector("#tutorial");
+var newGame = document.querySelector("#newGame");
 
 /***/ })
 /******/ ]);

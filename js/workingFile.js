@@ -38,10 +38,12 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 	
 	let sumPoints = [0, 0, 0, 0, 0];
 	let features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma']; 
-
 	
-	document.querySelector('button').addEventListener('click', ()=>{
-		document.querySelector("#gameTitle").classList.add("displayNone");
-		document.querySelector("#gameSubTitle").classList.add("displayNone");
-		document.getElementsByName("startBtn")[0].classList.add("displayNone");
-	});
+	const gameTitle = document.querySelector("#gameTitle");
+	const gameSubTitle = document.querySelector("#gameSubTitle");
+		
+	const info = document.querySelector("#info");
+	const licence = document.querySelector("#licence");
+	const tutorial = document.querySelector("#tutorial");
+	const newGame = document.querySelector("#newGame");
+

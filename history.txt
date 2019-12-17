@@ -350,3 +350,6 @@ Poprawka css dla strony z tytułem gry.
 
 16 grudnia 2019 - wersja 0.1.99
 Dodanie przycisku "usuwający" przycisk startujący i tytuł gry.
+
+17 grudnia 2019 - wersja 0.1.99a
+Zamienienie przycisku startującego na prosty progress bar oraz dodanie 4 przycisków pierwszego menu.

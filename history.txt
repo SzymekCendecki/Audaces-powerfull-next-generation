@@ -353,3 +353,6 @@ Dodanie przycisku "usuwający" przycisk startujący i tytuł gry.
 
 17 grudnia 2019 - wersja 0.1.99a
 Zamienienie przycisku startującego na prosty progress bar oraz dodanie 4 przycisków pierwszego menu.
+
+18 grudnia 2019 - wersja 0.1.99b
+Dodanie display: flex do nav ostylowanie przycisków pierwszego menu. Tytuł gry znika.

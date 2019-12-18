@@ -47,3 +47,17 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 	const tutorial = document.querySelector("#tutorial");
 	const newGame = document.querySelector("#newGame");
 
+
+	function xxx(){
+		info.classList.remove('displayNone');
+		licence.classList.remove('displayNone');
+		tutorial.classList.remove('displayNone');
+		newGame.classList.remove('displayNone');
+
+		gameTitle.classList.add('displayNone');
+		gameSubTitle.classList.add('displayNone');
+
+		document.querySelector('.progress').classList.add('displayNone');
+	}
+
+	setTimeout( () => xxx(), 3000 );

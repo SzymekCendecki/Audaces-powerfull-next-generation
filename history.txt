@@ -356,3 +356,6 @@ Zamienienie przycisku startującego na prosty progress bar oraz dodanie 4 przyci
 
 18 grudnia 2019 - wersja 0.1.99b
 Dodanie display: flex do nav ostylowanie przycisków pierwszego menu. Tytuł gry znika.
+
+19 grudnia 2019 - wersja 0.2.00
+Dodano pliki JSON wraz z mośliwością wyświetlania ich na ekranie (wraz z ostylowaniem tekstu).

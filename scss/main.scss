@@ -96,6 +96,16 @@ footer{
 .tutorialBtn{ @include firstMenuBtns(#C70039); }
 .newGameBtn{ @include firstMenuBtns(#139033); }
 
+.pStyles{
+  text-indent: 25px;
+  text-shadow: 1px 1px #fff;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: 'New Rocker', cursive;
+}
+
  @media screen and (max-width: 768px) {
   #gameTitle{
     font-size: 4em;
@@ -103,6 +113,10 @@ footer{
   #gameSubTitle{
     font-size: 2em;
   }   
+
+  #mainContainer{
+    overflow: auto;
+  }
 
   @mixin firstMenuBtns($bgc){
     width: 20%;
@@ -118,4 +132,11 @@ footer{
   .licenceBtn{ @include firstMenuBtns(#C711AE); }
   .tutorialBtn{ @include firstMenuBtns(#C70039); }
   .newGameBtn{ @include firstMenuBtns(#139033); }
+
+  .pStyles{
+    text-shadow: 1px 1px #fff;
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-family: 'New Rocker', cursive;
+  }
 }

@@ -19,7 +19,7 @@ let skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "puł
 
 let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
 
-//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
+//indexes: 0-force, 1-strength, 2-dexterity, 3-ntelligence, 4-charisma
 	let warrior = [5, 5, 0, 0, 0]; 	
 	let criminal = [0, 0, 10, 0, 0]; 
 	let wizard = [0, 0, 0, 5, 5]; 
@@ -46,9 +46,13 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 	const licence = document.querySelector("#licence");
 	const tutorial = document.querySelector("#tutorial");
 	const newGame = document.querySelector("#newGame");
+	
+	let mainContainer = document.querySelector("#mainContainer");
 
+	  
+	const path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
-	function xxx(){
+	let toFirstMenu = () =>{
 		info.classList.remove('displayNone');
 		licence.classList.remove('displayNone');
 		tutorial.classList.remove('displayNone');
@@ -60,4 +64,34 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 		document.querySelector('.progress').classList.add('displayNone');
 	}
 
-	setTimeout( () => xxx(), 3000 );
+	setTimeout( () => toFirstMenu(), 3000 );
+	
+	
+	let newP =(data) =>{ 
+ 		var newP= document.createElement("p"); 
+  		var newContent = document.createTextNode(data); 
+		newP.appendChild(newContent);
+		newP.classList.add("pStyles");
+		mainContainer.appendChild(newP); 
+	}
+	
+	info.addEventListener("click", ()=>{
+		mainContainer.innerHTML = '';
+		fetch(path + 'info.json').then(response => response.json()).then(data => { 
+			newP(data.info);
+		}).catch(error => console.error(error))
+	});
+	
+	licence.addEventListener("click", ()=>{
+		mainContainer.innerHTML = '';
+		fetch(path + 'licence.json').then(response => response.json()).then(data => { 
+			newP(data.licence);
+		}).catch(error => console.error(error))
+	});
+	
+	tutorial.addEventListener("click", ()=>{
+		mainContainer.innerHTML = '';
+		fetch(path + 'tutorial.json').then(response => response.json()).then(data => { 
+			newP(data.tutorial);
+		}).catch(error => console.error(error))
+	});

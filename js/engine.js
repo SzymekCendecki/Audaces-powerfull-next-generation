@@ -98,7 +98,7 @@ var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "puł
 
 var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
 
-//indeksy: 0-siła, 1-wytrzymałość, 2-zręczność, 3-inteligencja, 4-charyzma
+//indexes: 0-force, 1-strength, 2-dexterity, 3-ntelligence, 4-charisma
 var warrior = [5, 5, 0, 0, 0];
 var criminal = [0, 0, 10, 0, 0];
 var wizard = [0, 0, 0, 5, 5];
@@ -126,7 +126,11 @@ var licence = document.querySelector("#licence");
 var tutorial = document.querySelector("#tutorial");
 var newGame = document.querySelector("#newGame");
 
-function xxx() {
+var mainContainer = document.querySelector("#mainContainer");
+
+var path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
+
+var toFirstMenu = function toFirstMenu() {
 	info.classList.remove('displayNone');
 	licence.classList.remove('displayNone');
 	tutorial.classList.remove('displayNone');
@@ -136,11 +140,52 @@ function xxx() {
 	gameSubTitle.classList.add('displayNone');
 
 	document.querySelector('.progress').classList.add('displayNone');
-}
+};
 
 setTimeout(function () {
-	return xxx();
+	return toFirstMenu();
 }, 3000);
+
+var newP = function newP(data) {
+	var newP = document.createElement("p");
+	var newContent = document.createTextNode(data);
+	newP.appendChild(newContent);
+	newP.classList.add("pStyles");
+	mainContainer.appendChild(newP);
+};
+
+info.addEventListener("click", function () {
+	mainContainer.innerHTML = '';
+	fetch(path + 'info.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		newP(data.info);
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+licence.addEventListener("click", function () {
+	mainContainer.innerHTML = '';
+	fetch(path + 'licence.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		newP(data.licence);
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+tutorial.addEventListener("click", function () {
+	mainContainer.innerHTML = '';
+	fetch(path + 'tutorial.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		newP(data.tutorial);
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
 
 /***/ })
 /******/ ]);

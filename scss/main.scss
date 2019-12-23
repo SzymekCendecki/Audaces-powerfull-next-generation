@@ -20,9 +20,9 @@ header, nav{
    height: 10%;
  }
 
- header{
+header{
   text-align: center;
- }
+}
 
 body{
   background-color: 	#A9A9A9;
@@ -43,7 +43,11 @@ footer{
 .displayNone{
   display: none;
 }
- 
+
+.pointer{
+	cursor: pointer;
+}
+
  #gameTitle, #gameSubTitle{
    font-weight: bolder;
    font-family: 'New Rocker', cursive;
@@ -61,8 +65,8 @@ footer{
    color: 		rgb(180, 44, 20);
    -webkit-text-stroke: 1px 	#000;
  }   
-
- .progress {
+ 
+.progress {
   height: 10px;
   background-color: green;
   animation: progressBar 3s linear;
@@ -96,6 +100,8 @@ footer{
 .licenceBtn{ @include firstMenuBtns(#C711AE);}
 .tutorialBtn{ @include firstMenuBtns(#C70039); }
 .newGameBtn{ @include firstMenuBtns(#139033); }
+.randomHero{ @include firstMenuBtns(#139033); };
+.createHero{ @include firstMenuBtns(#139033); };
 
 .pStyles{
   text-indent: 25px;

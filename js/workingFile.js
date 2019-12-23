@@ -48,8 +48,10 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 	const newGame = document.querySelector("#newGame");
 	
 	let mainContainer = document.querySelector("#mainContainer");
-
-	  
+	
+	const randomHero = document.querySelector("#randomHero");
+	const createHero = document.querySelector("#createHero");
+	
 	const path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
 	let toFirstMenu = () =>{
@@ -94,4 +96,22 @@ let skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo"
 		fetch(path + 'tutorial.json').then(response => response.json()).then(data => { 
 			newP(data.tutorial);
 		}).catch(error => console.error(error))
+	});
+	
+	newGame.addEventListener("click", ()=>{
+		mainContainer.innerHTML = '';
+		randomHero.classList.remove('displayNone');
+		createHero.classList.remove('displayNone');
+		info.classList.add("displayNone");
+		licence.classList.add("displayNone");
+		tutorial.classList.add("displayNone");
+		newGame.classList.add("displayNone");
+	});
+	
+	randomHero.addEventListener("click", ()=>{
+		console.log("działa");
+	});
+	
+	createHero.addEventListener("click", ()=>{
+		console.log("działa");
 	});

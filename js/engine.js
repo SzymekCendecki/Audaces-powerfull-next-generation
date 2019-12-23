@@ -128,6 +128,9 @@ var newGame = document.querySelector("#newGame");
 
 var mainContainer = document.querySelector("#mainContainer");
 
+var randomHero = document.querySelector("#randomHero");
+var createHero = document.querySelector("#createHero");
+
 var path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
 var toFirstMenu = function toFirstMenu() {
@@ -185,6 +188,24 @@ tutorial.addEventListener("click", function () {
 	}).catch(function (error) {
 		return console.error(error);
 	});
+});
+
+newGame.addEventListener("click", function () {
+	mainContainer.innerHTML = '';
+	randomHero.classList.remove('displayNone');
+	createHero.classList.remove('displayNone');
+	info.classList.add("displayNone");
+	licence.classList.add("displayNone");
+	tutorial.classList.add("displayNone");
+	newGame.classList.add("displayNone");
+});
+
+randomHero.addEventListener("click", function () {
+	console.log("działa");
+});
+
+createHero.addEventListener("click", function () {
+	console.log("działa");
 });
 
 /***/ })

@@ -359,3 +359,6 @@ Dodanie display: flex do nav ostylowanie przycisków pierwszego menu. Tytuł gry
 
 19 grudnia 2019 - wersja 0.2.00
 Dodano pliki JSON wraz z mośliwością wyświetlania ich na ekranie (wraz z ostylowaniem tekstu).
+
+23 grudnia 2019 - wersja 0.2.01
+Dołączenie zdarzenia do przycisku "nowa gra" oraz dwóch przycisków (wylosowania i stworzenia) postaci (wraz z ostylowaniem);

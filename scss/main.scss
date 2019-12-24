@@ -5,6 +5,7 @@
 *{
    margin: 0; 
    padding: 0;
+   box-sizing: border-box;
  }
 
 html, body {
@@ -12,8 +13,18 @@ html, body {
    height: 100%;
  }
 
- header, nav, footer{
+rect{
+	fill: #e96b39;
+}
+		
+line{
+	stroke: #000;
+	stroke-width: 3;
+}
+
+header, nav, footer{
   width: 100%;  
+  position: absolute;
 }
 
 header, nav{
@@ -21,19 +32,26 @@ header, nav{
  }
 
 header{
+	top: 0;
+	left: 0;
   text-align: center;
 }
 
-body{
-  background-color: 	#A9A9A9;
+nav{
+	top: 10%;
 }
 
 #mainContainer{
-  height: 70%;    
-  overflow: auto;
+	width: 90%;
+	height: 70%;
+	overflow: auto;
+	position:absolute;
+	top:20%;
+	left:5%;
 }
 
 footer{
+	top:90%;
   font-size: 1.5em;
   font-family: 'New Rocker', cursive;
   text-shadow: 1px 1px #fff;
@@ -61,6 +79,7 @@ footer{
  }
  
  #gameSubTitle{
+
    font-size: 3em;
    color: 		rgb(180, 44, 20);
    -webkit-text-stroke: 1px 	#000;

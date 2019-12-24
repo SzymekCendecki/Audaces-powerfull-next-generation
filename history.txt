@@ -362,3 +362,6 @@ Dodano pliki JSON wraz z mośliwością wyświetlania ich na ekranie (wraz z ost
 
 23 grudnia 2019 - wersja 0.2.01
 Dołączenie zdarzenia do przycisku "nowa gra" oraz dwóch przycisków (wylosowania i stworzenia) postaci (wraz z ostylowaniem);
+
+24 grudnia 2019 - wersja 0.2.02
+Dodanie "ceglanego" tła (plus drobne poprawki).

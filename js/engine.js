@@ -77,46 +77,20 @@ module.exports = __webpack_require__(1);
 "use strict";
 
 
-var namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+var _arrays = __webpack_require__(2);
 
-var namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+var _functions = __webpack_require__(3);
 
-var races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+//indexs for hero
+//0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var occupation = ["wojownik", "złoczyńca", "czarodziej"];
-var sex = ["kobieta", "mężczyzna", "nie wiadomo"];
-var tattoo = ["brak", "więzienne", "plemienne", "dziwne"];
+var hero = ["nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano"];
 
-var equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
-var equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
-var equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
-var equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
-
-var skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
-
-var skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
-
-var skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
-
-//indexes: 0-force, 1-strength, 2-dexterity, 3-ntelligence, 4-charisma
-var warrior = [5, 5, 0, 0, 0];
-var criminal = [0, 0, 10, 0, 0];
-var wizard = [0, 0, 0, 5, 5];
-
-var human = [0, 0, 0, 0, 0];
-var halfOrc = [3, 3, 0, -3, -3];
-var orc = [5, 5, 0, -5, -5];
-var halfElv = [-3, -3, 0, 3, 3];
-var elv = [-5, -5, 0, 5, 5];
-var dwarf = [4, 4, 0, -2, -3];
-var gnome = [-2, -2, 3, 3, 0];
-var halfling = [-3, 0, 6, 0, 0];
-var goblin = [2, -2, 4, 0, -4];
-var troll = [2, 0, 0, -2, -2];
-var semiGiant = [7, 7, -5, -3, 0];
-
-var sumPoints = [0, 0, 0, 0, 0];
-var features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma'];
+var showHero = function showHero(hero) {
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: ' + hero[9] + '</p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: ' + hero[10] + '</p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: ' + hero[11] + '</p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showHero;
+};
 
 var gameTitle = document.querySelector("#gameTitle");
 var gameSubTitle = document.querySelector("#gameSubTitle");
@@ -133,36 +107,16 @@ var createHero = document.querySelector("#createHero");
 
 var path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
-var toFirstMenu = function toFirstMenu() {
-	info.classList.remove('displayNone');
-	licence.classList.remove('displayNone');
-	tutorial.classList.remove('displayNone');
-	newGame.classList.remove('displayNone');
-
-	gameTitle.classList.add('displayNone');
-	gameSubTitle.classList.add('displayNone');
-
-	document.querySelector('.progress').classList.add('displayNone');
-};
-
 setTimeout(function () {
-	return toFirstMenu();
+	return (0, _functions.toFirstMenu)();
 }, 3000);
-
-var newP = function newP(data) {
-	var newP = document.createElement("p");
-	var newContent = document.createTextNode(data);
-	newP.appendChild(newContent);
-	newP.classList.add("pStyles");
-	mainContainer.appendChild(newP);
-};
 
 info.addEventListener("click", function () {
 	mainContainer.innerHTML = '';
 	fetch(path + 'info.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
-		newP(data.info);
+		(0, _functions.newP)(data.info);
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -173,7 +127,7 @@ licence.addEventListener("click", function () {
 	fetch(path + 'licence.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
-		newP(data.licence);
+		(0, _functions.newP)(data.licence);
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -184,7 +138,7 @@ tutorial.addEventListener("click", function () {
 	fetch(path + 'tutorial.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
-		newP(data.tutorial);
+		(0, _functions.newP)(data.tutorial);
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -201,12 +155,93 @@ newGame.addEventListener("click", function () {
 });
 
 randomHero.addEventListener("click", function () {
-	console.log("działa");
+	showHero(hero);
 });
 
 createHero.addEventListener("click", function () {
 	console.log("działa");
 });
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var namesMan = exports.namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
+
+var namesWomen = exports.namesWomen = ["Wortigerna", "Hejacynta", "Dejawina", "Ludiniam", "Keoburna", "Leokamina", "Erminia", "Xynenda", "Fejmira", "Apsurginis", "Wicynia", "Jermodernia", "Sertyksa"];
+
+var races = exports.races = ["człowiek", "półork", "ork", "półelf", "elf", "krasnolud", "gnom", "niziołek", "goblin", "trol", "półolbrzym"];
+
+var occupation = exports.occupation = ["wojownik", "złoczyńca", "czarodziej"];
+var sex = exports.sex = ["kobieta", "mężczyzna", "nie wiadomo"];
+var tattoo = exports.tattoo = ["brak", "więzienne", "plemienne", "dziwne"];
+
+var equipWeapon = exports.equipWeapon = ["sztylet", "drew. pałka", "krótki miecz", "szabla", "włócznia", "proca", "łuk"];
+var equipArmor = exports.equipArmor = ["przeszywanica", "zbroja skórzana", "zbroja ćwiekowana"];
+var equipShield = exports.equipShield = ["puklerz", "mała tarcza drew.", "mała tarcza metal."];
+var equipOther = exports.equipOther = ["kostur", "mieszek", "torba podróżna", "sakwa", "plecak", "manierka", "sagan", "koc", "tuba na perg.", "pęk piór do pis.", "pergaminy 5szt.", "zwykłe ubranie", "fikuśna czapka", "płaszcz", "skórzany pas", "igły i nici", "derka", "namiot", "drewniana miska", "drewniana łyżka", "pochodnia", "lampa oliwna", "kaganek", "lina 5m", "hubka i krzesiwo"];
+
+var skillsWarrior = exports.skillsWarrior = ["szt. przetrwania", "dyscyplina", "dowodzenie", "uderzenie tarczą", "jeździectwo", "sztylet", "krótki miecz", "szabla", "włócznia", "łuk", "puklerz", "mała tarcza drew.", "mała tarcza metal."];
+
+var skillsCriminal = exports.skillsCriminal = ["trucizny", "wspinaczka", "aktorstwo", "akrobatyka", "pułapki", "skradanie się", "kradzież", "uniki", "blefowanie", "drew. pałka"];
+
+var skillsWizard = exports.skillsWizard = ["pisanie i czytanie", "przyw./odp. demona", "wróżbiarstwo", "leczenie ran", "rzuczanie czarów", "tworz. eliksirów", "tworz.mag. przedm.", "tworzenie maści", "tworzenie runów", "astrologia", "zielarstwo"];
+
+//indexes: 0-force, 1-strength, 2-dexterity, 3-intelligence, 4-charisma
+var warrior = exports.warrior = [5, 5, 0, 0, 0];
+var criminal = exports.criminal = [0, 0, 10, 0, 0];
+var wizard = exports.wizard = [0, 0, 0, 5, 5];
+
+var human = exports.human = [0, 0, 0, 0, 0];
+var halfOrc = exports.halfOrc = [3, 3, 0, -3, -3];
+var orc = exports.orc = [5, 5, 0, -5, -5];
+var halfElv = exports.halfElv = [-3, -3, 0, 3, 3];
+var elv = exports.elv = [-5, -5, 0, 5, 5];
+var dwarf = exports.dwarf = [4, 4, 0, -2, -3];
+var gnome = exports.gnome = [-2, -2, 3, 3, 0];
+var halfling = exports.halfling = [-3, 0, 6, 0, 0];
+var goblin = exports.goblin = [2, -2, 4, 0, -4];
+var troll = exports.troll = [2, 0, 0, -2, -2];
+var semiGiant = exports.semiGiant = [7, 7, -5, -3, 0];
+
+var sumPoints = exports.sumPoints = [0, 0, 0, 0, 0];
+var features = exports.features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma'];
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+		value: true
+});
+var toFirstMenu = exports.toFirstMenu = function toFirstMenu() {
+		info.classList.remove('displayNone');
+		licence.classList.remove('displayNone');
+		tutorial.classList.remove('displayNone');
+		newGame.classList.remove('displayNone');
+
+		gameTitle.classList.add('displayNone');
+		gameSubTitle.classList.add('displayNone');
+
+		document.querySelector('.progress').classList.add('displayNone');
+};
+
+var newP = exports.newP = function newP(data) {
+		var newP = document.createElement("p");
+		var newContent = document.createTextNode(data);
+		newP.appendChild(newContent);
+		newP.classList.add("pStyles");
+		mainContainer.appendChild(newP);
+};
 
 /***/ })
 /******/ ]);

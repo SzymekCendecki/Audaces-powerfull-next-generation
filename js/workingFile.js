@@ -6,7 +6,11 @@ import{ toFirstMenu, newP } from './functions.js';
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-let hero =["nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano"];
+let hero =["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+let skills = [];
+
+let equip = [];
 
 let showHero = (hero) =>{
 	const showHero = `<div class = "showHero">
@@ -79,9 +83,39 @@ let showHero = (hero) =>{
 	});
 	
 	randomHero.addEventListener("click", ()=>{
+		let randomSex = sex[Math.floor(Math.random() * sex.length)];
+		hero.splice(1, 1, randomSex);
+		
+		let randomName =(randomSex)=>{
+			switch(randomSex) {
+				case "mężczyzna":
+				let rndNameMan = namesMan[Math.floor(Math.random() * namesMan.length)];
+				hero.splice(0, 1, rndNameMan);
+				break;
+				
+				case "kobieta":
+				let rndNameWomen = namesWomen[Math.floor(Math.random() * namesWomen.length)];
+				hero.splice(0, 1, rndNameWomen);
+				break;
+				
+				case "nie wiadomo":
+				let allNames = namesMan.concat(namesWomen);
+				let rndNameOther = allNames[Math.floor(Math.random() * allNames.length)];
+				hero.splice(0, 1, rndNameOther);
+			}
+		}
+		randomName(hero[1]);
+		
+		let randomRace = races[Math.floor(Math.random() * races.length)];
+		hero.splice(2, 1, randomRace);
+		
+		let randomOccupation = occupation[Math.floor(Math.random() * occupation.length)];
+		hero.splice(3, 1, randomOccupation);
+		
 		showHero(hero);
 	});
 	
 	createHero.addEventListener("click", ()=>{
 		console.log("działa");
 	});
+	

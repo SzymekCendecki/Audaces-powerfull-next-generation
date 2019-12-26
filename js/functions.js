@@ -17,5 +17,3 @@ export let newP =(data) =>{
 		newP.classList.add("pStyles");
 		mainContainer.appendChild(newP); 
 	}
-	
-	

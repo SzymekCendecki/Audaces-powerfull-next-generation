@@ -84,7 +84,11 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano", "nie wybrano"];
+var hero = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+var skills = [];
+
+var equip = [];
 
 var showHero = function showHero(hero) {
 	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: ' + hero[9] + '</p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: ' + hero[10] + '</p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: ' + hero[11] + '</p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
@@ -155,6 +159,35 @@ newGame.addEventListener("click", function () {
 });
 
 randomHero.addEventListener("click", function () {
+	var randomSex = _arrays.sex[Math.floor(Math.random() * _arrays.sex.length)];
+	hero.splice(1, 1, randomSex);
+
+	var randomName = function randomName(randomSex) {
+		switch (randomSex) {
+			case "mężczyzna":
+				var rndNameMan = _arrays.namesMan[Math.floor(Math.random() * _arrays.namesMan.length)];
+				hero.splice(0, 1, rndNameMan);
+				break;
+
+			case "kobieta":
+				var rndNameWomen = _arrays.namesWomen[Math.floor(Math.random() * _arrays.namesWomen.length)];
+				hero.splice(0, 1, rndNameWomen);
+				break;
+
+			case "nie wiadomo":
+				var allNames = _arrays.namesMan.concat(_arrays.namesWomen);
+				var rndNameOther = allNames[Math.floor(Math.random() * allNames.length)];
+				hero.splice(0, 1, rndNameOther);
+		}
+	};
+	randomName(hero[1]);
+
+	var randomRace = _arrays.races[Math.floor(Math.random() * _arrays.races.length)];
+	hero.splice(2, 1, randomRace);
+
+	var randomOccupation = _arrays.occupation[Math.floor(Math.random() * _arrays.occupation.length)];
+	hero.splice(3, 1, randomOccupation);
+
 	showHero(hero);
 });
 

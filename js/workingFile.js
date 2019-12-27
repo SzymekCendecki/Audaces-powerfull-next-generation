@@ -12,6 +12,8 @@ let skills = [];
 
 let equip = [];
 
+let randomPoints = [0, 0, 0, 0, 0];
+
 let showHero = (hero) =>{
 	const showHero = `<div class = "showHero">
 		<p id='name'>imię: ${hero[0]}</p>
@@ -82,6 +84,21 @@ let showHero = (hero) =>{
 		newGame.classList.add("displayNone");
 	});
 	
+	let rndPoints = () => {
+		let rndForce = Math.round(Math.random()*50);
+		randomPoints.splice(0, 1, rndForce);
+		let rndStrength = Math.round(Math.random()*50);
+		randomPoints.splice(1, 1, rndStrength);
+		let rndDexterity = Math.round(Math.random()*50);
+		randomPoints.splice(2, 1, rndDexterity);
+		let rndIntelligence = Math.round(Math.random()*50);
+		randomPoints.splice(3, 1, rndIntelligence);
+		let rndCharisma = Math.round(Math.random()*50);
+		randomPoints.splice(4, 1, rndCharisma);
+		
+		console.log(randomPoints);
+	}
+	
 	randomHero.addEventListener("click", ()=>{
 		let randomSex = sex[Math.floor(Math.random() * sex.length)];
 		hero.splice(1, 1, randomSex);
@@ -104,6 +121,7 @@ let showHero = (hero) =>{
 				hero.splice(0, 1, rndNameOther);
 			}
 		}
+	
 		randomName(hero[1]);
 		
 		let randomRace = races[Math.floor(Math.random() * races.length)];
@@ -112,6 +130,65 @@ let showHero = (hero) =>{
 		let randomOccupation = occupation[Math.floor(Math.random() * occupation.length)];
 		hero.splice(3, 1, randomOccupation);
 		
+		rndPoints();
+		
+		let checkOccupation = (race, occupation) => {
+			if(occupation == "wojownik"){
+				let allForce = warrior[0] + race[0] + randomPoints[0];
+				let allStrenght = warrior[1] + race[1] + randomPoints[1];
+				let allDexterity = warrior[2] + race[2] + randomPoints[2];
+				let allIntelligence = warrior[3] + race[3] + randomPoints[3];
+				let allCharisma = warrior[4] + race[4] + randomPoints[4];
+	
+				hero.splice(4, 1, allForce);
+				hero.splice(5, 1, allStrenght);
+				hero.splice(6, 1, allDexterity);
+				hero.splice(7, 1, allIntelligence);
+				hero.splice(8, 1, allCharisma);
+			}else if(occupation == "złoczyńca"){
+				let allForce = criminal[0] + race[0] + randomPoints[0];
+				let allStrenght = criminal[1] + race[1] + randomPoints[1];
+				let allDexterity = criminal[2] + race[2] + randomPoints[2];
+				let allIntelligence = criminal[3] + race[3] + randomPoints[3];
+				let allCharisma = criminal[4] + race[4] + randomPoints[4];
+			
+				hero.splice(4, 1, allForce);
+				hero.splice(5, 1, allStrenght);
+				hero.splice(6, 1, allDexterity);
+				hero.splice(7, 1, allIntelligence);
+				hero.splice(8, 1, allCharisma);
+			}else{
+				let allForce = wizard[0] + race[0] + randomPoints[0];
+				let allStrenght = wizard[1] + race[1] + randomPoints[1];
+				let allDexterity = wizard[2] + race[2] + randomPoints[2];
+				let allIntelligence = wizard[3] + race[3] + randomPoints[3];
+				let allCharisma = wizard[4] + race[4] + randomPoints[4];
+				
+				hero.splice(4, 1, allForce);
+				hero.splice(5, 1, allStrenght);
+				hero.splice(6, 1, allDexterity);
+				hero.splice(7, 1, allIntelligence);
+				hero.splice(8, 1, allCharisma);
+			}			
+		}
+		
+		let addPoints = () =>{
+			switch(hero[2]) {
+				case "człowiek": checkOccupation(human, hero[3]); break;				
+				case "półork": checkOccupation(halfOrc, hero[3]); break;
+				case "ork": checkOccupation(orc, hero[3]); break;
+				case "półelf": checkOccupation(halfElv, hero[3]); break;
+				case "elf": checkOccupation(elv, hero[3]); break;
+				case "krasnolud": checkOccupation(dwarf, hero[3]); break;
+				case "gnom": checkOccupation(gnome, hero[3]); break;
+				case "niziołek": checkOccupation(halfling, hero[3]); break;
+				case "goblin": checkOccupation(goblin, hero[3]); break;
+				case "trol": checkOccupation(troll, hero[3]); break;
+				case "półolbrzym": checkOccupation(semiGiant, hero[3]); break;
+			}
+		}
+		
+		addPoints();
 		showHero(hero);
 	});
 	

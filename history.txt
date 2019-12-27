@@ -368,3 +368,9 @@ Dodanie "ceglanego" tła (plus drobne poprawki).
 
 25 grudnia 2019 - wersja 0.2.03
 Rozpoczcie pracy nad losowaniem postaci (utworzenie szablonu do prezentowania wylosowanej postaci). Utworzenie dwóch plikóe .js dla tablic i funkcji (wraz z przeniesieniem do nich odpowiednich części kodu). Drobne poprawki graficzne (zmiana koloru tła i czcionki dla wyświetlanego tekstu).
+
+26 grudnia 2019 - wersja 0.2.03a
+Dodano losowanie: imienia, płci, rasy oraz profesji.
+
+27 grudnia 2019 - wersja 0.2.04
+Dodano losowanie punktów postaci (dla postaci losowanej).

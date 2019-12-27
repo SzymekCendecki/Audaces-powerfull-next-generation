@@ -90,6 +90,8 @@ var skills = [];
 
 var equip = [];
 
+var randomPoints = [0, 0, 0, 0, 0];
+
 var showHero = function showHero(hero) {
 	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: ' + hero[9] + '</p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: ' + hero[10] + '</p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: ' + hero[11] + '</p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
 	mainContainer.innerHTML = "";
@@ -158,6 +160,21 @@ newGame.addEventListener("click", function () {
 	newGame.classList.add("displayNone");
 });
 
+var rndPoints = function rndPoints() {
+	var rndForce = Math.round(Math.random() * 50);
+	randomPoints.splice(0, 1, rndForce);
+	var rndStrength = Math.round(Math.random() * 50);
+	randomPoints.splice(1, 1, rndStrength);
+	var rndDexterity = Math.round(Math.random() * 50);
+	randomPoints.splice(2, 1, rndDexterity);
+	var rndIntelligence = Math.round(Math.random() * 50);
+	randomPoints.splice(3, 1, rndIntelligence);
+	var rndCharisma = Math.round(Math.random() * 50);
+	randomPoints.splice(4, 1, rndCharisma);
+
+	console.log(randomPoints);
+};
+
 randomHero.addEventListener("click", function () {
 	var randomSex = _arrays.sex[Math.floor(Math.random() * _arrays.sex.length)];
 	hero.splice(1, 1, randomSex);
@@ -180,6 +197,7 @@ randomHero.addEventListener("click", function () {
 				hero.splice(0, 1, rndNameOther);
 		}
 	};
+
 	randomName(hero[1]);
 
 	var randomRace = _arrays.races[Math.floor(Math.random() * _arrays.races.length)];
@@ -188,6 +206,76 @@ randomHero.addEventListener("click", function () {
 	var randomOccupation = _arrays.occupation[Math.floor(Math.random() * _arrays.occupation.length)];
 	hero.splice(3, 1, randomOccupation);
 
+	rndPoints();
+
+	var checkOccupation = function checkOccupation(race, occupation) {
+		if (occupation == "wojownik") {
+			var allForce = _arrays.warrior[0] + race[0] + randomPoints[0];
+			var allStrenght = _arrays.warrior[1] + race[1] + randomPoints[1];
+			var allDexterity = _arrays.warrior[2] + race[2] + randomPoints[2];
+			var allIntelligence = _arrays.warrior[3] + race[3] + randomPoints[3];
+			var allCharisma = _arrays.warrior[4] + race[4] + randomPoints[4];
+
+			hero.splice(4, 1, allForce);
+			hero.splice(5, 1, allStrenght);
+			hero.splice(6, 1, allDexterity);
+			hero.splice(7, 1, allIntelligence);
+			hero.splice(8, 1, allCharisma);
+		} else if (occupation == "złoczyńca") {
+			var _allForce = _arrays.criminal[0] + race[0] + randomPoints[0];
+			var _allStrenght = _arrays.criminal[1] + race[1] + randomPoints[1];
+			var _allDexterity = _arrays.criminal[2] + race[2] + randomPoints[2];
+			var _allIntelligence = _arrays.criminal[3] + race[3] + randomPoints[3];
+			var _allCharisma = _arrays.criminal[4] + race[4] + randomPoints[4];
+
+			hero.splice(4, 1, _allForce);
+			hero.splice(5, 1, _allStrenght);
+			hero.splice(6, 1, _allDexterity);
+			hero.splice(7, 1, _allIntelligence);
+			hero.splice(8, 1, _allCharisma);
+		} else {
+			var _allForce2 = _arrays.wizard[0] + race[0] + randomPoints[0];
+			var _allStrenght2 = _arrays.wizard[1] + race[1] + randomPoints[1];
+			var _allDexterity2 = _arrays.wizard[2] + race[2] + randomPoints[2];
+			var _allIntelligence2 = _arrays.wizard[3] + race[3] + randomPoints[3];
+			var _allCharisma2 = _arrays.wizard[4] + race[4] + randomPoints[4];
+
+			hero.splice(4, 1, _allForce2);
+			hero.splice(5, 1, _allStrenght2);
+			hero.splice(6, 1, _allDexterity2);
+			hero.splice(7, 1, _allIntelligence2);
+			hero.splice(8, 1, _allCharisma2);
+		}
+	};
+
+	var addPoints = function addPoints() {
+		switch (hero[2]) {
+			case "człowiek":
+				checkOccupation(_arrays.human, hero[3]);break;
+			case "półork":
+				checkOccupation(_arrays.halfOrc, hero[3]);break;
+			case "ork":
+				checkOccupation(_arrays.orc, hero[3]);break;
+			case "półelf":
+				checkOccupation(_arrays.halfElv, hero[3]);break;
+			case "elf":
+				checkOccupation(_arrays.elv, hero[3]);break;
+			case "krasnolud":
+				checkOccupation(_arrays.dwarf, hero[3]);break;
+			case "gnom":
+				checkOccupation(_arrays.gnome, hero[3]);break;
+			case "niziołek":
+				checkOccupation(_arrays.halfling, hero[3]);break;
+			case "goblin":
+				checkOccupation(_arrays.goblin, hero[3]);break;
+			case "trol":
+				checkOccupation(_arrays.troll, hero[3]);break;
+			case "półolbrzym":
+				checkOccupation(_arrays.semiGiant, hero[3]);break;
+		}
+	};
+
+	addPoints();
 	showHero(hero);
 });
 
@@ -203,7 +291,7 @@ createHero.addEventListener("click", function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 var namesMan = exports.namesMan = ["Wortigern", "Gintor", "Hegel", "Derig", "Diggramon", "Zengowetoryk", "Deggetm", "Zigamon", "Birduk", "Ardenor", "Winterks", "Joluntik", "Menigor", "Oltis", "Kurdir"];
 
@@ -242,9 +330,6 @@ var halfling = exports.halfling = [-3, 0, 6, 0, 0];
 var goblin = exports.goblin = [2, -2, 4, 0, -4];
 var troll = exports.troll = [2, 0, 0, -2, -2];
 var semiGiant = exports.semiGiant = [7, 7, -5, -3, 0];
-
-var sumPoints = exports.sumPoints = [0, 0, 0, 0, 0];
-var features = exports.features = ['siła', 'wytrzym.', 'zręczność', 'inteligencja', 'charyzma'];
 
 /***/ }),
 /* 3 */

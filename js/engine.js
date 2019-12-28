@@ -161,90 +161,46 @@ newGame.addEventListener("click", function () {
 });
 
 var rndPoints = function rndPoints() {
-	var rndForce = Math.round(Math.random() * 50);
-	randomPoints.splice(0, 1, rndForce);
-	var rndStrength = Math.round(Math.random() * 50);
-	randomPoints.splice(1, 1, rndStrength);
-	var rndDexterity = Math.round(Math.random() * 50);
-	randomPoints.splice(2, 1, rndDexterity);
-	var rndIntelligence = Math.round(Math.random() * 50);
-	randomPoints.splice(3, 1, rndIntelligence);
-	var rndCharisma = Math.round(Math.random() * 50);
-	randomPoints.splice(4, 1, rndCharisma);
-
-	console.log(randomPoints);
+	for (var i = 0; i < 5; i++) {
+		var x = Math.round(Math.random() * 50);
+		randomPoints.splice(i, 1, x);
+	}
 };
 
 randomHero.addEventListener("click", function () {
-	var randomSex = _arrays.sex[Math.floor(Math.random() * _arrays.sex.length)];
-	hero.splice(1, 1, randomSex);
+
+	(0, _functions.rndFromArray)(_arrays.sex, hero, 1);
 
 	var randomName = function randomName(randomSex) {
 		switch (randomSex) {
 			case "mężczyzna":
-				var rndNameMan = _arrays.namesMan[Math.floor(Math.random() * _arrays.namesMan.length)];
-				hero.splice(0, 1, rndNameMan);
-				break;
-
+				(0, _functions.rndFromArray)(_arrays.namesMan, hero, 0);break;
 			case "kobieta":
-				var rndNameWomen = _arrays.namesWomen[Math.floor(Math.random() * _arrays.namesWomen.length)];
-				hero.splice(0, 1, rndNameWomen);
-				break;
-
+				(0, _functions.rndFromArray)(_arrays.namesWomen, hero, 0);break;
 			case "nie wiadomo":
-				var allNames = _arrays.namesMan.concat(_arrays.namesWomen);
-				var rndNameOther = allNames[Math.floor(Math.random() * allNames.length)];
-				hero.splice(0, 1, rndNameOther);
+				var allNames = _arrays.namesMan.concat(_arrays.namesWomen);(0, _functions.rndFromArray)(allNames, hero, 0);
 		}
 	};
 
 	randomName(hero[1]);
-
-	var randomRace = _arrays.races[Math.floor(Math.random() * _arrays.races.length)];
-	hero.splice(2, 1, randomRace);
-
-	var randomOccupation = _arrays.occupation[Math.floor(Math.random() * _arrays.occupation.length)];
-	hero.splice(3, 1, randomOccupation);
-
+	(0, _functions.rndFromArray)(_arrays.races, hero, 2);
+	(0, _functions.rndFromArray)(_arrays.occupation, hero, 3);
 	rndPoints();
+
+	var allPoints = function allPoints(who, race) {
+		for (var i = 0; i < 5; i++) {
+			var z = who[i] + race[i] + randomPoints[i];
+			hero.splice(i + 4, 1, z);
+		}
+	};
 
 	var checkOccupation = function checkOccupation(race, occupation) {
 		if (occupation == "wojownik") {
-			var allForce = _arrays.warrior[0] + race[0] + randomPoints[0];
-			var allStrenght = _arrays.warrior[1] + race[1] + randomPoints[1];
-			var allDexterity = _arrays.warrior[2] + race[2] + randomPoints[2];
-			var allIntelligence = _arrays.warrior[3] + race[3] + randomPoints[3];
-			var allCharisma = _arrays.warrior[4] + race[4] + randomPoints[4];
-
-			hero.splice(4, 1, allForce);
-			hero.splice(5, 1, allStrenght);
-			hero.splice(6, 1, allDexterity);
-			hero.splice(7, 1, allIntelligence);
-			hero.splice(8, 1, allCharisma);
+			allPoints(_arrays.warrior, race);
 		} else if (occupation == "złoczyńca") {
-			var _allForce = _arrays.criminal[0] + race[0] + randomPoints[0];
-			var _allStrenght = _arrays.criminal[1] + race[1] + randomPoints[1];
-			var _allDexterity = _arrays.criminal[2] + race[2] + randomPoints[2];
-			var _allIntelligence = _arrays.criminal[3] + race[3] + randomPoints[3];
-			var _allCharisma = _arrays.criminal[4] + race[4] + randomPoints[4];
-
-			hero.splice(4, 1, _allForce);
-			hero.splice(5, 1, _allStrenght);
-			hero.splice(6, 1, _allDexterity);
-			hero.splice(7, 1, _allIntelligence);
-			hero.splice(8, 1, _allCharisma);
+			allPoints(_arrays.criminal, race);
 		} else {
-			var _allForce2 = _arrays.wizard[0] + race[0] + randomPoints[0];
-			var _allStrenght2 = _arrays.wizard[1] + race[1] + randomPoints[1];
-			var _allDexterity2 = _arrays.wizard[2] + race[2] + randomPoints[2];
-			var _allIntelligence2 = _arrays.wizard[3] + race[3] + randomPoints[3];
-			var _allCharisma2 = _arrays.wizard[4] + race[4] + randomPoints[4];
-
-			hero.splice(4, 1, _allForce2);
-			hero.splice(5, 1, _allStrenght2);
-			hero.splice(6, 1, _allDexterity2);
-			hero.splice(7, 1, _allIntelligence2);
-			hero.splice(8, 1, _allCharisma2);
+			allPoints(_arrays.wizard, race);
 		}
 	};
 
@@ -359,6 +315,11 @@ var newP = exports.newP = function newP(data) {
 		newP.appendChild(newContent);
 		newP.classList.add("pStyles");
 		mainContainer.appendChild(newP);
+};
+
+var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
+		var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+		hero.splice(position, 1, draw);
 };
 
 /***/ })

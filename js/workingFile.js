@@ -1,7 +1,6 @@
 import { namesMan, namesWomen, races, occupation, sex, tatoo, equipWeapon, equipArmor, equipShield, equipOther, skillsWarrior, skillsCriminal, skillsWizard, warrior, criminal, wizard, human, halfOrc, orc, halfElv, elv, dwarf, gnome, halfling, goblin, troll, semiGiant } from './arrays.js';
 
-import{ toFirstMenu, newP } from './functions.js';
-
+import{ toFirstMenu, newP, rndFromArray } from './functions.js';
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -52,7 +51,7 @@ let showHero = (hero) =>{
 	const path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
 	setTimeout( () => toFirstMenu(), 3000 );
-		
+	
 	info.addEventListener("click", ()=>{
 		mainContainer.innerHTML = '';
 		fetch(path + 'info.json').then(response => response.json()).then(data => { 
@@ -85,90 +84,43 @@ let showHero = (hero) =>{
 	});
 	
 	let rndPoints = () => {
-		let rndForce = Math.round(Math.random()*50);
-		randomPoints.splice(0, 1, rndForce);
-		let rndStrength = Math.round(Math.random()*50);
-		randomPoints.splice(1, 1, rndStrength);
-		let rndDexterity = Math.round(Math.random()*50);
-		randomPoints.splice(2, 1, rndDexterity);
-		let rndIntelligence = Math.round(Math.random()*50);
-		randomPoints.splice(3, 1, rndIntelligence);
-		let rndCharisma = Math.round(Math.random()*50);
-		randomPoints.splice(4, 1, rndCharisma);
-		
-		console.log(randomPoints);
+		for (let i = 0; i<5; i++){
+			let x = Math.round(Math.random()*50);
+			randomPoints.splice(i, 1, x);
+		}
 	}
 	
 	randomHero.addEventListener("click", ()=>{
-		let randomSex = sex[Math.floor(Math.random() * sex.length)];
-		hero.splice(1, 1, randomSex);
 		
+		rndFromArray(sex, hero, 1);
+				
 		let randomName =(randomSex)=>{
 			switch(randomSex) {
-				case "mężczyzna":
-				let rndNameMan = namesMan[Math.floor(Math.random() * namesMan.length)];
-				hero.splice(0, 1, rndNameMan);
-				break;
-				
-				case "kobieta":
-				let rndNameWomen = namesWomen[Math.floor(Math.random() * namesWomen.length)];
-				hero.splice(0, 1, rndNameWomen);
-				break;
-				
-				case "nie wiadomo":
-				let allNames = namesMan.concat(namesWomen);
-				let rndNameOther = allNames[Math.floor(Math.random() * allNames.length)];
-				hero.splice(0, 1, rndNameOther);
+				case "mężczyzna": rndFromArray(namesMan, hero, 0); break;
+				case "kobieta": rndFromArray(namesWomen, hero, 0); break;
+				case "nie wiadomo": let allNames = namesMan.concat(namesWomen); rndFromArray(allNames, hero, 0);
 			}
 		}
 	
 		randomName(hero[1]);
-		
-		let randomRace = races[Math.floor(Math.random() * races.length)];
-		hero.splice(2, 1, randomRace);
-		
-		let randomOccupation = occupation[Math.floor(Math.random() * occupation.length)];
-		hero.splice(3, 1, randomOccupation);
-		
+		rndFromArray(races, hero, 2);
+		rndFromArray(occupation, hero, 3);
 		rndPoints();
 		
+		let allPoints = (who, race) =>{
+			for(let i=0; i<5; i++){
+					let z = who[i] + race[i] + randomPoints[i];
+					hero.splice(i+4, 1, z);				
+				}
+		}
+		
 		let checkOccupation = (race, occupation) => {
-			if(occupation == "wojownik"){
-				let allForce = warrior[0] + race[0] + randomPoints[0];
-				let allStrenght = warrior[1] + race[1] + randomPoints[1];
-				let allDexterity = warrior[2] + race[2] + randomPoints[2];
-				let allIntelligence = warrior[3] + race[3] + randomPoints[3];
-				let allCharisma = warrior[4] + race[4] + randomPoints[4];
-	
-				hero.splice(4, 1, allForce);
-				hero.splice(5, 1, allStrenght);
-				hero.splice(6, 1, allDexterity);
-				hero.splice(7, 1, allIntelligence);
-				hero.splice(8, 1, allCharisma);
+			if(occupation == "wojownik"){ 
+				allPoints(warrior, race);				
 			}else if(occupation == "złoczyńca"){
-				let allForce = criminal[0] + race[0] + randomPoints[0];
-				let allStrenght = criminal[1] + race[1] + randomPoints[1];
-				let allDexterity = criminal[2] + race[2] + randomPoints[2];
-				let allIntelligence = criminal[3] + race[3] + randomPoints[3];
-				let allCharisma = criminal[4] + race[4] + randomPoints[4];
-			
-				hero.splice(4, 1, allForce);
-				hero.splice(5, 1, allStrenght);
-				hero.splice(6, 1, allDexterity);
-				hero.splice(7, 1, allIntelligence);
-				hero.splice(8, 1, allCharisma);
+				allPoints(criminal, race);
 			}else{
-				let allForce = wizard[0] + race[0] + randomPoints[0];
-				let allStrenght = wizard[1] + race[1] + randomPoints[1];
-				let allDexterity = wizard[2] + race[2] + randomPoints[2];
-				let allIntelligence = wizard[3] + race[3] + randomPoints[3];
-				let allCharisma = wizard[4] + race[4] + randomPoints[4];
-				
-				hero.splice(4, 1, allForce);
-				hero.splice(5, 1, allStrenght);
-				hero.splice(6, 1, allDexterity);
-				hero.splice(7, 1, allIntelligence);
-				hero.splice(8, 1, allCharisma);
+				allPoints(wizard, race);
 			}			
 		}
 		

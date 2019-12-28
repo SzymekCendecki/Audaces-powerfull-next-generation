@@ -17,3 +17,10 @@ export let newP =(data) =>{
 		newP.classList.add("pStyles");
 		mainContainer.appendChild(newP); 
 	}
+
+export let rndFromArray = (nameArray, hero, position) => {
+		let draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+		hero.splice(position, 1, draw);
+	}
+	
+	

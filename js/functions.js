@@ -23,4 +23,13 @@ export let rndFromArray = (nameArray, hero, position) => {
 		hero.splice(position, 1, draw);
 	}
 	
+	export let colors = (arrayNum, where, hero) =>{
+			
+			for (let i=0; i<3; i++){
+				let a = Math.round(Math.random()*255);
+				hero[arrayNum].splice([i], 1, a);
+			}
+						
+			document.querySelector(where).setAttribute("style", `background-color: rgb(${parseInt(hero[arrayNum][0])},${parseInt(hero[arrayNum][1])}, ${parseInt(hero[arrayNum][2])}); padding-right: 50px;`);
+		}
 	

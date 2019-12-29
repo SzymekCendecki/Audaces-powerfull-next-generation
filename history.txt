@@ -377,3 +377,6 @@ Dodano losowanie punktów postaci (dla postaci losowanej).
 
 28 grudnia 2019 - wersja 0.2.05
 Optymalizacja kodu: funkcja losowania z tablicy randomFromArray, funkcja rndPoints w kretorze posatci (użycie w ppętli losawania punktów), funkcja zliczania punktów postaci (użyta pętla do zliczania punktów oraz dołączania ich do tablicy głównej postaci).
+
+29 grudnia 2019 - wersja 0.2.06
+Dodanie losowania tatutaży, koloru skóry, włosów oraz oczu.

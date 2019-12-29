@@ -84,7 +84,7 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+var hero = ["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", "", "", "", "", ""];
 
 var skills = [];
 
@@ -93,7 +93,7 @@ var equip = [];
 var randomPoints = [0, 0, 0, 0, 0];
 
 var showHero = function showHero(hero) {
-	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: ' + hero[9] + '</p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: ' + hero[10] + '</p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: ' + hero[11] + '</p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
 };
@@ -232,7 +232,14 @@ randomHero.addEventListener("click", function () {
 	};
 
 	addPoints();
+
+	(0, _functions.rndFromArray)(_arrays.tattoo, hero, 12);
+
 	showHero(hero);
+
+	(0, _functions.colors)(9, "#eyesColor", hero);
+	(0, _functions.colors)(10, "#hairColor", hero);
+	(0, _functions.colors)(11, "#skinColor", hero);
 });
 
 createHero.addEventListener("click", function () {
@@ -295,31 +302,41 @@ var semiGiant = exports.semiGiant = [7, 7, -5, -3, 0];
 
 
 Object.defineProperty(exports, "__esModule", {
-		value: true
+	value: true
 });
 var toFirstMenu = exports.toFirstMenu = function toFirstMenu() {
-		info.classList.remove('displayNone');
-		licence.classList.remove('displayNone');
-		tutorial.classList.remove('displayNone');
-		newGame.classList.remove('displayNone');
+	info.classList.remove('displayNone');
+	licence.classList.remove('displayNone');
+	tutorial.classList.remove('displayNone');
+	newGame.classList.remove('displayNone');
 
-		gameTitle.classList.add('displayNone');
-		gameSubTitle.classList.add('displayNone');
+	gameTitle.classList.add('displayNone');
+	gameSubTitle.classList.add('displayNone');
 
-		document.querySelector('.progress').classList.add('displayNone');
+	document.querySelector('.progress').classList.add('displayNone');
 };
 
 var newP = exports.newP = function newP(data) {
-		var newP = document.createElement("p");
-		var newContent = document.createTextNode(data);
-		newP.appendChild(newContent);
-		newP.classList.add("pStyles");
-		mainContainer.appendChild(newP);
+	var newP = document.createElement("p");
+	var newContent = document.createTextNode(data);
+	newP.appendChild(newContent);
+	newP.classList.add("pStyles");
+	mainContainer.appendChild(newP);
 };
 
 var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
-		var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
-		hero.splice(position, 1, draw);
+	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+	hero.splice(position, 1, draw);
+};
+
+var colors = exports.colors = function colors(arrayNum, where, hero) {
+
+	for (var i = 0; i < 3; i++) {
+		var a = Math.round(Math.random() * 255);
+		hero[arrayNum].splice([i], 1, a);
+	}
+
+	document.querySelector(where).setAttribute("style", 'background-color: rgb(' + parseInt(hero[arrayNum][0]) + ',' + parseInt(hero[arrayNum][1]) + ', ' + parseInt(hero[arrayNum][2]) + '); padding-right: 50px;');
 };
 
 /***/ })

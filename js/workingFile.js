@@ -28,8 +28,8 @@ let showHero = (hero) =>{
 		<p id='hair'>kolor włosów: <span id="hairColor"></span></p>
 		<p id='skin'>kolor skóry: <span id="skinColor"></span></p>
 		<p id='tattoo'>tatuaże: ${hero[12]}</p>
-		<p id='weight'>waga: ${hero[13]}</p>
-		<p id='height'>wzrost: ${hero[14]}</p>
+		<p id='weight'>waga: ${hero[13]} kg</p>
+		<p id='height'>wzrost: ${hero[14]} cm</p>
 	</div>`;
 	mainContainer.innerHTML = "";
     mainContainer.innerHTML = showHero;
@@ -90,31 +90,22 @@ let showHero = (hero) =>{
 		}
 	}
 	
-	randomHero.addEventListener("click", ()=>{
-		
-		rndFromArray(sex, hero, 1);
-				
-		let randomName =(randomSex)=>{
-			switch(randomSex) {
-				case "mężczyzna": rndFromArray(namesMan, hero, 0); break;
-				case "kobieta": rndFromArray(namesWomen, hero, 0); break;
-				case "nie wiadomo": let allNames = namesMan.concat(namesWomen); rndFromArray(allNames, hero, 0);
-			}
+	let allPoints = (who, race) =>{
+		for(let i=0; i<5; i++){
+			let z = who[i] + race[i] + randomPoints[i];
+			hero.splice(i+4, 1, z);				
 		}
+	}
 	
-		randomName(hero[1]);
-		rndFromArray(races, hero, 2);
-		rndFromArray(occupation, hero, 3);
-		rndPoints();
-		
-		let allPoints = (who, race) =>{
-			for(let i=0; i<5; i++){
-					let z = who[i] + race[i] + randomPoints[i];
-					hero.splice(i+4, 1, z);				
-				}
+	let randomName =(randomSex)=>{
+		switch(randomSex) {
+			case "mężczyzna": rndFromArray(namesMan, hero, 0); break;
+			case "kobieta": rndFromArray(namesWomen, hero, 0); break;
+			case "nie wiadomo": let allNames = namesMan.concat(namesWomen); rndFromArray(allNames, hero, 0);
 		}
-		
-		let checkOccupation = (race, occupation) => {
+	}
+	
+	let checkOccupation = (race, occupation) => {
 			if(occupation == "wojownik"){ 
 				allPoints(warrior, race);				
 			}else if(occupation == "złoczyńca"){
@@ -124,33 +115,80 @@ let showHero = (hero) =>{
 			}			
 		}
 		
-		let addPoints = () =>{
-			switch(hero[2]) {
-				case "człowiek": checkOccupation(human, hero[3]); break;				
-				case "półork": checkOccupation(halfOrc, hero[3]); break;
-				case "ork": checkOccupation(orc, hero[3]); break;
-				case "półelf": checkOccupation(halfElv, hero[3]); break;
-				case "elf": checkOccupation(elv, hero[3]); break;
-				case "krasnolud": checkOccupation(dwarf, hero[3]); break;
-				case "gnom": checkOccupation(gnome, hero[3]); break;
-				case "niziołek": checkOccupation(halfling, hero[3]); break;
-				case "goblin": checkOccupation(goblin, hero[3]); break;
-				case "trol": checkOccupation(troll, hero[3]); break;
-				case "półolbrzym": checkOccupation(semiGiant, hero[3]); break;
-			}
+	let addPoints = () =>{
+		switch(hero[2]) {
+			case "człowiek": checkOccupation(human, hero[3]); break;				
+			case "półork": checkOccupation(halfOrc, hero[3]); break;
+			case "ork": checkOccupation(orc, hero[3]); break;
+			case "półelf": checkOccupation(halfElv, hero[3]); break;
+			case "elf": checkOccupation(elv, hero[3]); break;
+			case "krasnolud": checkOccupation(dwarf, hero[3]); break;
+			case "gnom": checkOccupation(gnome, hero[3]); break;
+			case "niziołek": checkOccupation(halfling, hero[3]); break;
+			case "goblin": checkOccupation(goblin, hero[3]); break;
+			case "trol": checkOccupation(troll, hero[3]); break;
+			case "półolbrzym": checkOccupation(semiGiant, hero[3]); break;
 		}
+	}
 		
+	let randomValue = (value1, value2, where) =>{
+		let x = Math.round(Math.random()*value1 + value2);
+		hero.splice(where, 1, x);
+	}
+
+	let weight = (hero, where) =>{
+		switch(hero[2]) {
+			case "człowiek": randomValue(80, 40, where); break;				
+			case "półork": randomValue(90, 50, where); break;
+			case "ork": randomValue(100, 80, where); break;
+			case "półelf": randomValue(60, 40, where); break;
+			case "elf": randomValue(50, 40, where); break;
+			case "krasnolud": randomValue(30, 70, where); break;
+			case "gnom": randomValue(20, 50, where); break;
+			case "niziołek": randomValue(40, 60, where); break;
+			case "goblin": randomValue(30, 50, where); break;
+			case "trol": randomValue(60, 100, where); break;
+			case "półolbrzym": randomValue(90, 210, where); break;
+		}
+	}
+		
+	let height = (hero, where) =>{
+		switch(hero[2]) {
+			case "człowiek": randomValue(60, 150, where); break;				
+			case "półork": randomValue(50, 170, where); break;
+			case "ork": randomValue(70, 170, where); break;
+			case "półelf": randomValue(45, 165, where); break;
+			case "elf": randomValue(30, 180, where); break;
+			case "krasnolud": randomValue(45, 100, where); break;
+			case "gnom": randomValue(50, 90, where); break;
+			case "niziołek": randomValue(45, 105, where); break;
+			case "goblin": randomValue(40, 80, where); break;
+			case "trol": randomValue(70, 190, where); break;
+			case "półolbrzym": randomValue(60, 260, where); break;
+		}
+	}
+		
+	randomHero.addEventListener("click", ()=>{
+		
+		rndFromArray(sex, hero, 1);
+		randomName(hero[1]);
+		
+		rndFromArray(races, hero, 2);
+		rndFromArray(occupation, hero, 3);
+		
+		rndPoints();
 		addPoints();
 		
-		rndFromArray(tattoo, hero, 12);		
+		rndFromArray(tattoo, hero, 12);	
+				
+		weight(hero, 13);		
+		height(hero, 14);	
 		
 		showHero(hero);
 		
 		colors(9,"#eyesColor", hero);
 		colors(10, "#hairColor", hero);
 		colors(11, "#skinColor", hero);
-	
-		
 	});
 	
 	createHero.addEventListener("click", ()=>{

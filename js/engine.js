@@ -93,7 +93,7 @@ var equip = [];
 var randomPoints = [0, 0, 0, 0, 0];
 
 var showHero = function showHero(hero) {
-	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + '</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + '</p>\n\t</div>';
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
 };
@@ -167,73 +167,135 @@ var rndPoints = function rndPoints() {
 	}
 };
 
+var allPoints = function allPoints(who, race) {
+	for (var i = 0; i < 5; i++) {
+		var z = who[i] + race[i] + randomPoints[i];
+		hero.splice(i + 4, 1, z);
+	}
+};
+
+var randomName = function randomName(randomSex) {
+	switch (randomSex) {
+		case "mężczyzna":
+			(0, _functions.rndFromArray)(_arrays.namesMan, hero, 0);break;
+		case "kobieta":
+			(0, _functions.rndFromArray)(_arrays.namesWomen, hero, 0);break;
+		case "nie wiadomo":
+			var allNames = _arrays.namesMan.concat(_arrays.namesWomen);(0, _functions.rndFromArray)(allNames, hero, 0);
+	}
+};
+
+var checkOccupation = function checkOccupation(race, occupation) {
+	if (occupation == "wojownik") {
+		allPoints(_arrays.warrior, race);
+	} else if (occupation == "złoczyńca") {
+		allPoints(_arrays.criminal, race);
+	} else {
+		allPoints(_arrays.wizard, race);
+	}
+};
+
+var addPoints = function addPoints() {
+	switch (hero[2]) {
+		case "człowiek":
+			checkOccupation(_arrays.human, hero[3]);break;
+		case "półork":
+			checkOccupation(_arrays.halfOrc, hero[3]);break;
+		case "ork":
+			checkOccupation(_arrays.orc, hero[3]);break;
+		case "półelf":
+			checkOccupation(_arrays.halfElv, hero[3]);break;
+		case "elf":
+			checkOccupation(_arrays.elv, hero[3]);break;
+		case "krasnolud":
+			checkOccupation(_arrays.dwarf, hero[3]);break;
+		case "gnom":
+			checkOccupation(_arrays.gnome, hero[3]);break;
+		case "niziołek":
+			checkOccupation(_arrays.halfling, hero[3]);break;
+		case "goblin":
+			checkOccupation(_arrays.goblin, hero[3]);break;
+		case "trol":
+			checkOccupation(_arrays.troll, hero[3]);break;
+		case "półolbrzym":
+			checkOccupation(_arrays.semiGiant, hero[3]);break;
+	}
+};
+
+var randomValue = function randomValue(value1, value2, where) {
+	var x = Math.round(Math.random() * value1 + value2);
+	hero.splice(where, 1, x);
+};
+
+var weight = function weight(hero, where) {
+	switch (hero[2]) {
+		case "człowiek":
+			randomValue(80, 40, where);break;
+		case "półork":
+			randomValue(90, 50, where);break;
+		case "ork":
+			randomValue(100, 80, where);break;
+		case "półelf":
+			randomValue(60, 40, where);break;
+		case "elf":
+			randomValue(50, 40, where);break;
+		case "krasnolud":
+			randomValue(30, 70, where);break;
+		case "gnom":
+			randomValue(20, 50, where);break;
+		case "niziołek":
+			randomValue(40, 60, where);break;
+		case "goblin":
+			randomValue(30, 50, where);break;
+		case "trol":
+			randomValue(60, 100, where);break;
+		case "półolbrzym":
+			randomValue(90, 210, where);break;
+	}
+};
+
+var height = function height(hero, where) {
+	switch (hero[2]) {
+		case "człowiek":
+			randomValue(60, 150, where);break;
+		case "półork":
+			randomValue(50, 170, where);break;
+		case "ork":
+			randomValue(70, 170, where);break;
+		case "półelf":
+			randomValue(45, 165, where);break;
+		case "elf":
+			randomValue(30, 180, where);break;
+		case "krasnolud":
+			randomValue(45, 100, where);break;
+		case "gnom":
+			randomValue(50, 90, where);break;
+		case "niziołek":
+			randomValue(45, 105, where);break;
+		case "goblin":
+			randomValue(40, 80, where);break;
+		case "trol":
+			randomValue(70, 190, where);break;
+		case "półolbrzym":
+			randomValue(60, 260, where);break;
+	}
+};
+
 randomHero.addEventListener("click", function () {
 
 	(0, _functions.rndFromArray)(_arrays.sex, hero, 1);
-
-	var randomName = function randomName(randomSex) {
-		switch (randomSex) {
-			case "mężczyzna":
-				(0, _functions.rndFromArray)(_arrays.namesMan, hero, 0);break;
-			case "kobieta":
-				(0, _functions.rndFromArray)(_arrays.namesWomen, hero, 0);break;
-			case "nie wiadomo":
-				var allNames = _arrays.namesMan.concat(_arrays.namesWomen);(0, _functions.rndFromArray)(allNames, hero, 0);
-		}
-	};
-
 	randomName(hero[1]);
+
 	(0, _functions.rndFromArray)(_arrays.races, hero, 2);
 	(0, _functions.rndFromArray)(_arrays.occupation, hero, 3);
+
 	rndPoints();
-
-	var allPoints = function allPoints(who, race) {
-		for (var i = 0; i < 5; i++) {
-			var z = who[i] + race[i] + randomPoints[i];
-			hero.splice(i + 4, 1, z);
-		}
-	};
-
-	var checkOccupation = function checkOccupation(race, occupation) {
-		if (occupation == "wojownik") {
-			allPoints(_arrays.warrior, race);
-		} else if (occupation == "złoczyńca") {
-			allPoints(_arrays.criminal, race);
-		} else {
-			allPoints(_arrays.wizard, race);
-		}
-	};
-
-	var addPoints = function addPoints() {
-		switch (hero[2]) {
-			case "człowiek":
-				checkOccupation(_arrays.human, hero[3]);break;
-			case "półork":
-				checkOccupation(_arrays.halfOrc, hero[3]);break;
-			case "ork":
-				checkOccupation(_arrays.orc, hero[3]);break;
-			case "półelf":
-				checkOccupation(_arrays.halfElv, hero[3]);break;
-			case "elf":
-				checkOccupation(_arrays.elv, hero[3]);break;
-			case "krasnolud":
-				checkOccupation(_arrays.dwarf, hero[3]);break;
-			case "gnom":
-				checkOccupation(_arrays.gnome, hero[3]);break;
-			case "niziołek":
-				checkOccupation(_arrays.halfling, hero[3]);break;
-			case "goblin":
-				checkOccupation(_arrays.goblin, hero[3]);break;
-			case "trol":
-				checkOccupation(_arrays.troll, hero[3]);break;
-			case "półolbrzym":
-				checkOccupation(_arrays.semiGiant, hero[3]);break;
-		}
-	};
-
 	addPoints();
 
 	(0, _functions.rndFromArray)(_arrays.tattoo, hero, 12);
+
+	weight(hero, 13);
+	height(hero, 14);
 
 	showHero(hero);
 
@@ -330,7 +392,6 @@ var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero,
 };
 
 var colors = exports.colors = function colors(arrayNum, where, hero) {
-
 	for (var i = 0; i < 3; i++) {
 		var a = Math.round(Math.random() * 255);
 		hero[arrayNum].splice([i], 1, a);

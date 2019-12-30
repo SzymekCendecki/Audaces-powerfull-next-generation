@@ -380,3 +380,6 @@ Optymalizacja kodu: funkcja losowania z tablicy randomFromArray, funkcja rndPoin
 
 29 grudnia 2019 - wersja 0.2.06
 Dodanie losowania tatutaży, koloru skóry, włosów oraz oczu.
+
+30 grudnia 2019 - wersja 0.2.07
+Dodanie losowania wagi i wzrostu.

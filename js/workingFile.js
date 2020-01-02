@@ -7,7 +7,7 @@ import{ toFirstMenu, newP, rndFromArray, colors } from './functions.js';
 
 let hero =["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", "", "", "", "", ""];
 
-let skills = [];
+let skills = ["", "", ""];
 
 let equip = [];
 
@@ -30,6 +30,8 @@ let showHero = (hero) =>{
 		<p id='tattoo'>tatuaże: ${hero[12]}</p>
 		<p id='weight'>waga: ${hero[13]} kg</p>
 		<p id='height'>wzrost: ${hero[14]} cm</p>
+		<p id='skills'>umiejętności: ${skills}</p>
+		<p id='equip'>ekwipunek: ${equip}</p>
 	</div>`;
 	mainContainer.innerHTML = "";
     mainContainer.innerHTML = showHero;
@@ -167,9 +169,57 @@ let showHero = (hero) =>{
 			case "półolbrzym": randomValue(60, 260, where); break;
 		}
 	}
-		
+	
 	randomHero.addEventListener("click", ()=>{
-		
+
+let randomSkills = () =>{
+	switch(hero[3]){
+		case "wojownik": 
+			for (let i=0; i<3; i++) {
+				let random = Math.round(Math.random()*skillsWarrior.length);
+				let is = false;
+				for (let j=0; j<skills.length; j++)
+				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+				skills.splice(i, 1, skillsWarrior[random]);
+			}
+		break;
+		  
+		case "złoczyńca": 
+			for (let i=0; i<3; i++) {
+				let random = Math.round(Math.random()*skillsCriminal.length);
+				let is = false;
+				for (let j=0; j<skills.length; j++)
+				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+				skills.splice(i, 1, skillsCriminal[random]);
+			}
+		break;
+		  
+		case "czarodziej": 
+			for (let i=0; i<3; i++) {
+				let random = Math.round(Math.random()*skillsWizard.length);
+				let is = false;
+				for (let j=0; j<skills.length; j++)
+				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+				skills.splice(i, 1, skillsWizard[random]);
+			}
+		break;
+	  }	  
+  }
+  
+  let randomEquip = () =>{
+	let allEquip = [];
+	let randomEquip = equip.concat(equipWeapon, equipArmor, equipShield, equipOther);
+
+	for (let i=0; i<5; i++) {
+		let random = Math.round(Math.random()*randomEquip.length);
+		let is = false;
+		for (let j=0; j<equip.length; j++)
+		if (equip[j] == random) is = true; if (is) i--; else equip[i] = random;
+		equip.splice(i, 1, randomEquip[random]);
+	}
+  }
+	
+	
 		rndFromArray(sex, hero, 1);
 		randomName(hero[1]);
 		
@@ -184,11 +234,14 @@ let showHero = (hero) =>{
 		weight(hero, 13);		
 		height(hero, 14);	
 		
+		randomSkills(hero[3]);	
+		randomEquip();
+		
 		showHero(hero);
 		
 		colors(9,"#eyesColor", hero);
 		colors(10, "#hairColor", hero);
-		colors(11, "#skinColor", hero);
+		colors(11, "#skinColor", hero);				
 	});
 	
 	createHero.addEventListener("click", ()=>{

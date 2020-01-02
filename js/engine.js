@@ -86,14 +86,14 @@ var _functions = __webpack_require__(3);
 
 var hero = ["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", "", "", "", "", ""];
 
-var skills = [];
+var skills = ["", "", ""];
 
 var equip = [];
 
 var randomPoints = [0, 0, 0, 0, 0];
 
 var showHero = function showHero(hero) {
-	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t\t<p id=\'skills\'>umiej\u0119tno\u015Bci: ' + skills + '</p>\n\t\t<p id=\'equip\'>ekwipunek: ' + equip + '</p>\n\t</div>';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
 };
@@ -283,6 +283,57 @@ var height = function height(hero, where) {
 
 randomHero.addEventListener("click", function () {
 
+	var randomSkills = function randomSkills() {
+		switch (hero[3]) {
+			case "wojownik":
+				for (var i = 0; i < 3; i++) {
+					var random = Math.round(Math.random() * _arrays.skillsWarrior.length);
+					var is = false;
+					for (var j = 0; j < skills.length; j++) {
+						if (skills[j] == random) is = true;
+					}if (is) i--;else skills[i] = random;
+					skills.splice(i, 1, _arrays.skillsWarrior[random]);
+				}
+				break;
+
+			case "złoczyńca":
+				for (var _i = 0; _i < 3; _i++) {
+					var _random = Math.round(Math.random() * _arrays.skillsCriminal.length);
+					var _is = false;
+					for (var _j = 0; _j < skills.length; _j++) {
+						if (skills[_j] == _random) _is = true;
+					}if (_is) _i--;else skills[_i] = _random;
+					skills.splice(_i, 1, _arrays.skillsCriminal[_random]);
+				}
+				break;
+
+			case "czarodziej":
+				for (var _i2 = 0; _i2 < 3; _i2++) {
+					var _random2 = Math.round(Math.random() * _arrays.skillsWizard.length);
+					var _is2 = false;
+					for (var _j2 = 0; _j2 < skills.length; _j2++) {
+						if (skills[_j2] == _random2) _is2 = true;
+					}if (_is2) _i2--;else skills[_i2] = _random2;
+					skills.splice(_i2, 1, _arrays.skillsWizard[_random2]);
+				}
+				break;
+		}
+	};
+
+	var randomEquip = function randomEquip() {
+		var allEquip = [];
+		var randomEquip = equip.concat(_arrays.equipWeapon, _arrays.equipArmor, _arrays.equipShield, _arrays.equipOther);
+
+		for (var i = 0; i < 5; i++) {
+			var random = Math.round(Math.random() * randomEquip.length);
+			var is = false;
+			for (var j = 0; j < equip.length; j++) {
+				if (equip[j] == random) is = true;
+			}if (is) i--;else equip[i] = random;
+			equip.splice(i, 1, randomEquip[random]);
+		}
+	};
+
 	(0, _functions.rndFromArray)(_arrays.sex, hero, 1);
 	randomName(hero[1]);
 
@@ -296,6 +347,9 @@ randomHero.addEventListener("click", function () {
 
 	weight(hero, 13);
 	height(hero, 14);
+
+	randomSkills(hero[3]);
+	randomEquip();
 
 	showHero(hero);
 

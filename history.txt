@@ -383,3 +383,6 @@ Dodanie losowania tatutaży, koloru skóry, włosów oraz oczu.
 
 30 grudnia 2019 - wersja 0.2.07
 Dodanie losowania wagi i wzrostu.
+
+2 grudnia 2020 - wersja 0.2.07a
+Dodanie losowania umiejętności i ekwipunku.

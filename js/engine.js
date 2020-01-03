@@ -98,6 +98,13 @@ var showHero = function showHero(hero) {
 	mainContainer.innerHTML = showHero;
 };
 
+var chooseHero = function chooseHero() {
+	var chooseHero = '<form id="chooseHeroForm">\n\t\t\t<label>imi\u0119</label>\n\t\t\t<input id="enterName"></input>\n\t\t\t\n\t\t\t<label>p\u0142e\u0107</label>\n\t\t\t<input></input>\n\t\t</form>';
+
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = chooseHero;
+};
+
 var gameTitle = document.querySelector("#gameTitle");
 var gameSubTitle = document.querySelector("#gameSubTitle");
 
@@ -360,6 +367,7 @@ randomHero.addEventListener("click", function () {
 
 createHero.addEventListener("click", function () {
 	console.log("działa");
+	chooseHero();
 });
 
 /***/ }),

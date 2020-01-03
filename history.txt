@@ -386,3 +386,6 @@ Dodanie losowania wagi i wzrostu.
 
 2 grudnia 2020 - wersja 0.2.07a
 Dodanie losowania umiejętności i ekwipunku.
+
+3 grudnia 2020 - wersja 0.2.07c
+Dodano do scss trzy style - dla ustalania koloru tekstu. Dodanie pliku z informacją o rasach.

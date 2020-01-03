@@ -37,6 +37,19 @@ let showHero = (hero) =>{
     mainContainer.innerHTML = showHero;
 }
 
+let chooseHero = () =>{
+	const chooseHero = `<form id="chooseHeroForm">
+			<label>imię</label>
+			<input id="enterName"></input>
+			
+			<label>płeć</label>
+			<input></input>
+		</form>`;
+
+	mainContainer.innerHTML = "";
+    mainContainer.innerHTML = chooseHero;
+}
+
 	const gameTitle = document.querySelector("#gameTitle");
 	const gameSubTitle = document.querySelector("#gameSubTitle");
 		
@@ -246,5 +259,6 @@ let randomSkills = () =>{
 	
 	createHero.addEventListener("click", ()=>{
 		console.log("działa");
+		chooseHero();
 	});
 	

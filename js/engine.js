@@ -99,7 +99,7 @@ var showHero = function showHero(hero) {
 };
 
 var chooseHero = function chooseHero() {
-	var chooseHero = '<form id="chooseHeroForm">\n\t\t\t<label>imi\u0119</label>\n\t\t\t<input id="enterName"></input>\n\t\t\t\n\t\t\t<label>p\u0142e\u0107</label>\n\t\t\t<input></input>\n\t\t</form>';
+	var chooseHero = '<form id="chooseHeroForm">\n\t\t\t<label>imi\u0119</label>\n\t\t\t<input id="enterName">\n\t\t\t\n\t\t\t<label>p\u0142e\u0107</label>\n\t\t\t<select name="sex">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>m\u0119\u017Cczyzna</option>\n\t\t\t\t<option>kobieta</option>\n\t\t\t\t<option>nie wiadomo</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>profesja</label>\n\t\t\t<select name="occupation">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>wojownik</option>\n\t\t\t\t<option>z\u0142oczy\u0144ca</option>\n\t\t\t\t<option>czarodziej</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>rasa</label>\n\t\t\t<select name="races">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>cz\u0142owiek</option>\n\t\t\t\t<option>p\xF3\u0142ork</option>\n\t\t\t\t<option>ork</option>\n\t\t\t\t<option>p\xF3\u0142elf</option>\n\t\t\t\t<option>elf</option>\n\t\t\t\t<option>krasnolud</option>\n\t\t\t\t<option>gnom</option>\n\t\t\t\t<option>nizio\u0142ek</option>\n\t\t\t\t<option>goblin</option>\n\t\t\t\t<option>troll</option>\n\t\t\t\t<option>p\xF3\u0142olbrzym</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>punkty postaci</label>\n\t\t\t<p>pozosta\u0142e punkty: <span>250</span>\n\t\t\t<p>si\u0142a: <input type="number"></p>\n\t\t\t<p>wytrzyma\u0142o\u015B\u0107: <input type="number"></p>\n\t\t\t<p>zr\u0119czno\u015B\u0107: <input type="number"></p>\n\t\t\t<p>inteligencja: <input type="number"></p>\n\t\t\t<p>charyzma: <input type="number"></p>\n\t\t</form>';
 
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = chooseHero;
@@ -368,6 +368,8 @@ randomHero.addEventListener("click", function () {
 createHero.addEventListener("click", function () {
 	console.log("działa");
 	chooseHero();
+	console.log(document.querySelector('form'));
+	console.log(document.querySelector('select[name="sex"]').value);
 });
 
 /***/ }),

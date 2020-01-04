@@ -40,12 +40,49 @@ let showHero = (hero) =>{
 let chooseHero = () =>{
 	const chooseHero = `<form id="chooseHeroForm">
 			<label>imię</label>
-			<input id="enterName"></input>
+			<input id="enterName">
 			
 			<label>płeć</label>
-			<input></input>
+			<select name="sex">
+				<option selected></option>
+				<option>mężczyzna</option>
+				<option>kobieta</option>
+				<option>nie wiadomo</option>
+			</select>
+			
+			<label>profesja</label>
+			<select name="occupation">
+				<option selected></option>
+				<option>wojownik</option>
+				<option>złoczyńca</option>
+				<option>czarodziej</option>
+			</select>
+			
+			<label>rasa</label>
+			<select name="races">
+				<option selected></option>
+				<option>człowiek</option>
+				<option>półork</option>
+				<option>ork</option>
+				<option>półelf</option>
+				<option>elf</option>
+				<option>krasnolud</option>
+				<option>gnom</option>
+				<option>niziołek</option>
+				<option>goblin</option>
+				<option>troll</option>
+				<option>półolbrzym</option>
+			</select>
+			
+			<label>punkty postaci</label>
+			<p>pozostałe punkty: <span>250</span>
+			<p>siła: <input type="number"></p>
+			<p>wytrzymałość: <input type="number"></p>
+			<p>zręczność: <input type="number"></p>
+			<p>inteligencja: <input type="number"></p>
+			<p>charyzma: <input type="number"></p>
 		</form>`;
-
+	
 	mainContainer.innerHTML = "";
     mainContainer.innerHTML = chooseHero;
 }
@@ -260,5 +297,7 @@ let randomSkills = () =>{
 	createHero.addEventListener("click", ()=>{
 		console.log("działa");
 		chooseHero();
+		console.log(document.querySelector('form'));
+		console.log(document.querySelector('select[name="sex"]').value);
 	});
 	

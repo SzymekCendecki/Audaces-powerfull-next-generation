@@ -81,6 +81,45 @@ let chooseHero = () =>{
 			<p>zręczność: <input type="number"></p>
 			<p>inteligencja: <input type="number"></p>
 			<p>charyzma: <input type="number"></p>
+
+			<label>kolor oczu</label>
+			<input type="range" id='eyeColor1' min="0" max="255" step="1" value="0">
+			<input type="range" id='eyeColor2' min="0" max="255" step="1" value="0">
+			<input type="range" id='eyeColor3' min="0" max="255" step="1" value="0">
+			<div id='eyeColorResult'></div>
+			
+			<label>kolor włosów</label>
+			<input type="range" id='hairColor1' min="0" max="255" step="1" value="0">
+			<input type="range" id='hairColor2' min="0" max="255" step="1" value="0">
+			<input type="range" id='hairColor3' min="0" max="255" step="1" value="0">
+			<div id='hairColorResult'></div>
+			
+			<label>kolor skóry</label>
+			<input type="range" id='skinColor1' min="0" max="255" step="1" value="0">
+			<input type="range" id='skinColor2' min="0" max="255" step="1" value="0">
+			<input type="range" id='skinColor3' min="0" max="255" step="1" value="0">
+			<div id='skinColorResult'></div>
+			
+			<label>tatuaże</label>
+			<select name="tattoos">
+				<option selected></option>
+				<option>brak</option>
+				<option>więzienne</option>
+				<option>plemienne</option>
+				<option>dziwne</option>			
+			</select>
+
+			<label>waga</label>
+			<input type="range" id='chooseWeight' min="0" max="255" step="1" valuel="0">
+			<div id='weightResult'></div>
+
+			<label>wzrost</label>
+			<input type="range" id='chooseHeight' min="0" max="255" step="1" value="0">
+			<div id='heightResult'></div>
+
+			<label>umiejętności</p>
+
+			<label>ekwipunek</label>
 		</form>`;
 	
 	mainContainer.innerHTML = "";

@@ -392,3 +392,6 @@ Dodano do scss trzy style - dla ustalania koloru tekstu. Dodanie pliku z informa
 
 4 grudnia 2020 - wersja 0.2.7d
 Tworzenie "ręcznego" kreatora postaci.
+
+6 grudnia 2020 - wersja 0.2.7e
+Tworzenie "ręcznego" kreatora postaci.

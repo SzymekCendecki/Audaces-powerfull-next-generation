@@ -117,7 +117,46 @@ let chooseHero = () =>{
 			<input type="range" id='chooseHeight' min="0" max="255" step="1" value="0">
 			<div id='heightResult'></div>
 
-			<label>umiejętności</p>
+			<label>umiejętności wojownika</p>
+			<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania
+			<input type="checkbox" name="warriorSkill" value="discipline"> dyscyplina
+			<input type="checkbox" name="warriorSkill" value="command"> dowodzenie
+			<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania
+			<input type="checkbox" name="warriorSkill" value="hittingShield"> uderzenie tarczą
+			<input type="checkbox" name="warriorSkill" value="horsemanship"> jeździectwo
+			<input type="checkbox" name="warriorSkill" value="dagger"> sztylet
+			<input type="checkbox" name="warriorSkill" value="shortSword"> krótki miecz
+			<input type="checkbox" name="warriorSkill" value="sabre"> szabla
+			<input type="checkbox" name="warriorSkill" value="spear"> włócznia
+			<input type="checkbox" name="warriorSkill" value="bow"> łuk
+			<input type="checkbox" name="warriorSkill" value="buckler"> puklerz
+			<input type="checkbox" name="warriorSkill" value="smallWoddenShield"> mała tarcza drew.
+			<input type="checkbox" name="warriorSkill" value="smallMetalShield"> mała tarcza metal.
+
+			<label>umiejętności złoczyńcy</p>
+			<input type="checkbox" name="criminalSkill" value="poisons"> trucizny
+			<input type="checkbox" name="criminalSkill" value="climbing"> wspinaczka
+			<input type="checkbox" name="criminalSkill" value="histrionics"> aktorstwo
+			<input type="checkbox" name="criminalSkill" value="acrobatics"> akrobatyka
+			<input type="checkbox" name="criminalSkill" value="traps"> pułapki
+			<input type="checkbox" name="criminalSkill" value="sneaking"> skradanie się
+			<input type="checkbox" name="criminalSkill" value="theft"> kradzież
+			<input type="checkbox" name="criminalSkill" value="evasion"> uniki
+			<input type="checkbox" name="criminalSkill" value="bluffing"> blefowanie
+			<input type="checkbox" name="criminalSkill" value="woddenStick"> drew. pałka
+
+			<label>umiejętności czarodzieja</p>
+			<input type="checkbox" name="wizardSkill" value="readingWriting"> pisanie i czytanie
+			<input type="checkbox" name="wizardSkill" value="summonChaseawayDemon"> przyw./odp. demona
+			<input type="checkbox" name="wizardSkill" value="divination"> wróżbiarstwo 
+			<input type="checkbox" name="wizardSkill" value="healing"> leczenie
+			<input type="checkbox" name="wizardSkill" value="castSpell"> rzucanie zaklęć
+			<input type="checkbox" name="wizardSkill" value="potions"> tworz. eliksirów
+			<input type="checkbox" name="wizardSkill" value="createMagicItem"> tworz. mag. przedm.
+			<input type="checkbox" name="wizardSkill" value="createOintment"> tworzenie maści
+			<input type="checkbox" name="wizardSkill" value="createRunes"> tworzenie runów
+			<input type="checkbox" name="wizardSkill" value="astrology"> astrologia
+			<input type="checkbox" name="wizardSkill" value="herbology"> zielarstwo
 
 			<label>ekwipunek</label>
 		</form>`;

@@ -395,3 +395,6 @@ Tworzenie "ręcznego" kreatora postaci.
 
 6 grudnia 2020 - wersja 0.2.7e
 Tworzenie "ręcznego" kreatora postaci.
+
+7 grudnia 2020 - wersja 0.2.7f
+Tworzenie "ręcznego" kreatora postaci.

@@ -398,3 +398,6 @@ Tworzenie "ręcznego" kreatora postaci.
 
 7 grudnia 2020 - wersja 0.2.7f
 Tworzenie "ręcznego" kreatora postaci.
+
+9 grudnia 2020 - wersja 0.2.7g
+Dodanie pliku room.json - poprawionym tekstem.

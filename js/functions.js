@@ -10,13 +10,34 @@ export let toFirstMenu = () =>{
 		document.querySelector('.progress').classList.add('displayNone');
 	}
 	
-export let newP =(data) =>{ 
- 		var newP= document.createElement("p"); 
-  		var newContent = document.createTextNode(data); 
+export let newP = (data) =>{ 
+ 		const newP= document.createElement("p"); 
+  		let newContent = document.createTextNode(data); 
 		newP.appendChild(newContent);
 		newP.classList.add("pStyles");
 		mainContainer.appendChild(newP); 
 	}
+
+export let newBtn = (text, where, name) =>{
+	const newBtn = document.createElement("button");
+	let textBtn = document.createTextNode(text);
+	newBtn.appendChild(textBtn);
+	newBtn.setAttribute("id", name);
+	where.appendChild(newBtn);
+}
+
+export let newDiv = (where, name) =>{
+	const newBtn = document.createElement("div");
+	where.appendChild(newBtn);
+	newBtn.setAttribute("id", name);
+}
+
+let newInput = (where, typeName, idName) => {
+	const newInput = document.createElement("input");
+	where.appendChild(newInput);
+	newInput.setAttribute("type", typeName);
+	newInput.setAttribute("id", idName);
+}
 
 export let rndFromArray = (nameArray, hero, position) => {
 		let draw = nameArray[Math.floor(Math.random() * nameArray.length)];

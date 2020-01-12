@@ -401,3 +401,9 @@ Tworzenie "ręcznego" kreatora postaci.
 
 9 grudnia 2020 - wersja 0.2.7g
 Dodanie pliku room.json - poprawionym tekstem.
+
+11 grudnia 2020 - wersja 0.2.7i
+Dodanie tekstów gry.
+
+12 grudnia 2020 - wersja 0.2.7j
+Dodano funkcje do tworzenia nowych elementów DOM (nowe przyciski, divy oraz inputy).

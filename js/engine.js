@@ -450,6 +450,27 @@ var newP = exports.newP = function newP(data) {
 	mainContainer.appendChild(newP);
 };
 
+var newBtn = exports.newBtn = function newBtn(text, where, name) {
+	var newBtn = document.createElement("button");
+	var textBtn = document.createTextNode(text);
+	newBtn.appendChild(textBtn);
+	newBtn.setAttribute("id", name);
+	where.appendChild(newBtn);
+};
+
+var newDiv = exports.newDiv = function newDiv(where, name) {
+	var newBtn = document.createElement("div");
+	where.appendChild(newBtn);
+	newBtn.setAttribute("id", name);
+};
+
+var newInput = function newInput(where, typeName, idName) {
+	var newInput = document.createElement("input");
+	where.appendChild(newInput);
+	newInput.setAttribute("type", typeName);
+	newInput.setAttribute("id", idName);
+};
+
 var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
 	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
 	hero.splice(position, 1, draw);

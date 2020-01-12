@@ -1,6 +1,6 @@
 import { namesMan, namesWomen, races, occupation, sex, tatoo, equipWeapon, equipArmor, equipShield, equipOther, skillsWarrior, skillsCriminal, skillsWizard, warrior, criminal, wizard, human, halfOrc, orc, halfElv, elv, dwarf, gnome, halfling, goblin, troll, semiGiant, tattoo } from './arrays.js';
 
-import{ toFirstMenu, newP, rndFromArray, colors } from './functions.js';
+import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, colors } from './functions.js';
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height

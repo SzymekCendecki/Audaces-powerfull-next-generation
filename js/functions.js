@@ -27,12 +27,12 @@ export let newBtn = (text, where, name) =>{
 }
 
 export let newDiv = (where, name) =>{
-	const newBtn = document.createElement("div");
-	where.appendChild(newBtn);
-	newBtn.setAttribute("id", name);
+	const newDiv = document.createElement("div");
+	where.appendChild(newDiv);
+	newDiv.setAttribute("id", name);
 }
 
-let newInput = (where, typeName, idName) => {
+export let newInput = (where, typeName, idName) => {
 	const newInput = document.createElement("input");
 	where.appendChild(newInput);
 	newInput.setAttribute("type", typeName);

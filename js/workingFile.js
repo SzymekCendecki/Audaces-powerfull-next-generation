@@ -37,133 +37,7 @@ let showHero = (hero) =>{
     mainContainer.innerHTML = showHero;
 }
 
-let chooseHero = () =>{
-	const chooseHero = `<form id="chooseHeroForm">
-			<label>imię</label>
-			<input id="enterName">
-			
-			<label>płeć</label>
-			<select name="sex">
-				<option selected></option>
-				<option>mężczyzna</option>
-				<option>kobieta</option>
-				<option>nie wiadomo</option>
-			</select>
-			
-			<label>profesja</label>
-			<select name="occupation">
-				<option selected></option>
-				<option>wojownik</option>
-				<option>złoczyńca</option>
-				<option>czarodziej</option>
-			</select>
-			
-			<label>rasa</label>
-			<select name="races">
-				<option selected></option>
-				<option>człowiek</option>
-				<option>półork</option>
-				<option>ork</option>
-				<option>półelf</option>
-				<option>elf</option>
-				<option>krasnolud</option>
-				<option>gnom</option>
-				<option>niziołek</option>
-				<option>goblin</option>
-				<option>troll</option>
-				<option>półolbrzym</option>
-			</select>
-			
-			<label>punkty postaci</label>
-			<p>pozostałe punkty: <span>250</span>
-			<p>siła: <input type="number"></p>
-			<p>wytrzymałość: <input type="number"></p>
-			<p>zręczność: <input type="number"></p>
-			<p>inteligencja: <input type="number"></p>
-			<p>charyzma: <input type="number"></p>
 
-			<label>kolor oczu</label>
-			<input type="range" id='eyeColor1' min="0" max="255" step="1" value="0">
-			<input type="range" id='eyeColor2' min="0" max="255" step="1" value="0">
-			<input type="range" id='eyeColor3' min="0" max="255" step="1" value="0">
-			<div id='eyeColorResult'></div>
-			
-			<label>kolor włosów</label>
-			<input type="range" id='hairColor1' min="0" max="255" step="1" value="0">
-			<input type="range" id='hairColor2' min="0" max="255" step="1" value="0">
-			<input type="range" id='hairColor3' min="0" max="255" step="1" value="0">
-			<div id='hairColorResult'></div>
-			
-			<label>kolor skóry</label>
-			<input type="range" id='skinColor1' min="0" max="255" step="1" value="0">
-			<input type="range" id='skinColor2' min="0" max="255" step="1" value="0">
-			<input type="range" id='skinColor3' min="0" max="255" step="1" value="0">
-			<div id='skinColorResult'></div>
-			
-			<label>tatuaże</label>
-			<select name="tattoos">
-				<option selected></option>
-				<option>brak</option>
-				<option>więzienne</option>
-				<option>plemienne</option>
-				<option>dziwne</option>			
-			</select>
-
-			<label>waga</label>
-			<input type="range" id='chooseWeight' min="0" max="255" step="1" valuel="0">
-			<div id='weightResult'></div>
-
-			<label>wzrost</label>
-			<input type="range" id='chooseHeight' min="0" max="255" step="1" value="0">
-			<div id='heightResult'></div>
-
-			<label>umiejętności wojownika</p>
-			<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania
-			<input type="checkbox" name="warriorSkill" value="discipline"> dyscyplina
-			<input type="checkbox" name="warriorSkill" value="command"> dowodzenie
-			<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania
-			<input type="checkbox" name="warriorSkill" value="hittingShield"> uderzenie tarczą
-			<input type="checkbox" name="warriorSkill" value="horsemanship"> jeździectwo
-			<input type="checkbox" name="warriorSkill" value="dagger"> sztylet
-			<input type="checkbox" name="warriorSkill" value="shortSword"> krótki miecz
-			<input type="checkbox" name="warriorSkill" value="sabre"> szabla
-			<input type="checkbox" name="warriorSkill" value="spear"> włócznia
-			<input type="checkbox" name="warriorSkill" value="bow"> łuk
-			<input type="checkbox" name="warriorSkill" value="buckler"> puklerz
-			<input type="checkbox" name="warriorSkill" value="smallWoddenShield"> mała tarcza drew.
-			<input type="checkbox" name="warriorSkill" value="smallMetalShield"> mała tarcza metal.
-
-			<label>umiejętności złoczyńcy</p>
-			<input type="checkbox" name="criminalSkill" value="poisons"> trucizny
-			<input type="checkbox" name="criminalSkill" value="climbing"> wspinaczka
-			<input type="checkbox" name="criminalSkill" value="histrionics"> aktorstwo
-			<input type="checkbox" name="criminalSkill" value="acrobatics"> akrobatyka
-			<input type="checkbox" name="criminalSkill" value="traps"> pułapki
-			<input type="checkbox" name="criminalSkill" value="sneaking"> skradanie się
-			<input type="checkbox" name="criminalSkill" value="theft"> kradzież
-			<input type="checkbox" name="criminalSkill" value="evasion"> uniki
-			<input type="checkbox" name="criminalSkill" value="bluffing"> blefowanie
-			<input type="checkbox" name="criminalSkill" value="woddenStick"> drew. pałka
-
-			<label>umiejętności czarodzieja</p>
-			<input type="checkbox" name="wizardSkill" value="readingWriting"> pisanie i czytanie
-			<input type="checkbox" name="wizardSkill" value="summonChaseawayDemon"> przyw./odp. demona
-			<input type="checkbox" name="wizardSkill" value="divination"> wróżbiarstwo 
-			<input type="checkbox" name="wizardSkill" value="healing"> leczenie
-			<input type="checkbox" name="wizardSkill" value="castSpell"> rzucanie zaklęć
-			<input type="checkbox" name="wizardSkill" value="potions"> tworz. eliksirów
-			<input type="checkbox" name="wizardSkill" value="createMagicItem"> tworz. mag. przedm.
-			<input type="checkbox" name="wizardSkill" value="createOintment"> tworzenie maści
-			<input type="checkbox" name="wizardSkill" value="createRunes"> tworzenie runów
-			<input type="checkbox" name="wizardSkill" value="astrology"> astrologia
-			<input type="checkbox" name="wizardSkill" value="herbology"> zielarstwo
-
-			<label>ekwipunek</label>
-		</form>`;
-	
-	mainContainer.innerHTML = "";
-    mainContainer.innerHTML = chooseHero;
-}
 
 	const gameTitle = document.querySelector("#gameTitle");
 	const gameSubTitle = document.querySelector("#gameSubTitle");
@@ -373,9 +247,17 @@ let randomSkills = () =>{
 	});
 	
 	createHero.addEventListener("click", ()=>{
-		console.log("działa");
-		chooseHero();
-		console.log(document.querySelector('form'));
-		console.log(document.querySelector('select[name="sex"]').value);
+
+		mainContainer.innerHTML = "";
+		newDiv(mainContainer, "btns");
+		newDiv(mainContainer, "choosing");
+
+		newBtn("imię", document.querySelector("#btns"), "name");
+		newBtn("płeć", document.querySelector("#btns"), "sex");
+		newBtn("rasa", document.querySelector("#btns"), "race");
+		newBtn("profesja", document.querySelector("#btns"), "occupation");
+		newBtn("punkty", document.querySelector("#btns"), "points");
+		newBtn("wygląd", document.querySelector("#btns"), "characterTraits");
+		newBtn("umiejętności", document.querySelector("#btns"), "skills");
+		newBtn("ekwipunek", document.querySelector("#btns"), "equip");
 	});
-	

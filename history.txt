@@ -407,3 +407,6 @@ Dodanie tekstów gry.
 
 12 grudnia 2020 - wersja 0.2.7j
 Dodano funkcje do tworzenia nowych elementów DOM (nowe przyciski, divy oraz inputy).
+
+14 grudnia 2020 - wersja 0.2.7k
+Poprawki dla funkcji newDiv. Utworzenie pliku introGame.json. Rozpoczęcie od nowa tworzenia "ręcznego" kreatora postaci.

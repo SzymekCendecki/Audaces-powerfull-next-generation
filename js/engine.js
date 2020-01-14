@@ -98,13 +98,6 @@ var showHero = function showHero(hero) {
 	mainContainer.innerHTML = showHero;
 };
 
-var chooseHero = function chooseHero() {
-	var chooseHero = '<form id="chooseHeroForm">\n\t\t\t<label>imi\u0119</label>\n\t\t\t<input id="enterName">\n\t\t\t\n\t\t\t<label>p\u0142e\u0107</label>\n\t\t\t<select name="sex">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>m\u0119\u017Cczyzna</option>\n\t\t\t\t<option>kobieta</option>\n\t\t\t\t<option>nie wiadomo</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>profesja</label>\n\t\t\t<select name="occupation">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>wojownik</option>\n\t\t\t\t<option>z\u0142oczy\u0144ca</option>\n\t\t\t\t<option>czarodziej</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>rasa</label>\n\t\t\t<select name="races">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>cz\u0142owiek</option>\n\t\t\t\t<option>p\xF3\u0142ork</option>\n\t\t\t\t<option>ork</option>\n\t\t\t\t<option>p\xF3\u0142elf</option>\n\t\t\t\t<option>elf</option>\n\t\t\t\t<option>krasnolud</option>\n\t\t\t\t<option>gnom</option>\n\t\t\t\t<option>nizio\u0142ek</option>\n\t\t\t\t<option>goblin</option>\n\t\t\t\t<option>troll</option>\n\t\t\t\t<option>p\xF3\u0142olbrzym</option>\n\t\t\t</select>\n\t\t\t\n\t\t\t<label>punkty postaci</label>\n\t\t\t<p>pozosta\u0142e punkty: <span>250</span>\n\t\t\t<p>si\u0142a: <input type="number"></p>\n\t\t\t<p>wytrzyma\u0142o\u015B\u0107: <input type="number"></p>\n\t\t\t<p>zr\u0119czno\u015B\u0107: <input type="number"></p>\n\t\t\t<p>inteligencja: <input type="number"></p>\n\t\t\t<p>charyzma: <input type="number"></p>\n\n\t\t\t<label>kolor oczu</label>\n\t\t\t<input type="range" id=\'eyeColor1\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'eyeColor2\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'eyeColor3\' min="0" max="255" step="1" value="0">\n\t\t\t<div id=\'eyeColorResult\'></div>\n\t\t\t\n\t\t\t<label>kolor w\u0142os\xF3w</label>\n\t\t\t<input type="range" id=\'hairColor1\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'hairColor2\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'hairColor3\' min="0" max="255" step="1" value="0">\n\t\t\t<div id=\'hairColorResult\'></div>\n\t\t\t\n\t\t\t<label>kolor sk\xF3ry</label>\n\t\t\t<input type="range" id=\'skinColor1\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'skinColor2\' min="0" max="255" step="1" value="0">\n\t\t\t<input type="range" id=\'skinColor3\' min="0" max="255" step="1" value="0">\n\t\t\t<div id=\'skinColorResult\'></div>\n\t\t\t\n\t\t\t<label>tatua\u017Ce</label>\n\t\t\t<select name="tattoos">\n\t\t\t\t<option selected></option>\n\t\t\t\t<option>brak</option>\n\t\t\t\t<option>wi\u0119zienne</option>\n\t\t\t\t<option>plemienne</option>\n\t\t\t\t<option>dziwne</option>\t\t\t\n\t\t\t</select>\n\n\t\t\t<label>waga</label>\n\t\t\t<input type="range" id=\'chooseWeight\' min="0" max="255" step="1" valuel="0">\n\t\t\t<div id=\'weightResult\'></div>\n\n\t\t\t<label>wzrost</label>\n\t\t\t<input type="range" id=\'chooseHeight\' min="0" max="255" step="1" value="0">\n\t\t\t<div id=\'heightResult\'></div>\n\n\t\t\t<label>umiej\u0119tno\u015Bci wojownika</p>\n\t\t\t<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania\n\t\t\t<input type="checkbox" name="warriorSkill" value="discipline"> dyscyplina\n\t\t\t<input type="checkbox" name="warriorSkill" value="command"> dowodzenie\n\t\t\t<input type="checkbox" name="warriorSkill" value="survival"> szt. prztrwania\n\t\t\t<input type="checkbox" name="warriorSkill" value="hittingShield"> uderzenie tarcz\u0105\n\t\t\t<input type="checkbox" name="warriorSkill" value="horsemanship"> je\u017Adziectwo\n\t\t\t<input type="checkbox" name="warriorSkill" value="dagger"> sztylet\n\t\t\t<input type="checkbox" name="warriorSkill" value="shortSword"> kr\xF3tki miecz\n\t\t\t<input type="checkbox" name="warriorSkill" value="sabre"> szabla\n\t\t\t<input type="checkbox" name="warriorSkill" value="spear"> w\u0142\xF3cznia\n\t\t\t<input type="checkbox" name="warriorSkill" value="bow"> \u0142uk\n\t\t\t<input type="checkbox" name="warriorSkill" value="buckler"> puklerz\n\t\t\t<input type="checkbox" name="warriorSkill" value="smallWoddenShield"> ma\u0142a tarcza drew.\n\t\t\t<input type="checkbox" name="warriorSkill" value="smallMetalShield"> ma\u0142a tarcza metal.\n\n\t\t\t<label>umiej\u0119tno\u015Bci z\u0142oczy\u0144cy</p>\n\t\t\t<input type="checkbox" name="criminalSkill" value="poisons"> trucizny\n\t\t\t<input type="checkbox" name="criminalSkill" value="climbing"> wspinaczka\n\t\t\t<input type="checkbox" name="criminalSkill" value="histrionics"> aktorstwo\n\t\t\t<input type="checkbox" name="criminalSkill" value="acrobatics"> akrobatyka\n\t\t\t<input type="checkbox" name="criminalSkill" value="traps"> pu\u0142apki\n\t\t\t<input type="checkbox" name="criminalSkill" value="sneaking"> skradanie si\u0119\n\t\t\t<input type="checkbox" name="criminalSkill" value="theft"> kradzie\u017C\n\t\t\t<input type="checkbox" name="criminalSkill" value="evasion"> uniki\n\t\t\t<input type="checkbox" name="criminalSkill" value="bluffing"> blefowanie\n\t\t\t<input type="checkbox" name="criminalSkill" value="woddenStick"> drew. pa\u0142ka\n\n\t\t\t<label>umiej\u0119tno\u015Bci czarodzieja</p>\n\t\t\t<input type="checkbox" name="wizardSkill" value="readingWriting"> pisanie i czytanie\n\t\t\t<input type="checkbox" name="wizardSkill" value="summonChaseawayDemon"> przyw./odp. demona\n\t\t\t<input type="checkbox" name="wizardSkill" value="divination"> wr\xF3\u017Cbiarstwo \n\t\t\t<input type="checkbox" name="wizardSkill" value="healing"> leczenie\n\t\t\t<input type="checkbox" name="wizardSkill" value="castSpell"> rzucanie zakl\u0119\u0107\n\t\t\t<input type="checkbox" name="wizardSkill" value="potions"> tworz. eliksir\xF3w\n\t\t\t<input type="checkbox" name="wizardSkill" value="createMagicItem"> tworz. mag. przedm.\n\t\t\t<input type="checkbox" name="wizardSkill" value="createOintment"> tworzenie ma\u015Bci\n\t\t\t<input type="checkbox" name="wizardSkill" value="createRunes"> tworzenie run\xF3w\n\t\t\t<input type="checkbox" name="wizardSkill" value="astrology"> astrologia\n\t\t\t<input type="checkbox" name="wizardSkill" value="herbology"> zielarstwo\n\n\t\t\t<label>ekwipunek</label>\n\t\t</form>';
-
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = chooseHero;
-};
-
 var gameTitle = document.querySelector("#gameTitle");
 var gameSubTitle = document.querySelector("#gameSubTitle");
 
@@ -366,10 +359,19 @@ randomHero.addEventListener("click", function () {
 });
 
 createHero.addEventListener("click", function () {
-	console.log("działa");
-	chooseHero();
-	console.log(document.querySelector('form'));
-	console.log(document.querySelector('select[name="sex"]').value);
+
+	mainContainer.innerHTML = "";
+	(0, _functions.newDiv)(mainContainer, "btns");
+	(0, _functions.newDiv)(mainContainer, "choosing");
+
+	(0, _functions.newBtn)("imię", document.querySelector("#btns"), "name");
+	(0, _functions.newBtn)("płeć", document.querySelector("#btns"), "sex");
+	(0, _functions.newBtn)("rasa", document.querySelector("#btns"), "race");
+	(0, _functions.newBtn)("profesja", document.querySelector("#btns"), "occupation");
+	(0, _functions.newBtn)("punkty", document.querySelector("#btns"), "points");
+	(0, _functions.newBtn)("wygląd", document.querySelector("#btns"), "characterTraits");
+	(0, _functions.newBtn)("umiejętności", document.querySelector("#btns"), "skills");
+	(0, _functions.newBtn)("ekwipunek", document.querySelector("#btns"), "equip");
 });
 
 /***/ }),
@@ -459,12 +461,12 @@ var newBtn = exports.newBtn = function newBtn(text, where, name) {
 };
 
 var newDiv = exports.newDiv = function newDiv(where, name) {
-	var newBtn = document.createElement("div");
-	where.appendChild(newBtn);
-	newBtn.setAttribute("id", name);
+	var newDiv = document.createElement("div");
+	where.appendChild(newDiv);
+	newDiv.setAttribute("id", name);
 };
 
-var newInput = function newInput(where, typeName, idName) {
+var newInput = exports.newInput = function newInput(where, typeName, idName) {
 	var newInput = document.createElement("input");
 	where.appendChild(newInput);
 	newInput.setAttribute("type", typeName);

@@ -14,6 +14,9 @@ let equip = [];
 let randomPoints = [0, 0, 0, 0, 0];
 
 let showHero = (hero) =>{
+	document.querySelector("#creatorBtns").classList.add('displayNone');
+	document.querySelector("#creatorBtns").classList.remove('creatorBtnsStyles');
+
 	const showHero = `<div class = "showHero">
 		<p id='name'>imię: ${hero[0]}</p>
 		<p id='sex'>płeć: ${hero[1]}</p>
@@ -36,8 +39,6 @@ let showHero = (hero) =>{
 	mainContainer.innerHTML = "";
     mainContainer.innerHTML = showHero;
 }
-
-
 
 	const gameTitle = document.querySelector("#gameTitle");
 	const gameSubTitle = document.querySelector("#gameSubTitle");
@@ -247,17 +248,11 @@ let randomSkills = () =>{
 	});
 	
 	createHero.addEventListener("click", ()=>{
-
 		mainContainer.innerHTML = "";
-		newDiv(mainContainer, "btns");
-		newDiv(mainContainer, "choosing");
+		document.querySelector("#creatorBtns").classList.remove('displayNone');
+		document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
+	});
 
-		newBtn("imię", document.querySelector("#btns"), "name");
-		newBtn("płeć", document.querySelector("#btns"), "sex");
-		newBtn("rasa", document.querySelector("#btns"), "race");
-		newBtn("profesja", document.querySelector("#btns"), "occupation");
-		newBtn("punkty", document.querySelector("#btns"), "points");
-		newBtn("wygląd", document.querySelector("#btns"), "characterTraits");
-		newBtn("umiejętności", document.querySelector("#btns"), "skills");
-		newBtn("ekwipunek", document.querySelector("#btns"), "equip");
+	document.querySelector("#name").addEventListener("click", ()=>{
+		console.log("działa");
 	});

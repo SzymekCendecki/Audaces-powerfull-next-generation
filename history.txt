@@ -410,3 +410,6 @@ Dodano funkcje do tworzenia nowych elementów DOM (nowe przyciski, divy oraz inp
 
 14 grudnia 2020 - wersja 0.2.7k
 Poprawki dla funkcji newDiv. Utworzenie pliku introGame.json. Rozpoczęcie od nowa tworzenia "ręcznego" kreatora postaci.
+
+16 grudnia 2020 - wersja 0.2.7l
+Poprawki dla przycisków ręcznego tworzenia postaci: przeniesienie przycisków tworzenia postaci z pliku woekingFile.js do index.html.

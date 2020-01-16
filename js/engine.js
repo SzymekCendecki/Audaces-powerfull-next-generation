@@ -93,6 +93,9 @@ var equip = [];
 var randomPoints = [0, 0, 0, 0, 0];
 
 var showHero = function showHero(hero) {
+	document.querySelector("#creatorBtns").classList.add('displayNone');
+	document.querySelector("#creatorBtns").classList.remove('creatorBtnsStyles');
+
 	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t\t<p id=\'skills\'>umiej\u0119tno\u015Bci: ' + skills + '</p>\n\t\t<p id=\'equip\'>ekwipunek: ' + equip + '</p>\n\t</div>';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
@@ -359,19 +362,13 @@ randomHero.addEventListener("click", function () {
 });
 
 createHero.addEventListener("click", function () {
-
 	mainContainer.innerHTML = "";
-	(0, _functions.newDiv)(mainContainer, "btns");
-	(0, _functions.newDiv)(mainContainer, "choosing");
+	document.querySelector("#creatorBtns").classList.remove('displayNone');
+	document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
+});
 
-	(0, _functions.newBtn)("imię", document.querySelector("#btns"), "name");
-	(0, _functions.newBtn)("płeć", document.querySelector("#btns"), "sex");
-	(0, _functions.newBtn)("rasa", document.querySelector("#btns"), "race");
-	(0, _functions.newBtn)("profesja", document.querySelector("#btns"), "occupation");
-	(0, _functions.newBtn)("punkty", document.querySelector("#btns"), "points");
-	(0, _functions.newBtn)("wygląd", document.querySelector("#btns"), "characterTraits");
-	(0, _functions.newBtn)("umiejętności", document.querySelector("#btns"), "skills");
-	(0, _functions.newBtn)("ekwipunek", document.querySelector("#btns"), "equip");
+document.querySelector("#name").addEventListener("click", function () {
+	console.log("działa");
 });
 
 /***/ }),

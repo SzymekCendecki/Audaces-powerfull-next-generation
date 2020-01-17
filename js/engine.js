@@ -97,6 +97,7 @@ var showHero = function showHero(hero) {
 	document.querySelector("#creatorBtns").classList.remove('creatorBtnsStyles');
 
 	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t\t<p id=\'skills\'>umiej\u0119tno\u015Bci: ' + skills + '</p>\n\t\t<p id=\'equip\'>ekwipunek: ' + equip + '</p>\n\t</div>';
+
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
 };
@@ -368,7 +369,39 @@ createHero.addEventListener("click", function () {
 });
 
 document.querySelector("#name").addEventListener("click", function () {
-	console.log("działa");
+	var showName = '<label>podaj imi\u0119</label>\n\t\t<input type="text" id="name" name="name" required minlength="4" >\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showName;
+});
+
+document.querySelector("#sex").addEventListener("click", function () {
+	var showSex = '<p>wybierz p\u0142e\u0107</p>\n\t\t<button>m\u0119\u017Cczyzna</button>\n\t\t<button>kobieta</button>\n\t\t<button>nie wiadomo</button>\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showSex;
+});
+
+document.querySelector("#race").addEventListener("click", function () {
+	var showRace = '<p>wybierz ras\u0119</p>\n\t\t<button>cz\u0142owiek</button>\n\t\t<button>p\xF3\u0142ork</button>\n\t\t<button>ork</button>\n\t\t<button>p\xF3\u0142elf</button>\n\t\t<button>elf</button>\n\t\t<button>krasnolud</button>\n\t\t<button>gnom</button>\n\t\t<button>nizio\u0142ek</button>\n\t\t<button>goblin</button>\n\t\t<button>trol</button>\n\t\t<button>p\xF3\u0142olbrzym</button>\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showRace;
+});
+
+document.querySelector("#occupation").addEventListener("click", function () {
+	var showOccupation = '<p>wybierz profesj\u0119</p>\n\t\t<button>wojownik</button>\n\t\t<button>z\u0142oczy\u0144ca</button>\n\t\t<button>czarodziej</button>\t\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showOccupation;
+});
+
+document.querySelector("#points").addEventListener("click", function () {
+	var showPoints = '<p>rozdziel punkty postaci</p>\n\t\t<p>ilo\u015B\u0107 punkt\xF3w: <span>250</span></p>\n\n\t\t<div>\n\t\t\t<label for="force">Si\u0142a</label>\n\t\t\t<input type="range" id="force" name="force" min="0" max="50">\n\t\t\t<div id="forcePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="strength">Wytrzyma\u0142o\u015B\u0107</label>\n\t\t\t<input type="range" id="strength" name="strength" min="0" max="50">\n\t\t\t<div id="strengthPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="dexterity">Zr\u0119czno\u015B\u0107</label>\n\t\t\t<input type="range" id="dexterity" name="dexterity" min="0" max="50">\n\t\t\t<div id="dexterityPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="intelligence">Inteligencja</label>\n\t\t\t<input type="range" id="intelligence" name="intelligence" min="0" max="50">\n\t\t\t<div id="intelligencePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="charisma">Charyzma</label>\n\t\t\t<input type="range" id="charisma" name="charsima" min="0" max="50">\n\t\t\t<div id="charismaPoints"></div>\n  \t\t</div>\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showPoints;
+});
+
+document.querySelector("#characterTraits").addEventListener("click", function () {
+	var showCharacterTraits = '<p>wygl\u0105d</p>\n\t\t<div>\n\t\t\t<label for="skin">kolor sk\xF3ry</label>\n\t\t\t<input type="range" id="skin1" name="skin" min="0" max="250">\n\t\t\t<input type="range" id="skin2" name="skin" min="0" max="250">\n\t\t\t<input type="range" id="skin3" name="skin" min="0" max="250">\n\t\t\t<div id="skinColor"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="eyes">kolor oczu</label>\n\t\t\t<input type="range" id="eye1" name="eyes" min="0" max="250">\n\t\t\t<input type="range" id="eye2" name="eyes" min="0" max="250">\n\t\t\t<input type="range" id="eye3" name="eyes" min="0" max="250">\n\t\t\t<div id="eyesColor"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="hair">kolor w\u0142os\xF3w/label>\n\t\t\t<input type="range" id="hair1" name="hair" min="0" max="250">\n\t\t\t<input type="range" id="hair2" name="hair" min="0" max="250">\n\t\t\t<input type="range" id="hair3" name="hair" min="0" max="250">\n\t\t\t<div id="hairColor"></div>\n  \t\t</div>\n\t\t';
+	mainContainer.innerHTML = "";
+	mainContainer.innerHTML = showCharacterTraits;
 });
 
 /***/ }),

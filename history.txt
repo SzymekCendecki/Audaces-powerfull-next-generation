@@ -413,3 +413,6 @@ Poprawki dla funkcji newDiv. Utworzenie pliku introGame.json. Rozpoczęcie od no
 
 16 grudnia 2020 - wersja 0.2.7l
 Poprawki dla przycisków ręcznego tworzenia postaci: przeniesienie przycisków tworzenia postaci z pliku woekingFile.js do index.html.
+
+17 grudnia 2020 - wersja 0.2.8
+Dodanie funkcji dla ręcznego tworzenia postaci.

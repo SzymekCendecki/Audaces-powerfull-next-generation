@@ -36,6 +36,7 @@ let showHero = (hero) =>{
 		<p id='skills'>umiejętności: ${skills}</p>
 		<p id='equip'>ekwipunek: ${equip}</p>
 	</div>`;
+
 	mainContainer.innerHTML = "";
     mainContainer.innerHTML = showHero;
 }
@@ -254,5 +255,116 @@ let randomSkills = () =>{
 	});
 
 	document.querySelector("#name").addEventListener("click", ()=>{
-		console.log("działa");
+		const showName = `<label>podaj imię</label>
+		<input type="text" id="name" name="name" required minlength="4" >
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showName;
+	});
+
+	document.querySelector("#sex").addEventListener("click", ()=>{
+		const showSex = `<p>wybierz płeć</p>
+		<button>mężczyzna</button>
+		<button>kobieta</button>
+		<button>nie wiadomo</button>
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showSex;
+	});
+
+	document.querySelector("#race").addEventListener("click", ()=>{
+		const showRace = `<p>wybierz rasę</p>
+		<button>człowiek</button>
+		<button>półork</button>
+		<button>ork</button>
+		<button>półelf</button>
+		<button>elf</button>
+		<button>krasnolud</button>
+		<button>gnom</button>
+		<button>niziołek</button>
+		<button>goblin</button>
+		<button>trol</button>
+		<button>półolbrzym</button>
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showRace;
+	});
+
+	document.querySelector("#occupation").addEventListener("click", ()=>{
+		const showOccupation = `<p>wybierz profesję</p>
+		<button>wojownik</button>
+		<button>złoczyńca</button>
+		<button>czarodziej</button>	
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showOccupation;
+	});
+
+
+	document.querySelector("#points").addEventListener("click", ()=>{
+		const showPoints = `<p>rozdziel punkty postaci</p>
+		<p>ilość punktów: <span>250</span></p>
+
+		<div>
+			<label for="force">Siła</label>
+			<input type="range" id="force" name="force" min="0" max="50">
+			<div id="forcePoints"></div>
+		</div>
+		  
+		<div>
+			<label for="strength">Wytrzymałość</label>
+			<input type="range" id="strength" name="strength" min="0" max="50">
+			<div id="strengthPoints"></div>
+		</div>
+		  
+		<div>
+			<label for="dexterity">Zręczność</label>
+			<input type="range" id="dexterity" name="dexterity" min="0" max="50">
+			<div id="dexterityPoints"></div>
+		</div>
+		  
+		<div>
+			<label for="intelligence">Inteligencja</label>
+			<input type="range" id="intelligence" name="intelligence" min="0" max="50">
+			<div id="intelligencePoints"></div>
+		</div>
+		  
+		<div>
+			<label for="charisma">Charyzma</label>
+			<input type="range" id="charisma" name="charsima" min="0" max="50">
+			<div id="charismaPoints"></div>
+  		</div>
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showPoints;
+	});
+
+	document.querySelector("#characterTraits").addEventListener("click", ()=>{
+		const showCharacterTraits = `<p>wygląd</p>
+		<div>
+			<label for="skin">kolor skóry</label>
+			<input type="range" id="skin1" name="skin" min="0" max="250">
+			<input type="range" id="skin2" name="skin" min="0" max="250">
+			<input type="range" id="skin3" name="skin" min="0" max="250">
+			<div id="skinColor"></div>
+		</div>
+		  
+		<div>
+			<label for="eyes">kolor oczu</label>
+			<input type="range" id="eye1" name="eyes" min="0" max="250">
+			<input type="range" id="eye2" name="eyes" min="0" max="250">
+			<input type="range" id="eye3" name="eyes" min="0" max="250">
+			<div id="eyesColor"></div>
+		</div>
+		  
+		<div>
+			<label for="hair">kolor włosów/label>
+			<input type="range" id="hair1" name="hair" min="0" max="250">
+			<input type="range" id="hair2" name="hair" min="0" max="250">
+			<input type="range" id="hair3" name="hair" min="0" max="250">
+			<div id="hairColor"></div>
+  		</div>
+		`;
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showCharacterTraits;
 	});

@@ -5,7 +5,7 @@ import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, colors } from
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-let hero =["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", "", "", "", "", ""];
+let hero =["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
 
 let skills = ["", "", ""];
 
@@ -245,59 +245,134 @@ let randomSkills = () =>{
 		
 		colors(9,"#eyesColor", hero);
 		colors(10, "#hairColor", hero);
-		colors(11, "#skinColor", hero);				
+		colors(11, "#skinColor", hero);	
+		
+		console.log(hero);
 	});
 	
 	createHero.addEventListener("click", ()=>{
 		mainContainer.innerHTML = "";
 		document.querySelector("#creatorBtns").classList.remove('displayNone');
 		document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
+
+		hero.splice(0, 1, "");
+		hero.splice(1, 1, "");
+		hero.splice(2, 1, "");
+		hero.splice(3, 1, "");
+		hero.splice(4, 1, "");
+		hero.splice(5, 1, "");
+		hero.splice(6, 1, "");
+		hero.splice(7, 1, "");
+		hero.splice(8, 1, "");
+		hero.splice(9, 1, [0, 0, 0]);
+		hero.splice(10, 1, [0, 0, 0]);
+		hero.splice(11, 1, [0, 0, 0]);
+		hero.splice(12, 1, "");
+		hero.splice(13, 1, "");
+		hero.splice(14, 1, "");
+
+		console.log(hero);
 	});
 
 	document.querySelector("#name").addEventListener("click", ()=>{
 		const showName = `<label>podaj imię</label>
-		<input type="text" id="name" name="name" required minlength="4" >
+		<input type="text" id="chooseName" name="name">
+		<button id="accept">zatwierdź</button>
+		<p id="comment"></p>
 		`;
+
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showName;
+
+		document.querySelector("#accept").addEventListener("click", ()=>{
+
+			const noNumbersExpression = /^[a-zA-Z]+$/;
+
+			let choosenName = document.getElementById("chooseName").value;
+			let isValid = noNumbersExpression.test(choosenName); 
+
+			if(isValid === true){
+				hero.splice(0, 1, choosenName);
+				document.querySelector("#comment").innerHTML = "";
+				document.querySelector("#comment").innerHTML="imię zostało wybrane";
+			}else{
+				document.querySelector("#comment").innerHTML = "";
+				document.querySelector("#comment").innerHTML="imię nie może zawierać cyfr, znaków specjalnych i białych znaków";
+			}
+			
+		});
 	});
 
 	document.querySelector("#sex").addEventListener("click", ()=>{
 		const showSex = `<p>wybierz płeć</p>
-		<button>mężczyzna</button>
-		<button>kobieta</button>
-		<button>nie wiadomo</button>
+		<button id="chooseMan">mężczyzna</button>
+		<button id="chooseWomen">kobieta</button>
+		<button id="chooseOther">nie wiadomo</button>
+		<p id="comment"></p>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showSex;
+
+
+		document.querySelector("#chooseMan").addEventListener("click", ()=>{
+			hero.splice(1, 1, "mężczyzna");
+			console.log(hero);
+		});
+
+		document.querySelector("#chooseWomen").addEventListener("click", ()=>{
+			hero.splice(1, 1, "kobieta");
+			console.log(hero);
+		});
+
+		document.querySelector("#chooseOther").addEventListener("click", ()=>{
+			hero.splice(1, 1, "nie wiadomo");
+			console.log(hero);
+		});
 	});
 
 	document.querySelector("#race").addEventListener("click", ()=>{
 		const showRace = `<p>wybierz rasę</p>
-		<button>człowiek</button>
-		<button>półork</button>
-		<button>ork</button>
-		<button>półelf</button>
-		<button>elf</button>
-		<button>krasnolud</button>
-		<button>gnom</button>
-		<button>niziołek</button>
-		<button>goblin</button>
-		<button>trol</button>
-		<button>półolbrzym</button>
+		<button id="human">człowiek</button>
+		<button id="halfOrc">półork</button>
+		<button id="orc">ork</button>
+		<button id="halfElv">półelf</button>
+		<button id="elv">elf</button>
+		<button id="dwarf">krasnolud</button>
+		<button id="gnome">gnom</button>
+		<button id="halfling">niziołek</button>
+		<button id="goblin">goblin</button>
+		<button id="troll">trol</button>
+		<button id="semiGiant">półolbrzym</button>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showRace;
+		
+		document.querySelector("#human").addEventListener("click", ()=>{ hero.splice(2, 1, "człowiek");	});
+		document.querySelector("#halfOrc").addEventListener("click", ()=>{ hero.splice(2, 1, "półork");	});
+		document.querySelector("#orc").addEventListener("click", ()=>{ hero.splice(2, 1, "ork"); });
+		document.querySelector("#halfElv").addEventListener("click", ()=>{ hero.splice(2, 1, "półelf"); });
+		document.querySelector("#elv").addEventListener("click", ()=>{ hero.splice(2, 1, "elf"); });
+		document.querySelector("#dwarf").addEventListener("click", ()=>{ hero.splice(2, 1, "krasnolud"); });
+		document.querySelector("#gnome").addEventListener("click", ()=>{ hero.splice(2, 1, "gnom"); });
+		document.querySelector("#halfling").addEventListener("click", ()=>{ hero.splice(2, 1, "niziołek"); });
+		document.querySelector("#goblin").addEventListener("click", ()=>{ hero.splice(2, 1, "goblin"); });
+		document.querySelector("#troll").addEventListener("click", ()=>{ hero.splice(2, 1, "trol");	});
+		document.querySelector("#semiGiant").addEventListener("click", ()=>{ hero.splice(2, 1, "półolbrzym"); });
+
 	});
 
 	document.querySelector("#occupation").addEventListener("click", ()=>{
 		const showOccupation = `<p>wybierz profesję</p>
-		<button>wojownik</button>
-		<button>złoczyńca</button>
-		<button>czarodziej</button>	
+		<button id="warrior">wojownik</button>
+		<button id="criminal">złoczyńca</button>
+		<button id="wizard">czarodziej</button>	
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showOccupation;
+
+		document.querySelector("#warrior").addEventListener("click", ()=>{ hero.splice(3, 1, "wojownik");	});
+		document.querySelector("#criminal").addEventListener("click", ()=>{ hero.splice(3, 1, "złoczyńca");	});
+		document.querySelector("#wizard").addEventListener("click", ()=>{ hero.splice(3, 1, "czarodziej"); });
 	});
 
 

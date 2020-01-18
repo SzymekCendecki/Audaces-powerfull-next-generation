@@ -84,7 +84,7 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", "", "", "", "", ""];
+var hero = ["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
 
 var skills = ["", "", ""];
 
@@ -360,36 +360,133 @@ randomHero.addEventListener("click", function () {
 	(0, _functions.colors)(9, "#eyesColor", hero);
 	(0, _functions.colors)(10, "#hairColor", hero);
 	(0, _functions.colors)(11, "#skinColor", hero);
+
+	console.log(hero);
 });
 
 createHero.addEventListener("click", function () {
 	mainContainer.innerHTML = "";
 	document.querySelector("#creatorBtns").classList.remove('displayNone');
 	document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
+
+	hero.splice(0, 1, "");
+	hero.splice(1, 1, "");
+	hero.splice(2, 1, "");
+	hero.splice(3, 1, "");
+	hero.splice(4, 1, "");
+	hero.splice(5, 1, "");
+	hero.splice(6, 1, "");
+	hero.splice(7, 1, "");
+	hero.splice(8, 1, "");
+	hero.splice(9, 1, [0, 0, 0]);
+	hero.splice(10, 1, [0, 0, 0]);
+	hero.splice(11, 1, [0, 0, 0]);
+	hero.splice(12, 1, "");
+	hero.splice(13, 1, "");
+	hero.splice(14, 1, "");
+
+	console.log(hero);
 });
 
 document.querySelector("#name").addEventListener("click", function () {
-	var showName = '<label>podaj imi\u0119</label>\n\t\t<input type="text" id="name" name="name" required minlength="4" >\n\t\t';
+	var showName = '<label>podaj imi\u0119</label>\n\t\t<input type="text" id="chooseName" name="name">\n\t\t<button id="accept">zatwierd\u017A</button>\n\t\t<p id="comment"></p>\n\t\t';
+
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showName;
+
+	document.querySelector("#accept").addEventListener("click", function () {
+
+		var noNumbersExpression = /^[a-zA-Z]+$/;
+
+		var choosenName = document.getElementById("chooseName").value;
+		var isValid = noNumbersExpression.test(choosenName);
+
+		if (isValid === true) {
+			hero.splice(0, 1, choosenName);
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "imię zostało wybrane";
+		} else {
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "imię nie może zawierać cyfr, znaków specjalnych i białych znaków";
+		}
+	});
 });
 
 document.querySelector("#sex").addEventListener("click", function () {
-	var showSex = '<p>wybierz p\u0142e\u0107</p>\n\t\t<button>m\u0119\u017Cczyzna</button>\n\t\t<button>kobieta</button>\n\t\t<button>nie wiadomo</button>\n\t\t';
+	var showSex = '<p>wybierz p\u0142e\u0107</p>\n\t\t<button id="chooseMan">m\u0119\u017Cczyzna</button>\n\t\t<button id="chooseWomen">kobieta</button>\n\t\t<button id="chooseOther">nie wiadomo</button>\n\t\t<p id="comment"></p>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showSex;
+
+	document.querySelector("#chooseMan").addEventListener("click", function () {
+		hero.splice(1, 1, "mężczyzna");
+		console.log(hero);
+	});
+
+	document.querySelector("#chooseWomen").addEventListener("click", function () {
+		hero.splice(1, 1, "kobieta");
+		console.log(hero);
+	});
+
+	document.querySelector("#chooseOther").addEventListener("click", function () {
+		hero.splice(1, 1, "nie wiadomo");
+		console.log(hero);
+	});
 });
 
 document.querySelector("#race").addEventListener("click", function () {
-	var showRace = '<p>wybierz ras\u0119</p>\n\t\t<button>cz\u0142owiek</button>\n\t\t<button>p\xF3\u0142ork</button>\n\t\t<button>ork</button>\n\t\t<button>p\xF3\u0142elf</button>\n\t\t<button>elf</button>\n\t\t<button>krasnolud</button>\n\t\t<button>gnom</button>\n\t\t<button>nizio\u0142ek</button>\n\t\t<button>goblin</button>\n\t\t<button>trol</button>\n\t\t<button>p\xF3\u0142olbrzym</button>\n\t\t';
+	var showRace = '<p>wybierz ras\u0119</p>\n\t\t<button id="human">cz\u0142owiek</button>\n\t\t<button id="halfOrc">p\xF3\u0142ork</button>\n\t\t<button id="orc">ork</button>\n\t\t<button id="halfElv">p\xF3\u0142elf</button>\n\t\t<button id="elv">elf</button>\n\t\t<button id="dwarf">krasnolud</button>\n\t\t<button id="gnome">gnom</button>\n\t\t<button id="halfling">nizio\u0142ek</button>\n\t\t<button id="goblin">goblin</button>\n\t\t<button id="troll">trol</button>\n\t\t<button id="semiGiant">p\xF3\u0142olbrzym</button>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showRace;
+
+	document.querySelector("#human").addEventListener("click", function () {
+		hero.splice(2, 1, "człowiek");
+	});
+	document.querySelector("#halfOrc").addEventListener("click", function () {
+		hero.splice(2, 1, "półork");
+	});
+	document.querySelector("#orc").addEventListener("click", function () {
+		hero.splice(2, 1, "ork");
+	});
+	document.querySelector("#halfElv").addEventListener("click", function () {
+		hero.splice(2, 1, "półelf");
+	});
+	document.querySelector("#elv").addEventListener("click", function () {
+		hero.splice(2, 1, "elf");
+	});
+	document.querySelector("#dwarf").addEventListener("click", function () {
+		hero.splice(2, 1, "krasnolud");
+	});
+	document.querySelector("#gnome").addEventListener("click", function () {
+		hero.splice(2, 1, "gnom");
+	});
+	document.querySelector("#halfling").addEventListener("click", function () {
+		hero.splice(2, 1, "niziołek");
+	});
+	document.querySelector("#goblin").addEventListener("click", function () {
+		hero.splice(2, 1, "goblin");
+	});
+	document.querySelector("#troll").addEventListener("click", function () {
+		hero.splice(2, 1, "trol");
+	});
+	document.querySelector("#semiGiant").addEventListener("click", function () {
+		hero.splice(2, 1, "półolbrzym");
+	});
 });
 
 document.querySelector("#occupation").addEventListener("click", function () {
-	var showOccupation = '<p>wybierz profesj\u0119</p>\n\t\t<button>wojownik</button>\n\t\t<button>z\u0142oczy\u0144ca</button>\n\t\t<button>czarodziej</button>\t\n\t\t';
+	var showOccupation = '<p>wybierz profesj\u0119</p>\n\t\t<button id="warrior">wojownik</button>\n\t\t<button id="criminal">z\u0142oczy\u0144ca</button>\n\t\t<button id="wizard">czarodziej</button>\t\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showOccupation;
+
+	document.querySelector("#warrior").addEventListener("click", function () {
+		hero.splice(3, 1, "wojownik");
+	});
+	document.querySelector("#criminal").addEventListener("click", function () {
+		hero.splice(3, 1, "złoczyńca");
+	});
+	document.querySelector("#wizard").addEventListener("click", function () {
+		hero.splice(3, 1, "czarodziej");
+	});
 });
 
 document.querySelector("#points").addEventListener("click", function () {

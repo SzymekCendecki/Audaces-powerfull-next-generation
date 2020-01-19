@@ -84,7 +84,7 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["", "", "", "", "", "", "", "", "", [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
+var hero = ["", "", "", "",, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
 
 var skills = ["", "", ""];
 
@@ -490,9 +490,90 @@ document.querySelector("#occupation").addEventListener("click", function () {
 });
 
 document.querySelector("#points").addEventListener("click", function () {
-	var showPoints = '<p>rozdziel punkty postaci</p>\n\t\t<p>ilo\u015B\u0107 punkt\xF3w: <span>250</span></p>\n\n\t\t<div>\n\t\t\t<label for="force">Si\u0142a</label>\n\t\t\t<input type="range" id="force" name="force" min="0" max="50">\n\t\t\t<div id="forcePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="strength">Wytrzyma\u0142o\u015B\u0107</label>\n\t\t\t<input type="range" id="strength" name="strength" min="0" max="50">\n\t\t\t<div id="strengthPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="dexterity">Zr\u0119czno\u015B\u0107</label>\n\t\t\t<input type="range" id="dexterity" name="dexterity" min="0" max="50">\n\t\t\t<div id="dexterityPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="intelligence">Inteligencja</label>\n\t\t\t<input type="range" id="intelligence" name="intelligence" min="0" max="50">\n\t\t\t<div id="intelligencePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="charisma">Charyzma</label>\n\t\t\t<input type="range" id="charisma" name="charsima" min="0" max="50">\n\t\t\t<div id="charismaPoints"></div>\n  \t\t</div>\n\t\t';
+	var showPoints = '<p>rozdziel punkty postaci</p>\n\t\t<p>ilo\u015B\u0107 punkt\xF3w: <span id="allPoints">250</span></p>\n\n\t\t<div>\n\t\t\t<label for="force">Si\u0142a</label>\n\t\t\t<input type="range" id="force" min="0" max="50" step="1">\n\t\t\t<div id="forcePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="strength">Wytrzyma\u0142o\u015B\u0107</label>\n\t\t\t<input type="range" id="strength"  min="0" max="50" step="1">\n\t\t\t<div id="strengthPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="dexterity">Zr\u0119czno\u015B\u0107</label>\n\t\t\t<input type="range" id="dexterity" min="0" max="50" step="1">\n\t\t\t<div id="dexterityPoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="intelligence">Inteligencja</label>\n\t\t\t<input type="range" id="intelligence" min="0" max="50" step="1">\n\t\t\t<div id="intelligencePoints"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="charisma">Charyzma</label>\n\t\t\t<input type="range" id="charisma" name="charsima" min="0" max="50" step="1">\n\t\t\t<div id="charismaPoints"></div>\n  \t\t</div>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showPoints;
+
+	document.querySelector("#force").addEventListener("change", function () {
+
+		var choosenForce = document.getElementById("force").value;
+		hero.splice(4, 1, choosenForce);
+		document.getElementById('forcePoints').textContent = hero[4];
+
+		var force = hero[4];
+		var strength = hero[5];
+		var dexterity = hero[6];
+		var intelligence = hero[7];
+		var charisma = hero[8];
+		var allPoints = 250;
+
+		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+		document.getElementById('allPoints').textContent = choosenPoints;
+	});
+
+	document.querySelector("#strength").addEventListener("change", function () {
+		var choosenStrength = document.getElementById("strength").value;
+		hero.splice(5, 1, choosenStrength);
+		document.getElementById('strengthPoints').textContent = hero[5];
+
+		var force = hero[4];
+		var strength = hero[5];
+		var dexterity = hero[6];
+		var intelligence = hero[7];
+		var charisma = hero[8];
+		var allPoints = 250;
+
+		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+		document.getElementById('allPoints').textContent = choosenPoints;
+	});
+
+	document.querySelector("#dexterity").addEventListener("change", function () {
+		var choosenDexterity = document.getElementById("dexterity").value;
+		hero.splice(6, 1, choosenDexterity);
+		document.getElementById('dexterityPoints').textContent = hero[6];
+
+		var force = hero[4];
+		var strength = hero[5];
+		var dexterity = hero[6];
+		var intelligence = hero[7];
+		var charisma = hero[8];
+		var allPoints = 250;
+
+		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+		document.getElementById('allPoints').textContent = choosenPoints;
+	});
+
+	document.querySelector("#intelligence").addEventListener("change", function () {
+		var choosenIntelligence = document.getElementById("intelligence").value;
+		hero.splice(7, 1, choosenIntelligence);
+		document.getElementById('intelligencePoints').textContent = hero[7];
+
+		var force = hero[4];
+		var strength = hero[5];
+		var dexterity = hero[6];
+		var intelligence = hero[7];
+		var charisma = hero[8];
+		var allPoints = 250;
+
+		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+		document.getElementById('allPoints').textContent = choosenPoints;
+	});
+
+	document.querySelector("#charisma").addEventListener("change", function () {
+		var choosenCharisma = document.getElementById("charisma").value;
+		hero.splice(8, 1, choosenCharisma);
+		document.getElementById('charismaPoints').textContent = hero[8];
+
+		var force = hero[4];
+		var strength = hero[5];
+		var dexterity = hero[6];
+		var intelligence = hero[7];
+		var charisma = hero[8];
+		var allPoints = 250;
+
+		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+		document.getElementById('allPoints').textContent = choosenPoints;
+	});
 });
 
 document.querySelector("#characterTraits").addEventListener("click", function () {

@@ -417,5 +417,8 @@ Poprawki dla przycisków ręcznego tworzenia postaci: przeniesienie przycisków 
 17 grudnia 2020 - wersja 0.2.71
 Dodanie funkcji dla ręcznego tworzenia postaci.
 
-18 grudnia 2020 = wersja 0.2.71a
+18 grudnia 2020 - wersja 0.2.71a
 Usunięcie czterech (ostanich nipotrzebnych) pozycji z tablicy hero. Dodano możliwość wybierania imienia (wraz zpodstawową walidacją), w ręcznym kreatorze postaci. Dodano wybieranie płci, rasy oraz profesji.
+
+19 grudnia 2020 - wersja 0.2.72.b
+Dodanie przydzielania punktów w "ręcznym" kreatorze postaci.

@@ -497,32 +497,102 @@ let randomSkills = () =>{
 
 	});
 
+	let eyesColor = [0,0,0];
+	let hairColor = [0,0,0];
+	let skinColor = [0, 0, 0];
+
 	document.querySelector("#characterTraits").addEventListener("click", ()=>{
 		const showCharacterTraits = `<p>wygląd</p>
 		<div>
-			<label for="skin">kolor skóry</label>
-			<input type="range" id="skin1" name="skin" min="0" max="250">
-			<input type="range" id="skin2" name="skin" min="0" max="250">
-			<input type="range" id="skin3" name="skin" min="0" max="250">
-			<div id="skinColor"></div>
-		</div>
-		  
-		<div>
 			<label for="eyes">kolor oczu</label>
-			<input type="range" id="eye1" name="eyes" min="0" max="250">
-			<input type="range" id="eye2" name="eyes" min="0" max="250">
-			<input type="range" id="eye3" name="eyes" min="0" max="250">
-			<div id="eyesColor"></div>
+			<input type="range" id="eye1" min="0" max="250" step="1">
+			<input type="range" id="eye2" min="0" max="250" step="1">
+			<input type="range" id="eye3" min="0" max="250" step="1">
+			<div id="eyesColor" class="standardSize"></div>
 		</div>
 		  
 		<div>
-			<label for="hair">kolor włosów/label>
-			<input type="range" id="hair1" name="hair" min="0" max="250">
-			<input type="range" id="hair2" name="hair" min="0" max="250">
-			<input type="range" id="hair3" name="hair" min="0" max="250">
-			<div id="hairColor"></div>
-  		</div>
+			<label for="hair">kolor włosów</label>
+			<input type="range" id="hair1" min="0" max="250" step="1">
+			<input type="range" id="hair2" min="0" max="250" step="1">
+			<input type="range" id="hair3" min="0" max="250" step="1">
+			<div id="hairColor" class="standardSize"></div>
+		</div>
+		  
+		 <div>
+			<label for="skin">kolor skóry</label>
+			<input type="range" id="skin1" min="0" max="250" step="1">
+			<input type="range" id="skin2" min="0" max="250" step="1">
+			<input type="range" id="skin3" min="0" max="250" step="1">
+			<div id="skinColor" class="standardSize"></div>
+		</div>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showCharacterTraits;
+		document.getElementById('eyesColor').style.backgroundColor = `rgb(${hero[9][0]},${hero[9][1]}, ${hero[9][2]}`;
+		document.getElementById('hairColor').style.backgroundColor = `rgb(${hero[10][0]},${hero[10][1]}, ${hero[10][2]}`;
+		document.getElementById('skinColor').style.backgroundColor = `rgb(${hero[11][0]},${hero[11][1]}, ${hero[11][2]}`;
+
+		document.querySelector("#eye1").addEventListener("change", ()=>{
+			let eye1 = document.getElementById("eye1").value;
+			eyesColor.splice(0, 1, parseInt(eye1));
+			hero.splice(9, 1, eyesColor);
+			document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
+		});		
+
+		document.querySelector("#eye2").addEventListener("change", ()=>{
+			let eye2 = document.getElementById("eye2").value;
+			eyesColor.splice(1, 1, parseInt(eye2));
+			hero.splice(9, 1, eyesColor);
+			document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
+		});	
+
+		document.querySelector("#eye3").addEventListener("change", ()=>{
+			let eye3 = document.getElementById("eye3").value;
+			eyesColor.splice(2, 1, parseInt(eye3));
+			hero.splice(9, 1, eyesColor);
+			document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
+		});	
+
+		document.querySelector("#hair1").addEventListener("change", ()=>{
+			let hair1 = document.getElementById("hair1").value;
+			hairColor.splice(0, 1, parseInt(hair1));
+			hero.splice(10, 1, hairColor);
+			document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
+		});		
+
+		document.querySelector("#hair2").addEventListener("change", ()=>{
+			let hair2 = document.getElementById("hair2").value;
+			hairColor.splice(1, 1, parseInt(hair2));
+			hero.splice(10, 1, hairColor);
+			document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
+		});		
+
+		document.querySelector("#hair3").addEventListener("change", ()=>{
+			let hair3 = document.getElementById("hair3").value;
+			hairColor.splice(2, 1, parseInt(hair3));
+			hero.splice(10, 1, hairColor);
+			document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
+		});		
+
+		document.querySelector("#skin1").addEventListener("change", ()=>{
+			let skin1 = document.getElementById("skin1").value;
+			skinColor.splice(0, 1, parseInt(skin1));
+			hero.splice(11, 1, skinColor);
+			document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
+		});		
+
+		document.querySelector("#skin2").addEventListener("change", ()=>{
+			let skin2 = document.getElementById("skin2").value;
+			skinColor.splice(1, 1, parseInt(skin2));
+			hero.splice(11, 1, skinColor);
+			document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
+		});	
+
+		document.querySelector("#skin3").addEventListener("change", ()=>{
+			let skin3 = document.getElementById("skin3").value;
+			skinColor.splice(2, 1, parseInt(skin3));
+			hero.splice(11, 1, skinColor);
+			document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
+		});	
 	});

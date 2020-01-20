@@ -422,3 +422,6 @@ Usunięcie czterech (ostanich nipotrzebnych) pozycji z tablicy hero. Dodano moż
 
 19 grudnia 2020 - wersja 0.2.72.b
 Dodanie przydzielania punktów w "ręcznym" kreatorze postaci.
+
+20 grudnia 2020 - wersja 0.2.72.c
+Dodano wybieranie kolorów: oczu, włosów oraz skóry.

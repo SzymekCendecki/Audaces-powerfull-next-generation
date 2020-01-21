@@ -52,6 +52,7 @@ let showHero = (hero) =>{
 	let mainContainer = document.querySelector("#mainContainer");
 	
 	const randomHero = document.querySelector("#randomHero");
+	const play = document.querySelector("#play");
 	const createHero = document.querySelector("#createHero");
 	
 	const path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
@@ -82,6 +83,8 @@ let showHero = (hero) =>{
 	newGame.addEventListener("click", ()=>{
 		mainContainer.innerHTML = '';
 		randomHero.classList.remove('displayNone');
+		play.classList.remove('displayNone');
+		play.disabled = true;
 		createHero.classList.remove('displayNone');
 		info.classList.add("displayNone");
 		licence.classList.add("displayNone");
@@ -595,4 +598,8 @@ let randomSkills = () =>{
 			hero.splice(11, 1, skinColor);
 			document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
 		});	
+	});
+
+	play.addEventListener("click", ()=>{
+		console.log("działa");
 	});

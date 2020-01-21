@@ -384,44 +384,47 @@ Dodanie losowania tatutaży, koloru skóry, włosów oraz oczu.
 30 grudnia 2019 - wersja 0.2.07
 Dodanie losowania wagi i wzrostu.
 
-2 grudnia 2020 - wersja 0.2.07a
+2 stycznia 2020 - wersja 0.2.07a
 Dodanie losowania umiejętności i ekwipunku.
 
-3 grudnia 2020 - wersja 0.2.07c
+3 stycznia 2020 - wersja 0.2.07c
 Dodano do scss trzy style - dla ustalania koloru tekstu. Dodanie pliku z informacją o rasach.
 
-4 grudnia 2020 - wersja 0.2.7d
+4 stycznia 2020 - wersja 0.2.7d
 Tworzenie "ręcznego" kreatora postaci.
 
-6 grudnia 2020 - wersja 0.2.7e
+6 stycznia 2020 - wersja 0.2.7e
 Tworzenie "ręcznego" kreatora postaci.
 
-7 grudnia 2020 - wersja 0.2.7f
+7 stycznia 2020 - wersja 0.2.7f
 Tworzenie "ręcznego" kreatora postaci.
 
-9 grudnia 2020 - wersja 0.2.7g
+9 stycznia 2020 - wersja 0.2.7g
 Dodanie pliku room.json - poprawionym tekstem.
 
-11 grudnia 2020 - wersja 0.2.7i
+11 stycznia 2020 - wersja 0.2.7i
 Dodanie tekstów gry.
 
-12 grudnia 2020 - wersja 0.2.7j
+12 stycznia 2020 - wersja 0.2.7j
 Dodano funkcje do tworzenia nowych elementów DOM (nowe przyciski, divy oraz inputy).
 
-14 grudnia 2020 - wersja 0.2.7k
+14 stycznia 2020 - wersja 0.2.7k
 Poprawki dla funkcji newDiv. Utworzenie pliku introGame.json. Rozpoczęcie od nowa tworzenia "ręcznego" kreatora postaci.
 
-16 grudnia 2020 - wersja 0.2.7l
+16 stycznia 2020 - wersja 0.2.7l
 Poprawki dla przycisków ręcznego tworzenia postaci: przeniesienie przycisków tworzenia postaci z pliku woekingFile.js do index.html.
 
-17 grudnia 2020 - wersja 0.2.71
+17 stycznia 2020 - wersja 0.2.71
 Dodanie funkcji dla ręcznego tworzenia postaci.
 
-18 grudnia 2020 - wersja 0.2.71a
+18 stycznia 2020 - wersja 0.2.71a
 Usunięcie czterech (ostanich nipotrzebnych) pozycji z tablicy hero. Dodano możliwość wybierania imienia (wraz zpodstawową walidacją), w ręcznym kreatorze postaci. Dodano wybieranie płci, rasy oraz profesji.
 
-19 grudnia 2020 - wersja 0.2.72.b
+19 stycznia 2020 - wersja 0.2.72.b
 Dodanie przydzielania punktów w "ręcznym" kreatorze postaci.
 
-20 grudnia 2020 - wersja 0.2.72.c
+20 stycznia 2020 - wersja 0.2.72.c
 Dodano wybieranie kolorów: oczu, włosów oraz skóry.
+
+21 stycznia 2020 - wersja 0.2.72.d
+Dodanie przycisku "play", w kreatorze postaci.

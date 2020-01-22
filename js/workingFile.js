@@ -179,54 +179,57 @@ let showHero = (hero) =>{
 	
 	randomHero.addEventListener("click", ()=>{
 
-let randomSkills = () =>{
-	switch(hero[3]){
-		case "wojownik": 
-			for (let i=0; i<3; i++) {
-				let random = Math.round(Math.random()*skillsWarrior.length);
-				let is = false;
-				for (let j=0; j<skills.length; j++)
-				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-				skills.splice(i, 1, skillsWarrior[random]);
-			}
-		break;
-		  
-		case "złoczyńca": 
-			for (let i=0; i<3; i++) {
-				let random = Math.round(Math.random()*skillsCriminal.length);
-				let is = false;
-				for (let j=0; j<skills.length; j++)
-				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-				skills.splice(i, 1, skillsCriminal[random]);
-			}
-		break;
-		  
-		case "czarodziej": 
-			for (let i=0; i<3; i++) {
-				let random = Math.round(Math.random()*skillsWizard.length);
-				let is = false;
-				for (let j=0; j<skills.length; j++)
-				if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-				skills.splice(i, 1, skillsWizard[random]);
-			}
-		break;
-	  }	  
-  }
-  
-  let randomEquip = () =>{
-	let allEquip = [];
-	let randomEquip = equip.concat(equipWeapon, equipArmor, equipShield, equipOther);
+		play.disabled = false;
+		play.classList.remove("playDisabled");
+		play.classList.add("playEnabled");
 
-	for (let i=0; i<5; i++) {
-		let random = Math.round(Math.random()*randomEquip.length);
-		let is = false;
-		for (let j=0; j<equip.length; j++)
-		if (equip[j] == random) is = true; if (is) i--; else equip[i] = random;
-		equip.splice(i, 1, randomEquip[random]);
-	}
-  }
-	
-	
+		let randomSkills = () =>{
+			switch(hero[3]){
+				case "wojownik": 
+					for (let i=0; i<3; i++) {
+						let random = Math.round(Math.random()*skillsWarrior.length);
+						let is = false;
+						for (let j=0; j<skills.length; j++)
+						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+						skills.splice(i, 1, skillsWarrior[random]);
+					}
+				break;
+		  
+				case "złoczyńca": 
+					for (let i=0; i<3; i++) {
+						let random = Math.round(Math.random()*skillsCriminal.length);
+						let is = false;
+						for (let j=0; j<skills.length; j++)
+						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+						skills.splice(i, 1, skillsCriminal[random]);
+					}
+				break;
+		  
+				case "czarodziej": 
+					for (let i=0; i<3; i++) {
+						let random = Math.round(Math.random()*skillsWizard.length);
+						let is = false;
+						for (let j=0; j<skills.length; j++)
+						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
+						skills.splice(i, 1, skillsWizard[random]);
+					}
+				break;
+	  		}	  
+  		}
+  
+  		let randomEquip = () =>{
+			let allEquip = [];
+			let randomEquip = equip.concat(equipWeapon, equipArmor, equipShield, equipOther);
+
+			for (let i=0; i<5; i++) {
+				let random = Math.round(Math.random()*randomEquip.length);
+				let is = false;
+				for (let j=0; j<equip.length; j++)
+				if (equip[j] == random) is = true; if (is) i--; else equip[i] = random;
+				equip.splice(i, 1, randomEquip[random]);
+			}
+  		}
+		
 		rndFromArray(sex, hero, 1);
 		randomName(hero[1]);
 		
@@ -248,12 +251,15 @@ let randomSkills = () =>{
 		
 		colors(9,"#eyesColor", hero);
 		colors(10, "#hairColor", hero);
-		colors(11, "#skinColor", hero);	
-		
-		console.log(hero);
+		colors(11, "#skinColor", hero);			
 	});
 	
 	createHero.addEventListener("click", ()=>{
+
+		play.disabled = true;
+		play.classList.add("playDisabled");
+		play.classList.remove("playEnabled");
+
 		mainContainer.innerHTML = "";
 		document.querySelector("#creatorBtns").classList.remove('displayNone');
 		document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
@@ -273,8 +279,6 @@ let randomSkills = () =>{
 		hero.splice(12, 1, "");
 		hero.splice(13, 1, "");
 		hero.splice(14, 1, "");
-
-		console.log(hero);
 	});
 
 	document.querySelector("#name").addEventListener("click", ()=>{
@@ -302,7 +306,6 @@ let randomSkills = () =>{
 				document.querySelector("#comment").innerHTML = "";
 				document.querySelector("#comment").innerHTML="imię nie może zawierać cyfr, znaków specjalnych i białych znaków";
 			}
-			
 		});
 	});
 
@@ -316,20 +319,16 @@ let randomSkills = () =>{
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showSex;
 
-
 		document.querySelector("#chooseMan").addEventListener("click", ()=>{
 			hero.splice(1, 1, "mężczyzna");
-			console.log(hero);
 		});
 
 		document.querySelector("#chooseWomen").addEventListener("click", ()=>{
 			hero.splice(1, 1, "kobieta");
-			console.log(hero);
 		});
 
 		document.querySelector("#chooseOther").addEventListener("click", ()=>{
 			hero.splice(1, 1, "nie wiadomo");
-			console.log(hero);
 		});
 	});
 
@@ -378,7 +377,6 @@ let randomSkills = () =>{
 		document.querySelector("#wizard").addEventListener("click", ()=>{ hero.splice(3, 1, "czarodziej"); });
 	});
 
-
 	document.querySelector("#points").addEventListener("click", ()=>{
 		const showPoints = `<p>rozdziel punkty postaci</p>
 		<p>ilość punktów: <span id="allPoints">250</span></p>
@@ -415,7 +413,6 @@ let randomSkills = () =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showPoints;
-
 
 		document.querySelector("#force").addEventListener("change", ()=>{
 
@@ -497,7 +494,6 @@ let randomSkills = () =>{
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
 		});
-
 	});
 
 	let eyesColor = [0,0,0];

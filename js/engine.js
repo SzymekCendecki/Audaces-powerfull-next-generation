@@ -290,6 +290,10 @@ var height = function height(hero, where) {
 
 randomHero.addEventListener("click", function () {
 
+	play.disabled = false;
+	play.classList.remove("playDisabled");
+	play.classList.add("playEnabled");
+
 	var randomSkills = function randomSkills() {
 		switch (hero[3]) {
 			case "wojownik":
@@ -363,11 +367,14 @@ randomHero.addEventListener("click", function () {
 	(0, _functions.colors)(9, "#eyesColor", hero);
 	(0, _functions.colors)(10, "#hairColor", hero);
 	(0, _functions.colors)(11, "#skinColor", hero);
-
-	console.log(hero);
 });
 
 createHero.addEventListener("click", function () {
+
+	play.disabled = true;
+	play.classList.add("playDisabled");
+	play.classList.remove("playEnabled");
+
 	mainContainer.innerHTML = "";
 	document.querySelector("#creatorBtns").classList.remove('displayNone');
 	document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
@@ -387,8 +394,6 @@ createHero.addEventListener("click", function () {
 	hero.splice(12, 1, "");
 	hero.splice(13, 1, "");
 	hero.splice(14, 1, "");
-
-	console.log(hero);
 });
 
 document.querySelector("#name").addEventListener("click", function () {
@@ -422,17 +427,14 @@ document.querySelector("#sex").addEventListener("click", function () {
 
 	document.querySelector("#chooseMan").addEventListener("click", function () {
 		hero.splice(1, 1, "mężczyzna");
-		console.log(hero);
 	});
 
 	document.querySelector("#chooseWomen").addEventListener("click", function () {
 		hero.splice(1, 1, "kobieta");
-		console.log(hero);
 	});
 
 	document.querySelector("#chooseOther").addEventListener("click", function () {
 		hero.splice(1, 1, "nie wiadomo");
-		console.log(hero);
 	});
 });
 

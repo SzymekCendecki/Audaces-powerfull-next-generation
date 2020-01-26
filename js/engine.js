@@ -377,7 +377,6 @@ createHero.addEventListener("click", function () {
 
 	mainContainer.innerHTML = "";
 	document.querySelector("#creatorBtns").classList.remove('displayNone');
-	document.querySelector("#creatorBtns").classList.add('creatorBtnsStyles');
 
 	hero.splice(0, 1, "");
 	hero.splice(1, 1, "");
@@ -586,9 +585,10 @@ var hairColor = [0, 0, 0];
 var skinColor = [0, 0, 0];
 
 document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '<p>wygl\u0105d</p>\n\t\t<div>\n\t\t\t<label for="eyes">kolor oczu</label>\n\t\t\t<input type="range" id="eye1" min="0" max="250" step="1">\n\t\t\t<input type="range" id="eye2" min="0" max="250" step="1">\n\t\t\t<input type="range" id="eye3" min="0" max="250" step="1">\n\t\t\t<div id="eyesColor" class="standardSize"></div>\n\t\t</div>\n\t\t  \n\t\t<div>\n\t\t\t<label for="hair">kolor w\u0142os\xF3w</label>\n\t\t\t<input type="range" id="hair1" min="0" max="250" step="1">\n\t\t\t<input type="range" id="hair2" min="0" max="250" step="1">\n\t\t\t<input type="range" id="hair3" min="0" max="250" step="1">\n\t\t\t<div id="hairColor" class="standardSize"></div>\n\t\t</div>\n\t\t  \n\t\t <div>\n\t\t\t<label for="skin">kolor sk\xF3ry</label>\n\t\t\t<input type="range" id="skin1" min="0" max="250" step="1">\n\t\t\t<input type="range" id="skin2" min="0" max="250" step="1">\n\t\t\t<input type="range" id="skin3" min="0" max="250" step="1">\n\t\t\t<div id="skinColor" class="standardSize"></div>\n\t\t</div>\n\t\t';
+	var showCharacterTraits = '<p>wygl\u0105d</p>\n\t<div>\n\t\t<label for="eyes">kolor oczu</label>\n\t\t<input type="range" id="eye1" min="0" max="250" step="1">\n\t\t<input type="range" id="eye2" min="0" max="250" step="1">\n\t\t<input type="range" id="eye3" min="0" max="250" step="1">\n\t\t<div id="eyesColor" class="standardSize"></div>\n\t</div>\n\t  \n\t<div>\n\t\t<label for="hair">kolor w\u0142os\xF3w</label>\n\t\t<input type="range" id="hair1" min="0" max="250" step="1">\n\t\t<input type="range" id="hair2" min="0" max="250" step="1">\n\t\t<input type="range" id="hair3" min="0" max="250" step="1">\n\t\t<div id="hairColor" class="standardSize"></div>\n\t</div>\n\t  \n\t <div>\n\t\t<label for="skin">kolor sk\xF3ry</label>\n\t\t<input type="range" id="skin1" min="0" max="250" step="1">\n\t\t<input type="range" id="skin2" min="0" max="250" step="1">\n\t\t<input type="range" id="skin3" min="0" max="250" step="1">\n\t\t<div id="skinColor" class="standardSize"></div>\n\t</div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
+
 	document.getElementById('eyesColor').style.backgroundColor = 'rgb(' + hero[9][0] + ',' + hero[9][1] + ', ' + hero[9][2];
 	document.getElementById('hairColor').style.backgroundColor = 'rgb(' + hero[10][0] + ',' + hero[10][1] + ', ' + hero[10][2];
 	document.getElementById('skinColor').style.backgroundColor = 'rgb(' + hero[11][0] + ',' + hero[11][1] + ', ' + hero[11][2];

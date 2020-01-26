@@ -207,14 +207,41 @@ footer{
   background-color: #009933;
 }
 
-
-
 .creatorBtnsStyles{
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+
+}
+
+.woddenBtn{
+  border: 1px solid #000;
+  border-radius: 10%;	
+  width: 100px;
+  height: 50px;
+  font-family: 'New Rocker', cursive;	
+  font-size: 2em;
+  font-weight: bolder;
+  background-color: rgb(153, 102, 51);
+  color: #fff;
+  font-size: 2em;
+  font-weight: bolder;
+  box-shadow: -1px 1px gray, -2px 2px rgb(153, 102, 51), -3px 3px rgb(153, 102, 51), -4px 4px rgb(153, 102, 51);		
+}		
+
+.woddenBtn:active{
+  animation: animBtn 0.2s forwards;
+}
+
+@keyframes animBtn {
+  0%{
+    background-color: rgb(153, 102, 51);
+    box-shadow: inset 0 0 0 #000000;
+  }
+
+  100%{
+    background-color: rgb(198, 140, 83);
+    box-shadow: inset 0 0 15px #000000;
+    transform: translate(-4px, 4px);	
+  }
 }
 
  @media screen and (max-width: 768px) {

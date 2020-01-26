@@ -431,3 +431,6 @@ Dodanie przycisku "play", w kreatorze postaci.
 
 22 stycznia 2020 - wersja 0.2.72.e
 Dodanie odblokowania przycisku play (gdy postać zostanie wylosowana), blokowania przyciskku play, gdy uzytkownik przejdzie do ręcznego kreatora postaci.
+
+26 stycznia 2020 - wersja 0.2.72.f
+Dodanie stylizacji dla przycisków ręcznego kreatora postaci.

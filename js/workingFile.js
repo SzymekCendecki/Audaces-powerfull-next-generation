@@ -5,7 +5,7 @@ import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, colors } from
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-let hero =["", "", "", "", , 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
+let hero =["", "", "", "", 0, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
 
 let skills = ["", "", ""];
 
@@ -251,8 +251,26 @@ let showHero = (hero) =>{
 		
 		colors(9,"#eyesColor", hero);
 		colors(10, "#hairColor", hero);
-		colors(11, "#skinColor", hero);			
+		colors(11, "#skinColor", hero);	
 	});
+
+	let clearHero = (hero) => {
+		hero.splice(0, 1, "");
+		hero.splice(1, 1, "");
+		hero.splice(2, 1, "");
+		hero.splice(3, 1, "");
+		hero.splice(4, 1, 0);
+		hero.splice(5, 1, 0);
+		hero.splice(6, 1, 0);
+		hero.splice(7, 1, 0);
+		hero.splice(8, 1, 0);
+		hero.splice(9, 1, [0, 0, 0]);
+		hero.splice(10, 1, [0, 0, 0]);
+		hero.splice(11, 1, [0, 0, 0]);
+		hero.splice(12, 1, "");
+		hero.splice(13, 1, "");
+		hero.splice(14, 1, "");
+	  }
 	
 	createHero.addEventListener("click", ()=>{
 
@@ -263,21 +281,7 @@ let showHero = (hero) =>{
 		mainContainer.innerHTML = "";
 		document.querySelector("#creatorBtns").classList.remove('displayNone');
 	
-		hero.splice(0, 1, "");
-		hero.splice(1, 1, "");
-		hero.splice(2, 1, "");
-		hero.splice(3, 1, "");
-		hero.splice(4, 1, "");
-		hero.splice(5, 1, "");
-		hero.splice(6, 1, "");
-		hero.splice(7, 1, "");
-		hero.splice(8, 1, "");
-		hero.splice(9, 1, [0, 0, 0]);
-		hero.splice(10, 1, [0, 0, 0]);
-		hero.splice(11, 1, [0, 0, 0]);
-		hero.splice(12, 1, "");
-		hero.splice(13, 1, "");
-		hero.splice(14, 1, "");
+		clearHero(hero);
 	});	
 
 	document.querySelector("#name").addEventListener("click", ()=>{
@@ -416,7 +420,7 @@ let showHero = (hero) =>{
 		document.querySelector("#force").addEventListener("change", ()=>{
 
 			let choosenForce = document.getElementById("force").value;
-			hero.splice(4, 1, choosenForce);
+			hero.splice(4, 1, parseInt(choosenForce));
 			document.getElementById('forcePoints').textContent = hero[4];
 	
 			let force = hero[4];
@@ -432,7 +436,7 @@ let showHero = (hero) =>{
 
 		document.querySelector("#strength").addEventListener("change", ()=>{
 			let choosenStrength = document.getElementById("strength").value;
-			hero.splice(5, 1, choosenStrength);
+			hero.splice(5, 1, parseInt(choosenStrength));
 			document.getElementById('strengthPoints').textContent = hero[5];
 	
 			let force = hero[4];
@@ -448,7 +452,7 @@ let showHero = (hero) =>{
 
 		document.querySelector("#dexterity").addEventListener("change", ()=>{
 			let choosenDexterity = document.getElementById("dexterity").value;
-			hero.splice(6, 1, choosenDexterity);
+			hero.splice(6, 1, parseInt(choosenDexterity));
 			document.getElementById('dexterityPoints').textContent = hero[6];
 	
 			let force = hero[4];
@@ -464,7 +468,7 @@ let showHero = (hero) =>{
 
 		document.querySelector("#intelligence").addEventListener("change", ()=>{
 			let choosenIntelligence = document.getElementById("intelligence").value;
-			hero.splice(7, 1, choosenIntelligence);
+			hero.splice(7, 1, parseInt(choosenIntelligence));
 			document.getElementById('intelligencePoints').textContent = hero[7];
 	
 			let force = hero[4];
@@ -480,7 +484,7 @@ let showHero = (hero) =>{
 	
 		document.querySelector("#charisma").addEventListener("change", ()=>{
 			let choosenCharisma = document.getElementById("charisma").value;
-			hero.splice(8, 1, choosenCharisma);
+			hero.splice(8, 1, parseInt(choosenCharisma));
 			document.getElementById('charismaPoints').textContent = hero[8];
 	
 			let force = hero[4];
@@ -594,7 +598,12 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 		hero.splice(11, 1, skinColor);
 		document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
 	});	
+
+	document.querySelector("#reset").addEventListener("click", ()=>{
+		clearHero(hero);
+	});
 });
+
 
 	play.addEventListener("click", ()=>{
 		console.log("działa");

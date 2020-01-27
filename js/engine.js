@@ -84,7 +84,7 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["", "", "", "",, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
+var hero = ["", "", "", "", 0, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
 
 var skills = ["", "", ""];
 
@@ -369,6 +369,24 @@ randomHero.addEventListener("click", function () {
 	(0, _functions.colors)(11, "#skinColor", hero);
 });
 
+var clearHero = function clearHero(hero) {
+	hero.splice(0, 1, "");
+	hero.splice(1, 1, "");
+	hero.splice(2, 1, "");
+	hero.splice(3, 1, "");
+	hero.splice(4, 1, 0);
+	hero.splice(5, 1, 0);
+	hero.splice(6, 1, 0);
+	hero.splice(7, 1, 0);
+	hero.splice(8, 1, 0);
+	hero.splice(9, 1, [0, 0, 0]);
+	hero.splice(10, 1, [0, 0, 0]);
+	hero.splice(11, 1, [0, 0, 0]);
+	hero.splice(12, 1, "");
+	hero.splice(13, 1, "");
+	hero.splice(14, 1, "");
+};
+
 createHero.addEventListener("click", function () {
 
 	play.disabled = true;
@@ -378,21 +396,7 @@ createHero.addEventListener("click", function () {
 	mainContainer.innerHTML = "";
 	document.querySelector("#creatorBtns").classList.remove('displayNone');
 
-	hero.splice(0, 1, "");
-	hero.splice(1, 1, "");
-	hero.splice(2, 1, "");
-	hero.splice(3, 1, "");
-	hero.splice(4, 1, "");
-	hero.splice(5, 1, "");
-	hero.splice(6, 1, "");
-	hero.splice(7, 1, "");
-	hero.splice(8, 1, "");
-	hero.splice(9, 1, [0, 0, 0]);
-	hero.splice(10, 1, [0, 0, 0]);
-	hero.splice(11, 1, [0, 0, 0]);
-	hero.splice(12, 1, "");
-	hero.splice(13, 1, "");
-	hero.splice(14, 1, "");
+	clearHero(hero);
 });
 
 document.querySelector("#name").addEventListener("click", function () {
@@ -501,7 +505,7 @@ document.querySelector("#points").addEventListener("click", function () {
 	document.querySelector("#force").addEventListener("change", function () {
 
 		var choosenForce = document.getElementById("force").value;
-		hero.splice(4, 1, choosenForce);
+		hero.splice(4, 1, parseInt(choosenForce));
 		document.getElementById('forcePoints').textContent = hero[4];
 
 		var force = hero[4];
@@ -517,7 +521,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 	document.querySelector("#strength").addEventListener("change", function () {
 		var choosenStrength = document.getElementById("strength").value;
-		hero.splice(5, 1, choosenStrength);
+		hero.splice(5, 1, parseInt(choosenStrength));
 		document.getElementById('strengthPoints').textContent = hero[5];
 
 		var force = hero[4];
@@ -533,7 +537,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 	document.querySelector("#dexterity").addEventListener("change", function () {
 		var choosenDexterity = document.getElementById("dexterity").value;
-		hero.splice(6, 1, choosenDexterity);
+		hero.splice(6, 1, parseInt(choosenDexterity));
 		document.getElementById('dexterityPoints').textContent = hero[6];
 
 		var force = hero[4];
@@ -549,7 +553,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 	document.querySelector("#intelligence").addEventListener("change", function () {
 		var choosenIntelligence = document.getElementById("intelligence").value;
-		hero.splice(7, 1, choosenIntelligence);
+		hero.splice(7, 1, parseInt(choosenIntelligence));
 		document.getElementById('intelligencePoints').textContent = hero[7];
 
 		var force = hero[4];
@@ -565,7 +569,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 	document.querySelector("#charisma").addEventListener("change", function () {
 		var choosenCharisma = document.getElementById("charisma").value;
-		hero.splice(8, 1, choosenCharisma);
+		hero.splice(8, 1, parseInt(choosenCharisma));
 		document.getElementById('charismaPoints').textContent = hero[8];
 
 		var force = hero[4];
@@ -654,6 +658,10 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 		skinColor.splice(2, 1, parseInt(skin3));
 		hero.splice(11, 1, skinColor);
 		document.getElementById('skinColor').style.backgroundColor = 'rgb(' + skinColor[0] + ',' + skinColor[1] + ', ' + skinColor[2];
+	});
+
+	document.querySelector("#reset").addEventListener("click", function () {
+		clearHero(hero);
 	});
 });
 

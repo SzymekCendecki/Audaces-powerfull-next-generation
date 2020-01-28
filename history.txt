@@ -439,4 +439,4 @@ Dodanie stylizacji dla przycisków ręcznego kreatora postaci.
 Usunięcie Header, utworzenie diva o id "subNav". Nav będzie służyć jako główna nawigacja - będą w niej główne przycski nawigacji. W divie o id "subNav" będą przyciski, którymi można manipulować to co się dzieje w main Container. Dodanie i ostylowanie przycisk resetujący wybory, w ręcznym kreatorze postaci (działa).
 
 28 stycznia 2020 - wersja 0.2.72h
-Dodano stylowanie dla części wybierania imienia, płci, rasy oraz profesji.
+Dodano stylowanie dla części wybierania imienia, płci, rasy oraz profesji. Drobna optymalizacja wybierania rasy.

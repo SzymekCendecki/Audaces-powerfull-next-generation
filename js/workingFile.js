@@ -358,61 +358,45 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showRace;
+
+		let xxx = (x, y) => {
+			hero.splice(2, 1, x);	
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML=`wybrano ${y}`;
+		}
 		
 		document.querySelector("#human").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "człowiek");	
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano człowieka";
+			xxx("człowiek", "człowieka");
 		});
 		document.querySelector("#halfOrc").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "półork");	
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano półorka";
+			xxx("półork", "półorka");
 		});
 		document.querySelector("#orc").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "ork"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano orka";
+			xxx("ork", "orka");
 		});
 		document.querySelector("#halfElv").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "półelf"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano półelfa";
+			xxx("półelf", "półelfa");
 		});
 		document.querySelector("#elv").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "elf"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano elfa";
+			xxx("elf", "elfa");
 		});
 		document.querySelector("#dwarf").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "krasnolud"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano krasnoluda";
+			xxx("krasnolud", "krasnoluda");
 		});
 		document.querySelector("#gnome").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "gnom"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano gnoma";
+			xxx("gnom", "gnoma");
 		});
 		document.querySelector("#halfling").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "niziołek"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano nizołka";
+			xxx("niziołek", "niziołka");
 		});
 		document.querySelector("#goblin").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "goblin"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano goblina";
+			xxx("goblin", "goblina");
 		});
 		document.querySelector("#troll").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "trol");
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano trola";
+			xxx("trol", "trola");
 		});
 		document.querySelector("#semiGiant").addEventListener("click", ()=>{ 
-			hero.splice(2, 1, "półolbrzym"); 
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML="wybrano półolbrzyma";
+			xxx("półolbrzym", "półolbrzyma");
 		});
 
 	});

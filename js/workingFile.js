@@ -285,9 +285,9 @@ let showHero = (hero) =>{
 	});	
 
 	document.querySelector("#name").addEventListener("click", ()=>{
-		const showName = `<label>podaj imię</label>
-		<input type="text" id="chooseName" name="name">
-		<button id="accept">zatwierdź</button>
+		const showName = `<p class='labelName'>podaj imię</p>
+		<input type="text" id="chooseName" name="name" class='fontInput'>
+		<button id="accept" class="btnAccept">zatwierdź</button>
 		<p id="comment"></p>
 		`;
 
@@ -304,80 +304,144 @@ let showHero = (hero) =>{
 			if(isValid === true){
 				hero.splice(0, 1, choosenName);
 				document.querySelector("#comment").innerHTML = "";
-				document.querySelector("#comment").innerHTML="imię zostało wybrane";
+				document.querySelector("#comment").innerHTML=`<p class='greenText'>Twoje imię to: ${choosenName}</p>`;
 			}else{
 				document.querySelector("#comment").innerHTML = "";
-				document.querySelector("#comment").innerHTML="imię nie może zawierać cyfr, znaków specjalnych i białych znaków";
+				document.querySelector("#comment").innerHTML="<p class='redText'>imię nie może zawierać cyfr, znaków specjalnych i białych znaków</p>";
 			}
 		});
 	});
 
 	document.querySelector("#sex").addEventListener("click", ()=>{
-		const showSex = `<p>wybierz płeć</p>
-		<button id="chooseMan">mężczyzna</button>
-		<button id="chooseWomen">kobieta</button>
-		<button id="chooseOther">nie wiadomo</button>
-		<p id="comment"></p>
+		const showSex = `<p class='labelName'>wybierz płeć</p>
+		<button id="chooseMan" class="btnAccept">mężczyzna</button>
+		<button id="chooseWomen" class="btnAccept">kobieta</button>
+		<button id="chooseOther" class="btnAccept">nie wiadomo</button>
+		<p id="comment" class="greenText"></p>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showSex;
 
 		document.querySelector("#chooseMan").addEventListener("click", ()=>{
 			hero.splice(1, 1, "mężczyzna");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano mężczyznę";
 		});
 
 		document.querySelector("#chooseWomen").addEventListener("click", ()=>{
 			hero.splice(1, 1, "kobieta");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano kobietę";
 		});
 
 		document.querySelector("#chooseOther").addEventListener("click", ()=>{
 			hero.splice(1, 1, "nie wiadomo");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano nie określoną płeć";
 		});
 	});
 
 	document.querySelector("#race").addEventListener("click", ()=>{
-		const showRace = `<p>wybierz rasę</p>
-		<button id="human">człowiek</button>
-		<button id="halfOrc">półork</button>
-		<button id="orc">ork</button>
-		<button id="halfElv">półelf</button>
-		<button id="elv">elf</button>
-		<button id="dwarf">krasnolud</button>
-		<button id="gnome">gnom</button>
-		<button id="halfling">niziołek</button>
-		<button id="goblin">goblin</button>
-		<button id="troll">trol</button>
-		<button id="semiGiant">półolbrzym</button>
+		const showRace = `<p class="labelName">wybierz rasę</p>
+		<button id="human" class="btnAccept">człowiek</button>
+		<button id="halfOrc" class="btnAccept">półork</button>
+		<button id="orc" class="btnAccept">ork</button>
+		<button id="halfElv" class="btnAccept">półelf</button>
+		<button id="elv" class="btnAccept">elf</button>
+		<button id="dwarf" class="btnAccept">krasnolud</button>
+		<button id="gnome" class="btnAccept">gnom</button>
+		<button id="halfling" class="btnAccept">niziołek</button>
+		<button id="goblin" class="btnAccept">goblin</button>
+		<button id="troll" class="btnAccept">trol</button>
+		<button id="semiGiant" class="btnAccept">półolbrzym</button>
+		<p id="comment" class="greenText"></p>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showRace;
 		
-		document.querySelector("#human").addEventListener("click", ()=>{ hero.splice(2, 1, "człowiek");	});
-		document.querySelector("#halfOrc").addEventListener("click", ()=>{ hero.splice(2, 1, "półork");	});
-		document.querySelector("#orc").addEventListener("click", ()=>{ hero.splice(2, 1, "ork"); });
-		document.querySelector("#halfElv").addEventListener("click", ()=>{ hero.splice(2, 1, "półelf"); });
-		document.querySelector("#elv").addEventListener("click", ()=>{ hero.splice(2, 1, "elf"); });
-		document.querySelector("#dwarf").addEventListener("click", ()=>{ hero.splice(2, 1, "krasnolud"); });
-		document.querySelector("#gnome").addEventListener("click", ()=>{ hero.splice(2, 1, "gnom"); });
-		document.querySelector("#halfling").addEventListener("click", ()=>{ hero.splice(2, 1, "niziołek"); });
-		document.querySelector("#goblin").addEventListener("click", ()=>{ hero.splice(2, 1, "goblin"); });
-		document.querySelector("#troll").addEventListener("click", ()=>{ hero.splice(2, 1, "trol");	});
-		document.querySelector("#semiGiant").addEventListener("click", ()=>{ hero.splice(2, 1, "półolbrzym"); });
+		document.querySelector("#human").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "człowiek");	
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano człowieka";
+		});
+		document.querySelector("#halfOrc").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "półork");	
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano półorka";
+		});
+		document.querySelector("#orc").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "ork"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano orka";
+		});
+		document.querySelector("#halfElv").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "półelf"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano półelfa";
+		});
+		document.querySelector("#elv").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "elf"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano elfa";
+		});
+		document.querySelector("#dwarf").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "krasnolud"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano krasnoluda";
+		});
+		document.querySelector("#gnome").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "gnom"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano gnoma";
+		});
+		document.querySelector("#halfling").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "niziołek"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano nizołka";
+		});
+		document.querySelector("#goblin").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "goblin"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano goblina";
+		});
+		document.querySelector("#troll").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "trol");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano trola";
+		});
+		document.querySelector("#semiGiant").addEventListener("click", ()=>{ 
+			hero.splice(2, 1, "półolbrzym"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano półolbrzyma";
+		});
 
 	});
 
 	document.querySelector("#occupation").addEventListener("click", ()=>{
-		const showOccupation = `<p>wybierz profesję</p>
-		<button id="warrior">wojownik</button>
-		<button id="criminal">złoczyńca</button>
-		<button id="wizard">czarodziej</button>	
+		const showOccupation = `<p class="labelName">wybierz profesję</p>
+		<button id="warrior" class="btnAccept">wojownik</button>
+		<button id="criminal" class="btnAccept">złoczyńca</button>
+		<button id="wizard" class="btnAccept">czarodziej</button>	
+		<p id="comment" class="greenText"></p>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showOccupation;
 
-		document.querySelector("#warrior").addEventListener("click", ()=>{ hero.splice(3, 1, "wojownik");	});
-		document.querySelector("#criminal").addEventListener("click", ()=>{ hero.splice(3, 1, "złoczyńca");	});
-		document.querySelector("#wizard").addEventListener("click", ()=>{ hero.splice(3, 1, "czarodziej"); });
+		document.querySelector("#warrior").addEventListener("click", ()=>{ 
+			hero.splice(3, 1, "wojownik");	
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano wojownika";
+		});
+		document.querySelector("#criminal").addEventListener("click", ()=>{ 
+			hero.splice(3, 1, "złoczyńca");	
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano złoczyńcę";
+		});
+		document.querySelector("#wizard").addEventListener("click", ()=>{ 
+			hero.splice(3, 1, "czarodziej"); 
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML="wybrano czarodzieja";
+		});
 	});
 
 	document.querySelector("#points").addEventListener("click", ()=>{

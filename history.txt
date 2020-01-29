@@ -440,3 +440,6 @@ Usunięcie Header, utworzenie diva o id "subNav". Nav będzie służyć jako gł
 
 28 stycznia 2020 - wersja 0.2.72h
 Dodano stylowanie dla części wybierania imienia, płci, rasy oraz profesji. Drobna optymalizacja wybierania rasy.
+
+29 stycznia 2020 - wersja 0.2.73
+Zmiana wyboru koloru oczu, włosów oraz skóry - zamiast suwaków, zwykłe wybieranie poprzez zaznaczenie opcji - dodać dodawanie do tablicy hero oraz poprwić wybieranie kolorów w losowanym kreatorze postaci.

@@ -84,7 +84,7 @@ var _functions = __webpack_require__(3);
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-var hero = ["", "", "", "", 0, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
+var hero = ["", "", "", "", 0, 0, 0, 0, 0, "", "", "", "", "", ""];
 
 var skills = ["", "", ""];
 
@@ -379,9 +379,9 @@ var clearHero = function clearHero(hero) {
 	hero.splice(6, 1, 0);
 	hero.splice(7, 1, 0);
 	hero.splice(8, 1, 0);
-	hero.splice(9, 1, [0, 0, 0]);
-	hero.splice(10, 1, [0, 0, 0]);
-	hero.splice(11, 1, [0, 0, 0]);
+	hero.splice(9, 1, "");
+	hero.splice(10, 1, "");
+	hero.splice(11, 1, "");
 	hero.splice(12, 1, "");
 	hero.splice(13, 1, "");
 	hero.splice(14, 1, "");
@@ -602,81 +602,180 @@ document.querySelector("#points").addEventListener("click", function () {
 	});
 });
 
-var eyesColor = [0, 0, 0];
-var hairColor = [0, 0, 0];
-var skinColor = [0, 0, 0];
-
 document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '<p>wygl\u0105d</p>\n\t<div>\n\t\t<label for="eyes">kolor oczu</label>\n\t\t<input type="range" id="eye1" min="0" max="250" step="1">\n\t\t<input type="range" id="eye2" min="0" max="250" step="1">\n\t\t<input type="range" id="eye3" min="0" max="250" step="1">\n\t\t<div id="eyesColor" class="standardSize"></div>\n\t</div>\n\t  \n\t<div>\n\t\t<label for="hair">kolor w\u0142os\xF3w</label>\n\t\t<input type="range" id="hair1" min="0" max="250" step="1">\n\t\t<input type="range" id="hair2" min="0" max="250" step="1">\n\t\t<input type="range" id="hair3" min="0" max="250" step="1">\n\t\t<div id="hairColor" class="standardSize"></div>\n\t</div>\n\t  \n\t <div>\n\t\t<label for="skin">kolor sk\xF3ry</label>\n\t\t<input type="range" id="skin1" min="0" max="250" step="1">\n\t\t<input type="range" id="skin2" min="0" max="250" step="1">\n\t\t<input type="range" id="skin3" min="0" max="250" step="1">\n\t\t<div id="skinColor" class="standardSize"></div>\n\t</div>\n\t';
+	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p>kolor oczu</p>\n\n\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t<label for="blue">niebieskie</label>\n\n\t  \t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t<label for="brown">br\u0105zowe</label>\n\n\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t<label for="green">zielone</label>\n\n\t  \t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t <label for="gray">szare</label>\n\n\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t<label for="red">czerwone</label>\n\t\t  \n\t  <p id="eyesColor" class="standardSize"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p>kolor w\u0142os\xF3w</p>\n\n\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t<label for="blond">blond</label>\n\n\t  \t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t<label for="black">czarne</label>\n\n\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t<label for="redHair">rude</label>\n\n\t  \t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t <label for="colors">kolorowe</label>\n\n\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t<label for="none">brak w\u0142os\xF3w</label>\n\t\t  \n\t  <p id="hairColor" class="standardSize"></p>\n  </div>\n\t  \n\t<div id="skin">\n\t\t<p>kolor sk\xF3ry</p>\n\t\t\n\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t<label for="white">blond</label>\n\n\t  \t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t<label for="brownSkin">br\u0105zowa</label>\n\n\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t<label for="blackSkin">czarna</label>\n\n\t  \t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t<label for="greenSkin">zielona</label>\n\n\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t<label for="olive">oliwkowa</label>\n\t\t  \n\t  <p id="skinColor" class="standardSize"></p>\n  </div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
-	document.getElementById('eyesColor').style.backgroundColor = 'rgb(' + hero[9][0] + ',' + hero[9][1] + ', ' + hero[9][2];
-	document.getElementById('hairColor').style.backgroundColor = 'rgb(' + hero[10][0] + ',' + hero[10][1] + ', ' + hero[10][2];
 	document.getElementById('skinColor').style.backgroundColor = 'rgb(' + hero[11][0] + ',' + hero[11][1] + ', ' + hero[11][2];
 
-	document.querySelector("#eye1").addEventListener("change", function () {
-		var eye1 = document.getElementById("eye1").value;
-		eyesColor.splice(0, 1, parseInt(eye1));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = 'rgb(' + eyesColor[0] + ',' + eyesColor[1] + ', ' + eyesColor[2];
-	});
+	var formEyes = document.querySelector("#eyes");
+	var eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
 
-	document.querySelector("#eye2").addEventListener("change", function () {
-		var eye2 = document.getElementById("eye2").value;
-		eyesColor.splice(1, 1, parseInt(eye2));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = 'rgb(' + eyesColor[0] + ',' + eyesColor[1] + ', ' + eyesColor[2];
-	});
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
 
-	document.querySelector("#eye3").addEventListener("change", function () {
-		var eye3 = document.getElementById("eye3").value;
-		eyesColor.splice(2, 1, parseInt(eye3));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = 'rgb(' + eyesColor[0] + ',' + eyesColor[1] + ', ' + eyesColor[2];
-	});
+	try {
+		for (var _iterator = eyeColor[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+			var radio = _step.value;
 
-	document.querySelector("#hair1").addEventListener("change", function () {
-		var hair1 = document.getElementById("hair1").value;
-		hairColor.splice(0, 1, parseInt(hair1));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = 'rgb(' + hairColor[0] + ',' + hairColor[1] + ', ' + hairColor[2];
-	});
+			radio.addEventListener("change", function () {
+				var _iteratorNormalCompletion4 = true;
+				var _didIteratorError4 = false;
+				var _iteratorError4 = undefined;
 
-	document.querySelector("#hair2").addEventListener("change", function () {
-		var hair2 = document.getElementById("hair2").value;
-		hairColor.splice(1, 1, parseInt(hair2));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = 'rgb(' + hairColor[0] + ',' + hairColor[1] + ', ' + hairColor[2];
-	});
+				try {
+					for (var _iterator4 = eyeColor[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+						var _radio = _step4.value;
 
-	document.querySelector("#hair3").addEventListener("change", function () {
-		var hair3 = document.getElementById("hair3").value;
-		hairColor.splice(2, 1, parseInt(hair3));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = 'rgb(' + hairColor[0] + ',' + hairColor[1] + ', ' + hairColor[2];
-	});
+						if (_radio.checked) {
+							document.querySelector("#eyesColor").innerText = 'kolor oczu: ' + _radio.value;
+							break;
+						}
+					}
+				} catch (err) {
+					_didIteratorError4 = true;
+					_iteratorError4 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion4 && _iterator4.return) {
+							_iterator4.return();
+						}
+					} finally {
+						if (_didIteratorError4) {
+							throw _iteratorError4;
+						}
+					}
+				}
+			});
+		}
+	} catch (err) {
+		_didIteratorError = true;
+		_iteratorError = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion && _iterator.return) {
+				_iterator.return();
+			}
+		} finally {
+			if (_didIteratorError) {
+				throw _iteratorError;
+			}
+		}
+	}
 
-	document.querySelector("#skin1").addEventListener("change", function () {
-		var skin1 = document.getElementById("skin1").value;
-		skinColor.splice(0, 1, parseInt(skin1));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = 'rgb(' + skinColor[0] + ',' + skinColor[1] + ', ' + skinColor[2];
-	});
+	var formHair = document.querySelector("#hair");
+	var hairColor = formHair.querySelectorAll("input[name=hairColor]");
 
-	document.querySelector("#skin2").addEventListener("change", function () {
-		var skin2 = document.getElementById("skin2").value;
-		skinColor.splice(1, 1, parseInt(skin2));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = 'rgb(' + skinColor[0] + ',' + skinColor[1] + ', ' + skinColor[2];
-	});
+	var _iteratorNormalCompletion2 = true;
+	var _didIteratorError2 = false;
+	var _iteratorError2 = undefined;
 
-	document.querySelector("#skin3").addEventListener("change", function () {
-		var skin3 = document.getElementById("skin3").value;
-		skinColor.splice(2, 1, parseInt(skin3));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = 'rgb(' + skinColor[0] + ',' + skinColor[1] + ', ' + skinColor[2];
-	});
+	try {
+		for (var _iterator2 = hairColor[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+			var _radio2 = _step2.value;
+
+			_radio2.addEventListener("change", function () {
+				var _iteratorNormalCompletion5 = true;
+				var _didIteratorError5 = false;
+				var _iteratorError5 = undefined;
+
+				try {
+					for (var _iterator5 = hairColor[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+						var _radio3 = _step5.value;
+
+						if (_radio3.checked) {
+							document.querySelector("#hairColor").innerText = 'kolor w\u0142os\xF3w: ' + _radio3.value;
+							break;
+						}
+					}
+				} catch (err) {
+					_didIteratorError5 = true;
+					_iteratorError5 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion5 && _iterator5.return) {
+							_iterator5.return();
+						}
+					} finally {
+						if (_didIteratorError5) {
+							throw _iteratorError5;
+						}
+					}
+				}
+			});
+		}
+	} catch (err) {
+		_didIteratorError2 = true;
+		_iteratorError2 = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion2 && _iterator2.return) {
+				_iterator2.return();
+			}
+		} finally {
+			if (_didIteratorError2) {
+				throw _iteratorError2;
+			}
+		}
+	}
+
+	var formSkin = document.querySelector("#skin");
+	var skinColor = formSkin.querySelectorAll("input[name=skinColor]");
+
+	var _iteratorNormalCompletion3 = true;
+	var _didIteratorError3 = false;
+	var _iteratorError3 = undefined;
+
+	try {
+		for (var _iterator3 = skinColor[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+			var _radio4 = _step3.value;
+
+			_radio4.addEventListener("change", function () {
+				var _iteratorNormalCompletion6 = true;
+				var _didIteratorError6 = false;
+				var _iteratorError6 = undefined;
+
+				try {
+					for (var _iterator6 = skinColor[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+						var _radio5 = _step6.value;
+
+						if (_radio5.checked) {
+							document.querySelector("#skinColor").innerText = 'kolor sk\xF3ry: ' + _radio5.value;
+							break;
+						}
+					}
+				} catch (err) {
+					_didIteratorError6 = true;
+					_iteratorError6 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion6 && _iterator6.return) {
+							_iterator6.return();
+						}
+					} finally {
+						if (_didIteratorError6) {
+							throw _iteratorError6;
+						}
+					}
+				}
+			});
+		}
+	} catch (err) {
+		_didIteratorError3 = true;
+		_iteratorError3 = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion3 && _iterator3.return) {
+				_iterator3.return();
+			}
+		} finally {
+			if (_didIteratorError3) {
+				throw _iteratorError3;
+			}
+		}
+	}
 
 	document.querySelector("#reset").addEventListener("click", function () {
 		clearHero(hero);

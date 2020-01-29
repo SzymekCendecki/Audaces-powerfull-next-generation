@@ -5,7 +5,7 @@ import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, colors } from
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
-let hero =["", "", "", "", 0, 0, 0, 0, 0, [0, 0, 0], [0, 0, 0], [0, 0, 0], "", "", ""];
+let hero =["", "", "", "", 0, 0, 0, 0, 0, "", "", "", "", "", ""];
 
 let skills = ["", "", ""];
 
@@ -264,9 +264,9 @@ let showHero = (hero) =>{
 		hero.splice(6, 1, 0);
 		hero.splice(7, 1, 0);
 		hero.splice(8, 1, 0);
-		hero.splice(9, 1, [0, 0, 0]);
-		hero.splice(10, 1, [0, 0, 0]);
-		hero.splice(11, 1, [0, 0, 0]);
+		hero.splice(9, 1, "");
+		hero.splice(10, 1, "");
+		hero.splice(11, 1, "");
 		hero.splice(12, 1, "");
 		hero.splice(13, 1, "");
 		hero.splice(14, 1, "");
@@ -547,105 +547,117 @@ let showHero = (hero) =>{
 		});
 	});	
 
-let eyesColor = [0,0,0];
-let hairColor = [0,0,0];
-let skinColor = [0, 0, 0];
-
 document.querySelector("#characterTraits").addEventListener("click", ()=>{
-	const showCharacterTraits = `<p>wygląd</p>
-	<div>
-		<label for="eyes">kolor oczu</label>
-		<input type="range" id="eye1" min="0" max="250" step="1">
-		<input type="range" id="eye2" min="0" max="250" step="1">
-		<input type="range" id="eye3" min="0" max="250" step="1">
-		<div id="eyesColor" class="standardSize"></div>
-	</div>
+	const showCharacterTraits = `
+	<div id="eyes">
+		<p>kolor oczu</p>
+
+		<input type="radio" id="blue" name="eyesColor" value="niebieskie">
+		<label for="blue">niebieskie</label>
+
+	  	<input type="radio" id="brown" name="eyesColor" value="brązowe">
+		<label for="brown">brązowe</label>
+
+		<input type="radio" id="green" name="eyesColor" value="zielone">
+	  	<label for="green">zielone</label>
+
+	  	<input type="radio" id="gray" name="eyesColor" value="szare">
+		 <label for="gray">szare</label>
+
+		<input type="radio" id="red" name="eyesColor" value="czerwone">
+		<label for="red">czerwone</label>
+		  
+	  <p id="eyesColor" class="standardSize"></p>
+  </div>
+
+  <div id="hair">
+		<p>kolor włosów</p>
+
+		<input type="radio" id="blond" name="hairColor" value="blond">
+		<label for="blond">blond</label>
+
+	  	<input type="radio" id="black" name="hairColor" value="czarne">
+		<label for="black">czarne</label>
+
+		<input type="radio" id="redHair" name="hairColor" value="rude">
+	  	<label for="redHair">rude</label>
+
+	  	<input type="radio" id="colors" name="hairColor" value="kolorowe">
+		 <label for="colors">kolorowe</label>
+
+		<input type="radio" id="none" name="hairColor" value="brak włosów">
+		<label for="none">brak włosów</label>
+		  
+	  <p id="hairColor" class="standardSize"></p>
+  </div>
 	  
-	<div>
-		<label for="hair">kolor włosów</label>
-		<input type="range" id="hair1" min="0" max="250" step="1">
-		<input type="range" id="hair2" min="0" max="250" step="1">
-		<input type="range" id="hair3" min="0" max="250" step="1">
-		<div id="hairColor" class="standardSize"></div>
-	</div>
-	  
-	 <div>
-		<label for="skin">kolor skóry</label>
-		<input type="range" id="skin1" min="0" max="250" step="1">
-		<input type="range" id="skin2" min="0" max="250" step="1">
-		<input type="range" id="skin3" min="0" max="250" step="1">
-		<div id="skinColor" class="standardSize"></div>
-	</div>
+	<div id="skin">
+		<p>kolor skóry</p>
+		
+		<input type="radio" id="white" name="skinColor" value="biała">
+		<label for="white">blond</label>
+
+	  	<input type="radio" id="brownSkin" name="skinColor" value="brązowa">
+		<label for="brownSkin">brązowa</label>
+
+		<input type="radio" id="blackSkin" name="skinColor" value="czarna">
+	  	<label for="blackSkin">czarna</label>
+
+	  	<input type="radio" id="greenSkin" name="skinColor" value="zielona">
+		<label for="greenSkin">zielona</label>
+
+		<input type="radio" id="olive" name="skinColor" value="oliwkowa">
+		<label for="olive">oliwkowa</label>
+		  
+	  <p id="skinColor" class="standardSize"></p>
+  </div>
 	`;
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
-	document.getElementById('eyesColor').style.backgroundColor = `rgb(${hero[9][0]},${hero[9][1]}, ${hero[9][2]}`;
-	document.getElementById('hairColor').style.backgroundColor = `rgb(${hero[10][0]},${hero[10][1]}, ${hero[10][2]}`;
 	document.getElementById('skinColor').style.backgroundColor = `rgb(${hero[11][0]},${hero[11][1]}, ${hero[11][2]}`;
 
-	document.querySelector("#eye1").addEventListener("change", ()=>{
-		let eye1 = document.getElementById("eye1").value;
-		eyesColor.splice(0, 1, parseInt(eye1));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
-	});		
+	const formEyes = document.querySelector("#eyes");
+	const eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
 
-	document.querySelector("#eye2").addEventListener("change", ()=>{
-		let eye2 = document.getElementById("eye2").value;
-		eyesColor.splice(1, 1, parseInt(eye2));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
-	});	
+ 	for (const radio of eyeColor) {
+		radio.addEventListener("change", function() {
+			for (const radio of eyeColor) {
+				if (radio.checked) {
+					document.querySelector("#eyesColor").innerText = `kolor oczu: ${radio.value}`;
+					break;
+				}
+			}
+		});
+	}
 
-	document.querySelector("#eye3").addEventListener("change", ()=>{
-		let eye3 = document.getElementById("eye3").value;
-		eyesColor.splice(2, 1, parseInt(eye3));
-		hero.splice(9, 1, eyesColor);
-		document.getElementById('eyesColor').style.backgroundColor = `rgb(${eyesColor[0]},${eyesColor[1]}, ${eyesColor[2]}`;
-	});	
+	const formHair = document.querySelector("#hair");
+	const hairColor = formHair.querySelectorAll("input[name=hairColor]");
 
-	document.querySelector("#hair1").addEventListener("change", ()=>{
-		let hair1 = document.getElementById("hair1").value;
-		hairColor.splice(0, 1, parseInt(hair1));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
-	});		
+ 	for (const radio of hairColor) {
+		radio.addEventListener("change", function() {
+			for (const radio of hairColor) {
+				if (radio.checked) {
+					document.querySelector("#hairColor").innerText = `kolor włosów: ${radio.value}`;
+					break;
+				}
+			}
+		});
+	}
 
-	document.querySelector("#hair2").addEventListener("change", ()=>{
-		let hair2 = document.getElementById("hair2").value;
-		hairColor.splice(1, 1, parseInt(hair2));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
-	});		
+	const formSkin = document.querySelector("#skin");
+	const skinColor = formSkin.querySelectorAll("input[name=skinColor]");
 
-	document.querySelector("#hair3").addEventListener("change", ()=>{
-		let hair3 = document.getElementById("hair3").value;
-		hairColor.splice(2, 1, parseInt(hair3));
-		hero.splice(10, 1, hairColor);
-		document.getElementById('hairColor').style.backgroundColor = `rgb(${hairColor[0]},${hairColor[1]}, ${hairColor[2]}`;
-	});		
-
-	document.querySelector("#skin1").addEventListener("change", ()=>{
-		let skin1 = document.getElementById("skin1").value;
-		skinColor.splice(0, 1, parseInt(skin1));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
-	});		
-
-	document.querySelector("#skin2").addEventListener("change", ()=>{
-		let skin2 = document.getElementById("skin2").value;
-		skinColor.splice(1, 1, parseInt(skin2));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
-	});	
-
-	document.querySelector("#skin3").addEventListener("change", ()=>{
-		let skin3 = document.getElementById("skin3").value;
-		skinColor.splice(2, 1, parseInt(skin3));
-		hero.splice(11, 1, skinColor);
-		document.getElementById('skinColor').style.backgroundColor = `rgb(${skinColor[0]},${skinColor[1]}, ${skinColor[2]}`;
-	});	
+ 	for (const radio of skinColor) {
+		radio.addEventListener("change", function() {
+			for (const radio of skinColor) {
+				if (radio.checked) {
+					document.querySelector("#skinColor").innerText = `kolor skóry: ${radio.value}`;
+					break;
+				}
+			}
+		});
+	}
 
 	document.querySelector("#reset").addEventListener("click", ()=>{
 		clearHero(hero);

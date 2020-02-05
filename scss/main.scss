@@ -22,23 +22,23 @@ line{
 	stroke-width: 3;
 }
 
-header, nav, footer{
+#subNav, nav, footer{
   width: 100%;  
   position: absolute;
 }
 
-header, nav{
+#subNav, nav{
    height: 10%;
  }
 
-header{
-	top: 0;
+ #subNav{
+	top: 10%;
 	left: 0;
   text-align: center;
 }
 
 nav{
-	top: 10%;
+	top: 0;
 }
 
 #mainContainer{
@@ -169,13 +169,34 @@ footer{
 }
 
 .blueText{
-	color: #0000ff;
+  -webkit-text-fill-color: #0000ff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5em;
+	font-weight: bolder;
+	font-family: 'New Rocker', cursive;	
 }
+
 .redText{
-	color: #ff0000;
+  -webkit-text-fill-color: #ff0000;;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5em;
+	font-weight: bolder;
+	font-family: 'New Rocker', cursive;	
 }
+
 .greenText{
-	color: #00cc00;
+  -webkit-text-fill-color: rgb(0, 204, 68);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5em;
+	font-weight: bolder;
+	font-family: 'New Rocker', cursive;	
+}
+
+.centerText{
+  text-align: center;
 }
 
 .standardSize{
@@ -207,9 +228,12 @@ footer{
   background-color: #009933;
 }
 
-.creatorBtnsStyles{
+.creatorBtns{
   width: 100%;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;  
 }
 
 .woddenBtn{
@@ -219,12 +243,10 @@ footer{
   height: 50px;
   font-family: 'New Rocker', cursive;	
   font-size: 2em;
-  font-weight: bolder;
   background-color: rgb(153, 102, 51);
   color: #fff;
-  font-size: 2em;
   font-weight: bolder;
-  box-shadow: -1px 1px gray, -2px 2px rgb(153, 102, 51), -3px 3px rgb(153, 102, 51), -4px 4px rgb(153, 102, 51);		
+  box-shadow: -1px 1px rgb(153, 102, 51), -2px 2px rgb(153, 102, 51), -3px 3px rgb(153, 102, 51), -4px 4px rgb(153, 102, 51);		
 }		
 
 .woddenBtn:active{
@@ -244,7 +266,97 @@ footer{
   }
 }
 
- @media screen and (max-width: 768px) {
+.redBtn{
+  border: 1px solid #000;
+  border-radius: 10%;	
+  width: 100px;
+  height: 50px;
+  font-family: 'New Rocker', cursive;	
+  font-size: 2em;
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+  font-weight: bolder;
+  box-shadow: -1px 1px rgb(255, 0, 0), -2px 2px rgb(255, 0, 0), -3px 3px rgb(255, 0, 0), -4px 4px rgb(255, 0, 0);		
+}		
+
+.redBtn:active{
+  animation: animRedBtn 0.2s forwards;
+}
+
+@keyframes animRedBtn {
+  0%{
+    background-color: rgb(255, 0, 0);
+    box-shadow: inset 0 0 0 #000000;
+  }
+
+  100%{
+    background-color: rgb(255, 102, 102);
+    box-shadow: inset 0 0 15px #000000;
+    transform: translate(-4px, 4px);	
+  }
+}
+
+.labelName{
+  width: 100%;
+  text-align: center;
+  font-family: 'New Rocker', cursive;	
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-size: 2.5em;
+}
+
+.fontInput{
+  font-family: 'New Rocker', cursive;	
+  color: #000;
+  font-size: 1.6em;
+}
+
+.btnAccept{
+    border: 1px solid #000;
+    border-radius: 10%;	
+    width: 150px;
+    height: 65px;
+    font-family: 'New Rocker', cursive;	
+    font-size: 1.6em;
+    background-color: rgb(0, 153, 51);
+    color: #fff;
+    font-weight: bolder;
+    box-shadow: -1px 1px rgb(0, 153, 51), -2px 2px rgb(0, 153, 51), -3px 3px rgb(0, 153, 51), -4px 4px rgb(0, 153, 51);	
+    margin: 0 0 0 2%;	
+}
+
+.btnAccept:active{
+  animation: animBtnAccept 0.2s forwards;
+}
+
+@keyframes animBtnAccept  {
+  0%{
+    background-color: rgb(0, 153, 51);
+    box-shadow: inset 0 0 0 #000000;
+  }
+
+  100%{
+    background-color: rgb(26, 255, 102);
+    box-shadow: inset 0 0 15px #000000;
+    transform: translate(-4px, 4px);	
+  }
+}
+
+.divPoints{
+  width: 15%;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mainDivPoints{
+  width: 100%;
+  height: 50%;
+}
+
+@media screen and (max-width: 768px) {
   #gameTitle{
     font-size: 4em;
   }

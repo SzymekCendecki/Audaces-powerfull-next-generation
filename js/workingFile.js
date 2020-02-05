@@ -429,38 +429,40 @@ let showHero = (hero) =>{
 	});
 
 	document.querySelector("#points").addEventListener("click", ()=>{
-		const showPoints = `<p>rozdziel punkty postaci</p>
-		<p>ilość punktów: <span id="allPoints">250</span></p>
+		const showPoints = `<p class="labelName">rozdziel punkty postaci</p>
+		<p class="labelName">ilość punktów: <span id="allPoints">250</span></p>
 
-		<div>
-			<label for="force">Siła</label>
-			<input type="range" id="force" min="0" max="50" step="1">
-			<div id="forcePoints"></div>
-		</div>
+		<div class="displayFlex mainDivPoints">
+			<div class="divPoints">
+				<p class="labelName">Siła</p>
+				<input type="range" id="force" min="0" max="50" step="1">
+				<p id="forcePoints" class="labelName"></p>
+			</div>
 		  
-		<div>
-			<label for="strength">Wytrzymałość</label>
-			<input type="range" id="strength"  min="0" max="50" step="1">
-			<div id="strengthPoints"></div>
-		</div>
+			<div class="divPoints">
+				<p class="labelName">Wytrzymałość</p>
+				<input type="range" id="strength"  min="0" max="50" step="1">
+				<p id="strengthPoints" class="labelName"></p>
+			</div>
 		  
-		<div>
-			<label for="dexterity">Zręczność</label>
-			<input type="range" id="dexterity" min="0" max="50" step="1">
-			<div id="dexterityPoints"></div>
-		</div>
+			<div class="divPoints">
+				<p class="labelName">Zręczność</p>
+				<input type="range" id="dexterity" min="0" max="50" step="1">
+				<p id="dexterityPoints" class="labelName"></p>
+			</div>
 		  
-		<div>
-			<label for="intelligence">Inteligencja</label>
-			<input type="range" id="intelligence" min="0" max="50" step="1">
-			<div id="intelligencePoints"></div>
-		</div>
+			<div class="divPoints">
+				<p class="labelName">Inteligencja</p>
+				<input type="range" id="intelligence" min="0" max="50" step="1">
+				<p id="intelligencePoints" class="labelName"></p>
+			</div>
 		  
-		<div>
-			<label for="charisma">Charyzma</label>
-			<input type="range" id="charisma" name="charsima" min="0" max="50" step="1">
-			<div id="charismaPoints"></div>
-  		</div>
+			<div class="divPoints">
+				<p class="labelName">Charyzma</p>
+				<input type="range" id="charisma" name="charsima" min="0" max="50" step="1">
+				<p id="charismaPoints" class="labelName"></p>
+		  	</div>
+		</div>
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showPoints;

@@ -443,3 +443,6 @@ Dodano stylowanie dla części wybierania imienia, płci, rasy oraz profesji. Dr
 
 29 stycznia 2020 - wersja 0.2.73
 Zmiana wyboru koloru oczu, włosów oraz skóry - zamiast suwaków, zwykłe wybieranie poprzez zaznaczenie opcji - dodać dodawanie do tablicy hero oraz poprwić wybieranie kolorów w losowanym kreatorze postaci.
+
+5 luty 2020 - wersja 0.2.73a
+Ostylowanie części wyboru ilości punktów postaci, w ręcznym kreatorze postaci.

@@ -446,3 +446,6 @@ Zmiana wyboru koloru oczu, włosów oraz skóry - zamiast suwaków, zwykłe wybi
 
 5 luty 2020 - wersja 0.2.73a
 Ostylowanie części wyboru ilości punktów postaci, w ręcznym kreatorze postaci.
+
+6 luty 2020 - wersja 0.2.73b
+Ostylowanie części wyboru koloru: oczu, włosów oraz skóry.

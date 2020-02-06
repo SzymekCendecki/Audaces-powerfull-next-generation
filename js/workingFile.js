@@ -552,66 +552,72 @@ let showHero = (hero) =>{
 document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	const showCharacterTraits = `
 	<div id="eyes">
-		<p>kolor oczu</p>
+		<p class="labelName">kolor oczu</p>
 
-		<input type="radio" id="blue" name="eyesColor" value="niebieskie">
-		<label for="blue">niebieskie</label>
+		<div class="displayFlex">
+			<input type="radio" id="blue" name="eyesColor" value="niebieskie">
+			<label for="blue" class="blueText">niebieskie</label>
 
-	  	<input type="radio" id="brown" name="eyesColor" value="brązowe">
-		<label for="brown">brązowe</label>
+	  		<input type="radio" id="brown" name="eyesColor" value="brązowe">
+			<label for="brown" class="blueText">brązowe</label>
 
-		<input type="radio" id="green" name="eyesColor" value="zielone">
-	  	<label for="green">zielone</label>
+			<input type="radio" id="green" name="eyesColor" value="zielone">
+	  		<label for="green" class="blueText">zielone</label>
 
-	  	<input type="radio" id="gray" name="eyesColor" value="szare">
-		 <label for="gray">szare</label>
+	  		<input type="radio" id="gray" name="eyesColor" value="szare">
+			 <label for="gray" class="blueText">szare</label>
 
-		<input type="radio" id="red" name="eyesColor" value="czerwone">
-		<label for="red">czerwone</label>
+			<input type="radio" id="red" name="eyesColor" value="czerwone">
+			<label for="red" class="blueText">czerwone</label>
+		</div>
 		  
-	  <p id="eyesColor" class="standardSize"></p>
+	  <p id="eyesColor" class="standardSize labelName"></p>
   </div>
 
   <div id="hair">
-		<p>kolor włosów</p>
+		<p class="labelName">kolor włosów</p>
 
-		<input type="radio" id="blond" name="hairColor" value="blond">
-		<label for="blond">blond</label>
+		<div class="displayFlex">
+			<input type="radio" id="blond" name="hairColor" value="blond">
+			<label for="blond" class="blueText">blond</label>
 
-	  	<input type="radio" id="black" name="hairColor" value="czarne">
-		<label for="black">czarne</label>
+	  		<input type="radio" id="black" name="hairColor" value="czarne">
+			<label for="black" class="blueText">czarne</label>
 
-		<input type="radio" id="redHair" name="hairColor" value="rude">
-	  	<label for="redHair">rude</label>
+			<input type="radio" id="redHair" name="hairColor" value="rude">
+	  		<label for="redHair" class="blueText">rude</label>
 
-	  	<input type="radio" id="colors" name="hairColor" value="kolorowe">
-		 <label for="colors">kolorowe</label>
+	  		<input type="radio" id="colors" name="hairColor" value="kolorowe">
+			 <label for="colors" class="blueText">kolorowe</label>
 
-		<input type="radio" id="none" name="hairColor" value="brak włosów">
-		<label for="none">brak włosów</label>
-		  
-	  <p id="hairColor" class="standardSize"></p>
+			<input type="radio" id="none" name="hairColor" value="brak włosów">
+			<label for="none" class="blueText">brak włosów</label>
+		</div>  
+		 
+		<p id="hairColor" class="standardSize labelName"></p>
   </div>
 	  
-	<div id="skin">
-		<p>kolor skóry</p>
+	<div id="skin">	
+		<p class="labelName">kolor skóry</p>
 		
-		<input type="radio" id="white" name="skinColor" value="biała">
-		<label for="white">blond</label>
+		<div class="displayFlex">
+			<input type="radio" id="white" name="skinColor" value="biała">
+			<label for="white" class="blueText">blond</label>
 
-	  	<input type="radio" id="brownSkin" name="skinColor" value="brązowa">
-		<label for="brownSkin">brązowa</label>
+	  		<input type="radio" id="brownSkin" name="skinColor" value="brązowa">
+			<label for="brownSkin" class="blueText">brązowa</label>
 
-		<input type="radio" id="blackSkin" name="skinColor" value="czarna">
-	  	<label for="blackSkin">czarna</label>
+			<input type="radio" id="blackSkin" name="skinColor" value="czarna">
+	  		<label for="blackSkin" class="blueText">czarna</label>
 
-	  	<input type="radio" id="greenSkin" name="skinColor" value="zielona">
-		<label for="greenSkin">zielona</label>
+	  		<input type="radio" id="greenSkin" name="skinColor" value="zielona">
+			<label for="greenSkin" class="blueText">zielona</label>
 
-		<input type="radio" id="olive" name="skinColor" value="oliwkowa">
-		<label for="olive">oliwkowa</label>
+			<input type="radio" id="olive" name="skinColor" value="oliwkowa">
+			<label for="olive" class="blueText">oliwkowa</label>
+		</div>
 		  
-	  <p id="skinColor" class="standardSize"></p>
+	  <p id="skinColor" class="standardSize labelName"></p>
   </div>
 	`;
 	mainContainer.innerHTML = "";

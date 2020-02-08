@@ -449,3 +449,6 @@ Ostylowanie części wyboru ilości punktów postaci, w ręcznym kreatorze posta
 
 6 luty 2020 - wersja 0.2.73b
 Ostylowanie części wyboru koloru: oczu, włosów oraz skóry.
+
+8 luty 2020 - wersja 0.2.73c
+Dodano formularz wybierania umiejętności.

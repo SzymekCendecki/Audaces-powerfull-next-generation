@@ -667,6 +667,133 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 		});
 	}
 
+	document.querySelector("#skills").addEventListener("click", ()=>{
+		console.log("działa");
+		
+		let showSkills = `
+			<p class="labelName">wybierz umiejętności</p>
+			
+			<div id="warrior">
+				<p class="labelName">umiejętności wojownika</p>
+
+				<input type="checkbox" name="survival" value="szt. prztrwania">
+				<label for="survival" class="blueText">szt. przetrwania</label>
+
+				<input type="checkbox" name="discipline" value="dyscyplina">
+				<label for="discipline" class="blueText">dyscyplina</label>
+
+				<input type="checkbox" name="command" value="dowodzenie">
+				<label for="command" class="blueText">dowodzenie</label>
+
+				<input type="checkbox" name="hitShield" value="uderzenie tarczą">
+				<label for="hitShield" class="blueText">uderzenie tarczą</label>
+
+				<input type="checkbox" name="horseridding" value="jazda konna">
+				<label for="horseridding" class="blueText">jazda konna</label>
+
+				<input type="checkbox" name="dagger" value="sztylet">
+				<label for="dagger" class="blueText">sztylet</label>
+
+				<input type="checkbox" name="shortSword" value="krótki miecz">
+				<label for="shortSword" class="blueText">krótki miecz</label>
+
+				<input type="checkbox" name="sabre" value="szabla">
+				<label for="sabre" class="blueText">szabla</label>
+
+				<input type="checkbox" name="spear" value="włócznia">
+				<label for="spear" class="blueText">włócznia</label>
+
+				<input type="checkbox" name="bow" value="łuk">
+				<label for="bow" class="blueText">łuk</label>
+
+				<input type="checkbox" name="buckler" value="puklerz">
+				<label for="buckler" class="blueText">puklerz</label>
+
+				<input type="checkbox" name="smallShieldWodden" value="mała tarcza drew.">
+				<label for="smallShieldWodden" class="blueText">mała tarcza drew.</label>
+
+				<input type="checkbox" name="smallShieldMetal" value="mała tarcza metal.">
+				<label for="smallShieldMetal" class="blueText" >mała tarcza matal.</label>
+			</div>
+
+			<div id="criminal">
+				<p class="labelName">umiejętności złoczyńcy</p>
+
+				<input type="checkbox" name="poisons" value="trucizny">
+				<label for="poisons" class="blueText" >trucizny</label>
+
+				<input type="checkbox" name="climbing" value="wspinaczka">
+				<label for="climbing" class="blueText">wspinaczka</label>
+
+				<input type="checkbox" name="histrionics" value="aktorstwo">
+				<label for="histrionics" class="blueText">aktorstwo</label>
+
+				<input type="checkbox" name="acrobatics" value="akrobatyka">
+				<label for="acrobatics" class="blueText">akrobatyka</label>
+
+				<input type="checkbox" name="traps" value="pułapki">
+				<label for="traps" class="blueText">pułapki</label>
+
+				<input type="checkbox" name="sneaking" value="skradanie się">
+				<label for="sneaking" class="blueText">skradanie się</label>
+
+				<input type="checkbox" name="theft" value="kradzież">
+				<label for="theft" class="blueText">kradzież</label>
+
+				<input type="checkbox" name="evasion" value="uniki">
+				<label for="evasion" class="blueText">uniki</label>
+
+				<input type="checkbox" name="bluffing" value="blefowanie">
+				<label for="bluffing" class="blueText">blefowanie</label>
+
+				<input type="checkbox" name="woodenStick" value="drew. pałka">
+				<label for="woodenStick" class="blueText">drew. pałka</label>
+			</div>
+
+			<div id="wizard">
+				<p class="labelName">umiejętności czarodzieja</p>
+
+				<input type="checkbox" name="readingWriting" value="pisanie i czytanie">
+				<label for="readingWriting" class="blueText">pisanie i czytanie</label>
+
+				<input type="checkbox" name="deamons" value="przyw./odp. demona">
+				<label for="deamons" class="blueText">przyw./odp. demona</label>
+				
+				<input type="checkbox" name="divinations" value="wróżbiarstwo">
+				<label for="divinations" class="blueText">wróżbiarstwo</label>
+
+				<input type="checkbox" name="healing" value="leczenie ran">
+				<label for="healing" class="blueText">leczenie ran</label>
+
+				<input type="checkbox" name="castSpells" value="rzucanie czarów">
+				<label for="castSpells" class="blueText">rzuczanie czarów</label>
+
+				<input type="checkbox" name="potions" value="tworz. eliksirów">
+				<label for="potions" class="blueText">tworz. eliksirów</label>
+
+				<input type="checkbox" name="magicItems" value="tworz. mag. przedm.">
+				<label for="magicItems" class="blueText">tworz.mag. przedm.</label>
+
+				<input type="checkbox" name="oinment" value="tworzenie maści">
+				<label for="oinment" class="blueText">tworzenie maści</label>
+
+				<input type="checkbox" name="runes" value="tworzenie runów">
+				<label for="runes" class="blueText">tworzenie runów</label>
+
+				<input type="checkbox" name="astrology" value="astrologia">
+				<label for="astrology" class="blueText">astrologia</label>
+
+				<input type="checkbox" name="herbology" value="zielarstwo">
+				<label for="herbology" class="blueText">zielarstwo</label>
+			</div>
+
+			<p id="choosenSkills" class="standardSize labelName"></p>
+		`;
+		
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showSkills;
+	});
+
 	document.querySelector("#reset").addEventListener("click", ()=>{
 		clearHero(hero);
 	});

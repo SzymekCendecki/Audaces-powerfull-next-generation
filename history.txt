@@ -452,3 +452,6 @@ Ostylowanie części wyboru koloru: oczu, włosów oraz skóry.
 
 8 luty 2020 - wersja 0.2.73c
 Dodano formularz wybierania umiejętności.
+
+8 luty 2020 - wersja 0.2.73.d
+Rozpoczęcie pracy nad walidacją wyboru umiejętności.

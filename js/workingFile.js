@@ -788,27 +788,32 @@ document.querySelector("#skills").addEventListener("click", ()=>{
 		</div>
 
 		<p id="choosenSkills" class="standardSize labelName">wybrane umiejętności: <span></span></p>
-		<p id="info" class="standardSize labelName"></p>
+		<p id="info" class="standardSize"></p>
 	`;
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showSkills;
 
 	for(let i=0; i<document.querySelectorAll("input").length; i++){
+		
+
 		document.querySelectorAll("input")[i].addEventListener('click', ()=>{
-			if(document.querySelectorAll("input")[i].checked === true){
+			if(document.querySelectorAll("input")[i].checked === false){
+					skills.splice(skills.indexOf(document.querySelectorAll("input")[i].value), 1);
+					document.querySelector("#choosenSkills > span").innerHTML = skills;
+					console.log(skills);
+		
+				
+			}else if(document.querySelectorAll("input")[i].checked === true){
 				skills.push(document.querySelectorAll("input")[i].value);
 				document.querySelector("#choosenSkills > span").innerHTML = skills;
 
-				if(skills.length >= 3){
-					document.querySelector("#info").innerHTML = "wybrano już maksymalną ilość umiejętności";
+				if(skills.length > 3){
 					skills.splice(3, 1);
-					document.querySelector("#choosenSkills > span").innerHTML = "";
 					document.querySelector("#choosenSkills > span").innerHTML = skills;
 				}
-			}else{
-				//console.log(skills.indexOf(document.querySelectorAll("input")[i]));
+				console.log(skills);
 			}
-		});
+		});		
 	}
 });
 
@@ -819,3 +824,8 @@ document.querySelector("#reset").addEventListener("click", ()=>{
 	play.addEventListener("click", ()=>{
 		console.log("działa");
 	});
+
+
+
+
+	

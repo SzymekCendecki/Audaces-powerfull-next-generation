@@ -90,13 +90,17 @@ var skills = [];
 
 var equip = [];
 
+var eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
+var hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
+var skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
+
 var randomPoints = [0, 0, 0, 0, 0];
 
 var showHero = function showHero(hero) {
 	document.querySelector("#creatorBtns").classList.add('displayNone');
 	document.querySelector("#creatorBtns").classList.remove('creatorBtnsStyles');
 
-	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor"></span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor"></span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor"></span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t\t<p id=\'skills\'>umiej\u0119tno\u015Bci: ' + skills + '</p>\n\t\t<p id=\'equip\'>ekwipunek: ' + equip + '</p>\n\t</div>';
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor">' + hero[9] + '</span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor">' + hero[10] + '</span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor">' + hero[11] + '</span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
 
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showHero;
@@ -294,57 +298,6 @@ randomHero.addEventListener("click", function () {
 	play.classList.remove("playDisabled");
 	play.classList.add("playEnabled");
 
-	var randomSkills = function randomSkills() {
-		switch (hero[3]) {
-			case "wojownik":
-				for (var i = 0; i < 3; i++) {
-					var random = Math.round(Math.random() * _arrays.skillsWarrior.length);
-					var is = false;
-					for (var j = 0; j < skills.length; j++) {
-						if (skills[j] == random) is = true;
-					}if (is) i--;else skills[i] = random;
-					skills.splice(i, 1, _arrays.skillsWarrior[random]);
-				}
-				break;
-
-			case "złoczyńca":
-				for (var _i = 0; _i < 3; _i++) {
-					var _random = Math.round(Math.random() * _arrays.skillsCriminal.length);
-					var _is = false;
-					for (var _j = 0; _j < skills.length; _j++) {
-						if (skills[_j] == _random) _is = true;
-					}if (_is) _i--;else skills[_i] = _random;
-					skills.splice(_i, 1, _arrays.skillsCriminal[_random]);
-				}
-				break;
-
-			case "czarodziej":
-				for (var _i2 = 0; _i2 < 3; _i2++) {
-					var _random2 = Math.round(Math.random() * _arrays.skillsWizard.length);
-					var _is2 = false;
-					for (var _j2 = 0; _j2 < skills.length; _j2++) {
-						if (skills[_j2] == _random2) _is2 = true;
-					}if (_is2) _i2--;else skills[_i2] = _random2;
-					skills.splice(_i2, 1, _arrays.skillsWizard[_random2]);
-				}
-				break;
-		}
-	};
-
-	var randomEquip = function randomEquip() {
-		var allEquip = [];
-		var randomEquip = equip.concat(_arrays.equipWeapon, _arrays.equipArmor, _arrays.equipShield, _arrays.equipOther);
-
-		for (var i = 0; i < 5; i++) {
-			var random = Math.round(Math.random() * randomEquip.length);
-			var is = false;
-			for (var j = 0; j < equip.length; j++) {
-				if (equip[j] == random) is = true;
-			}if (is) i--;else equip[i] = random;
-			equip.splice(i, 1, randomEquip[random]);
-		}
-	};
-
 	(0, _functions.rndFromArray)(_arrays.sex, hero, 1);
 	randomName(hero[1]);
 
@@ -356,17 +309,19 @@ randomHero.addEventListener("click", function () {
 
 	(0, _functions.rndFromArray)(_arrays.tattoo, hero, 12);
 
+	var colors = function colors(position, nameArray) {
+		var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+		hero.splice(position, 1, draw);
+	};
+
+	colors(9, eyesColor);
+	colors(10, hairColor);
+	colors(11, skinColor);
+
 	weight(hero, 13);
 	height(hero, 14);
 
-	randomSkills(hero[3]);
-	randomEquip();
-
 	showHero(hero);
-
-	(0, _functions.colors)(9, "#eyesColor", hero);
-	(0, _functions.colors)(10, "#hairColor", hero);
-	(0, _functions.colors)(11, "#skinColor", hero);
 });
 
 var clearHero = function clearHero(hero) {
@@ -603,7 +558,7 @@ document.querySelector("#points").addEventListener("click", function () {
 });
 
 document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \n\t\t \n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\t';
+	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
@@ -631,6 +586,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 
 						if (_radio.checked) {
 							document.querySelector("#eyesColor").innerText = 'kolor oczu: ' + _radio.value;
+							hero.splice(9, 1, _radio.value);
 							break;
 						}
 					}
@@ -687,6 +643,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 
 						if (_radio3.checked) {
 							document.querySelector("#hairColor").innerText = 'kolor w\u0142os\xF3w: ' + _radio3.value;
+							hero.splice(10, 1, _radio3.value);
 							break;
 						}
 					}
@@ -743,6 +700,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 
 						if (_radio5.checked) {
 							document.querySelector("#skinColor").innerText = 'kolor sk\xF3ry: ' + _radio5.value;
+							hero.splice(11, 1, _radio5.value);
 							break;
 						}
 					}
@@ -778,35 +736,11 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 	}
 });
 
-document.querySelector("#skills").addEventListener("click", function () {
+document.querySelector("#preview").addEventListener("click", function () {
+	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor">' + hero[9] + '</span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor">' + hero[10] + '</span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor">' + hero[11] + '</span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
 
-	var showSkills = '\n\t\t<p class="labelName">wybierz umiej\u0119tno\u015Bci</p>\n\t\t\n\t\t<div id="warrior">\n\t\t\t<p class="labelName">umiej\u0119tno\u015Bci wojownika</p>\n\n\t\t\t<input type="checkbox" name="survival" value="szt. prztrwania">\n\t\t\t<label for="survival" class="blueText">szt. przetrwania</label>\n\n\t\t\t<input type="checkbox" name="discipline" value="dyscyplina">\n\t\t\t<label for="discipline" class="blueText">dyscyplina</label>\n\n\t\t\t<input type="checkbox" name="command" value="dowodzenie">\n\t\t\t<label for="command" class="blueText">dowodzenie</label>\n\n\t\t\t<input type="checkbox" name="hitShield" value="uderzenie tarcz\u0105">\n\t\t\t<label for="hitShield" class="blueText">uderzenie tarcz\u0105</label>\n\n\t\t\t<input type="checkbox" name="horseridding" value="jazda konna">\n\t\t\t<label for="horseridding" class="blueText">jazda konna</label>\n\n\t\t\t<input type="checkbox" name="dagger" value="sztylet">\n\t\t\t<label for="dagger" class="blueText">sztylet</label>\n\n\t\t\t<input type="checkbox" name="shortSword" value="kr\xF3tki miecz">\n\t\t\t<label for="shortSword" class="blueText">kr\xF3tki miecz</label>\n\n\t\t\t<input type="checkbox" name="sabre" value="szabla">\n\t\t\t<label for="sabre" class="blueText">szabla</label>\n\n\t\t\t<input type="checkbox" name="spear" value="w\u0142\xF3cznia">\n\t\t\t<label for="spear" class="blueText">w\u0142\xF3cznia</label>\n\n\t\t\t<input type="checkbox" name="bow" value="\u0142uk">\n\t\t\t<label for="bow" class="blueText">\u0142uk</label>\n\n\t\t\t<input type="checkbox" name="buckler" value="puklerz">\n\t\t\t<label for="buckler" class="blueText">puklerz</label>\n\n\t\t\t<input type="checkbox" name="smallShieldWodden" value="ma\u0142a tarcza drew.">\n\t\t\t<label for="smallShieldWodden" class="blueText">ma\u0142a tarcza drew.</label>\n\n\t\t\t<input type="checkbox" name="smallShieldMetal" value="ma\u0142a tarcza metal.">\n\t\t\t<label for="smallShieldMetal" class="blueText" >ma\u0142a tarcza matal.</label>\n\t\t</div>\n\n\t\t<div id="criminal">\n\t\t\t<p class="labelName">umiej\u0119tno\u015Bci z\u0142oczy\u0144cy</p>\n\n\t\t\t<input type="checkbox" name="poisons" value="trucizny">\n\t\t\t<label for="poisons" class="blueText" >trucizny</label>\n\n\t\t\t<input type="checkbox" name="climbing" value="wspinaczka">\n\t\t\t<label for="climbing" class="blueText">wspinaczka</label>\n\n\t\t\t<input type="checkbox" name="histrionics" value="aktorstwo">\n\t\t\t<label for="histrionics" class="blueText">aktorstwo</label>\n\n\t\t\t<input type="checkbox" name="acrobatics" value="akrobatyka">\n\t\t\t<label for="acrobatics" class="blueText">akrobatyka</label>\n\n\t\t\t<input type="checkbox" name="traps" value="pu\u0142apki">\n\t\t\t<label for="traps" class="blueText">pu\u0142apki</label>\n\n\t\t\t<input type="checkbox" name="sneaking" value="skradanie si\u0119">\n\t\t\t<label for="sneaking" class="blueText">skradanie si\u0119</label>\n\n\t\t\t<input type="checkbox" name="theft" value="kradzie\u017C">\n\t\t\t<label for="theft" class="blueText">kradzie\u017C</label>\n\n\t\t\t<input type="checkbox" name="evasion" value="uniki">\n\t\t\t<label for="evasion" class="blueText">uniki</label>\n\n\t\t\t<input type="checkbox" name="bluffing" value="blefowanie">\n\t\t\t<label for="bluffing" class="blueText">blefowanie</label>\n\n\t\t\t<input type="checkbox" name="woodenStick" value="drew. pa\u0142ka">\n\t\t\t<label for="woodenStick" class="blueText">drew. pa\u0142ka</label>\n\t\t</div>\n\n\t\t<div id="wizard">\n\t\t\t<p class="labelName">umiej\u0119tno\u015Bci czarodzieja</p>\n\n\t\t\t<input type="checkbox" name="readingWriting" value="pisanie i czytanie">\n\t\t\t<label for="readingWriting" class="blueText">pisanie i czytanie</label>\n\n\t\t\t<input type="checkbox" name="deamons" value="przyw./odp. demona">\n\t\t\t<label for="deamons" class="blueText">przyw./odp. demona</label>\n\t\t\t\n\t\t\t<input type="checkbox" name="divinations" value="wr\xF3\u017Cbiarstwo">\n\t\t\t<label for="divinations" class="blueText">wr\xF3\u017Cbiarstwo</label>\n\n\t\t\t<input type="checkbox" name="healing" value="leczenie ran">\n\t\t\t<label for="healing" class="blueText">leczenie ran</label>\n\n\t\t\t<input type="checkbox" name="castSpells" value="rzucanie czar\xF3w">\n\t\t\t<label for="castSpells" class="blueText">rzuczanie czar\xF3w</label>\n\n\t\t\t<input type="checkbox" name="potions" value="tworz. eliksir\xF3w">\n\t\t\t<label for="potions" class="blueText">tworz. eliksir\xF3w</label>\n\n\t\t\t<input type="checkbox" name="magicItems" value="tworz. mag. przedm.">\n\t\t\t<label for="magicItems" class="blueText">tworz.mag. przedm.</label>\n\n\t\t\t<input type="checkbox" name="oinment" value="tworzenie ma\u015Bci">\n\t\t\t<label for="oinment" class="blueText">tworzenie ma\u015Bci</label>\n\n\t\t\t<input type="checkbox" name="runes" value="tworzenie run\xF3w">\n\t\t\t<label for="runes" class="blueText">tworzenie run\xF3w</label>\n\n\t\t\t<input type="checkbox" name="astrology" value="astrologia">\n\t\t\t<label for="astrology" class="blueText">astrologia</label>\n\n\t\t\t<input type="checkbox" name="herbology" value="zielarstwo">\n\t\t\t<label for="herbology" class="blueText">zielarstwo</label>\n\t\t</div>\n\n\t\t<p id="choosenSkills" class="standardSize labelName">wybrane umiej\u0119tno\u015Bci: <span></span></p>\n\t\t<p id="info" class="standardSize"></p>\n\t';
 	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showSkills;
-
-	var _loop = function _loop(i) {
-
-		document.querySelectorAll("input")[i].addEventListener('click', function () {
-			if (document.querySelectorAll("input")[i].checked === false) {
-				skills.splice(skills.indexOf(document.querySelectorAll("input")[i].value), 1);
-				document.querySelector("#choosenSkills > span").innerHTML = skills;
-				console.log(skills);
-			} else if (document.querySelectorAll("input")[i].checked === true) {
-				skills.push(document.querySelectorAll("input")[i].value);
-				document.querySelector("#choosenSkills > span").innerHTML = skills;
-
-				if (skills.length > 3) {
-					skills.splice(3, 1);
-					document.querySelector("#choosenSkills > span").innerHTML = skills;
-				}
-				console.log(skills);
-			}
-		});
-	};
-
-	for (var i = 0; i < document.querySelectorAll("input").length; i++) {
-		_loop(i);
-	}
+	mainContainer.innerHTML = showHero;
 });
 
 document.querySelector("#reset").addEventListener("click", function () {
@@ -815,6 +749,10 @@ document.querySelector("#reset").addEventListener("click", function () {
 
 play.addEventListener("click", function () {
 	console.log("działa");
+
+	if (hero[0] !== "" && hero[1] !== "" && hero[2] !== "" && hero[3] !== "" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !== 0 && hero[8] !== "" && hero[9] !== "" && hero[10] !== "" && hero[11] !== "" && hero[12] !== "" && hero[13] !== "" && hero[14] !== "") {
+		console.log("wypełnione");
+	}
 });
 
 /***/ }),
@@ -919,15 +857,6 @@ var newInput = exports.newInput = function newInput(where, typeName, idName) {
 var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
 	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
 	hero.splice(position, 1, draw);
-};
-
-var colors = exports.colors = function colors(arrayNum, where, hero) {
-	for (var i = 0; i < 3; i++) {
-		var a = Math.round(Math.random() * 255);
-		hero[arrayNum].splice([i], 1, a);
-	}
-
-	document.querySelector(where).setAttribute("style", 'background-color: rgb(' + parseInt(hero[arrayNum][0]) + ',' + parseInt(hero[arrayNum][1]) + ', ' + parseInt(hero[arrayNum][2]) + '); padding-right: 50px;');
 };
 
 /***/ })

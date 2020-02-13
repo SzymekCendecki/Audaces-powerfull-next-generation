@@ -458,3 +458,7 @@ Rozpoczęcie pracy nad walidacją wyboru umiejętności.
 
 10 luty 2020 - wersja 0.2.73e
 Praca nad walidacją wyboru umiejętności prawie skończone. Do zrobienia jest jeszcze to aby czawrta umiejętność była automatycznie odfajkowana oraz trzeba sprawdzić czy pozostałe wybory zostają.
+
+13 luty 2020 - wersja 0.2.73.f
+Zmiana koncepcji w sprawie wybierania umiejętności i ekwipunku. Umiejętności będą wybierane dopiero przy awansie postaci na wyższy poziom. Ekwipunek będzie zbierany w trakcie gry.
+  Poprawka losowania koloru ocz, skóry i włosów dla losowego tworzenia postaci.

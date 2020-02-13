@@ -1,6 +1,6 @@
 import { namesMan, namesWomen, races, occupation, sex, tatoo, equipWeapon, equipArmor, equipShield, equipOther, skillsWarrior, skillsCriminal, skillsWizard, warrior, criminal, wizard, human, halfOrc, orc, halfElv, elv, dwarf, gnome, halfling, goblin, troll, semiGiant, tattoo } from './arrays.js';
 
-import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, colors } from './functions.js';
+import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray } from './functions.js';
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -10,6 +10,10 @@ let hero =["", "", "", "", 0, 0, 0, 0, 0, "", "", "", "", "", ""];
 let skills = [];
 
 let equip = [];
+
+const eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
+const hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
+const skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
 
 let randomPoints = [0, 0, 0, 0, 0];
 
@@ -27,14 +31,12 @@ let showHero = (hero) =>{
 		<p id='dexterity'>zręczność: ${hero[6]}</p>
 		<p id='intelligence'>inteligencja: ${hero[7]}</p>
 		<p id='charisma'>charyzma: ${hero[8]}</p>
-		<p id='eyes'>kolor oczu: <span id="eyesColor"></span></p>
-		<p id='hair'>kolor włosów: <span id="hairColor"></span></p>
-		<p id='skin'>kolor skóry: <span id="skinColor"></span></p>
+		<p id='eyes'>kolor oczu: <span id="eyesColor">${hero[9]}</span></p>
+		<p id='hair'>kolor włosów: <span id="hairColor">${hero[10]}</span></p>
+		<p id='skin'>kolor skóry: <span id="skinColor">${hero[11]}</span></p>
 		<p id='tattoo'>tatuaże: ${hero[12]}</p>
 		<p id='weight'>waga: ${hero[13]} kg</p>
 		<p id='height'>wzrost: ${hero[14]} cm</p>
-		<p id='skills'>umiejętności: ${skills}</p>
-		<p id='equip'>ekwipunek: ${equip}</p>
 	</div>`;
 
 	mainContainer.innerHTML = "";
@@ -183,53 +185,6 @@ let showHero = (hero) =>{
 		play.classList.remove("playDisabled");
 		play.classList.add("playEnabled");
 
-		let randomSkills = () =>{
-			switch(hero[3]){
-				case "wojownik": 
-					for (let i=0; i<3; i++) {
-						let random = Math.round(Math.random()*skillsWarrior.length);
-						let is = false;
-						for (let j=0; j<skills.length; j++)
-						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-						skills.splice(i, 1, skillsWarrior[random]);
-					}
-				break;
-		  
-				case "złoczyńca": 
-					for (let i=0; i<3; i++) {
-						let random = Math.round(Math.random()*skillsCriminal.length);
-						let is = false;
-						for (let j=0; j<skills.length; j++)
-						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-						skills.splice(i, 1, skillsCriminal[random]);
-					}
-				break;
-		  
-				case "czarodziej": 
-					for (let i=0; i<3; i++) {
-						let random = Math.round(Math.random()*skillsWizard.length);
-						let is = false;
-						for (let j=0; j<skills.length; j++)
-						if (skills[j] == random) is = true; if (is) i--; else skills[i] = random;
-						skills.splice(i, 1, skillsWizard[random]);
-					}
-				break;
-	  		}	  
-  		}
-  
-  		let randomEquip = () =>{
-			let allEquip = [];
-			let randomEquip = equip.concat(equipWeapon, equipArmor, equipShield, equipOther);
-
-			for (let i=0; i<5; i++) {
-				let random = Math.round(Math.random()*randomEquip.length);
-				let is = false;
-				for (let j=0; j<equip.length; j++)
-				if (equip[j] == random) is = true; if (is) i--; else equip[i] = random;
-				equip.splice(i, 1, randomEquip[random]);
-			}
-  		}
-		
 		rndFromArray(sex, hero, 1);
 		randomName(hero[1]);
 		
@@ -240,18 +195,20 @@ let showHero = (hero) =>{
 		addPoints();
 		
 		rndFromArray(tattoo, hero, 12);	
+		
+		let colors = (position, nameArray) =>{
+			let draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+			hero.splice(position, 1, draw);
+		}
+		
+		colors(9, eyesColor);
+		colors(10, hairColor);
+		colors(11, skinColor);	
 				
 		weight(hero, 13);		
 		height(hero, 14);	
 		
-		randomSkills(hero[3]);	
-		randomEquip();
-		
-		showHero(hero);
-		
-		colors(9,"#eyesColor", hero);
-		colors(10, "#hairColor", hero);
-		colors(11, "#skinColor", hero);	
+		showHero(hero);		
 	});
 
 	let clearHero = (hero) => {
@@ -570,7 +527,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			<input type="radio" id="red" name="eyesColor" value="czerwone">
 			<label for="red" class="blueText">czerwone</label>
 		</div>
-		  
+			  
 	  <p id="eyesColor" class="standardSize labelName"></p>
   </div>
 
@@ -592,8 +549,8 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 
 			<input type="radio" id="none" name="hairColor" value="brak włosów">
 			<label for="none" class="blueText">brak włosów</label>
-		</div>  
-		 
+		</div>  		 
+		
 		<p id="hairColor" class="standardSize labelName"></p>
   </div>
 	  
@@ -616,7 +573,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			<input type="radio" id="olive" name="skinColor" value="oliwkowa">
 			<label for="olive" class="blueText">oliwkowa</label>
 		</div>
-		  
+				  
 	  <p id="skinColor" class="standardSize labelName"></p>
   </div>
 	`;
@@ -633,6 +590,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of eyeColor) {
 				if (radio.checked) {
 					document.querySelector("#eyesColor").innerText = `kolor oczu: ${radio.value}`;
+					hero.splice(9, 1, radio.value)
 					break;
 				}
 			}
@@ -647,6 +605,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of hairColor) {
 				if (radio.checked) {
 					document.querySelector("#hairColor").innerText = `kolor włosów: ${radio.value}`;
+					hero.splice(10, 1, radio.value)
 					break;
 				}
 			}
@@ -661,6 +620,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of skinColor) {
 				if (radio.checked) {
 					document.querySelector("#skinColor").innerText = `kolor skóry: ${radio.value}`;
+					hero.splice(11, 1, radio.value)
 					break;
 				}
 			}
@@ -668,154 +628,29 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	}
 });
 
-document.querySelector("#skills").addEventListener("click", ()=>{
-	
-	let showSkills = `
-		<p class="labelName">wybierz umiejętności</p>
-		
-		<div id="warrior">
-			<p class="labelName">umiejętności wojownika</p>
+document.querySelector("#preview").addEventListener("click", ()=>{
+	const showHero = `<div class = "showHero">
+		<p id='name'>imię: ${hero[0]}</p>
+		<p id='sex'>płeć: ${hero[1]}</p>
+		<p id='race'>rasa: ${hero[2]}</p>
+		<p id='occupation'>profesja: ${hero[3]}</p>
+		<p id='force'>siła: ${hero[4]}</p>
+		<p id='strength'>wytrzymałość: ${hero[5]}</p>
+		<p id='dexterity'>zręczność: ${hero[6]}</p>
+		<p id='intelligence'>inteligencja: ${hero[7]}</p>
+		<p id='charisma'>charyzma: ${hero[8]}</p>
+		<p id='eyes'>kolor oczu: <span id="eyesColor">${hero[9]}</span></p>
+		<p id='hair'>kolor włosów: <span id="hairColor">${hero[10]}</span></p>
+		<p id='skin'>kolor skóry: <span id="skinColor">${hero[11]}</span></p>
+		<p id='tattoo'>tatuaże: ${hero[12]}</p>
+		<p id='weight'>waga: ${hero[13]} kg</p>
+		<p id='height'>wzrost: ${hero[14]} cm</p>
+	</div>`;
 
-			<input type="checkbox" name="survival" value="szt. prztrwania">
-			<label for="survival" class="blueText">szt. przetrwania</label>
-
-			<input type="checkbox" name="discipline" value="dyscyplina">
-			<label for="discipline" class="blueText">dyscyplina</label>
-
-			<input type="checkbox" name="command" value="dowodzenie">
-			<label for="command" class="blueText">dowodzenie</label>
-
-			<input type="checkbox" name="hitShield" value="uderzenie tarczą">
-			<label for="hitShield" class="blueText">uderzenie tarczą</label>
-
-			<input type="checkbox" name="horseridding" value="jazda konna">
-			<label for="horseridding" class="blueText">jazda konna</label>
-
-			<input type="checkbox" name="dagger" value="sztylet">
-			<label for="dagger" class="blueText">sztylet</label>
-
-			<input type="checkbox" name="shortSword" value="krótki miecz">
-			<label for="shortSword" class="blueText">krótki miecz</label>
-
-			<input type="checkbox" name="sabre" value="szabla">
-			<label for="sabre" class="blueText">szabla</label>
-
-			<input type="checkbox" name="spear" value="włócznia">
-			<label for="spear" class="blueText">włócznia</label>
-
-			<input type="checkbox" name="bow" value="łuk">
-			<label for="bow" class="blueText">łuk</label>
-
-			<input type="checkbox" name="buckler" value="puklerz">
-			<label for="buckler" class="blueText">puklerz</label>
-
-			<input type="checkbox" name="smallShieldWodden" value="mała tarcza drew.">
-			<label for="smallShieldWodden" class="blueText">mała tarcza drew.</label>
-
-			<input type="checkbox" name="smallShieldMetal" value="mała tarcza metal.">
-			<label for="smallShieldMetal" class="blueText" >mała tarcza matal.</label>
-		</div>
-
-		<div id="criminal">
-			<p class="labelName">umiejętności złoczyńcy</p>
-
-			<input type="checkbox" name="poisons" value="trucizny">
-			<label for="poisons" class="blueText" >trucizny</label>
-
-			<input type="checkbox" name="climbing" value="wspinaczka">
-			<label for="climbing" class="blueText">wspinaczka</label>
-
-			<input type="checkbox" name="histrionics" value="aktorstwo">
-			<label for="histrionics" class="blueText">aktorstwo</label>
-
-			<input type="checkbox" name="acrobatics" value="akrobatyka">
-			<label for="acrobatics" class="blueText">akrobatyka</label>
-
-			<input type="checkbox" name="traps" value="pułapki">
-			<label for="traps" class="blueText">pułapki</label>
-
-			<input type="checkbox" name="sneaking" value="skradanie się">
-			<label for="sneaking" class="blueText">skradanie się</label>
-
-			<input type="checkbox" name="theft" value="kradzież">
-			<label for="theft" class="blueText">kradzież</label>
-
-			<input type="checkbox" name="evasion" value="uniki">
-			<label for="evasion" class="blueText">uniki</label>
-
-			<input type="checkbox" name="bluffing" value="blefowanie">
-			<label for="bluffing" class="blueText">blefowanie</label>
-
-			<input type="checkbox" name="woodenStick" value="drew. pałka">
-			<label for="woodenStick" class="blueText">drew. pałka</label>
-		</div>
-
-		<div id="wizard">
-			<p class="labelName">umiejętności czarodzieja</p>
-
-			<input type="checkbox" name="readingWriting" value="pisanie i czytanie">
-			<label for="readingWriting" class="blueText">pisanie i czytanie</label>
-
-			<input type="checkbox" name="deamons" value="przyw./odp. demona">
-			<label for="deamons" class="blueText">przyw./odp. demona</label>
-			
-			<input type="checkbox" name="divinations" value="wróżbiarstwo">
-			<label for="divinations" class="blueText">wróżbiarstwo</label>
-
-			<input type="checkbox" name="healing" value="leczenie ran">
-			<label for="healing" class="blueText">leczenie ran</label>
-
-			<input type="checkbox" name="castSpells" value="rzucanie czarów">
-			<label for="castSpells" class="blueText">rzuczanie czarów</label>
-
-			<input type="checkbox" name="potions" value="tworz. eliksirów">
-			<label for="potions" class="blueText">tworz. eliksirów</label>
-
-			<input type="checkbox" name="magicItems" value="tworz. mag. przedm.">
-			<label for="magicItems" class="blueText">tworz.mag. przedm.</label>
-
-			<input type="checkbox" name="oinment" value="tworzenie maści">
-			<label for="oinment" class="blueText">tworzenie maści</label>
-
-			<input type="checkbox" name="runes" value="tworzenie runów">
-			<label for="runes" class="blueText">tworzenie runów</label>
-
-			<input type="checkbox" name="astrology" value="astrologia">
-			<label for="astrology" class="blueText">astrologia</label>
-
-			<input type="checkbox" name="herbology" value="zielarstwo">
-			<label for="herbology" class="blueText">zielarstwo</label>
-		</div>
-
-		<p id="choosenSkills" class="standardSize labelName">wybrane umiejętności: <span></span></p>
-		<p id="info" class="standardSize"></p>
-	`;
 	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showSkills;
-
-	for(let i=0; i<document.querySelectorAll("input").length; i++){
-		
-
-		document.querySelectorAll("input")[i].addEventListener('click', ()=>{
-			if(document.querySelectorAll("input")[i].checked === false){
-					skills.splice(skills.indexOf(document.querySelectorAll("input")[i].value), 1);
-					document.querySelector("#choosenSkills > span").innerHTML = skills;
-					console.log(skills);
-		
-				
-			}else if(document.querySelectorAll("input")[i].checked === true){
-				skills.push(document.querySelectorAll("input")[i].value);
-				document.querySelector("#choosenSkills > span").innerHTML = skills;
-
-				if(skills.length > 3){
-					skills.splice(3, 1);
-					document.querySelector("#choosenSkills > span").innerHTML = skills;
-				}
-				console.log(skills);
-			}
-		});		
-	}
+    mainContainer.innerHTML = showHero;
 });
+
 
 document.querySelector("#reset").addEventListener("click", ()=>{
 	clearHero(hero);
@@ -823,6 +658,10 @@ document.querySelector("#reset").addEventListener("click", ()=>{
 
 	play.addEventListener("click", ()=>{
 		console.log("działa");
+
+		if(hero[0] !== "" && hero[1] !=="" && hero[2] !=="" && hero[3] !=="" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !==0 && hero[8] !=="" && hero[9] !=="" && hero[10] !=="" && hero[11] !=="" && hero[12] !=="" && hero[13] !=="" && hero[14] !==""){
+			console.log("wypełnione");
+		}
 	});
 
 

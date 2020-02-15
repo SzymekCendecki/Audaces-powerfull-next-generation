@@ -461,4 +461,8 @@ Praca nad walidacją wyboru umiejętności prawie skończone. Do zrobienia jest 
 
 13 luty 2020 - wersja 0.2.73.f
 Zmiana koncepcji w sprawie wybierania umiejętności i ekwipunku. Umiejętności będą wybierane dopiero przy awansie postaci na wyższy poziom. Ekwipunek będzie zbierany w trakcie gry.
-  Poprawka losowania koloru ocz, skóry i włosów dla losowego tworzenia postaci.
+  Poprawka losowania koloru oczu, skóry i włosów dla losowego tworzenia postaci.
+
+15 grudnia 2020 - wersja 0.2.73g
+Dodanie wyboru tatuaży.
+  Rozpoczęcie pracy nad wyborem wagi w ręcznym kreatorze postaci.

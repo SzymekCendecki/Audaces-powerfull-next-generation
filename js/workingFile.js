@@ -576,11 +576,66 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 				  
 	  <p id="skinColor" class="standardSize labelName"></p>
   </div>
+
+  <div id="tattoos">	
+		<p class="labelName">tatuaże</p>
+		
+		<div class="displayFlex">
+			<input type="radio" id="none" name="tattoos" value="brak">
+			<label for="none" class="blueText">brak</label>
+
+	  		<input type="radio" id="prison" name="tattoos" value="więzienne">
+			<label for="prison" class="blueText">więzienne</label>
+
+			<input type="radio" id="tribal" name="tattoos" value="plemienne">
+	  		<label for="tribal" class="blueText">plemiennne</label>
+
+	  		<input type="radio" id="strange" name="tattoos" value="dziwne">
+			<label for="strange" class="blueText">dziwne</label>
+		</div>
+				  
+	  	<p id="choosenTattoo" class="standardSize labelName"></p>
+  	</div>
+
+  	<div id="weight">	
+		<p class="labelName">waga</p>
+
+		<p id="noRaceWeight">musisz wybrać rasę</p>
+
+		<p id="withRaceWeight" class="displayNone">możesz wybrać wagę</p>
+
+	 	<p id="choosenWeight" class="standardSize labelName"></p>
+ 	</div>
+
+ 	<div id="height">	
+		<p class="labelName">wzrost</p>
+		  
+		<p id="noRaceHeight">musisz wybrać rasę</p>
+
+		<p id="withRaceHeight" class="displayNone"> możesz wybrać wzrost</p>
+					
+		<p id="choosenWeight" class="standardSize labelName"></p>
+	</div>
 	`;
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
-	document.getElementById('skinColor').style.backgroundColor = `rgb(${hero[11][0]},${hero[11][1]}, ${hero[11][2]}`;
+	function checkRace(hero){
+		if(hero[2] == ""){
+			document.querySelector("#noRaceWeight").classList.remove("displayNone");
+			document.querySelector("#noRaceHeight").classList.remove("displayNone");
+	
+			document.querySelector("#withRaceWeight").classList.add("displayNone");
+			document.querySelector("#withRaceHeight").classList.add("displayNone");
+		}else{
+			document.querySelector("#noRaceWeight").classList.add("displayNone");
+			document.querySelector("#noRaceHeight").classList.add("displayNone");
+	
+			document.querySelector("#withRaceWeight").classList.remove("displayNone");
+			document.querySelector("#withRaceHeight").classList.remove("displayNone");
+		}
+	}
+	checkRace(hero);
 
 	const formEyes = document.querySelector("#eyes");
 	const eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
@@ -626,6 +681,21 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			}
 		});
 	}
+
+	const formTattoos = document.querySelector("#tattoos");
+	const choosenTattoo = formTattoos.querySelectorAll("input[name=tattoos]");
+
+ 	for (const radio of choosenTattoo) {
+		radio.addEventListener("change", function() {
+			for (const radio of choosenTattoo) {
+				if (radio.checked) {
+					document.querySelector("#choosenTattoo").innerText = `tatuaż: ${radio.value}`;
+					hero.splice(12, 1, radio.value)
+					break;
+				}
+			}
+		});
+	}	
 });
 
 document.querySelector("#preview").addEventListener("click", ()=>{
@@ -664,7 +734,3 @@ document.querySelector("#reset").addEventListener("click", ()=>{
 		}
 	});
 
-
-
-
-	

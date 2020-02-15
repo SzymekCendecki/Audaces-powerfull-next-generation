@@ -558,11 +558,26 @@ document.querySelector("#points").addEventListener("click", function () {
 });
 
 document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\t';
+	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="tattoos">\t\n\t\t<p class="labelName">tatua\u017Ce</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="none" name="tattoos" value="brak">\n\t\t\t<label for="none" class="blueText">brak</label>\n\n\t  \t\t<input type="radio" id="prison" name="tattoos" value="wi\u0119zienne">\n\t\t\t<label for="prison" class="blueText">wi\u0119zienne</label>\n\n\t\t\t<input type="radio" id="tribal" name="tattoos" value="plemienne">\n\t  \t\t<label for="tribal" class="blueText">plemiennne</label>\n\n\t  \t\t<input type="radio" id="strange" name="tattoos" value="dziwne">\n\t\t\t<label for="strange" class="blueText">dziwne</label>\n\t\t</div>\n\t\t\t\t  \n\t  \t<p id="choosenTattoo" class="standardSize labelName"></p>\n  \t</div>\n\n  \t<div id="weight">\t\n\t\t<p class="labelName">waga</p>\n\n\t\t<p id="noRaceWeight">musisz wybra\u0107 ras\u0119</p>\n\n\t\t<p id="withRaceWeight" class="displayNone">mo\u017Cesz wybra\u0107 wag\u0119</p>\n\n\t \t<p id="choosenWeight" class="standardSize labelName"></p>\n \t</div>\n\n \t<div id="height">\t\n\t\t<p class="labelName">wzrost</p>\n\t\t  \n\t\t<p id="noRaceHeight">musisz wybra\u0107 ras\u0119</p>\n\n\t\t<p id="withRaceHeight" class="displayNone"> mo\u017Cesz wybra\u0107 wzrost</p>\n\t\t\t\t\t\n\t\t<p id="choosenWeight" class="standardSize labelName"></p>\n\t</div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
-	document.getElementById('skinColor').style.backgroundColor = 'rgb(' + hero[11][0] + ',' + hero[11][1] + ', ' + hero[11][2];
+	function checkRace(hero) {
+		if (hero[2] == "") {
+			document.querySelector("#noRaceWeight").classList.remove("displayNone");
+			document.querySelector("#noRaceHeight").classList.remove("displayNone");
+
+			document.querySelector("#withRaceWeight").classList.add("displayNone");
+			document.querySelector("#withRaceHeight").classList.add("displayNone");
+		} else {
+			document.querySelector("#noRaceWeight").classList.add("displayNone");
+			document.querySelector("#noRaceHeight").classList.add("displayNone");
+
+			document.querySelector("#withRaceWeight").classList.remove("displayNone");
+			document.querySelector("#withRaceHeight").classList.remove("displayNone");
+		}
+	}
+	checkRace(hero);
 
 	var formEyes = document.querySelector("#eyes");
 	var eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
@@ -576,13 +591,13 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 			var radio = _step.value;
 
 			radio.addEventListener("change", function () {
-				var _iteratorNormalCompletion4 = true;
-				var _didIteratorError4 = false;
-				var _iteratorError4 = undefined;
+				var _iteratorNormalCompletion5 = true;
+				var _didIteratorError5 = false;
+				var _iteratorError5 = undefined;
 
 				try {
-					for (var _iterator4 = eyeColor[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-						var _radio = _step4.value;
+					for (var _iterator5 = eyeColor[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+						var _radio = _step5.value;
 
 						if (_radio.checked) {
 							document.querySelector("#eyesColor").innerText = 'kolor oczu: ' + _radio.value;
@@ -591,16 +606,16 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						}
 					}
 				} catch (err) {
-					_didIteratorError4 = true;
-					_iteratorError4 = err;
+					_didIteratorError5 = true;
+					_iteratorError5 = err;
 				} finally {
 					try {
-						if (!_iteratorNormalCompletion4 && _iterator4.return) {
-							_iterator4.return();
+						if (!_iteratorNormalCompletion5 && _iterator5.return) {
+							_iterator5.return();
 						}
 					} finally {
-						if (_didIteratorError4) {
-							throw _iteratorError4;
+						if (_didIteratorError5) {
+							throw _iteratorError5;
 						}
 					}
 				}
@@ -633,13 +648,13 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 			var _radio2 = _step2.value;
 
 			_radio2.addEventListener("change", function () {
-				var _iteratorNormalCompletion5 = true;
-				var _didIteratorError5 = false;
-				var _iteratorError5 = undefined;
+				var _iteratorNormalCompletion6 = true;
+				var _didIteratorError6 = false;
+				var _iteratorError6 = undefined;
 
 				try {
-					for (var _iterator5 = hairColor[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-						var _radio3 = _step5.value;
+					for (var _iterator6 = hairColor[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+						var _radio3 = _step6.value;
 
 						if (_radio3.checked) {
 							document.querySelector("#hairColor").innerText = 'kolor w\u0142os\xF3w: ' + _radio3.value;
@@ -648,16 +663,16 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						}
 					}
 				} catch (err) {
-					_didIteratorError5 = true;
-					_iteratorError5 = err;
+					_didIteratorError6 = true;
+					_iteratorError6 = err;
 				} finally {
 					try {
-						if (!_iteratorNormalCompletion5 && _iterator5.return) {
-							_iterator5.return();
+						if (!_iteratorNormalCompletion6 && _iterator6.return) {
+							_iterator6.return();
 						}
 					} finally {
-						if (_didIteratorError5) {
-							throw _iteratorError5;
+						if (_didIteratorError6) {
+							throw _iteratorError6;
 						}
 					}
 				}
@@ -690,13 +705,13 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 			var _radio4 = _step3.value;
 
 			_radio4.addEventListener("change", function () {
-				var _iteratorNormalCompletion6 = true;
-				var _didIteratorError6 = false;
-				var _iteratorError6 = undefined;
+				var _iteratorNormalCompletion7 = true;
+				var _didIteratorError7 = false;
+				var _iteratorError7 = undefined;
 
 				try {
-					for (var _iterator6 = skinColor[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-						var _radio5 = _step6.value;
+					for (var _iterator7 = skinColor[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+						var _radio5 = _step7.value;
 
 						if (_radio5.checked) {
 							document.querySelector("#skinColor").innerText = 'kolor sk\xF3ry: ' + _radio5.value;
@@ -705,16 +720,16 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						}
 					}
 				} catch (err) {
-					_didIteratorError6 = true;
-					_iteratorError6 = err;
+					_didIteratorError7 = true;
+					_iteratorError7 = err;
 				} finally {
 					try {
-						if (!_iteratorNormalCompletion6 && _iterator6.return) {
-							_iterator6.return();
+						if (!_iteratorNormalCompletion7 && _iterator7.return) {
+							_iterator7.return();
 						}
 					} finally {
-						if (_didIteratorError6) {
-							throw _iteratorError6;
+						if (_didIteratorError7) {
+							throw _iteratorError7;
 						}
 					}
 				}
@@ -731,6 +746,63 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 		} finally {
 			if (_didIteratorError3) {
 				throw _iteratorError3;
+			}
+		}
+	}
+
+	var formTattoos = document.querySelector("#tattoos");
+	var choosenTattoo = formTattoos.querySelectorAll("input[name=tattoos]");
+
+	var _iteratorNormalCompletion4 = true;
+	var _didIteratorError4 = false;
+	var _iteratorError4 = undefined;
+
+	try {
+		for (var _iterator4 = choosenTattoo[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+			var _radio6 = _step4.value;
+
+			_radio6.addEventListener("change", function () {
+				var _iteratorNormalCompletion8 = true;
+				var _didIteratorError8 = false;
+				var _iteratorError8 = undefined;
+
+				try {
+					for (var _iterator8 = choosenTattoo[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+						var _radio7 = _step8.value;
+
+						if (_radio7.checked) {
+							document.querySelector("#choosenTattoo").innerText = 'tatua\u017C: ' + _radio7.value;
+							hero.splice(12, 1, _radio7.value);
+							break;
+						}
+					}
+				} catch (err) {
+					_didIteratorError8 = true;
+					_iteratorError8 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion8 && _iterator8.return) {
+							_iterator8.return();
+						}
+					} finally {
+						if (_didIteratorError8) {
+							throw _iteratorError8;
+						}
+					}
+				}
+			});
+		}
+	} catch (err) {
+		_didIteratorError4 = true;
+		_iteratorError4 = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion4 && _iterator4.return) {
+				_iterator4.return();
+			}
+		} finally {
+			if (_didIteratorError4) {
+				throw _iteratorError4;
 			}
 		}
 	}

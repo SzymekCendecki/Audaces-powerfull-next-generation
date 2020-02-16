@@ -602,18 +602,15 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 
 		<p id="noRaceWeight">musisz wybrać rasę</p>
 
-		<p id="withRaceWeight" class="displayNone">możesz wybrać wagę</p>
-
 	 	<p id="choosenWeight" class="standardSize labelName"></p>
  	</div>
 
  	<div id="height">	
 		<p class="labelName">wzrost</p>
 		  
-		<p id="noRaceHeight">musisz wybrać rasę</p>
+		<div id="xyz">
+		</div>	
 
-		<p id="withRaceHeight" class="displayNone"> możesz wybrać wzrost</p>
-					
 		<p id="choosenWeight" class="standardSize labelName"></p>
 	</div>
 	`;
@@ -622,17 +619,82 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 
 	function checkRace(hero){
 		if(hero[2] == ""){
-			document.querySelector("#noRaceWeight").classList.remove("displayNone");
-			document.querySelector("#noRaceHeight").classList.remove("displayNone");
+			
+			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight">musisz wybrać rasę</p>';
 	
-			document.querySelector("#withRaceWeight").classList.add("displayNone");
-			document.querySelector("#withRaceHeight").classList.add("displayNone");
 		}else{
-			document.querySelector("#noRaceWeight").classList.add("displayNone");
-			document.querySelector("#noRaceHeight").classList.add("displayNone");
+			
+			switch (hero[2]) {
+				case 'człowiek':
+					 
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
+					
+					console.log(hero[2]);
+
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						console.log(document.getElementById("volume").value);
+					});
+					break;
+
+
+
+
+
+
+
+
+
+
+
+				case 'półork':
+					console.log(hero[2]);
+			
+					break;
+				case 'ork':
+					console.log(hero[2]);
+				
+					break;
+
+				case 'półelf':
+					console.log(hero[2]);
+			
+					break;
+				case 'elf':
+					console.log(hero[2]);
+				
+					break;
+
+				case 'krasnolud':
+					console.log(hero[2]);
+		
+					break;
+
+				case 'gnom':
+					console.log(hero[2]);
+			
+					break;
+
+				case 'niziołek':
+					console.log(hero[2]);
 	
-			document.querySelector("#withRaceWeight").classList.remove("displayNone");
-			document.querySelector("#withRaceHeight").classList.remove("displayNone");
+					break;
+
+				case 'goblin':
+					console.log(hero[2]);
+
+					break;
+
+				case 'trol':
+					console.log(hero[2]);
+	
+					break;
+
+				case 'półolbrzym':
+					console.log(hero[2]);
+
+					break;
+			  }
+
 		}
 	}
 	checkRace(hero);

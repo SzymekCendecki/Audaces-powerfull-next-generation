@@ -558,14 +558,14 @@ document.querySelector("#points").addEventListener("click", function () {
 });
 
 document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="tattoos">\t\n\t\t<p class="labelName">tatua\u017Ce</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="none" name="tattoos" value="brak">\n\t\t\t<label for="none" class="blueText">brak</label>\n\n\t  \t\t<input type="radio" id="prison" name="tattoos" value="wi\u0119zienne">\n\t\t\t<label for="prison" class="blueText">wi\u0119zienne</label>\n\n\t\t\t<input type="radio" id="tribal" name="tattoos" value="plemienne">\n\t  \t\t<label for="tribal" class="blueText">plemiennne</label>\n\n\t  \t\t<input type="radio" id="strange" name="tattoos" value="dziwne">\n\t\t\t<label for="strange" class="blueText">dziwne</label>\n\t\t</div>\n\t\t\t\t  \n\t  \t<p id="choosenTattoo" class="standardSize labelName"></p>\n  \t</div>\n\n  \t<div id="weight">\t\n\t\t<p class="labelName">waga</p>\n\n\t\t<p id="noRaceWeight">musisz wybra\u0107 ras\u0119</p>\n\n\t \t<p id="choosenWeight" class="standardSize labelName"></p>\n \t</div>\n\n \t<div id="height">\t\n\t\t<p class="labelName">wzrost</p>\n\t\t  \n\t\t<div id="xyz">\n\t\t</div>\t\n\n\t\t<p id="choosenWeight" class="standardSize labelName"></p>\n\t</div>\n\t';
+	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="tattoos">\t\n\t\t<p class="labelName">tatua\u017Ce</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="none" name="tattoos" value="brak">\n\t\t\t<label for="none" class="blueText">brak</label>\n\n\t  \t\t<input type="radio" id="prison" name="tattoos" value="wi\u0119zienne">\n\t\t\t<label for="prison" class="blueText">wi\u0119zienne</label>\n\n\t\t\t<input type="radio" id="tribal" name="tattoos" value="plemienne">\n\t  \t\t<label for="tribal" class="blueText">plemiennne</label>\n\n\t  \t\t<input type="radio" id="strange" name="tattoos" value="dziwne">\n\t\t\t<label for="strange" class="blueText">dziwne</label>\n\t\t</div>\n\t\t\t\t  \n\t  \t<p id="choosenTattoo" class="standardSize labelName"></p>\n  \t</div>\n\n  \t<div id="weight">\t\n\t\t<p class="labelName">waga</p>\n\n\t\t<p id="noRaceWeight">musisz wybra\u0107 ras\u0119</p>\n\n\t \t<p id="choosenWeight" class="standardSize labelName"></p>\n \t</div>\n\n \t<div id="height">\t\n\t\t<p class="labelName">wzrost</p>\n\t\t  \n\t\t<div id="xyz">\n\t\t</div>\t\n\n\t\t<p id="choosenHeight" class="standardSize labelName"></p>\n\t</div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
 
 	function checkRace(hero) {
 		if (hero[2] == "") {
 
-			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight">musisz wybrać rasę</p>';
+			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight" class="labelName">musisz wybrać rasę</p>';
 		} else {
 
 			switch (hero[2]) {
@@ -573,58 +573,114 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 
 					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
 
-					console.log(hero[2]);
-
 					document.querySelector("#volume").addEventListener("change", function () {
-						console.log(document.getElementById("volume").value);
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
 					});
 					break;
 
 				case 'półork':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 				case 'ork':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
 
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'półelf':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
 
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 				case 'elf':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
 
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'krasnolud':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 
 				case 'gnom':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 
 				case 'niziołek':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
 
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'goblin':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 
 				case 'trol':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 
 				case 'półolbrzym':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
+
+					document.querySelector("#volume").addEventListener("change", function () {
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML = "";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 			}

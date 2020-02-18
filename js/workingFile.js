@@ -611,7 +611,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 		<div id="xyz">
 		</div>	
 
-		<p id="choosenWeight" class="standardSize labelName"></p>
+		<p id="choosenHeight" class="standardSize labelName"></p>
 	</div>
 	`;
 	mainContainer.innerHTML = "";
@@ -620,7 +620,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	function checkRace(hero){
 		if(hero[2] == ""){
 			
-			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight">musisz wybrać rasę</p>';
+			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight" class="labelName">musisz wybrać rasę</p>';
 	
 		}else{
 			
@@ -629,68 +629,114 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					 
 					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
 					
-					console.log(hero[2]);
-
 					document.querySelector("#volume").addEventListener("change", ()=>{
-						console.log(document.getElementById("volume").value);
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
 					});
 					break;
 
-
-
-
-
-
-
-
-
-
-
 				case 'półork':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 			
 					break;
 				case 'ork':
-					console.log(hero[2]);
-				
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'półelf':
-					console.log(hero[2]);
-			
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 				case 'elf':
-					console.log(hero[2]);
-				
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'krasnolud':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 		
 					break;
 
 				case 'gnom':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 			
 					break;
 
 				case 'niziołek':
-					console.log(hero[2]);
-	
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 					break;
 
 				case 'goblin':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 
 				case 'trol':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 	
 					break;
 
 				case 'półolbrzym':
-					console.log(hero[2]);
+					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
+					
+					document.querySelector("#volume").addEventListener("change", ()=>{
+						hero.splice(14, 1, document.getElementById("volume").value);
+						document.querySelector("#choosenHeight").innerHTML ="";
+						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+					});
 
 					break;
 			  }

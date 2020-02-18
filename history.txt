@@ -470,3 +470,5 @@ Dodanie wyboru tatuaży.
 16 luty 2020 - wersja 0.2.73h
 Praca nad wyborem wzrostu oraz wagi.
 
+18 luty 2020 - wersja 0.2.73i
+Praca nad wybieraniem wzrostu dla konkretnej rasy oraz poprawka opisu rasy: trola.

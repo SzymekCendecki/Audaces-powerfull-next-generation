@@ -600,7 +600,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
   	<div id="weight">	
 		<p class="labelName">waga</p>
 
-		<p id="noRaceWeight">musisz wybrać rasę</p>
+		<p id="noRaceWeight" class="labelName"></p>
 
 	 	<p id="choosenWeight" class="standardSize labelName"></p>
  	</div>
@@ -608,8 +608,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
  	<div id="height">	
 		<p class="labelName">wzrost</p>
 		  
-		<div id="xyz">
-		</div>	
+		<p id="noRaceHeight" class="labelName"></p>	
 
 		<p id="choosenHeight" class="standardSize labelName"></p>
 	</div>
@@ -620,24 +619,44 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	function checkRace(hero){
 		if(hero[2] == ""){
 			
-			document.querySelector("#xyz").innerHTML = '<p id="noRaceHeight" class="labelName">musisz wybrać rasę</p>';
-	
+			document.querySelector("#noRaceWeight").innerHTML = "musisz wybrać rasę";
+			document.querySelector("#noRaceHeight").innerHTML = "musisz wybrać rasę";
+		
 		}else{
 			
 			switch (hero[2]) {
 				case 'człowiek':
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="120" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
 					 
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
 					});
+
 					break;
 
 				case 'półork':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="140" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
+					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -646,8 +665,19 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					});
 			
 					break;
+
 				case 'ork':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="80" max="180" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
+					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -657,7 +687,17 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'półelf':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="100" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
+					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -665,8 +705,19 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
 					});
 					break;
+
 				case 'elf':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="90" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
+					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -676,7 +727,17 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'krasnolud':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="70" max="100" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});
+					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -687,7 +748,16 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'gnom':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});					 
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -698,7 +768,16 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'niziołek':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="60" max="100" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});				
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -708,7 +787,16 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'goblin':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});				
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -719,7 +807,16 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'trol':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="150" max="200" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});				
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
@@ -730,7 +827,16 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 					break;
 
 				case 'półolbrzym':
-					document.querySelector("#xyz").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
+
+					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="210" max="300" step="1"></input>';
+
+					document.querySelector("#vol").addEventListener("change", ()=>{
+						hero.splice(13, 1, document.getElementById("vol").value);
+						document.querySelector("#choosenWeight").innerHTML ="";
+						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+					});				
+
+					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
 					
 					document.querySelector("#volume").addEventListener("change", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);

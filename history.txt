@@ -475,3 +475,6 @@ Praca nad wybieraniem wzrostu dla konkretnej rasy oraz poprawka opisu rasy: trol
 
 20 luty 2020 - wersja 0.2.73j
 Dodanie wybierania wagi. Poprawka dla opisu gnoma. Dodać walidację wagi i wzrostu, przy ponownym wybraniu rasy (albo zerowanie wagi i wzrostu w tablicy hero)
+
+24 lutego 2020 - wersja 0.2.74
+Rozpoczęto pracę nad sprawdzaniem czy użytkownik wybrał wszystkie opcje przy ręcznym tworzeniu postaci (do poprawy - funkcję przenieść z "głównego przycisku do wyboru opcji).

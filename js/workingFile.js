@@ -228,6 +228,14 @@ let showHero = (hero) =>{
 		hero.splice(13, 1, "");
 		hero.splice(14, 1, "");
 	  }
+
+	  let letsPlayGame = (hero) =>{
+		if(hero[0] !== "" && hero[1] !=="" && hero[2] !=="" && hero[3] !=="" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !==0 && hero[8] !=="" && hero[9] !=="" && hero[10] !=="" && hero[11] !=="" && hero[12] !=="" && hero[13] !=="" && hero[14] !==""){
+			play.disabled = false;
+			play.classList.remove("playDisabled");
+			play.classList.add("playEnabled");
+		}
+	}
 	
 	createHero.addEventListener("click", ()=>{
 
@@ -250,6 +258,7 @@ let showHero = (hero) =>{
 
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showName;
+		letsPlayGame(hero);
 
 		document.querySelector("#accept").addEventListener("click", ()=>{
 
@@ -278,6 +287,7 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showSex;
+		letsPlayGame(hero);
 
 		document.querySelector("#chooseMan").addEventListener("click", ()=>{
 			hero.splice(1, 1, "mężczyzna");
@@ -315,9 +325,12 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showRace;
+		letsPlayGame(hero);
 
 		let xxx = (x, y) => {
 			hero.splice(2, 1, x);	
+			hero.splice(13, 1, "");
+			hero.splice(14, 1, "");
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML=`wybrano ${y}`;
 		}
@@ -367,6 +380,7 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showOccupation;
+		letsPlayGame(hero);
 
 		document.querySelector("#warrior").addEventListener("click", ()=>{ 
 			hero.splice(3, 1, "wojownik");	
@@ -423,6 +437,7 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showPoints;
+		letsPlayGame(hero);
 
 		document.querySelector("#force").addEventListener("change", ()=>{
 
@@ -615,6 +630,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	`;
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
+	letsPlayGame(hero);
 
 	function checkRace(hero){
 		if(hero[2] == ""){
@@ -932,7 +948,8 @@ document.querySelector("#preview").addEventListener("click", ()=>{
 	</div>`;
 
 	mainContainer.innerHTML = "";
-    mainContainer.innerHTML = showHero;
+	mainContainer.innerHTML = showHero;
+	letsPlayGame(hero);
 });
 
 
@@ -940,11 +957,7 @@ document.querySelector("#reset").addEventListener("click", ()=>{
 	clearHero(hero);
 });
 
-	play.addEventListener("click", ()=>{
-		console.log("działa");
-
-		if(hero[0] !== "" && hero[1] !=="" && hero[2] !=="" && hero[3] !=="" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !==0 && hero[8] !=="" && hero[9] !=="" && hero[10] !=="" && hero[11] !=="" && hero[12] !=="" && hero[13] !=="" && hero[14] !==""){
-			console.log("wypełnione");
-		}
-	});
+document.querySelector("#play").addEventListener("click", ()=>{
+	console.log("działa");
+});
 

@@ -287,24 +287,26 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showSex;
-		letsPlayGame(hero);
-
+		
 		document.querySelector("#chooseMan").addEventListener("click", ()=>{
 			hero.splice(1, 1, "mężczyzna");
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano mężczyznę";
+			letsPlayGame(hero);
 		});
 
 		document.querySelector("#chooseWomen").addEventListener("click", ()=>{
 			hero.splice(1, 1, "kobieta");
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano kobietę";
+			letsPlayGame(hero);
 		});
 
 		document.querySelector("#chooseOther").addEventListener("click", ()=>{
 			hero.splice(1, 1, "nie wiadomo");
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano nie określoną płeć";
+			letsPlayGame(hero);
 		});
 	});
 
@@ -325,8 +327,7 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showRace;
-		letsPlayGame(hero);
-
+		
 		let xxx = (x, y) => {
 			hero.splice(2, 1, x);	
 			hero.splice(13, 1, "");
@@ -337,36 +338,47 @@ let showHero = (hero) =>{
 		
 		document.querySelector("#human").addEventListener("click", ()=>{ 
 			xxx("człowiek", "człowieka");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#halfOrc").addEventListener("click", ()=>{ 
 			xxx("półork", "półorka");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#orc").addEventListener("click", ()=>{ 
 			xxx("ork", "orka");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#halfElv").addEventListener("click", ()=>{ 
 			xxx("półelf", "półelfa");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#elv").addEventListener("click", ()=>{ 
 			xxx("elf", "elfa");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#dwarf").addEventListener("click", ()=>{ 
 			xxx("krasnolud", "krasnoluda");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#gnome").addEventListener("click", ()=>{ 
 			xxx("gnom", "gnoma");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#halfling").addEventListener("click", ()=>{ 
 			xxx("niziołek", "niziołka");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#goblin").addEventListener("click", ()=>{ 
 			xxx("goblin", "goblina");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#troll").addEventListener("click", ()=>{ 
 			xxx("trol", "trola");
+			letsPlayGame(hero);
 		});
 		document.querySelector("#semiGiant").addEventListener("click", ()=>{ 
 			xxx("półolbrzym", "półolbrzyma");
+			letsPlayGame(hero);
 		});
 
 	});
@@ -380,22 +392,24 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showOccupation;
-		letsPlayGame(hero);
-
+	
 		document.querySelector("#warrior").addEventListener("click", ()=>{ 
 			hero.splice(3, 1, "wojownik");	
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano wojownika";
+			letsPlayGame(hero);
 		});
 		document.querySelector("#criminal").addEventListener("click", ()=>{ 
 			hero.splice(3, 1, "złoczyńca");	
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano złoczyńcę";
+			letsPlayGame(hero);
 		});
 		document.querySelector("#wizard").addEventListener("click", ()=>{ 
 			hero.splice(3, 1, "czarodziej"); 
 			document.querySelector("#comment").innerHTML = "";
 			document.querySelector("#comment").innerHTML="wybrano czarodzieja";
+			letsPlayGame(hero);
 		});
 	});
 
@@ -437,7 +451,6 @@ let showHero = (hero) =>{
 		`;
 		mainContainer.innerHTML = "";
 		mainContainer.innerHTML = showPoints;
-		letsPlayGame(hero);
 
 		document.querySelector("#force").addEventListener("change", ()=>{
 
@@ -454,6 +467,7 @@ let showHero = (hero) =>{
 				
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
+			letsPlayGame(hero);
 		});
 
 		document.querySelector("#strength").addEventListener("change", ()=>{
@@ -470,6 +484,7 @@ let showHero = (hero) =>{
 	
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
+			letsPlayGame(hero);
 		});
 
 		document.querySelector("#dexterity").addEventListener("change", ()=>{
@@ -486,6 +501,7 @@ let showHero = (hero) =>{
 	
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
+			letsPlayGame(hero);
 		});
 
 		document.querySelector("#intelligence").addEventListener("change", ()=>{
@@ -502,6 +518,7 @@ let showHero = (hero) =>{
 	
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
+			letsPlayGame(hero);
 		});
 	
 		document.querySelector("#charisma").addEventListener("change", ()=>{
@@ -518,6 +535,7 @@ let showHero = (hero) =>{
 	
 			let choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 			document.getElementById('allPoints').textContent = choosenPoints;
+			letsPlayGame(hero);
 		});
 	});	
 
@@ -630,7 +648,6 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 	`;
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
-	letsPlayGame(hero);
 
 	function checkRace(hero){
 		if(hero[2] == ""){
@@ -649,6 +666,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
@@ -657,6 +675,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -669,6 +688,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 
@@ -678,6 +698,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 			
 					break;
@@ -690,6 +711,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 
@@ -699,6 +721,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -710,6 +733,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 
@@ -719,6 +743,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -730,6 +755,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 
@@ -739,6 +765,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -750,6 +777,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 					 
 
@@ -759,6 +787,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 		
 					break;
@@ -771,6 +800,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});					 
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
@@ -779,6 +809,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 			
 					break;
@@ -791,6 +822,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});				
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
@@ -799,6 +831,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -810,6 +843,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});				
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
@@ -818,6 +852,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -830,6 +865,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});				
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
@@ -838,6 +874,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 	
 					break;
@@ -850,6 +887,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML ="";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});				
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
@@ -858,6 +896,7 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML ="";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -875,8 +914,8 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of eyeColor) {
 				if (radio.checked) {
 					document.querySelector("#eyesColor").innerText = `kolor oczu: ${radio.value}`;
-					hero.splice(9, 1, radio.value)
-					break;
+					hero.splice(9, 1, radio.value);
+					letsPlayGame(hero);
 				}
 			}
 		});
@@ -890,8 +929,8 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of hairColor) {
 				if (radio.checked) {
 					document.querySelector("#hairColor").innerText = `kolor włosów: ${radio.value}`;
-					hero.splice(10, 1, radio.value)
-					break;
+					hero.splice(10, 1, radio.value);
+					letsPlayGame(hero);
 				}
 			}
 		});
@@ -905,8 +944,8 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of skinColor) {
 				if (radio.checked) {
 					document.querySelector("#skinColor").innerText = `kolor skóry: ${radio.value}`;
-					hero.splice(11, 1, radio.value)
-					break;
+					hero.splice(11, 1, radio.value);
+					letsPlayGame(hero);
 				}
 			}
 		});
@@ -920,8 +959,8 @@ document.querySelector("#characterTraits").addEventListener("click", ()=>{
 			for (const radio of choosenTattoo) {
 				if (radio.checked) {
 					document.querySelector("#choosenTattoo").innerText = `tatuaż: ${radio.value}`;
-					hero.splice(12, 1, radio.value)
-					break;
+					hero.splice(12, 1, radio.value);
+					letsPlayGame(hero);
 				}
 			}
 		});

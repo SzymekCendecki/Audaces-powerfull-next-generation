@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda+One');
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
 @import url('https://fonts.googleapis.com/css?family=New+Rocker');
+@import "textColors";
+@import "buttons";
 
 *{
    margin: 0; 
@@ -104,24 +106,6 @@ footer{
   align-items: center;  
 }
 
-@mixin firstMenuBtns($bgc){
-  width: 10%;
-  height: 75%;
-  background-color: $bgc;
-  color: #fff;
-  font-size: 2em;
-  font-weight: bolder;
-  font-family: 'New Rocker', cursive;
-  text-align: center; 
-}
-
-.infoBtn{ @include firstMenuBtns(#1B41B6);}
-.licenceBtn{ @include firstMenuBtns(#C711AE);}
-.tutorialBtn{ @include firstMenuBtns(#C70039); }
-.newGameBtn{ @include firstMenuBtns(#139033); }
-.randomHero{ @include firstMenuBtns(#139033); };
-.createHero{ @include firstMenuBtns(#139033); };
-
 .pStyles{
 	color: #000;
 	background-color: rgba(255, 255, 255, 0.7);
@@ -168,33 +152,6 @@ footer{
 	width: 20%;
 }
 
-.blueText{
-  -webkit-text-fill-color: #0000ff;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-size: 2.5em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;	
-}
-
-.redText{
-  -webkit-text-fill-color: #ff0000;;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-size: 2.5em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;	
-}
-
-.greenText{
-  -webkit-text-fill-color: rgb(0, 204, 68);
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-  font-size: 2.5em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;	
-}
-
 .centerText{
   text-align: center;
 }
@@ -202,98 +159,6 @@ footer{
 .standardSize{
   width: 150px;
   height: 50px;
-}
-
-.playDisabled{
-  width: 100px;
-  height: 100px;
-  border: 3px solid #000;
-  border-radius: 50%;
-  font-size: 2em;
-  font-weight: bolder;
-  font-family: 'New Rocker', cursive;	
-  color: #fff;
-  background-color: #ff0000;
-}
-
-.playEnabled{
-  width: 100px;
-  height: 100px;
-  border: 3px solid #000;
-  border-radius: 50%;
-  font-size: 2em;
-  font-weight: bolder;
-  font-family: 'New Rocker', cursive;	
-  color: #fff;
-  background-color: #009933;
-}
-
-.creatorBtns{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;  
-}
-
-.woddenBtn{
-  border: 1px solid #000;
-  border-radius: 10%;	
-  width: 100px;
-  height: 50px;
-  font-family: 'New Rocker', cursive;	
-  font-size: 2em;
-  background-color: rgb(153, 102, 51);
-  color: #fff;
-  font-weight: bolder;
-  box-shadow: -1px 1px rgb(153, 102, 51), -2px 2px rgb(153, 102, 51), -3px 3px rgb(153, 102, 51), -4px 4px rgb(153, 102, 51);		
-}		
-
-.woddenBtn:active{
-  animation: animBtn 0.2s forwards;
-}
-
-@keyframes animBtn {
-  0%{
-    background-color: rgb(153, 102, 51);
-    box-shadow: inset 0 0 0 #000000;
-  }
-
-  100%{
-    background-color: rgb(198, 140, 83);
-    box-shadow: inset 0 0 15px #000000;
-    transform: translate(-4px, 4px);	
-  }
-}
-
-.redBtn{
-  border: 1px solid #000;
-  border-radius: 10%;	
-  width: 100px;
-  height: 50px;
-  font-family: 'New Rocker', cursive;	
-  font-size: 2em;
-  background-color: rgb(255, 0, 0);
-  color: #fff;
-  font-weight: bolder;
-  box-shadow: -1px 1px rgb(255, 0, 0), -2px 2px rgb(255, 0, 0), -3px 3px rgb(255, 0, 0), -4px 4px rgb(255, 0, 0);		
-}		
-
-.redBtn:active{
-  animation: animRedBtn 0.2s forwards;
-}
-
-@keyframes animRedBtn {
-  0%{
-    background-color: rgb(255, 0, 0);
-    box-shadow: inset 0 0 0 #000000;
-  }
-
-  100%{
-    background-color: rgb(255, 102, 102);
-    box-shadow: inset 0 0 15px #000000;
-    transform: translate(-4px, 4px);	
-  }
 }
 
 .labelName{
@@ -310,37 +175,6 @@ footer{
   font-family: 'New Rocker', cursive;	
   color: #000;
   font-size: 1.6em;
-}
-
-.btnAccept{
-    border: 1px solid #000;
-    border-radius: 10%;	
-    width: 150px;
-    height: 65px;
-    font-family: 'New Rocker', cursive;	
-    font-size: 1.6em;
-    background-color: rgb(0, 153, 51);
-    color: #fff;
-    font-weight: bolder;
-    box-shadow: -1px 1px rgb(0, 153, 51), -2px 2px rgb(0, 153, 51), -3px 3px rgb(0, 153, 51), -4px 4px rgb(0, 153, 51);	
-    margin: 0 0 0 2%;	
-}
-
-.btnAccept:active{
-  animation: animBtnAccept 0.2s forwards;
-}
-
-@keyframes animBtnAccept  {
-  0%{
-    background-color: rgb(0, 153, 51);
-    box-shadow: inset 0 0 0 #000000;
-  }
-
-  100%{
-    background-color: rgb(26, 255, 102);
-    box-shadow: inset 0 0 15px #000000;
-    transform: translate(-4px, 4px);	
-  }
 }
 
 .divPoints{

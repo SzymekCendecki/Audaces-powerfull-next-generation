@@ -478,3 +478,7 @@ Dodanie wybierania wagi. Poprawka dla opisu gnoma. Dodać walidację wagi i wzro
 
 24 lutego 2020 - wersja 0.2.74
 Rozpoczęto pracę nad sprawdzaniem czy użytkownik wybrał wszystkie opcje przy ręcznym tworzeniu postaci (do poprawy - funkcję przenieść z "głównego przycisku do wyboru opcji).
+
+25 lutego 2020 - wersja 0.2.74a
+Poprawka walidacji wyborów w "ręcznym kreatorze postaci".
+Wstępna optymalizacja SCSS.

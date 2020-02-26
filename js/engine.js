@@ -391,24 +391,26 @@ document.querySelector("#sex").addEventListener("click", function () {
 	var showSex = '<p class=\'labelName\'>wybierz p\u0142e\u0107</p>\n\t\t<button id="chooseMan" class="btnAccept">m\u0119\u017Cczyzna</button>\n\t\t<button id="chooseWomen" class="btnAccept">kobieta</button>\n\t\t<button id="chooseOther" class="btnAccept">nie wiadomo</button>\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showSex;
-	letsPlayGame(hero);
 
 	document.querySelector("#chooseMan").addEventListener("click", function () {
 		hero.splice(1, 1, "mężczyzna");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano mężczyznę";
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#chooseWomen").addEventListener("click", function () {
 		hero.splice(1, 1, "kobieta");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano kobietę";
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#chooseOther").addEventListener("click", function () {
 		hero.splice(1, 1, "nie wiadomo");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano nie określoną płeć";
+		letsPlayGame(hero);
 	});
 });
 
@@ -416,7 +418,6 @@ document.querySelector("#race").addEventListener("click", function () {
 	var showRace = '<p class="labelName">wybierz ras\u0119</p>\n\t\t<button id="human" class="btnAccept">cz\u0142owiek</button>\n\t\t<button id="halfOrc" class="btnAccept">p\xF3\u0142ork</button>\n\t\t<button id="orc" class="btnAccept">ork</button>\n\t\t<button id="halfElv" class="btnAccept">p\xF3\u0142elf</button>\n\t\t<button id="elv" class="btnAccept">elf</button>\n\t\t<button id="dwarf" class="btnAccept">krasnolud</button>\n\t\t<button id="gnome" class="btnAccept">gnom</button>\n\t\t<button id="halfling" class="btnAccept">nizio\u0142ek</button>\n\t\t<button id="goblin" class="btnAccept">goblin</button>\n\t\t<button id="troll" class="btnAccept">trol</button>\n\t\t<button id="semiGiant" class="btnAccept">p\xF3\u0142olbrzym</button>\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showRace;
-	letsPlayGame(hero);
 
 	var xxx = function xxx(x, y) {
 		hero.splice(2, 1, x);
@@ -428,36 +429,47 @@ document.querySelector("#race").addEventListener("click", function () {
 
 	document.querySelector("#human").addEventListener("click", function () {
 		xxx("człowiek", "człowieka");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#halfOrc").addEventListener("click", function () {
 		xxx("półork", "półorka");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#orc").addEventListener("click", function () {
 		xxx("ork", "orka");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#halfElv").addEventListener("click", function () {
 		xxx("półelf", "półelfa");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#elv").addEventListener("click", function () {
 		xxx("elf", "elfa");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#dwarf").addEventListener("click", function () {
 		xxx("krasnolud", "krasnoluda");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#gnome").addEventListener("click", function () {
 		xxx("gnom", "gnoma");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#halfling").addEventListener("click", function () {
 		xxx("niziołek", "niziołka");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#goblin").addEventListener("click", function () {
 		xxx("goblin", "goblina");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#troll").addEventListener("click", function () {
 		xxx("trol", "trola");
+		letsPlayGame(hero);
 	});
 	document.querySelector("#semiGiant").addEventListener("click", function () {
 		xxx("półolbrzym", "półolbrzyma");
+		letsPlayGame(hero);
 	});
 });
 
@@ -465,22 +477,24 @@ document.querySelector("#occupation").addEventListener("click", function () {
 	var showOccupation = '<p class="labelName">wybierz profesj\u0119</p>\n\t\t<button id="warrior" class="btnAccept">wojownik</button>\n\t\t<button id="criminal" class="btnAccept">z\u0142oczy\u0144ca</button>\n\t\t<button id="wizard" class="btnAccept">czarodziej</button>\t\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showOccupation;
-	letsPlayGame(hero);
 
 	document.querySelector("#warrior").addEventListener("click", function () {
 		hero.splice(3, 1, "wojownik");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano wojownika";
+		letsPlayGame(hero);
 	});
 	document.querySelector("#criminal").addEventListener("click", function () {
 		hero.splice(3, 1, "złoczyńca");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano złoczyńcę";
+		letsPlayGame(hero);
 	});
 	document.querySelector("#wizard").addEventListener("click", function () {
 		hero.splice(3, 1, "czarodziej");
 		document.querySelector("#comment").innerHTML = "";
 		document.querySelector("#comment").innerHTML = "wybrano czarodzieja";
+		letsPlayGame(hero);
 	});
 });
 
@@ -488,7 +502,6 @@ document.querySelector("#points").addEventListener("click", function () {
 	var showPoints = '<p class="labelName">rozdziel punkty postaci</p>\n\t\t<p class="labelName">ilo\u015B\u0107 punkt\xF3w: <span id="allPoints">250</span></p>\n\n\t\t<div class="displayFlex mainDivPoints">\n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Si\u0142a</p>\n\t\t\t\t<input type="range" id="force" min="0" max="50" step="1">\n\t\t\t\t<p id="forcePoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Wytrzyma\u0142o\u015B\u0107</p>\n\t\t\t\t<input type="range" id="strength"  min="0" max="50" step="1">\n\t\t\t\t<p id="strengthPoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Zr\u0119czno\u015B\u0107</p>\n\t\t\t\t<input type="range" id="dexterity" min="0" max="50" step="1">\n\t\t\t\t<p id="dexterityPoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Inteligencja</p>\n\t\t\t\t<input type="range" id="intelligence" min="0" max="50" step="1">\n\t\t\t\t<p id="intelligencePoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Charyzma</p>\n\t\t\t\t<input type="range" id="charisma" name="charsima" min="0" max="50" step="1">\n\t\t\t\t<p id="charismaPoints" class="labelName"></p>\n\t\t  \t</div>\n\t\t</div>\n\t\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showPoints;
-	letsPlayGame(hero);
 
 	document.querySelector("#force").addEventListener("change", function () {
 
@@ -505,6 +518,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 		document.getElementById('allPoints').textContent = choosenPoints;
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#strength").addEventListener("change", function () {
@@ -521,6 +535,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 		document.getElementById('allPoints').textContent = choosenPoints;
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#dexterity").addEventListener("change", function () {
@@ -537,6 +552,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 		document.getElementById('allPoints').textContent = choosenPoints;
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#intelligence").addEventListener("change", function () {
@@ -553,6 +569,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 		document.getElementById('allPoints').textContent = choosenPoints;
+		letsPlayGame(hero);
 	});
 
 	document.querySelector("#charisma").addEventListener("change", function () {
@@ -569,6 +586,7 @@ document.querySelector("#points").addEventListener("click", function () {
 
 		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
 		document.getElementById('allPoints').textContent = choosenPoints;
+		letsPlayGame(hero);
 	});
 });
 
@@ -576,7 +594,6 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="tattoos">\t\n\t\t<p class="labelName">tatua\u017Ce</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="none" name="tattoos" value="brak">\n\t\t\t<label for="none" class="blueText">brak</label>\n\n\t  \t\t<input type="radio" id="prison" name="tattoos" value="wi\u0119zienne">\n\t\t\t<label for="prison" class="blueText">wi\u0119zienne</label>\n\n\t\t\t<input type="radio" id="tribal" name="tattoos" value="plemienne">\n\t  \t\t<label for="tribal" class="blueText">plemiennne</label>\n\n\t  \t\t<input type="radio" id="strange" name="tattoos" value="dziwne">\n\t\t\t<label for="strange" class="blueText">dziwne</label>\n\t\t</div>\n\t\t\t\t  \n\t  \t<p id="choosenTattoo" class="standardSize labelName"></p>\n  \t</div>\n\n  \t<div id="weight">\t\n\t\t<p class="labelName">waga</p>\n\n\t\t<p id="noRaceWeight" class="labelName"></p>\n\n\t \t<p id="choosenWeight" class="standardSize labelName"></p>\n \t</div>\n\n \t<div id="height">\t\n\t\t<p class="labelName">wzrost</p>\n\t\t  \n\t\t<p id="noRaceHeight" class="labelName"></p>\t\n\n\t\t<p id="choosenHeight" class="standardSize labelName"></p>\n\t</div>\n\t';
 	mainContainer.innerHTML = "";
 	mainContainer.innerHTML = showCharacterTraits;
-	letsPlayGame(hero);
 
 	function checkRace(hero) {
 		if (hero[2] == "") {
@@ -594,6 +611,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
@@ -602,6 +620,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -614,6 +633,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
@@ -622,6 +642,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -634,6 +655,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
@@ -642,6 +664,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -653,6 +676,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
@@ -661,6 +685,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -672,6 +697,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
@@ -680,6 +706,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -691,6 +718,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
@@ -699,6 +727,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -711,6 +740,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
@@ -719,6 +749,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -731,6 +762,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
@@ -739,6 +771,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 					break;
 
@@ -750,6 +783,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
@@ -758,6 +792,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -770,6 +805,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
@@ -778,6 +814,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -790,6 +827,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(13, 1, document.getElementById("vol").value);
 						document.querySelector("#choosenWeight").innerHTML = "";
 						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+						letsPlayGame(hero);
 					});
 
 					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
@@ -798,6 +836,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						hero.splice(14, 1, document.getElementById("volume").value);
 						document.querySelector("#choosenHeight").innerHTML = "";
 						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+						letsPlayGame(hero);
 					});
 
 					break;
@@ -829,7 +868,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						if (_radio.checked) {
 							document.querySelector("#eyesColor").innerText = 'kolor oczu: ' + _radio.value;
 							hero.splice(9, 1, _radio.value);
-							break;
+							letsPlayGame(hero);
 						}
 					}
 				} catch (err) {
@@ -886,7 +925,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						if (_radio3.checked) {
 							document.querySelector("#hairColor").innerText = 'kolor w\u0142os\xF3w: ' + _radio3.value;
 							hero.splice(10, 1, _radio3.value);
-							break;
+							letsPlayGame(hero);
 						}
 					}
 				} catch (err) {
@@ -943,7 +982,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						if (_radio5.checked) {
 							document.querySelector("#skinColor").innerText = 'kolor sk\xF3ry: ' + _radio5.value;
 							hero.splice(11, 1, _radio5.value);
-							break;
+							letsPlayGame(hero);
 						}
 					}
 				} catch (err) {
@@ -1000,7 +1039,7 @@ document.querySelector("#characterTraits").addEventListener("click", function ()
 						if (_radio7.checked) {
 							document.querySelector("#choosenTattoo").innerText = 'tatua\u017C: ' + _radio7.value;
 							hero.splice(12, 1, _radio7.value);
-							break;
+							letsPlayGame(hero);
 						}
 					}
 				} catch (err) {

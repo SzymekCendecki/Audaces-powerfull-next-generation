@@ -482,3 +482,6 @@ Rozpoczęto pracę nad sprawdzaniem czy użytkownik wybrał wszystkie opcje przy
 25 lutego 2020 - wersja 0.2.74a
 Poprawka walidacji wyborów w "ręcznym kreatorze postaci".
 Wstępna optymalizacja SCSS.
+
+27 lutego 2020 - wersja 0.2.74b
+Reorganizacja kodu. Przeniesienie kodu do innych plików (na razie kod ręcznego tworzenia postaci).

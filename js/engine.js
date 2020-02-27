@@ -81,6 +81,22 @@ var _arrays = __webpack_require__(2);
 
 var _functions = __webpack_require__(3);
 
+var _name = __webpack_require__(8);
+
+var _sex = __webpack_require__(9);
+
+var _race = __webpack_require__(10);
+
+var _occupation = __webpack_require__(11);
+
+var _points = __webpack_require__(12);
+
+var _characterTraits = __webpack_require__(13);
+
+var _preview = __webpack_require__(14);
+
+var _reset = __webpack_require__(15);
+
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
@@ -118,7 +134,6 @@ var mainContainer = document.querySelector("#mainContainer");
 
 var randomHero = document.querySelector("#randomHero");
 var play = document.querySelector("#play");
-var createHero = document.querySelector("#createHero");
 
 var path = 'https://szymekcendecki.github.io/Audaces-powerfull-next-generation/json/';
 
@@ -324,32 +339,6 @@ randomHero.addEventListener("click", function () {
 	showHero(hero);
 });
 
-var clearHero = function clearHero(hero) {
-	hero.splice(0, 1, "");
-	hero.splice(1, 1, "");
-	hero.splice(2, 1, "");
-	hero.splice(3, 1, "");
-	hero.splice(4, 1, 0);
-	hero.splice(5, 1, 0);
-	hero.splice(6, 1, 0);
-	hero.splice(7, 1, 0);
-	hero.splice(8, 1, 0);
-	hero.splice(9, 1, "");
-	hero.splice(10, 1, "");
-	hero.splice(11, 1, "");
-	hero.splice(12, 1, "");
-	hero.splice(13, 1, "");
-	hero.splice(14, 1, "");
-};
-
-var letsPlayGame = function letsPlayGame(hero) {
-	if (hero[0] !== "" && hero[1] !== "" && hero[2] !== "" && hero[3] !== "" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !== 0 && hero[8] !== "" && hero[9] !== "" && hero[10] !== "" && hero[11] !== "" && hero[12] !== "" && hero[13] !== "" && hero[14] !== "") {
-		play.disabled = false;
-		play.classList.remove("playDisabled");
-		play.classList.add("playEnabled");
-	}
-};
-
 createHero.addEventListener("click", function () {
 
 	play.disabled = true;
@@ -359,732 +348,17 @@ createHero.addEventListener("click", function () {
 	mainContainer.innerHTML = "";
 	document.querySelector("#creatorBtns").classList.remove('displayNone');
 
-	clearHero(hero);
+	(0, _functions.clearHero)(hero);
 });
 
-document.querySelector("#name").addEventListener("click", function () {
-	var showName = '<p class=\'labelName\'>podaj imi\u0119</p>\n\t\t<input type="text" id="chooseName" name="name" class=\'fontInput\'>\n\t\t<button id="accept" class="btnAccept">zatwierd\u017A</button>\n\t\t<p id="comment"></p>\n\t\t';
-
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showName;
-	letsPlayGame(hero);
-
-	document.querySelector("#accept").addEventListener("click", function () {
-
-		var noNumbersExpression = /^[a-zA-Z]+$/;
-
-		var choosenName = document.getElementById("chooseName").value;
-		var isValid = noNumbersExpression.test(choosenName);
-
-		if (isValid === true) {
-			hero.splice(0, 1, choosenName);
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML = '<p class=\'greenText\'>Twoje imi\u0119 to: ' + choosenName + '</p>';
-		} else {
-			document.querySelector("#comment").innerHTML = "";
-			document.querySelector("#comment").innerHTML = "<p class='redText'>imię nie może zawierać cyfr, znaków specjalnych i białych znaków</p>";
-		}
-	});
-});
-
-document.querySelector("#sex").addEventListener("click", function () {
-	var showSex = '<p class=\'labelName\'>wybierz p\u0142e\u0107</p>\n\t\t<button id="chooseMan" class="btnAccept">m\u0119\u017Cczyzna</button>\n\t\t<button id="chooseWomen" class="btnAccept">kobieta</button>\n\t\t<button id="chooseOther" class="btnAccept">nie wiadomo</button>\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showSex;
-
-	document.querySelector("#chooseMan").addEventListener("click", function () {
-		hero.splice(1, 1, "mężczyzna");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano mężczyznę";
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#chooseWomen").addEventListener("click", function () {
-		hero.splice(1, 1, "kobieta");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano kobietę";
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#chooseOther").addEventListener("click", function () {
-		hero.splice(1, 1, "nie wiadomo");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano nie określoną płeć";
-		letsPlayGame(hero);
-	});
-});
-
-document.querySelector("#race").addEventListener("click", function () {
-	var showRace = '<p class="labelName">wybierz ras\u0119</p>\n\t\t<button id="human" class="btnAccept">cz\u0142owiek</button>\n\t\t<button id="halfOrc" class="btnAccept">p\xF3\u0142ork</button>\n\t\t<button id="orc" class="btnAccept">ork</button>\n\t\t<button id="halfElv" class="btnAccept">p\xF3\u0142elf</button>\n\t\t<button id="elv" class="btnAccept">elf</button>\n\t\t<button id="dwarf" class="btnAccept">krasnolud</button>\n\t\t<button id="gnome" class="btnAccept">gnom</button>\n\t\t<button id="halfling" class="btnAccept">nizio\u0142ek</button>\n\t\t<button id="goblin" class="btnAccept">goblin</button>\n\t\t<button id="troll" class="btnAccept">trol</button>\n\t\t<button id="semiGiant" class="btnAccept">p\xF3\u0142olbrzym</button>\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showRace;
-
-	var xxx = function xxx(x, y) {
-		hero.splice(2, 1, x);
-		hero.splice(13, 1, "");
-		hero.splice(14, 1, "");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = 'wybrano ' + y;
-	};
-
-	document.querySelector("#human").addEventListener("click", function () {
-		xxx("człowiek", "człowieka");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#halfOrc").addEventListener("click", function () {
-		xxx("półork", "półorka");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#orc").addEventListener("click", function () {
-		xxx("ork", "orka");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#halfElv").addEventListener("click", function () {
-		xxx("półelf", "półelfa");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#elv").addEventListener("click", function () {
-		xxx("elf", "elfa");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#dwarf").addEventListener("click", function () {
-		xxx("krasnolud", "krasnoluda");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#gnome").addEventListener("click", function () {
-		xxx("gnom", "gnoma");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#halfling").addEventListener("click", function () {
-		xxx("niziołek", "niziołka");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#goblin").addEventListener("click", function () {
-		xxx("goblin", "goblina");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#troll").addEventListener("click", function () {
-		xxx("trol", "trola");
-		letsPlayGame(hero);
-	});
-	document.querySelector("#semiGiant").addEventListener("click", function () {
-		xxx("półolbrzym", "półolbrzyma");
-		letsPlayGame(hero);
-	});
-});
-
-document.querySelector("#occupation").addEventListener("click", function () {
-	var showOccupation = '<p class="labelName">wybierz profesj\u0119</p>\n\t\t<button id="warrior" class="btnAccept">wojownik</button>\n\t\t<button id="criminal" class="btnAccept">z\u0142oczy\u0144ca</button>\n\t\t<button id="wizard" class="btnAccept">czarodziej</button>\t\n\t\t<p id="comment" class="greenText"></p>\n\t\t';
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showOccupation;
-
-	document.querySelector("#warrior").addEventListener("click", function () {
-		hero.splice(3, 1, "wojownik");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano wojownika";
-		letsPlayGame(hero);
-	});
-	document.querySelector("#criminal").addEventListener("click", function () {
-		hero.splice(3, 1, "złoczyńca");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano złoczyńcę";
-		letsPlayGame(hero);
-	});
-	document.querySelector("#wizard").addEventListener("click", function () {
-		hero.splice(3, 1, "czarodziej");
-		document.querySelector("#comment").innerHTML = "";
-		document.querySelector("#comment").innerHTML = "wybrano czarodzieja";
-		letsPlayGame(hero);
-	});
-});
-
-document.querySelector("#points").addEventListener("click", function () {
-	var showPoints = '<p class="labelName">rozdziel punkty postaci</p>\n\t\t<p class="labelName">ilo\u015B\u0107 punkt\xF3w: <span id="allPoints">250</span></p>\n\n\t\t<div class="displayFlex mainDivPoints">\n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Si\u0142a</p>\n\t\t\t\t<input type="range" id="force" min="0" max="50" step="1">\n\t\t\t\t<p id="forcePoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Wytrzyma\u0142o\u015B\u0107</p>\n\t\t\t\t<input type="range" id="strength"  min="0" max="50" step="1">\n\t\t\t\t<p id="strengthPoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Zr\u0119czno\u015B\u0107</p>\n\t\t\t\t<input type="range" id="dexterity" min="0" max="50" step="1">\n\t\t\t\t<p id="dexterityPoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Inteligencja</p>\n\t\t\t\t<input type="range" id="intelligence" min="0" max="50" step="1">\n\t\t\t\t<p id="intelligencePoints" class="labelName"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class="divPoints">\n\t\t\t\t<p class="labelName">Charyzma</p>\n\t\t\t\t<input type="range" id="charisma" name="charsima" min="0" max="50" step="1">\n\t\t\t\t<p id="charismaPoints" class="labelName"></p>\n\t\t  \t</div>\n\t\t</div>\n\t\t';
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showPoints;
-
-	document.querySelector("#force").addEventListener("change", function () {
-
-		var choosenForce = document.getElementById("force").value;
-		hero.splice(4, 1, parseInt(choosenForce));
-		document.getElementById('forcePoints').textContent = hero[4];
-
-		var force = hero[4];
-		var strength = hero[5];
-		var dexterity = hero[6];
-		var intelligence = hero[7];
-		var charisma = hero[8];
-		var allPoints = 250;
-
-		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
-		document.getElementById('allPoints').textContent = choosenPoints;
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#strength").addEventListener("change", function () {
-		var choosenStrength = document.getElementById("strength").value;
-		hero.splice(5, 1, parseInt(choosenStrength));
-		document.getElementById('strengthPoints').textContent = hero[5];
-
-		var force = hero[4];
-		var strength = hero[5];
-		var dexterity = hero[6];
-		var intelligence = hero[7];
-		var charisma = hero[8];
-		var allPoints = 250;
-
-		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
-		document.getElementById('allPoints').textContent = choosenPoints;
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#dexterity").addEventListener("change", function () {
-		var choosenDexterity = document.getElementById("dexterity").value;
-		hero.splice(6, 1, parseInt(choosenDexterity));
-		document.getElementById('dexterityPoints').textContent = hero[6];
-
-		var force = hero[4];
-		var strength = hero[5];
-		var dexterity = hero[6];
-		var intelligence = hero[7];
-		var charisma = hero[8];
-		var allPoints = 250;
-
-		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
-		document.getElementById('allPoints').textContent = choosenPoints;
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#intelligence").addEventListener("change", function () {
-		var choosenIntelligence = document.getElementById("intelligence").value;
-		hero.splice(7, 1, parseInt(choosenIntelligence));
-		document.getElementById('intelligencePoints').textContent = hero[7];
-
-		var force = hero[4];
-		var strength = hero[5];
-		var dexterity = hero[6];
-		var intelligence = hero[7];
-		var charisma = hero[8];
-		var allPoints = 250;
-
-		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
-		document.getElementById('allPoints').textContent = choosenPoints;
-		letsPlayGame(hero);
-	});
-
-	document.querySelector("#charisma").addEventListener("change", function () {
-		var choosenCharisma = document.getElementById("charisma").value;
-		hero.splice(8, 1, parseInt(choosenCharisma));
-		document.getElementById('charismaPoints').textContent = hero[8];
-
-		var force = hero[4];
-		var strength = hero[5];
-		var dexterity = hero[6];
-		var intelligence = hero[7];
-		var charisma = hero[8];
-		var allPoints = 250;
-
-		var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
-		document.getElementById('allPoints').textContent = choosenPoints;
-		letsPlayGame(hero);
-	});
-});
-
-document.querySelector("#characterTraits").addEventListener("click", function () {
-	var showCharacterTraits = '\n\t<div id="eyes">\n\t\t<p class="labelName">kolor oczu</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blue" name="eyesColor" value="niebieskie">\n\t\t\t<label for="blue" class="blueText">niebieskie</label>\n\n\t  \t\t<input type="radio" id="brown" name="eyesColor" value="br\u0105zowe">\n\t\t\t<label for="brown" class="blueText">br\u0105zowe</label>\n\n\t\t\t<input type="radio" id="green" name="eyesColor" value="zielone">\n\t  \t\t<label for="green" class="blueText">zielone</label>\n\n\t  \t\t<input type="radio" id="gray" name="eyesColor" value="szare">\n\t\t\t <label for="gray" class="blueText">szare</label>\n\n\t\t\t<input type="radio" id="red" name="eyesColor" value="czerwone">\n\t\t\t<label for="red" class="blueText">czerwone</label>\n\t\t</div>\n\t\t\t  \n\t  <p id="eyesColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="hair">\n\t\t<p class="labelName">kolor w\u0142os\xF3w</p>\n\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="blond" name="hairColor" value="blond">\n\t\t\t<label for="blond" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="black" name="hairColor" value="czarne">\n\t\t\t<label for="black" class="blueText">czarne</label>\n\n\t\t\t<input type="radio" id="redHair" name="hairColor" value="rude">\n\t  \t\t<label for="redHair" class="blueText">rude</label>\n\n\t  \t\t<input type="radio" id="colors" name="hairColor" value="kolorowe">\n\t\t\t <label for="colors" class="blueText">kolorowe</label>\n\n\t\t\t<input type="radio" id="none" name="hairColor" value="brak w\u0142os\xF3w">\n\t\t\t<label for="none" class="blueText">brak w\u0142os\xF3w</label>\n\t\t</div>  \t\t \n\t\t\n\t\t<p id="hairColor" class="standardSize labelName"></p>\n  </div>\n\t  \n\t<div id="skin">\t\n\t\t<p class="labelName">kolor sk\xF3ry</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="white" name="skinColor" value="bia\u0142a">\n\t\t\t<label for="white" class="blueText">blond</label>\n\n\t  \t\t<input type="radio" id="brownSkin" name="skinColor" value="br\u0105zowa">\n\t\t\t<label for="brownSkin" class="blueText">br\u0105zowa</label>\n\n\t\t\t<input type="radio" id="blackSkin" name="skinColor" value="czarna">\n\t  \t\t<label for="blackSkin" class="blueText">czarna</label>\n\n\t  \t\t<input type="radio" id="greenSkin" name="skinColor" value="zielona">\n\t\t\t<label for="greenSkin" class="blueText">zielona</label>\n\n\t\t\t<input type="radio" id="olive" name="skinColor" value="oliwkowa">\n\t\t\t<label for="olive" class="blueText">oliwkowa</label>\n\t\t</div>\n\t\t\t\t  \n\t  <p id="skinColor" class="standardSize labelName"></p>\n  </div>\n\n  <div id="tattoos">\t\n\t\t<p class="labelName">tatua\u017Ce</p>\n\t\t\n\t\t<div class="displayFlex">\n\t\t\t<input type="radio" id="none" name="tattoos" value="brak">\n\t\t\t<label for="none" class="blueText">brak</label>\n\n\t  \t\t<input type="radio" id="prison" name="tattoos" value="wi\u0119zienne">\n\t\t\t<label for="prison" class="blueText">wi\u0119zienne</label>\n\n\t\t\t<input type="radio" id="tribal" name="tattoos" value="plemienne">\n\t  \t\t<label for="tribal" class="blueText">plemiennne</label>\n\n\t  \t\t<input type="radio" id="strange" name="tattoos" value="dziwne">\n\t\t\t<label for="strange" class="blueText">dziwne</label>\n\t\t</div>\n\t\t\t\t  \n\t  \t<p id="choosenTattoo" class="standardSize labelName"></p>\n  \t</div>\n\n  \t<div id="weight">\t\n\t\t<p class="labelName">waga</p>\n\n\t\t<p id="noRaceWeight" class="labelName"></p>\n\n\t \t<p id="choosenWeight" class="standardSize labelName"></p>\n \t</div>\n\n \t<div id="height">\t\n\t\t<p class="labelName">wzrost</p>\n\t\t  \n\t\t<p id="noRaceHeight" class="labelName"></p>\t\n\n\t\t<p id="choosenHeight" class="standardSize labelName"></p>\n\t</div>\n\t';
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showCharacterTraits;
-
-	function checkRace(hero) {
-		if (hero[2] == "") {
-
-			document.querySelector("#noRaceWeight").innerHTML = "musisz wybrać rasę";
-			document.querySelector("#noRaceHeight").innerHTML = "musisz wybrać rasę";
-		} else {
-
-			switch (hero[2]) {
-				case 'człowiek':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="120" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'półork':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="140" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'ork':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="80" max="180" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-					break;
-
-				case 'półelf':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="100" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-					break;
-
-				case 'elf':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="90" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-					break;
-
-				case 'krasnolud':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="70" max="100" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'gnom':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'niziołek':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="60" max="100" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-					break;
-
-				case 'goblin':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'trol':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="150" max="200" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-
-				case 'półolbrzym':
-
-					document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="210" max="300" step="1"></input>';
-
-					document.querySelector("#vol").addEventListener("change", function () {
-						hero.splice(13, 1, document.getElementById("vol").value);
-						document.querySelector("#choosenWeight").innerHTML = "";
-						document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
-						letsPlayGame(hero);
-					});
-
-					document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
-
-					document.querySelector("#volume").addEventListener("change", function () {
-						hero.splice(14, 1, document.getElementById("volume").value);
-						document.querySelector("#choosenHeight").innerHTML = "";
-						document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
-						letsPlayGame(hero);
-					});
-
-					break;
-			}
-		}
-	}
-	checkRace(hero);
-
-	var formEyes = document.querySelector("#eyes");
-	var eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
-
-	var _iteratorNormalCompletion = true;
-	var _didIteratorError = false;
-	var _iteratorError = undefined;
-
-	try {
-		for (var _iterator = eyeColor[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-			var radio = _step.value;
-
-			radio.addEventListener("change", function () {
-				var _iteratorNormalCompletion5 = true;
-				var _didIteratorError5 = false;
-				var _iteratorError5 = undefined;
-
-				try {
-					for (var _iterator5 = eyeColor[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-						var _radio = _step5.value;
-
-						if (_radio.checked) {
-							document.querySelector("#eyesColor").innerText = 'kolor oczu: ' + _radio.value;
-							hero.splice(9, 1, _radio.value);
-							letsPlayGame(hero);
-						}
-					}
-				} catch (err) {
-					_didIteratorError5 = true;
-					_iteratorError5 = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion5 && _iterator5.return) {
-							_iterator5.return();
-						}
-					} finally {
-						if (_didIteratorError5) {
-							throw _iteratorError5;
-						}
-					}
-				}
-			});
-		}
-	} catch (err) {
-		_didIteratorError = true;
-		_iteratorError = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion && _iterator.return) {
-				_iterator.return();
-			}
-		} finally {
-			if (_didIteratorError) {
-				throw _iteratorError;
-			}
-		}
-	}
-
-	var formHair = document.querySelector("#hair");
-	var hairColor = formHair.querySelectorAll("input[name=hairColor]");
-
-	var _iteratorNormalCompletion2 = true;
-	var _didIteratorError2 = false;
-	var _iteratorError2 = undefined;
-
-	try {
-		for (var _iterator2 = hairColor[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-			var _radio2 = _step2.value;
-
-			_radio2.addEventListener("change", function () {
-				var _iteratorNormalCompletion6 = true;
-				var _didIteratorError6 = false;
-				var _iteratorError6 = undefined;
-
-				try {
-					for (var _iterator6 = hairColor[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-						var _radio3 = _step6.value;
-
-						if (_radio3.checked) {
-							document.querySelector("#hairColor").innerText = 'kolor w\u0142os\xF3w: ' + _radio3.value;
-							hero.splice(10, 1, _radio3.value);
-							letsPlayGame(hero);
-						}
-					}
-				} catch (err) {
-					_didIteratorError6 = true;
-					_iteratorError6 = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion6 && _iterator6.return) {
-							_iterator6.return();
-						}
-					} finally {
-						if (_didIteratorError6) {
-							throw _iteratorError6;
-						}
-					}
-				}
-			});
-		}
-	} catch (err) {
-		_didIteratorError2 = true;
-		_iteratorError2 = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion2 && _iterator2.return) {
-				_iterator2.return();
-			}
-		} finally {
-			if (_didIteratorError2) {
-				throw _iteratorError2;
-			}
-		}
-	}
-
-	var formSkin = document.querySelector("#skin");
-	var skinColor = formSkin.querySelectorAll("input[name=skinColor]");
-
-	var _iteratorNormalCompletion3 = true;
-	var _didIteratorError3 = false;
-	var _iteratorError3 = undefined;
-
-	try {
-		for (var _iterator3 = skinColor[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-			var _radio4 = _step3.value;
-
-			_radio4.addEventListener("change", function () {
-				var _iteratorNormalCompletion7 = true;
-				var _didIteratorError7 = false;
-				var _iteratorError7 = undefined;
-
-				try {
-					for (var _iterator7 = skinColor[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-						var _radio5 = _step7.value;
-
-						if (_radio5.checked) {
-							document.querySelector("#skinColor").innerText = 'kolor sk\xF3ry: ' + _radio5.value;
-							hero.splice(11, 1, _radio5.value);
-							letsPlayGame(hero);
-						}
-					}
-				} catch (err) {
-					_didIteratorError7 = true;
-					_iteratorError7 = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion7 && _iterator7.return) {
-							_iterator7.return();
-						}
-					} finally {
-						if (_didIteratorError7) {
-							throw _iteratorError7;
-						}
-					}
-				}
-			});
-		}
-	} catch (err) {
-		_didIteratorError3 = true;
-		_iteratorError3 = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion3 && _iterator3.return) {
-				_iterator3.return();
-			}
-		} finally {
-			if (_didIteratorError3) {
-				throw _iteratorError3;
-			}
-		}
-	}
-
-	var formTattoos = document.querySelector("#tattoos");
-	var choosenTattoo = formTattoos.querySelectorAll("input[name=tattoos]");
-
-	var _iteratorNormalCompletion4 = true;
-	var _didIteratorError4 = false;
-	var _iteratorError4 = undefined;
-
-	try {
-		for (var _iterator4 = choosenTattoo[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-			var _radio6 = _step4.value;
-
-			_radio6.addEventListener("change", function () {
-				var _iteratorNormalCompletion8 = true;
-				var _didIteratorError8 = false;
-				var _iteratorError8 = undefined;
-
-				try {
-					for (var _iterator8 = choosenTattoo[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-						var _radio7 = _step8.value;
-
-						if (_radio7.checked) {
-							document.querySelector("#choosenTattoo").innerText = 'tatua\u017C: ' + _radio7.value;
-							hero.splice(12, 1, _radio7.value);
-							letsPlayGame(hero);
-						}
-					}
-				} catch (err) {
-					_didIteratorError8 = true;
-					_iteratorError8 = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion8 && _iterator8.return) {
-							_iterator8.return();
-						}
-					} finally {
-						if (_didIteratorError8) {
-							throw _iteratorError8;
-						}
-					}
-				}
-			});
-		}
-	} catch (err) {
-		_didIteratorError4 = true;
-		_iteratorError4 = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion4 && _iterator4.return) {
-				_iterator4.return();
-			}
-		} finally {
-			if (_didIteratorError4) {
-				throw _iteratorError4;
-			}
-		}
-	}
-});
-
-document.querySelector("#preview").addEventListener("click", function () {
-	var showHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor">' + hero[9] + '</span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor">' + hero[10] + '</span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor">' + hero[11] + '</span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
-
-	mainContainer.innerHTML = "";
-	mainContainer.innerHTML = showHero;
-	letsPlayGame(hero);
-});
-
-document.querySelector("#reset").addEventListener("click", function () {
-	clearHero(hero);
-});
+(0, _name.chooseName)(hero);
+(0, _sex.chooseSex)(hero);
+(0, _race.chooseRace)(hero);
+(0, _occupation.chooseOccupation)(hero);
+(0, _points.choosePoints)(hero);
+(0, _characterTraits.chooseCharacterTraits)(hero);
+(0, _preview.preview)(hero);
+(0, _reset.reset)(hero);
 
 document.querySelector("#play").addEventListener("click", function () {
 	console.log("działa");
@@ -1192,6 +466,889 @@ var newInput = exports.newInput = function newInput(where, typeName, idName) {
 var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
 	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
 	hero.splice(position, 1, draw);
+};
+
+var letsPlayGame = exports.letsPlayGame = function letsPlayGame(hero) {
+	if (hero[0] !== "" && hero[1] !== "" && hero[2] !== "" && hero[3] !== "" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !== 0 && hero[8] !== "" && hero[9] !== "" && hero[10] !== "" && hero[11] !== "" && hero[12] !== "" && hero[13] !== "" && hero[14] !== "") {
+		play.disabled = false;
+		play.classList.remove("playDisabled");
+		play.classList.add("playEnabled");
+	}
+};
+
+var clearHero = exports.clearHero = function clearHero(hero) {
+	hero.splice(0, 1, "");
+	hero.splice(1, 1, "");
+	hero.splice(2, 1, "");
+	hero.splice(3, 1, "");
+	hero.splice(4, 1, 0);
+	hero.splice(5, 1, 0);
+	hero.splice(6, 1, 0);
+	hero.splice(7, 1, 0);
+	hero.splice(8, 1, 0);
+	hero.splice(9, 1, "");
+	hero.splice(10, 1, "");
+	hero.splice(11, 1, "");
+	hero.splice(12, 1, "");
+	hero.splice(13, 1, "");
+	hero.splice(14, 1, "");
+};
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+			value: true
+});
+exports.chooseName = undefined;
+
+var _functions = __webpack_require__(3);
+
+var chooseName = exports.chooseName = function chooseName(hero) {
+			document.querySelector("#name").addEventListener("click", function () {
+						var showName = "<p class='labelName'>podaj imi\u0119</p>\n\t\t    <input type=\"text\" id=\"chooseName\" name=\"name\" class='fontInput'>\n\t\t    <button id=\"accept\" class=\"btnAccept\">zatwierd\u017A</button>\n\t\t    <p id=\"comment\"></p>\n\t\t";
+
+						mainContainer.innerHTML = "";
+						mainContainer.innerHTML = showName;
+						(0, _functions.letsPlayGame)(hero);
+
+						document.querySelector("#accept").addEventListener("click", function () {
+
+									var noNumbersExpression = /^[a-zA-Z]+$/;
+
+									var choosenName = document.getElementById("chooseName").value;
+									var isValid = noNumbersExpression.test(choosenName);
+
+									if (isValid === true) {
+												hero.splice(0, 1, choosenName);
+												document.querySelector("#comment").innerHTML = "";
+												document.querySelector("#comment").innerHTML = "<p class='greenText'>Twoje imi\u0119 to: " + choosenName + "</p>";
+									} else {
+												document.querySelector("#comment").innerHTML = "";
+												document.querySelector("#comment").innerHTML = "<p class='redText'>imię nie może zawierać cyfr, znaków specjalnych i białych znaków</p>";
+									}
+						});
+			});
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.chooseSex = undefined;
+
+var _functions = __webpack_require__(3);
+
+var chooseSex = exports.chooseSex = function chooseSex(hero) {
+	document.querySelector("#sex").addEventListener("click", function () {
+		var showSex = "<p class='labelName'>wybierz p\u0142e\u0107</p>\n\t\t<button id=\"chooseMan\" class=\"btnAccept\">m\u0119\u017Cczyzna</button>\n\t\t<button id=\"chooseWomen\" class=\"btnAccept\">kobieta</button>\n\t\t<button id=\"chooseOther\" class=\"btnAccept\">nie wiadomo</button>\n\t\t<p id=\"comment\" class=\"greenText\"></p>\n\t\t";
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showSex;
+
+		document.querySelector("#chooseMan").addEventListener("click", function () {
+			hero.splice(1, 1, "mężczyzna");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano mężczyznę";
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#chooseWomen").addEventListener("click", function () {
+			hero.splice(1, 1, "kobieta");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano kobietę";
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#chooseOther").addEventListener("click", function () {
+			hero.splice(1, 1, "nie wiadomo");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano nie określoną płeć";
+			(0, _functions.letsPlayGame)(hero);
+		});
+	});
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.chooseRace = undefined;
+
+var _functions = __webpack_require__(3);
+
+var chooseRace = exports.chooseRace = function chooseRace(hero) {
+
+	document.querySelector("#race").addEventListener("click", function () {
+		var showRace = "<p class=\"labelName\">wybierz ras\u0119</p>\n\t\t<button id=\"human\" class=\"btnAccept\">cz\u0142owiek</button>\n\t\t<button id=\"halfOrc\" class=\"btnAccept\">p\xF3\u0142ork</button>\n\t\t<button id=\"orc\" class=\"btnAccept\">ork</button>\n\t\t<button id=\"halfElv\" class=\"btnAccept\">p\xF3\u0142elf</button>\n\t\t<button id=\"elv\" class=\"btnAccept\">elf</button>\n\t\t<button id=\"dwarf\" class=\"btnAccept\">krasnolud</button>\n\t\t<button id=\"gnome\" class=\"btnAccept\">gnom</button>\n\t\t<button id=\"halfling\" class=\"btnAccept\">nizio\u0142ek</button>\n\t\t<button id=\"goblin\" class=\"btnAccept\">goblin</button>\n\t\t<button id=\"troll\" class=\"btnAccept\">trol</button>\n\t\t<button id=\"semiGiant\" class=\"btnAccept\">p\xF3\u0142olbrzym</button>\n\t\t<p id=\"comment\" class=\"greenText\"></p>\n\t\t";
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showRace;
+
+		var xxx = function xxx(x, y) {
+			hero.splice(2, 1, x);
+			hero.splice(13, 1, "");
+			hero.splice(14, 1, "");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano " + y;
+		};
+
+		document.querySelector("#human").addEventListener("click", function () {
+			xxx("człowiek", "człowieka");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#halfOrc").addEventListener("click", function () {
+			xxx("półork", "półorka");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#orc").addEventListener("click", function () {
+			xxx("ork", "orka");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#halfElv").addEventListener("click", function () {
+			xxx("półelf", "półelfa");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#elv").addEventListener("click", function () {
+			xxx("elf", "elfa");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#dwarf").addEventListener("click", function () {
+			xxx("krasnolud", "krasnoluda");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#gnome").addEventListener("click", function () {
+			xxx("gnom", "gnoma");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#halfling").addEventListener("click", function () {
+			xxx("niziołek", "niziołka");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#goblin").addEventListener("click", function () {
+			xxx("goblin", "goblina");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#troll").addEventListener("click", function () {
+			xxx("trol", "trola");
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#semiGiant").addEventListener("click", function () {
+			xxx("półolbrzym", "półolbrzyma");
+			(0, _functions.letsPlayGame)(hero);
+		});
+	});
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.chooseOccupation = undefined;
+
+var _functions = __webpack_require__(3);
+
+var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero) {
+	document.querySelector("#occupation").addEventListener("click", function () {
+		var showOccupation = "<p class=\"labelName\">wybierz profesj\u0119</p>\n\t\t<button id=\"warrior\" class=\"btnAccept\">wojownik</button>\n\t\t<button id=\"criminal\" class=\"btnAccept\">z\u0142oczy\u0144ca</button>\n\t\t<button id=\"wizard\" class=\"btnAccept\">czarodziej</button>\t\n\t\t<p id=\"comment\" class=\"greenText\"></p>\n\t\t";
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showOccupation;
+
+		document.querySelector("#warrior").addEventListener("click", function () {
+			hero.splice(3, 1, "wojownik");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano wojownika";
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#criminal").addEventListener("click", function () {
+			hero.splice(3, 1, "złoczyńca");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano złoczyńcę";
+			(0, _functions.letsPlayGame)(hero);
+		});
+		document.querySelector("#wizard").addEventListener("click", function () {
+			hero.splice(3, 1, "czarodziej");
+			document.querySelector("#comment").innerHTML = "";
+			document.querySelector("#comment").innerHTML = "wybrano czarodzieja";
+			(0, _functions.letsPlayGame)(hero);
+		});
+	});
+};
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.choosePoints = undefined;
+
+var _functions = __webpack_require__(3);
+
+var choosePoints = exports.choosePoints = function choosePoints(hero) {
+	document.querySelector("#points").addEventListener("click", function () {
+		var showPoints = "<p class=\"labelName\">rozdziel punkty postaci</p>\n\t\t<p class=\"labelName\">ilo\u015B\u0107 punkt\xF3w: <span id=\"allPoints\">250</span></p>\n\n\t\t<div class=\"displayFlex mainDivPoints\">\n\t\t\t<div class=\"divPoints\">\n\t\t\t\t<p class=\"labelName\">Si\u0142a</p>\n\t\t\t\t<input type=\"range\" id=\"force\" min=\"0\" max=\"50\" step=\"1\">\n\t\t\t\t<p id=\"forcePoints\" class=\"labelName\"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class=\"divPoints\">\n\t\t\t\t<p class=\"labelName\">Wytrzyma\u0142o\u015B\u0107</p>\n\t\t\t\t<input type=\"range\" id=\"strength\"  min=\"0\" max=\"50\" step=\"1\">\n\t\t\t\t<p id=\"strengthPoints\" class=\"labelName\"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class=\"divPoints\">\n\t\t\t\t<p class=\"labelName\">Zr\u0119czno\u015B\u0107</p>\n\t\t\t\t<input type=\"range\" id=\"dexterity\" min=\"0\" max=\"50\" step=\"1\">\n\t\t\t\t<p id=\"dexterityPoints\" class=\"labelName\"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class=\"divPoints\">\n\t\t\t\t<p class=\"labelName\">Inteligencja</p>\n\t\t\t\t<input type=\"range\" id=\"intelligence\" min=\"0\" max=\"50\" step=\"1\">\n\t\t\t\t<p id=\"intelligencePoints\" class=\"labelName\"></p>\n\t\t\t</div>\n\t\t  \n\t\t\t<div class=\"divPoints\">\n\t\t\t\t<p class=\"labelName\">Charyzma</p>\n\t\t\t\t<input type=\"range\" id=\"charisma\" name=\"charsima\" min=\"0\" max=\"50\" step=\"1\">\n\t\t\t\t<p id=\"charismaPoints\" class=\"labelName\"></p>\n\t\t  \t</div>\n\t\t</div>\n\t\t";
+		mainContainer.innerHTML = "";
+		mainContainer.innerHTML = showPoints;
+
+		document.querySelector("#force").addEventListener("change", function () {
+
+			var choosenForce = document.getElementById("force").value;
+			hero.splice(4, 1, parseInt(choosenForce));
+			document.getElementById('forcePoints').textContent = hero[4];
+
+			var force = hero[4];
+			var strength = hero[5];
+			var dexterity = hero[6];
+			var intelligence = hero[7];
+			var charisma = hero[8];
+			var allPoints = 250;
+
+			var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+			document.getElementById('allPoints').textContent = choosenPoints;
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#strength").addEventListener("change", function () {
+			var choosenStrength = document.getElementById("strength").value;
+			hero.splice(5, 1, parseInt(choosenStrength));
+			document.getElementById('strengthPoints').textContent = hero[5];
+
+			var force = hero[4];
+			var strength = hero[5];
+			var dexterity = hero[6];
+			var intelligence = hero[7];
+			var charisma = hero[8];
+			var allPoints = 250;
+
+			var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+			document.getElementById('allPoints').textContent = choosenPoints;
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#dexterity").addEventListener("change", function () {
+			var choosenDexterity = document.getElementById("dexterity").value;
+			hero.splice(6, 1, parseInt(choosenDexterity));
+			document.getElementById('dexterityPoints').textContent = hero[6];
+
+			var force = hero[4];
+			var strength = hero[5];
+			var dexterity = hero[6];
+			var intelligence = hero[7];
+			var charisma = hero[8];
+			var allPoints = 250;
+
+			var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+			document.getElementById('allPoints').textContent = choosenPoints;
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#intelligence").addEventListener("change", function () {
+			var choosenIntelligence = document.getElementById("intelligence").value;
+			hero.splice(7, 1, parseInt(choosenIntelligence));
+			document.getElementById('intelligencePoints').textContent = hero[7];
+
+			var force = hero[4];
+			var strength = hero[5];
+			var dexterity = hero[6];
+			var intelligence = hero[7];
+			var charisma = hero[8];
+			var allPoints = 250;
+
+			var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+			document.getElementById('allPoints').textContent = choosenPoints;
+			(0, _functions.letsPlayGame)(hero);
+		});
+
+		document.querySelector("#charisma").addEventListener("change", function () {
+			var choosenCharisma = document.getElementById("charisma").value;
+			hero.splice(8, 1, parseInt(choosenCharisma));
+			document.getElementById('charismaPoints').textContent = hero[8];
+
+			var force = hero[4];
+			var strength = hero[5];
+			var dexterity = hero[6];
+			var intelligence = hero[7];
+			var charisma = hero[8];
+			var allPoints = 250;
+
+			var choosenPoints = allPoints - force - strength - dexterity - intelligence - charisma;
+			document.getElementById('allPoints').textContent = choosenPoints;
+			(0, _functions.letsPlayGame)(hero);
+		});
+	});
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.chooseCharacterTraits = undefined;
+
+var _functions = __webpack_require__(3);
+
+var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseCharacterTraits(hero) {
+    document.querySelector("#characterTraits").addEventListener("click", function () {
+        var showCharacterTraits = "\n        <div id=\"eyes\">\n            <p class=\"labelName\">kolor oczu</p>\n    \n            <div class=\"displayFlex\">\n                <input type=\"radio\" id=\"blue\" name=\"eyesColor\" value=\"niebieskie\">\n                <label for=\"blue\" class=\"blueText\">niebieskie</label>\n    \n                  <input type=\"radio\" id=\"brown\" name=\"eyesColor\" value=\"br\u0105zowe\">\n                <label for=\"brown\" class=\"blueText\">br\u0105zowe</label>\n    \n                <input type=\"radio\" id=\"green\" name=\"eyesColor\" value=\"zielone\">\n                  <label for=\"green\" class=\"blueText\">zielone</label>\n    \n                  <input type=\"radio\" id=\"gray\" name=\"eyesColor\" value=\"szare\">\n                 <label for=\"gray\" class=\"blueText\">szare</label>\n    \n                <input type=\"radio\" id=\"red\" name=\"eyesColor\" value=\"czerwone\">\n                <label for=\"red\" class=\"blueText\">czerwone</label>\n            </div>\n                  \n          <p id=\"eyesColor\" class=\"standardSize labelName\"></p>\n      </div>\n    \n      <div id=\"hair\">\n            <p class=\"labelName\">kolor w\u0142os\xF3w</p>\n    \n            <div class=\"displayFlex\">\n                <input type=\"radio\" id=\"blond\" name=\"hairColor\" value=\"blond\">\n                <label for=\"blond\" class=\"blueText\">blond</label>\n    \n                  <input type=\"radio\" id=\"black\" name=\"hairColor\" value=\"czarne\">\n                <label for=\"black\" class=\"blueText\">czarne</label>\n    \n                <input type=\"radio\" id=\"redHair\" name=\"hairColor\" value=\"rude\">\n                  <label for=\"redHair\" class=\"blueText\">rude</label>\n    \n                  <input type=\"radio\" id=\"colors\" name=\"hairColor\" value=\"kolorowe\">\n                 <label for=\"colors\" class=\"blueText\">kolorowe</label>\n    \n                <input type=\"radio\" id=\"none\" name=\"hairColor\" value=\"brak w\u0142os\xF3w\">\n                <label for=\"none\" class=\"blueText\">brak w\u0142os\xF3w</label>\n            </div>  \t\t \n            \n            <p id=\"hairColor\" class=\"standardSize labelName\"></p>\n      </div>\n          \n        <div id=\"skin\">\t\n            <p class=\"labelName\">kolor sk\xF3ry</p>\n            \n            <div class=\"displayFlex\">\n                <input type=\"radio\" id=\"white\" name=\"skinColor\" value=\"bia\u0142a\">\n                <label for=\"white\" class=\"blueText\">blond</label>\n    \n                  <input type=\"radio\" id=\"brownSkin\" name=\"skinColor\" value=\"br\u0105zowa\">\n                <label for=\"brownSkin\" class=\"blueText\">br\u0105zowa</label>\n    \n                <input type=\"radio\" id=\"blackSkin\" name=\"skinColor\" value=\"czarna\">\n                  <label for=\"blackSkin\" class=\"blueText\">czarna</label>\n    \n                  <input type=\"radio\" id=\"greenSkin\" name=\"skinColor\" value=\"zielona\">\n                <label for=\"greenSkin\" class=\"blueText\">zielona</label>\n    \n                <input type=\"radio\" id=\"olive\" name=\"skinColor\" value=\"oliwkowa\">\n                <label for=\"olive\" class=\"blueText\">oliwkowa</label>\n            </div>\n                      \n          <p id=\"skinColor\" class=\"standardSize labelName\"></p>\n      </div>\n    \n      <div id=\"tattoos\">\t\n            <p class=\"labelName\">tatua\u017Ce</p>\n            \n            <div class=\"displayFlex\">\n                <input type=\"radio\" id=\"none\" name=\"tattoos\" value=\"brak\">\n                <label for=\"none\" class=\"blueText\">brak</label>\n    \n                  <input type=\"radio\" id=\"prison\" name=\"tattoos\" value=\"wi\u0119zienne\">\n                <label for=\"prison\" class=\"blueText\">wi\u0119zienne</label>\n    \n                <input type=\"radio\" id=\"tribal\" name=\"tattoos\" value=\"plemienne\">\n                  <label for=\"tribal\" class=\"blueText\">plemiennne</label>\n    \n                  <input type=\"radio\" id=\"strange\" name=\"tattoos\" value=\"dziwne\">\n                <label for=\"strange\" class=\"blueText\">dziwne</label>\n            </div>\n                      \n              <p id=\"choosenTattoo\" class=\"standardSize labelName\"></p>\n          </div>\n    \n          <div id=\"weight\">\t\n            <p class=\"labelName\">waga</p>\n    \n            <p id=\"noRaceWeight\" class=\"labelName\"></p>\n    \n             <p id=\"choosenWeight\" class=\"standardSize labelName\"></p>\n         </div>\n    \n         <div id=\"height\">\t\n            <p class=\"labelName\">wzrost</p>\n              \n            <p id=\"noRaceHeight\" class=\"labelName\"></p>\t\n    \n            <p id=\"choosenHeight\" class=\"standardSize labelName\"></p>\n        </div>\n        ";
+        mainContainer.innerHTML = "";
+        mainContainer.innerHTML = showCharacterTraits;
+
+        function checkRace(hero) {
+            if (hero[2] == "") {
+
+                document.querySelector("#noRaceWeight").innerHTML = "musisz wybrać rasę";
+                document.querySelector("#noRaceHeight").innerHTML = "musisz wybrać rasę";
+            } else {
+
+                switch (hero[2]) {
+                    case 'człowiek':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="120" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="150" max="210" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'półork':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="140" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="170" max="220" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'ork':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="80" max="180" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="240" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+                        break;
+
+                    case 'półelf':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="100" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="165" max="210" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+                        break;
+
+                    case 'elf':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="40" max="90" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="180" max="210" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+                        break;
+
+                    case 'krasnolud':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="70" max="100" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'gnom':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="100" max="145" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'niziołek':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="60" max="100" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="105" max="150" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+                        break;
+
+                    case 'goblin':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="50" max="80" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="80" max="120" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'trol':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="150" max="200" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="220" max="260" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+
+                    case 'półolbrzym':
+
+                        document.querySelector("#noRaceWeight").innerHTML = '<input type="range" id="vol" name="vol" min="210" max="300" step="1"></input>';
+
+                        document.querySelector("#vol").addEventListener("change", function () {
+                            hero.splice(13, 1, document.getElementById("vol").value);
+                            document.querySelector("#choosenWeight").innerHTML = "";
+                            document.querySelector("#choosenWeight").innerHTML = hero[13] + " kg";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        document.querySelector("#noRaceHeight").innerHTML = '<input type="range" id="volume" name="volume" min="260" max="320" step="1"></input>';
+
+                        document.querySelector("#volume").addEventListener("change", function () {
+                            hero.splice(14, 1, document.getElementById("volume").value);
+                            document.querySelector("#choosenHeight").innerHTML = "";
+                            document.querySelector("#choosenHeight").innerHTML = hero[14] + " cm";
+                            (0, _functions.letsPlayGame)(hero);
+                        });
+
+                        break;
+                }
+            }
+        }
+        checkRace(hero);
+
+        var formEyes = document.querySelector("#eyes");
+        var eyeColor = formEyes.querySelectorAll("input[name=eyesColor]");
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = eyeColor[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var radio = _step.value;
+
+                radio.addEventListener("change", function () {
+                    var _iteratorNormalCompletion5 = true;
+                    var _didIteratorError5 = false;
+                    var _iteratorError5 = undefined;
+
+                    try {
+                        for (var _iterator5 = eyeColor[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                            var _radio = _step5.value;
+
+                            if (_radio.checked) {
+                                document.querySelector("#eyesColor").innerText = "kolor oczu: " + _radio.value;
+                                hero.splice(9, 1, _radio.value);
+                                (0, _functions.letsPlayGame)(hero);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError5 = true;
+                        _iteratorError5 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                                _iterator5.return();
+                            }
+                        } finally {
+                            if (_didIteratorError5) {
+                                throw _iteratorError5;
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        var formHair = document.querySelector("#hair");
+        var hairColor = formHair.querySelectorAll("input[name=hairColor]");
+
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+            for (var _iterator2 = hairColor[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var _radio2 = _step2.value;
+
+                _radio2.addEventListener("change", function () {
+                    var _iteratorNormalCompletion6 = true;
+                    var _didIteratorError6 = false;
+                    var _iteratorError6 = undefined;
+
+                    try {
+                        for (var _iterator6 = hairColor[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                            var _radio3 = _step6.value;
+
+                            if (_radio3.checked) {
+                                document.querySelector("#hairColor").innerText = "kolor w\u0142os\xF3w: " + _radio3.value;
+                                hero.splice(10, 1, _radio3.value);
+                                (0, _functions.letsPlayGame)(hero);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError6 = true;
+                        _iteratorError6 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                                _iterator6.return();
+                            }
+                        } finally {
+                            if (_didIteratorError6) {
+                                throw _iteratorError6;
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
+                }
+            } finally {
+                if (_didIteratorError2) {
+                    throw _iteratorError2;
+                }
+            }
+        }
+
+        var formSkin = document.querySelector("#skin");
+        var skinColor = formSkin.querySelectorAll("input[name=skinColor]");
+
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+            for (var _iterator3 = skinColor[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var _radio4 = _step3.value;
+
+                _radio4.addEventListener("change", function () {
+                    var _iteratorNormalCompletion7 = true;
+                    var _didIteratorError7 = false;
+                    var _iteratorError7 = undefined;
+
+                    try {
+                        for (var _iterator7 = skinColor[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                            var _radio5 = _step7.value;
+
+                            if (_radio5.checked) {
+                                document.querySelector("#skinColor").innerText = "kolor sk\xF3ry: " + _radio5.value;
+                                hero.splice(11, 1, _radio5.value);
+                                (0, _functions.letsPlayGame)(hero);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError7 = true;
+                        _iteratorError7 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                                _iterator7.return();
+                            }
+                        } finally {
+                            if (_didIteratorError7) {
+                                throw _iteratorError7;
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (err) {
+            _didIteratorError3 = true;
+            _iteratorError3 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                    _iterator3.return();
+                }
+            } finally {
+                if (_didIteratorError3) {
+                    throw _iteratorError3;
+                }
+            }
+        }
+
+        var formTattoos = document.querySelector("#tattoos");
+        var choosenTattoo = formTattoos.querySelectorAll("input[name=tattoos]");
+
+        var _iteratorNormalCompletion4 = true;
+        var _didIteratorError4 = false;
+        var _iteratorError4 = undefined;
+
+        try {
+            for (var _iterator4 = choosenTattoo[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                var _radio6 = _step4.value;
+
+                _radio6.addEventListener("change", function () {
+                    var _iteratorNormalCompletion8 = true;
+                    var _didIteratorError8 = false;
+                    var _iteratorError8 = undefined;
+
+                    try {
+                        for (var _iterator8 = choosenTattoo[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                            var _radio7 = _step8.value;
+
+                            if (_radio7.checked) {
+                                document.querySelector("#choosenTattoo").innerText = "tatua\u017C: " + _radio7.value;
+                                hero.splice(12, 1, _radio7.value);
+                                (0, _functions.letsPlayGame)(hero);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError8 = true;
+                        _iteratorError8 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                                _iterator8.return();
+                            }
+                        } finally {
+                            if (_didIteratorError8) {
+                                throw _iteratorError8;
+                            }
+                        }
+                    }
+                });
+            }
+        } catch (err) {
+            _didIteratorError4 = true;
+            _iteratorError4 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                    _iterator4.return();
+                }
+            } finally {
+                if (_didIteratorError4) {
+                    throw _iteratorError4;
+                }
+            }
+        }
+    });
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.preview = undefined;
+
+var _functions = __webpack_require__(3);
+
+var preview = exports.preview = function preview(hero) {
+    document.querySelector("#preview").addEventListener("click", function () {
+        var showHero = "<div class = \"showHero\">\n            <p id='name'>imi\u0119: " + hero[0] + "</p>\n            <p id='sex'>p\u0142e\u0107: " + hero[1] + "</p>\n            <p id='race'>rasa: " + hero[2] + "</p>\n            <p id='occupation'>profesja: " + hero[3] + "</p>\n            <p id='force'>si\u0142a: " + hero[4] + "</p>\n            <p id='strength'>wytrzyma\u0142o\u015B\u0107: " + hero[5] + "</p>\n            <p id='dexterity'>zr\u0119czno\u015B\u0107: " + hero[6] + "</p>\n            <p id='intelligence'>inteligencja: " + hero[7] + "</p>\n            <p id='charisma'>charyzma: " + hero[8] + "</p>\n            <p id='eyes'>kolor oczu: <span id=\"eyesColor\">" + hero[9] + "</span></p>\n            <p id='hair'>kolor w\u0142os\xF3w: <span id=\"hairColor\">" + hero[10] + "</span></p>\n            <p id='skin'>kolor sk\xF3ry: <span id=\"skinColor\">" + hero[11] + "</span></p>\n            <p id='tattoo'>tatua\u017Ce: " + hero[12] + "</p>\n            <p id='weight'>waga: " + hero[13] + " kg</p>\n            <p id='height'>wzrost: " + hero[14] + " cm</p>\n        </div>";
+
+        mainContainer.innerHTML = "";
+        mainContainer.innerHTML = showHero;
+        (0, _functions.letsPlayGame)(hero);
+    });
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.reset = undefined;
+
+var _functions = __webpack_require__(3);
+
+var reset = exports.reset = function reset(hero) {
+    document.querySelector("#reset").addEventListener("click", function () {
+        (0, _functions.clearHero)(hero);
+    });
 };
 
 /***/ })

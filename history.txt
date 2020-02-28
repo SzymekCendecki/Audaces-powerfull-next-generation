@@ -485,3 +485,6 @@ Wstępna optymalizacja SCSS.
 
 27 lutego 2020 - wersja 0.2.74b
 Reorganizacja kodu. Przeniesienie kodu do innych plików (na razie kod ręcznego tworzenia postaci).
+
+28 lutego 2020 - wersja 0.2.74c
+Rozpoczęcie pracy nad intro - (brak tylko przycisku, który zamknie tekst intro oraz rozpocznie grę).

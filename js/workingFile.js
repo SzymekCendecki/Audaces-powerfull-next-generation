@@ -241,5 +241,24 @@ let showHero = (hero) =>{
 	reset(hero);
 
 document.querySelector("#play").addEventListener("click", ()=>{
-	console.log("działa");
+
+	document.querySelector("#randomHero").classList.add('displayNone');
+	document.querySelector("#play").classList.add('displayNone');
+	document.querySelector("#createHero").classList.add('displayNone');
+	document.querySelector("#creatorBtns").classList.add('displayNone');
+	document.querySelector("#mainContainer").innerHTML = "";
+
+	fetch(path + 'introGame.json').then(response => response.json()).then(data => { 
+
+		for (let i = 0; i<Object.keys(data).length; i++){
+			const newP = document.createElement("p"); 
+			let newContent = document.createTextNode(Object.values(data)[i]); 
+			newP.appendChild(newContent);
+			mainContainer.appendChild(newP); 
+			newP.classList.add("centerText");
+			newP.classList.add("pStyles");
+		}
+
+	}).catch(error => console.error(error))
+
 });

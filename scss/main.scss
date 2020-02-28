@@ -47,17 +47,21 @@ nav{
 	width: 90%;
 	height: 70%;
 	overflow: auto;
-	position:absolute;
+	position: absolute;
 	top:20%;
 	left:5%;
 }
 
+@mixin d($size){
+  font-size: $size;
+  font-weight: bolder;
+  font-family: 'New Rocker', cursive;	
+}
+
 footer{
 	top:90%;
-  font-size: 1.5em;
-  font-family: 'New Rocker', cursive;
   text-shadow: 1px 1px #fff;
-  text-align: center;
+  @include d(1.5em);
 }
 
 .displayNone{
@@ -81,7 +85,6 @@ footer{
  }
  
  #gameSubTitle{
-
    font-size: 3em;
    color: 		rgb(180, 44, 20);
    -webkit-text-stroke: 1px 	#000;
@@ -112,18 +115,14 @@ footer{
 	text-indent: 25px;
 	text-shadow: 1px 1px #fff;
 	width: 90%;
-	margin: 0 auto;
-	font-size: 2em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;
+  margin: 0 auto;
+  @include d(2em);
 }
 
 .showHero{
 	color: #000;
-	background-color: rgba(255, 255, 255, 0.7);
-	font-size: 2em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;
+  background-color: rgba(255, 255, 255, 0.7);
+  @include d(2em);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -137,10 +136,8 @@ footer{
 #chooseHeroForm{
 	width: 100%;
 	color: #000;
-	background-color: rgba(255, 255, 255, 0.7);
-	font-size: 2em;
-	font-weight: bolder;
-	font-family: 'New Rocker', cursive;	
+  background-color: rgba(255, 255, 255, 0.7);
+  @include d(2em);
 }
 
 #enterName{
@@ -206,9 +203,7 @@ footer{
     width: 20%;
     background-color: $bgc;
     color: #fff;
-    font-size: 1em;
-    font-weight: bolder;
-    font-family: 'New Rocker', cursive;
+    @include d(1em);
     text-align: center; 
   }
 
@@ -219,8 +214,6 @@ footer{
 
   .pStyles{
     text-shadow: 1px 1px #fff;
-    font-size: 1.5em;
-    font-weight: bolder;
-    font-family: 'New Rocker', cursive;
+    @include d(1.5em);
   }
 }

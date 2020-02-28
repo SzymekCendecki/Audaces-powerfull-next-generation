@@ -60,42 +60,124 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var toFirstMenu = exports.toFirstMenu = function toFirstMenu() {
+	info.classList.remove('displayNone');
+	licence.classList.remove('displayNone');
+	tutorial.classList.remove('displayNone');
+	newGame.classList.remove('displayNone');
+
+	gameTitle.classList.add('displayNone');
+	gameSubTitle.classList.add('displayNone');
+
+	document.querySelector('.progress').classList.add('displayNone');
+};
+
+var newP = exports.newP = function newP(data) {
+	var newP = document.createElement("p");
+	var newContent = document.createTextNode(data);
+	newP.appendChild(newContent);
+	newP.classList.add("pStyles");
+	mainContainer.appendChild(newP);
+};
+
+var newBtn = exports.newBtn = function newBtn(text, where, name) {
+	var newBtn = document.createElement("button");
+	var textBtn = document.createTextNode(text);
+	newBtn.appendChild(textBtn);
+	newBtn.setAttribute("id", name);
+	where.appendChild(newBtn);
+};
+
+var newDiv = exports.newDiv = function newDiv(where, name) {
+	var newDiv = document.createElement("div");
+	where.appendChild(newDiv);
+	newDiv.setAttribute("id", name);
+};
+
+var newInput = exports.newInput = function newInput(where, typeName, idName) {
+	var newInput = document.createElement("input");
+	where.appendChild(newInput);
+	newInput.setAttribute("type", typeName);
+	newInput.setAttribute("id", idName);
+};
+
+var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
+	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
+	hero.splice(position, 1, draw);
+};
+
+var letsPlayGame = exports.letsPlayGame = function letsPlayGame(hero) {
+	if (hero[0] !== "" && hero[1] !== "" && hero[2] !== "" && hero[3] !== "" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !== 0 && hero[8] !== "" && hero[9] !== "" && hero[10] !== "" && hero[11] !== "" && hero[12] !== "" && hero[13] !== "" && hero[14] !== "") {
+		play.disabled = false;
+		play.classList.remove("playDisabled");
+		play.classList.add("playEnabled");
+	}
+};
+
+var clearHero = exports.clearHero = function clearHero(hero) {
+	hero.splice(0, 1, "");
+	hero.splice(1, 1, "");
+	hero.splice(2, 1, "");
+	hero.splice(3, 1, "");
+	hero.splice(4, 1, 0);
+	hero.splice(5, 1, 0);
+	hero.splice(6, 1, 0);
+	hero.splice(7, 1, 0);
+	hero.splice(8, 1, 0);
+	hero.splice(9, 1, "");
+	hero.splice(10, 1, "");
+	hero.splice(11, 1, "");
+	hero.splice(12, 1, "");
+	hero.splice(13, 1, "");
+	hero.splice(14, 1, "");
+};
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var _arrays = __webpack_require__(2);
+var _arrays = __webpack_require__(3);
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
-var _name = __webpack_require__(8);
+var _name = __webpack_require__(4);
 
-var _sex = __webpack_require__(9);
+var _sex = __webpack_require__(5);
 
-var _race = __webpack_require__(10);
+var _race = __webpack_require__(6);
 
-var _occupation = __webpack_require__(11);
+var _occupation = __webpack_require__(7);
 
-var _points = __webpack_require__(12);
+var _points = __webpack_require__(8);
 
-var _characterTraits = __webpack_require__(13);
+var _characterTraits = __webpack_require__(9);
 
-var _preview = __webpack_require__(14);
+var _preview = __webpack_require__(10);
 
-var _reset = __webpack_require__(15);
+var _reset = __webpack_require__(11);
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -361,11 +443,32 @@ createHero.addEventListener("click", function () {
 (0, _reset.reset)(hero);
 
 document.querySelector("#play").addEventListener("click", function () {
-	console.log("działa");
+
+	document.querySelector("#randomHero").classList.add('displayNone');
+	document.querySelector("#play").classList.add('displayNone');
+	document.querySelector("#createHero").classList.add('displayNone');
+	document.querySelector("#creatorBtns").classList.add('displayNone');
+	document.querySelector("#mainContainer").innerHTML = "";
+
+	fetch(path + 'introGame.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+
+		for (var i = 0; i < Object.keys(data).length; i++) {
+			var _newP = document.createElement("p");
+			var newContent = document.createTextNode(Object.values(data)[i]);
+			_newP.appendChild(newContent);
+			mainContainer.appendChild(_newP);
+			_newP.classList.add("centerText");
+			_newP.classList.add("pStyles");
+		}
+	}).catch(function (error) {
+		return console.error(error);
+	});
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -413,93 +516,7 @@ var troll = exports.troll = [2, 0, 0, -2, -2];
 var semiGiant = exports.semiGiant = [7, 7, -5, -3, 0];
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var toFirstMenu = exports.toFirstMenu = function toFirstMenu() {
-	info.classList.remove('displayNone');
-	licence.classList.remove('displayNone');
-	tutorial.classList.remove('displayNone');
-	newGame.classList.remove('displayNone');
-
-	gameTitle.classList.add('displayNone');
-	gameSubTitle.classList.add('displayNone');
-
-	document.querySelector('.progress').classList.add('displayNone');
-};
-
-var newP = exports.newP = function newP(data) {
-	var newP = document.createElement("p");
-	var newContent = document.createTextNode(data);
-	newP.appendChild(newContent);
-	newP.classList.add("pStyles");
-	mainContainer.appendChild(newP);
-};
-
-var newBtn = exports.newBtn = function newBtn(text, where, name) {
-	var newBtn = document.createElement("button");
-	var textBtn = document.createTextNode(text);
-	newBtn.appendChild(textBtn);
-	newBtn.setAttribute("id", name);
-	where.appendChild(newBtn);
-};
-
-var newDiv = exports.newDiv = function newDiv(where, name) {
-	var newDiv = document.createElement("div");
-	where.appendChild(newDiv);
-	newDiv.setAttribute("id", name);
-};
-
-var newInput = exports.newInput = function newInput(where, typeName, idName) {
-	var newInput = document.createElement("input");
-	where.appendChild(newInput);
-	newInput.setAttribute("type", typeName);
-	newInput.setAttribute("id", idName);
-};
-
-var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
-	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
-	hero.splice(position, 1, draw);
-};
-
-var letsPlayGame = exports.letsPlayGame = function letsPlayGame(hero) {
-	if (hero[0] !== "" && hero[1] !== "" && hero[2] !== "" && hero[3] !== "" && hero[4] !== 0 && hero[5] !== 0 && hero[6] !== 0 && hero[7] !== 0 && hero[8] !== "" && hero[9] !== "" && hero[10] !== "" && hero[11] !== "" && hero[12] !== "" && hero[13] !== "" && hero[14] !== "") {
-		play.disabled = false;
-		play.classList.remove("playDisabled");
-		play.classList.add("playEnabled");
-	}
-};
-
-var clearHero = exports.clearHero = function clearHero(hero) {
-	hero.splice(0, 1, "");
-	hero.splice(1, 1, "");
-	hero.splice(2, 1, "");
-	hero.splice(3, 1, "");
-	hero.splice(4, 1, 0);
-	hero.splice(5, 1, 0);
-	hero.splice(6, 1, 0);
-	hero.splice(7, 1, 0);
-	hero.splice(8, 1, 0);
-	hero.splice(9, 1, "");
-	hero.splice(10, 1, "");
-	hero.splice(11, 1, "");
-	hero.splice(12, 1, "");
-	hero.splice(13, 1, "");
-	hero.splice(14, 1, "");
-};
-
-/***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -510,7 +527,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseName = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var chooseName = exports.chooseName = function chooseName(hero) {
 			document.querySelector("#name").addEventListener("click", function () {
@@ -540,7 +557,7 @@ var chooseName = exports.chooseName = function chooseName(hero) {
 };
 
 /***/ }),
-/* 9 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -551,7 +568,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseSex = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var chooseSex = exports.chooseSex = function chooseSex(hero) {
 	document.querySelector("#sex").addEventListener("click", function () {
@@ -583,7 +600,7 @@ var chooseSex = exports.chooseSex = function chooseSex(hero) {
 };
 
 /***/ }),
-/* 10 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -594,7 +611,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseRace = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var chooseRace = exports.chooseRace = function chooseRace(hero) {
 
@@ -659,7 +676,7 @@ var chooseRace = exports.chooseRace = function chooseRace(hero) {
 };
 
 /***/ }),
-/* 11 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -670,7 +687,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseOccupation = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero) {
 	document.querySelector("#occupation").addEventListener("click", function () {
@@ -700,7 +717,7 @@ var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero
 };
 
 /***/ }),
-/* 12 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -711,7 +728,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.choosePoints = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var choosePoints = exports.choosePoints = function choosePoints(hero) {
 	document.querySelector("#points").addEventListener("click", function () {
@@ -808,7 +825,7 @@ var choosePoints = exports.choosePoints = function choosePoints(hero) {
 };
 
 /***/ }),
-/* 13 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -819,7 +836,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseCharacterTraits = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseCharacterTraits(hero) {
     document.querySelector("#characterTraits").addEventListener("click", function () {
@@ -1308,7 +1325,7 @@ var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseChara
 };
 
 /***/ }),
-/* 14 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1319,7 +1336,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.preview = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var preview = exports.preview = function preview(hero) {
     document.querySelector("#preview").addEventListener("click", function () {
@@ -1332,7 +1349,7 @@ var preview = exports.preview = function preview(hero) {
 };
 
 /***/ }),
-/* 15 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1343,7 +1360,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reset = undefined;
 
-var _functions = __webpack_require__(3);
+var _functions = __webpack_require__(0);
 
 var reset = exports.reset = function reset(hero) {
     document.querySelector("#reset").addEventListener("click", function () {

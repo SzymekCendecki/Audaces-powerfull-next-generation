@@ -256,9 +256,24 @@ document.querySelector("#play").addEventListener("click", ()=>{
 			newP.appendChild(newContent);
 			mainContainer.appendChild(newP); 
 			newP.classList.add("centerText");
-			newP.classList.add("pStyles");
+			newP.classList.add("pStyles");			
 		}
+
+		document.querySelector("#start").classList.remove("displayNone");
 
 	}).catch(error => console.error(error))
 
+});
+
+
+document.querySelector("#start").addEventListener("click", ()=>{
+	document.querySelector("#start").classList.add("displayNone");
+	document.querySelector("#mainContainer").innerHTML = "";
+
+	document.querySelector("#features").classList.remove("displayNone");
+	document.querySelector("#equip").classList.remove("displayNone");
+	document.querySelector("#skills").classList.remove("displayNone");
+	document.querySelector("#tasks").classList.remove("displayNone");
+
+	document.querySelector("#roomBtns").classList.remove("displayNone");
 });

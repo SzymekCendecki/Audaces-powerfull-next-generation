@@ -488,3 +488,6 @@ Reorganizacja kodu. Przeniesienie kodu do innych plików (na razie kod ręcznego
 
 28 lutego 2020 - wersja 0.2.74c
 Rozpoczęcie pracy nad intro - (brak tylko przycisku, który zamknie tekst intro oraz rozpocznie grę).
+
+29 lutego 2020 - wersja 0.2.74d
+Stworzono przycisk zamykający intro. Utworzono przyciski główne gry oraz przyciski pierwszej lokacji (pokoju).

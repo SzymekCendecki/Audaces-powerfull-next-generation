@@ -265,7 +265,6 @@ document.querySelector("#play").addEventListener("click", ()=>{
 
 });
 
-
 document.querySelector("#start").addEventListener("click", ()=>{
 	document.querySelector("#start").classList.add("displayNone");
 	document.querySelector("#mainContainer").innerHTML = "";
@@ -276,4 +275,13 @@ document.querySelector("#start").addEventListener("click", ()=>{
 	document.querySelector("#tasks").classList.remove("displayNone");
 
 	document.querySelector("#roomBtns").classList.remove("displayNone");
+});
+
+document.querySelector("#features").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+});
+
+
+document.querySelector("#close").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.add("displayNone");
 });

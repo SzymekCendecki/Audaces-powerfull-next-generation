@@ -491,3 +491,9 @@ Rozpoczęcie pracy nad intro - (brak tylko przycisku, który zamknie tekst intro
 
 29 lutego 2020 - wersja 0.2.74d
 Stworzono przycisk zamykający intro. Utworzono przyciski główne gry oraz przyciski pierwszej lokacji (pokoju).
+
+1 marca 2020 - wersja 0.2.74e
+Usunięcie zduplikowanego pliku race.js.
+  Ostylowano przyciski menu głównego (cechy, ekwipunek, umiejętności i zadania).
+Ostylowano przyciski dla pierwszej lokacji - pokoju (paczka, szafa, skrzynia, rozejrzyj się oraz wyjdź).
+  Dodano nowego diva - infoContainer ("nowego okno") - dla pokazywania informacji (przyciski głównego menu).

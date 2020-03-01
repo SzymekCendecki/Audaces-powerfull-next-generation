@@ -481,6 +481,14 @@ document.querySelector("#start").addEventListener("click", function () {
 	document.querySelector("#roomBtns").classList.remove("displayNone");
 });
 
+document.querySelector("#features").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+});
+
+document.querySelector("#close").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.add("displayNone");
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

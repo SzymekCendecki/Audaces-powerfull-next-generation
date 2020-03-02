@@ -188,6 +188,8 @@ var skills = [];
 
 var equip = [];
 
+var tasks = ["zaniesć paczkę mnichowi"];
+
 var eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
 var hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
 var skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
@@ -483,10 +485,58 @@ document.querySelector("#start").addEventListener("click", function () {
 
 document.querySelector("#features").addEventListener("click", function () {
 	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	var featuresHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor">' + hero[9] + '</span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor">' + hero[10] + '</span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor">' + hero[11] + '</span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
+
+	document.querySelector("#infoHero").innerHTML = "";
+	document.querySelector("#infoHero").innerHTML = featuresHero;
+});
+
+document.querySelector("#equip").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (var i = 0; i < equip.length; i++) {
+		var p = document.createElement("p");
+		p.append('' + equip[i]);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
+});
+
+document.querySelector("#skills").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (var i = 0; i < skills.length; i++) {
+		var p = document.createElement("p");
+		p.append('' + skills[i]);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
+});
+
+document.querySelector("#tasks").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (var i = 0; i < tasks.length; i++) {
+		var p = document.createElement("p");
+		p.append('' + tasks[i]);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
 });
 
 document.querySelector("#close").addEventListener("click", function () {
 	document.querySelector("#infoContainer").classList.add("displayNone");
+	document.querySelector("#infoHero").innerHTML = "";
 });
 
 /***/ }),

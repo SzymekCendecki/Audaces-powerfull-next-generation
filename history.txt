@@ -497,3 +497,6 @@ Usunięcie zduplikowanego pliku race.js.
   Ostylowano przyciski menu głównego (cechy, ekwipunek, umiejętności i zadania).
 Ostylowano przyciski dla pierwszej lokacji - pokoju (paczka, szafa, skrzynia, rozejrzyj się oraz wyjdź).
   Dodano nowego diva - infoContainer ("nowego okno") - dla pokazywania informacji (przyciski głównego menu).
+
+2 marca 2020 - wersja 0.2.74f
+Dodano funkcje wyświetlające cechy, ekwipunek, umiejętności i zadania bohatera.

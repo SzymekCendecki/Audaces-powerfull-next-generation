@@ -20,6 +20,8 @@ let skills = [];
 
 let equip = [];
 
+let tasks = ["zaniesć paczkę mnichowi"];
+
 const eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
 const hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
 const skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
@@ -279,9 +281,72 @@ document.querySelector("#start").addEventListener("click", ()=>{
 
 document.querySelector("#features").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	const featuresHero = `<div class = "showHero">
+		<p id='name'>imię: ${hero[0]}</p>
+		<p id='sex'>płeć: ${hero[1]}</p>
+		<p id='race'>rasa: ${hero[2]}</p>
+		<p id='occupation'>profesja: ${hero[3]}</p>
+		<p id='force'>siła: ${hero[4]}</p>
+		<p id='strength'>wytrzymałość: ${hero[5]}</p>
+		<p id='dexterity'>zręczność: ${hero[6]}</p>
+		<p id='intelligence'>inteligencja: ${hero[7]}</p>
+		<p id='charisma'>charyzma: ${hero[8]}</p>
+		<p id='eyes'>kolor oczu: <span id="eyesColor">${hero[9]}</span></p>
+		<p id='hair'>kolor włosów: <span id="hairColor">${hero[10]}</span></p>
+		<p id='skin'>kolor skóry: <span id="skinColor">${hero[11]}</span></p>
+		<p id='tattoo'>tatuaże: ${hero[12]}</p>
+		<p id='weight'>waga: ${hero[13]} kg</p>
+		<p id='height'>wzrost: ${hero[14]} cm</p>
+	</div>`;
+
+		document.querySelector("#infoHero").innerHTML = "";
+		document.querySelector("#infoHero").innerHTML = featuresHero;
 });
 
+document.querySelector("#equip").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (let i=0; i<equip.length; i++){
+		let p = document.createElement("p");
+		p.append(`${equip[i]}`);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
+});
+
+document.querySelector("#skills").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (let i=0; i<skills.length; i++){
+		let p = document.createElement("p");
+		p.append(`${skills[i]}`);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
+});
+
+document.querySelector("#tasks").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (let i=0; i<tasks.length; i++){
+		let p = document.createElement("p");
+		p.append(`${tasks[i]}`);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		document.querySelector("#infoHero").append(p);
+	}
+});
 
 document.querySelector("#close").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.add("displayNone");
+	document.querySelector("#infoHero").innerHTML = "";
 });

@@ -267,18 +267,6 @@ document.querySelector("#play").addEventListener("click", ()=>{
 
 });
 
-document.querySelector("#start").addEventListener("click", ()=>{
-	document.querySelector("#start").classList.add("displayNone");
-	document.querySelector("#mainContainer").innerHTML = "";
-
-	document.querySelector("#features").classList.remove("displayNone");
-	document.querySelector("#equip").classList.remove("displayNone");
-	document.querySelector("#skills").classList.remove("displayNone");
-	document.querySelector("#tasks").classList.remove("displayNone");
-
-	document.querySelector("#roomBtns").classList.remove("displayNone");
-});
-
 document.querySelector("#features").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
@@ -349,4 +337,54 @@ document.querySelector("#tasks").addEventListener("click", ()=>{
 document.querySelector("#close").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.add("displayNone");
 	document.querySelector("#infoHero").innerHTML = "";
+});
+
+document.querySelector("#start").addEventListener("click", ()=>{
+	document.querySelector("#start").classList.add("displayNone");
+	document.querySelector("#mainContainer").innerHTML = "";
+
+	document.querySelector("#features").classList.remove("displayNone");
+	document.querySelector("#equip").classList.remove("displayNone");
+	document.querySelector("#skills").classList.remove("displayNone");
+	document.querySelector("#tasks").classList.remove("displayNone");
+
+	document.querySelector("#roomBtns").classList.remove("displayNone");
+
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+		let p = document.createElement("p");
+		p.append(data.room);
+		p.classList.add("pStyles");
+		document.querySelector("#mainContainer").append(p);
+
+		let p2 = document.createElement("p");
+		p2.id = "second";
+		p2.classList.add("pStyles");
+		document.querySelector("#mainContainer").append(p2);
+
+		let p3 = document.createElement("p");
+		p3.id= "third";
+		p3.classList.add("pStyles");
+		document.querySelector("#mainContainer").append(p3);
+	
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#lookRoom").addEventListener("click", ()=>{
+
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+		document.querySelector("#third").innerHTML = data.lookAround;	
+
+		setTimeout(()=>{ 
+			document.querySelector("#third").innerHTML = "";	
+		}, 5000);
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#wardrobe").addEventListener("click", ()=>{
+
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+
+		document.querySelector("#second").innerHTML = data.fullWardrobe;
+		
+	}).catch(error => console.error(error))
 });

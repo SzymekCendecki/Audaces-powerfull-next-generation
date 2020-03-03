@@ -582,6 +582,10 @@ document.querySelector("#wardrobe").addEventListener("click", function () {
 	}).then(function (data) {
 
 		document.querySelector("#second").innerHTML = data.fullWardrobe;
+
+		document.querySelector("#coat").addEventListener("click", function () {
+			console.log("działa");
+		});
 	}).catch(function (error) {
 		return console.error(error);
 	});

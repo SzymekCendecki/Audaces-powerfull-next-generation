@@ -385,6 +385,10 @@ document.querySelector("#wardrobe").addEventListener("click", ()=>{
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 
 
 		document.querySelector("#second").innerHTML = data.fullWardrobe;
+
+		document.querySelector("#coat").addEventListener("click", ()=>{
+			console.log("działa");
+		});
 		
 	}).catch(error => console.error(error))
 });

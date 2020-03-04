@@ -537,6 +537,7 @@ document.querySelector("#start").addEventListener("click", function () {
 	document.querySelector("#tasks").classList.remove("displayNone");
 
 	document.querySelector("#roomBtns").classList.remove("displayNone");
+	document.querySelector("#out").disabled = true;
 
 	fetch(path + 'room.json').then(function (response) {
 		return response.json();
@@ -560,16 +561,18 @@ document.querySelector("#start").addEventListener("click", function () {
 	});
 });
 
-document.querySelector("#lookRoom").addEventListener("click", function () {
+var closeP = function closeP(p) {
+	setTimeout(function () {
+		document.querySelector(p).innerHTML = "";
+	}, 5000);
+};
 
+document.querySelector("#lookRoom").addEventListener("click", function () {
 	fetch(path + 'room.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
 		document.querySelector("#third").innerHTML = data.lookAround;
-
-		setTimeout(function () {
-			document.querySelector("#third").innerHTML = "";
-		}, 5000);
+		closeP("#third");
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -581,14 +584,26 @@ document.querySelector("#wardrobe").addEventListener("click", function () {
 		return response.json();
 	}).then(function (data) {
 
-		document.querySelector("#second").innerHTML = data.fullWardrobe;
+		if (equip.indexOf('płaszcz') == -1) {
+			document.querySelector("#second").innerHTML = data.fullWardrobe;
+		} else {
+			document.querySelector("#second").innerHTML = data.emptyWardrobe;
+			closeP("#second");
+		}
 
 		document.querySelector("#coat").addEventListener("click", function () {
-			console.log("działa");
+			equip.push('płaszcz');
+			document.querySelector("#second").innerHTML = "";
+			document.querySelector("#second").innerHTML = data.emptyWardrobe;
+			closeP("#second");
 		});
 	}).catch(function (error) {
 		return console.error(error);
 	});
+});
+
+document.querySelector("#out").addEventListener("click", function () {
+	console.log("działa");
 });
 
 /***/ }),

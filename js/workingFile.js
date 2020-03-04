@@ -349,6 +349,7 @@ document.querySelector("#start").addEventListener("click", ()=>{
 	document.querySelector("#tasks").classList.remove("displayNone");
 
 	document.querySelector("#roomBtns").classList.remove("displayNone");
+	document.querySelector("#out").disabled = true;
 
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 
 		let p = document.createElement("p");
@@ -369,14 +370,16 @@ document.querySelector("#start").addEventListener("click", ()=>{
 	}).catch(error => console.error(error))
 });
 
-document.querySelector("#lookRoom").addEventListener("click", ()=>{
+const closeP = (p) =>{
+	setTimeout(()=>{ 
+		document.querySelector(p).innerHTML = "";	
+	}, 5000);
+}
 
+document.querySelector("#lookRoom").addEventListener("click", ()=>{
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 
 		document.querySelector("#third").innerHTML = data.lookAround;	
-
-		setTimeout(()=>{ 
-			document.querySelector("#third").innerHTML = "";	
-		}, 5000);
+		closeP("#third");
 	}).catch(error => console.error(error))
 });
 
@@ -384,11 +387,24 @@ document.querySelector("#wardrobe").addEventListener("click", ()=>{
 
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 
 
-		document.querySelector("#second").innerHTML = data.fullWardrobe;
+		if(equip.indexOf('płaszcz') == -1){
+			document.querySelector("#second").innerHTML = data.fullWardrobe;
+		}else{
+			document.querySelector("#second").innerHTML = data.emptyWardrobe;
+			closeP("#second");
+		}
 
 		document.querySelector("#coat").addEventListener("click", ()=>{
-			console.log("działa");
+			equip.push('płaszcz');
+			document.querySelector("#second").innerHTML = "";
+			document.querySelector("#second").innerHTML = data.emptyWardrobe;
+			closeP("#second");
+			
 		});
 		
 	}).catch(error => console.error(error))
+});
+
+document.querySelector("#out").addEventListener("click", ()=>{
+	console.log("działa");
 });

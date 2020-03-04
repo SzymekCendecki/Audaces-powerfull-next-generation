@@ -503,3 +503,6 @@ Dodano funkcje wyświetlające cechy, ekwipunek, umiejętności i zadania bohate
 
 3 marca 2020 - wersja 0.2.74g
 Rozpoczęcie pracy nad interakcją w pokoju (można rozejrzeć się po pokoju oraz zajrzeć do szafy).
+
+4 marca 2020 - wersja 0.2.74i
+Dodana interakcja z szafą oraz zabieraniem płaszcza.

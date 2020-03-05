@@ -506,3 +506,6 @@ Rozpoczęcie pracy nad interakcją w pokoju (można rozejrzeć się po pokoju or
 
 4 marca 2020 - wersja 0.2.74i
 Dodana interakcja z szafą oraz zabieraniem płaszcza.
+
+5 marca 2020 - wersja 0.2.74j
+Dodano funkcje dla przycisku 'skrzynia' oraz 'paczka'. Monety i paczka dodawane są do ekwipunku.

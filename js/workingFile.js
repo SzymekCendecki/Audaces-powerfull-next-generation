@@ -22,6 +22,8 @@ let equip = [];
 
 let tasks = ["zaniesć paczkę mnichowi"];
 
+let gold = 0;
+
 const eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
 const hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
 const skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
@@ -304,6 +306,11 @@ document.querySelector("#equip").addEventListener("click", ()=>{
 		p.classList.add("centerText");
 		document.querySelector("#infoHero").append(p);
 	}
+
+	let p = document.createElement("p");
+	p.append(`złoto: ` + gold);
+	p.classList.add("pStyles");
+	document.querySelector("#infoHero").append(p);
 });
 
 document.querySelector("#skills").addEventListener("click", ()=>{
@@ -398,12 +405,45 @@ document.querySelector("#wardrobe").addEventListener("click", ()=>{
 			equip.push('płaszcz');
 			document.querySelector("#second").innerHTML = "";
 			document.querySelector("#second").innerHTML = data.emptyWardrobe;
-			closeP("#second");
-			
+			closeP("#second");		
 		});
 		
 	}).catch(error => console.error(error))
 });
+
+document.querySelector("#chest").addEventListener("click", ()=>{
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+
+		if(gold == 0){
+			document.querySelector("#second").innerHTML = data.fullChest;
+		}else{
+			document.querySelector("#second").innerHTML = data.emptyChest;
+			closeP("#second");
+		}
+
+		document.querySelector("#coins").addEventListener("click", ()=>{
+			gold = 12;
+			document.querySelector("#second").innerHTML = "";
+			document.querySelector("#second").innerHTML = data.emptyChest;
+			closeP("#second");		
+		});
+		
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#package").addEventListener("click", ()=>{
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+
+		equip.push("paczka");
+		document.querySelector("#second").innerHTML = "";
+		document.querySelector("#second").innerHTML = data.package;
+		closeP("#second");		
+
+		document.querySelector("#roomBtns").removeChild(document.querySelector("#package"));
+		
+	}).catch(error => console.error(error))
+});
+
 
 document.querySelector("#out").addEventListener("click", ()=>{
 	console.log("działa");

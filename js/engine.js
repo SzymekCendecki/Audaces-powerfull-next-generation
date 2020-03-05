@@ -190,6 +190,8 @@ var equip = [];
 
 var tasks = ["zaniesć paczkę mnichowi"];
 
+var gold = 0;
+
 var eyesColor = ["niebieskie", "brązowe", "zielone", "szare", "czerwone"];
 var hairColor = ["blond", "czarne", "rude", "kolorowe", "brak włosów"];
 var skinColor = ["biała", "brązowa", "czarna", "zielona", "oliwkowa"];
@@ -486,12 +488,17 @@ document.querySelector("#equip").addEventListener("click", function () {
 	document.querySelector("#infoHero").innerHTML = "";
 
 	for (var i = 0; i < equip.length; i++) {
-		var p = document.createElement("p");
-		p.append('' + equip[i]);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
+		var _p = document.createElement("p");
+		_p.append('' + equip[i]);
+		_p.classList.add("pStyles");
+		_p.classList.add("centerText");
+		document.querySelector("#infoHero").append(_p);
 	}
+
+	var p = document.createElement("p");
+	p.append('z\u0142oto: ' + gold);
+	p.classList.add("pStyles");
+	document.querySelector("#infoHero").append(p);
 });
 
 document.querySelector("#skills").addEventListener("click", function () {
@@ -597,6 +604,45 @@ document.querySelector("#wardrobe").addEventListener("click", function () {
 			document.querySelector("#second").innerHTML = data.emptyWardrobe;
 			closeP("#second");
 		});
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#chest").addEventListener("click", function () {
+	fetch(path + 'room.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+
+		if (gold == 0) {
+			document.querySelector("#second").innerHTML = data.fullChest;
+		} else {
+			document.querySelector("#second").innerHTML = data.emptyChest;
+			closeP("#second");
+		}
+
+		document.querySelector("#coins").addEventListener("click", function () {
+			gold = 12;
+			document.querySelector("#second").innerHTML = "";
+			document.querySelector("#second").innerHTML = data.emptyChest;
+			closeP("#second");
+		});
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#package").addEventListener("click", function () {
+	fetch(path + 'room.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+
+		equip.push("paczka");
+		document.querySelector("#second").innerHTML = "";
+		document.querySelector("#second").innerHTML = data.package;
+		closeP("#second");
+
+		document.querySelector("#roomBtns").removeChild(document.querySelector("#package"));
 	}).catch(function (error) {
 		return console.error(error);
 	});

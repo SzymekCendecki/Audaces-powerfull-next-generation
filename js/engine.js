@@ -544,25 +544,27 @@ document.querySelector("#start").addEventListener("click", function () {
 	document.querySelector("#tasks").classList.remove("displayNone");
 
 	document.querySelector("#roomBtns").classList.remove("displayNone");
-	document.querySelector("#out").disabled = true;
+	document.querySelector("#street").disabled = true;
+
+	var p = document.createElement("p");
+	p.id = "first";
+	p.classList.add("pStyles");
+	document.querySelector("#mainContainer").append(p);
+
+	var p2 = document.createElement("p");
+	p2.id = "second";
+	p2.classList.add("pStyles");
+	document.querySelector("#mainContainer").append(p2);
+
+	var p3 = document.createElement("p");
+	p3.id = "third";
+	p3.classList.add("pStyles");
+	document.querySelector("#mainContainer").append(p3);
 
 	fetch(path + 'room.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
-		var p = document.createElement("p");
 		p.append(data.room);
-		p.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p);
-
-		var p2 = document.createElement("p");
-		p2.id = "second";
-		p2.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p2);
-
-		var p3 = document.createElement("p");
-		p3.id = "third";
-		p3.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p3);
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -638,7 +640,7 @@ document.querySelector("#package").addEventListener("click", function () {
 	}).then(function (data) {
 
 		equip.push("paczka");
-		document.querySelector("#second").innerHTML = "";
+		document.querySelector("#first").innerHTML = data.room2;
 		document.querySelector("#second").innerHTML = data.package;
 		closeP("#second");
 
@@ -646,10 +648,62 @@ document.querySelector("#package").addEventListener("click", function () {
 	}).catch(function (error) {
 		return console.error(error);
 	});
+
+	document.querySelector("#street").classList.remove("redBtn");
+	document.querySelector("#street").classList.add("btnAccept");
+	document.querySelector("#street").disabled = false;
 });
 
-document.querySelector("#out").addEventListener("click", function () {
-	console.log("działa");
+document.querySelector("#street").addEventListener("click", function () {
+	document.querySelector("#roomBtns").classList.add("displayNone");
+	document.querySelector("#streetBtns").classList.remove("displayNone");
+
+	fetch(path + 'street.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.street;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#lookStreet").addEventListener("click", function () {
+	fetch(path + 'street.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#inRoom").addEventListener("click", function () {
+	document.querySelector("#roomBtns").classList.remove("displayNone");
+	document.querySelector("#streetBtns").classList.add("displayNone");
+
+	fetch(path + 'room.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.room2;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#market").addEventListener("click", function () {
+
+	document.querySelector("#streetBtns").classList.add("displayNone");
+	document.querySelector("#marketBtns").classList.remove("displayNone");
+
+	fetch(path + 'market.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.market;
+	}).catch(function (error) {
+		return console.error(error);
+	});
 });
 
 /***/ }),

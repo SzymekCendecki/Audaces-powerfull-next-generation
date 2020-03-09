@@ -2,9 +2,9 @@
     "room":"Stoisz w swoim pokoju, w którym znajduje się tylko łóżko, szafa, mały stolik i drewniana skrzynia. Na stoliku leży paczka, którą musisz oddać mnichowi w przygranicznej wiosce. Co robisz?",
     "room2":"Stoisz w swoim pokoju, w którym znajduje się tylko łóżko, szafa, mały stolik i drewniana skrzynia.",
     "lookAround":"Pokój jak pokój. Stół, łóżko, szafa, skrzynia.",
-    "fullWardrobe":"Stara, drewniana szafa, śmierdząca kurzem, pleśnią i niewiadomo czym jeszcze. Wisi w niej płaszcz. <button id='coat'>płaszcz</button>",
+    "fullWardrobe":"Stara, drewniana szafa, śmierdząca kurzem, pleśnią i niewiadomo czym jeszcze. Wisi w niej płaszcz. <button id='coat' class='btnAccept'>płaszcz</button>",
     "emptyWardrobe":"Stara, drewniana szafa, śmierdząca kurzem, pleśnią i niewiadomo czym jeszcze. Szafa jest pusta. <button id='coat' class='displayNone'>płaszcz</button>",
-    "fullChest":"Niewielka drewniana skrzynia, bez żadnych żelaznych okuć. W środku znajduje się 12 sztuk złotych monet. <button id='coins'>weź monety</button>",
+    "fullChest":"Niewielka drewniana skrzynia, bez żadnych żelaznych okuć. W środku znajduje się 12 sztuk złotych monet. <button id='coins' class='btnAccept'>weź monety</button>",
     "emptyChest":"Niewielka drewniana skrzynia, bez żadnych żelaznych okuć. Skrzynia jest pusta. <button id='coins' class='displayNone'>weź monety</button>",
     "package":"Paczka została dodana do ekwipunku."
 }

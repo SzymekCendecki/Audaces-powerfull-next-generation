@@ -509,3 +509,10 @@ Dodana interakcja z szafą oraz zabieraniem płaszcza.
 
 5 marca 2020 - wersja 0.2.74j
 Dodano funkcje dla przycisku 'skrzynia' oraz 'paczka'. Monety i paczka dodawane są do ekwipunku.
+
+9 marca 2020 - wersja 0.2.74h
+Ostylowano przyciski dla zabierania złota oraz płaszcza.
+  Dodano metodę "odblokowania" przycisku wyjścia z pokoju, gdy zabierze się paczkę.
+Poprawiono tekst, gdy zabierze się paczkę.
+  Dodano nową lokalizację - ulicę przed domem oraz dodano do niej interakcję.
+Utworzono nową lokalizację - targ - bez interakcji.

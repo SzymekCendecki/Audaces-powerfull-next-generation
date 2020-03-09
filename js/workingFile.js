@@ -356,11 +356,11 @@ document.querySelector("#start").addEventListener("click", ()=>{
 	document.querySelector("#tasks").classList.remove("displayNone");
 
 	document.querySelector("#roomBtns").classList.remove("displayNone");
-	document.querySelector("#out").disabled = true;
+	document.querySelector("#street").disabled = true;
 
-	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+
 		let p = document.createElement("p");
-		p.append(data.room);
+		p.id = "first";
 		p.classList.add("pStyles");
 		document.querySelector("#mainContainer").append(p);
 
@@ -373,7 +373,9 @@ document.querySelector("#start").addEventListener("click", ()=>{
 		p3.id= "third";
 		p3.classList.add("pStyles");
 		document.querySelector("#mainContainer").append(p3);
-	
+
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 	
+		p.append(data.room);
 	}).catch(error => console.error(error))
 });
 
@@ -435,16 +437,53 @@ document.querySelector("#package").addEventListener("click", ()=>{
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 
 
 		equip.push("paczka");
-		document.querySelector("#second").innerHTML = "";
+		document.querySelector("#first").innerHTML = data.room2;
 		document.querySelector("#second").innerHTML = data.package;
 		closeP("#second");		
 
 		document.querySelector("#roomBtns").removeChild(document.querySelector("#package"));
 		
 	}).catch(error => console.error(error))
+
+	document.querySelector("#street").classList.remove("redBtn");
+	document.querySelector("#street").classList.add("btnAccept");
+	document.querySelector("#street").disabled = false;
 });
 
 
-document.querySelector("#out").addEventListener("click", ()=>{
-	console.log("działa");
+document.querySelector("#street").addEventListener("click", ()=>{
+	document.querySelector("#roomBtns").classList.add("displayNone");
+	document.querySelector("#streetBtns").classList.remove("displayNone");
+
+	fetch(path + 'street.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.street;
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#lookStreet").addEventListener("click", ()=>{
+	fetch(path + 'street.json').then(response => response.json()).then(data => { 
+
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+			
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#inRoom").addEventListener("click", ()=>{
+	document.querySelector("#roomBtns").classList.remove("displayNone");
+	document.querySelector("#streetBtns").classList.add("displayNone");
+
+	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.room2;
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#market").addEventListener("click", ()=>{
+
+	document.querySelector("#streetBtns").classList.add("displayNone");
+	document.querySelector("#marketBtns").classList.remove("displayNone");
+	
+	fetch(path + 'market.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.market;
+	}).catch(error => console.error(error))
 });

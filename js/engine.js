@@ -60,11 +60,18 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -146,13 +153,6 @@ var clearHero = exports.clearHero = function clearHero(hero) {
 };
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -161,7 +161,7 @@ module.exports = __webpack_require__(2);
 
 var _arrays = __webpack_require__(3);
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var _name = __webpack_require__(4);
 
@@ -706,6 +706,84 @@ document.querySelector("#market").addEventListener("click", function () {
 	});
 });
 
+document.querySelector("#lookMarket").addEventListener("click", function () {
+	fetch(path + 'market.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#toStreet").addEventListener("click", function () {
+	document.querySelector("#streetBtns").classList.remove("displayNone");
+	document.querySelector("#marketBtns").classList.add("displayNone");
+
+	fetch(path + 'street.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.street;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#buyMarket").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	var marketItems = ["włócznia", "wiadro", "puklerz", "śledzie"];
+
+	var newP = document.createElement("p");
+	newP.innerHTML = "Możesz kupić:";
+	newP.classList.add("pStyles");
+	document.querySelector("#infoHero").appendChild(newP);
+
+	for (var i = 0; i < marketItems.length; i++) {
+		var _newBtn = document.createElement("button");
+		_newBtn.innerHTML = marketItems[i];
+		_newBtn.classList.add("btnAccept");
+		document.querySelector("#infoHero").appendChild(_newBtn);
+	}
+
+	console.log(document.querySelectorAll("#infoHero > button"));
+	var xcv = document.querySelectorAll("#infoHero > button");
+
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
+
+	try {
+		var _loop = function _loop() {
+			var button = _step.value;
+
+			button.addEventListener('click', function (event) {
+				console.log(button.textContent);
+			});
+		};
+
+		for (var _iterator = xcv[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+			_loop();
+		}
+	} catch (err) {
+		_didIteratorError = true;
+		_iteratorError = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion && _iterator.return) {
+				_iterator.return();
+			}
+		} finally {
+			if (_didIteratorError) {
+				throw _iteratorError;
+			}
+		}
+	}
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -766,7 +844,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseName = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var chooseName = exports.chooseName = function chooseName(hero) {
 			document.querySelector("#name").addEventListener("click", function () {
@@ -807,7 +885,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseSex = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var chooseSex = exports.chooseSex = function chooseSex(hero) {
 	document.querySelector("#sex").addEventListener("click", function () {
@@ -850,7 +928,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseRace = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var chooseRace = exports.chooseRace = function chooseRace(hero) {
 
@@ -926,7 +1004,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseOccupation = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero) {
 	document.querySelector("#occupation").addEventListener("click", function () {
@@ -967,7 +1045,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.choosePoints = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var choosePoints = exports.choosePoints = function choosePoints(hero) {
 	document.querySelector("#points").addEventListener("click", function () {
@@ -1075,7 +1153,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseCharacterTraits = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseCharacterTraits(hero) {
     document.querySelector("#characterTraits").addEventListener("click", function () {
@@ -1575,7 +1653,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.preview = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var preview = exports.preview = function preview(hero) {
     document.querySelector("#preview").addEventListener("click", function () {
@@ -1599,7 +1677,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reset = undefined;
 
-var _functions = __webpack_require__(0);
+var _functions = __webpack_require__(1);
 
 var reset = exports.reset = function reset(hero) {
     document.querySelector("#reset").addEventListener("click", function () {

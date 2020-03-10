@@ -487,3 +487,51 @@ document.querySelector("#market").addEventListener("click", ()=>{
 		document.querySelector("#first").innerHTML = data.market;
 	}).catch(error => console.error(error))
 });
+
+document.querySelector("#lookMarket").addEventListener("click", ()=>{
+	fetch(path + 'market.json').then(response => response.json()).then(data => { 
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#toStreet").addEventListener("click", ()=>{
+	document.querySelector("#streetBtns").classList.remove("displayNone");
+	document.querySelector("#marketBtns").classList.add("displayNone");
+
+	fetch(path + 'street.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.street;
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#buyMarket").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML =  "";
+
+	const marketItems = ["włócznia", "wiadro", "puklerz", "śledzie"];
+
+	const newP = document.createElement("p");
+	newP.innerHTML = "Możesz kupić:";
+	newP.classList.add("pStyles");
+	document.querySelector("#infoHero").appendChild(newP); 
+
+	for (let i = 0; i<marketItems.length; i++){
+		const newBtn = document.createElement("button"); 
+		newBtn.innerHTML = marketItems[i];
+		newBtn.classList.add("btnAccept");
+		document.querySelector("#infoHero").appendChild(newBtn); 
+		
+		
+	}
+
+
+	console.log(document.querySelectorAll("#infoHero > button"));
+	const xcv = document.querySelectorAll("#infoHero > button");
+
+	for (const button of xcv) {
+		button.addEventListener('click', (event) =>{
+		  console.log(button.textContent);
+		})
+	  }
+});

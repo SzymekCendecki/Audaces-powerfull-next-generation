@@ -516,3 +516,8 @@ Ostylowano przyciski dla zabierania złota oraz płaszcza.
 Poprawiono tekst, gdy zabierze się paczkę.
   Dodano nową lokalizację - ulicę przed domem oraz dodano do niej interakcję.
 Utworzono nową lokalizację - targ - bez interakcji.
+
+10 marca 2020 - wersja 0.2.75
+Dodano rozglądanie się po targu.
+  Dodano przechodzenie z targu na ulicę przed domem;
+Rozpoczęto pracę na możliwością kupowania rzeczy.

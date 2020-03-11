@@ -507,31 +507,55 @@ document.querySelector("#toStreet").addEventListener("click", ()=>{
 document.querySelector("#buyMarket").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML =  "";
+	const marketItems = ["włócznia 6zł", "wiadro 2zł", "puklerz 6zł", "śledzie2zł", "koc 2zł", "sztylet 4zł", "miecz 10zł"];
 
-	const marketItems = ["włócznia", "wiadro", "puklerz", "śledzie"];
+	document.querySelector("#infoHero").innerHTML = `
+	<p class='pStyles'>Możesz kupić:</p>
+	<div id='itemsBuy' class='displayFlex'>
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='włócznia' /> włócznia 6 szt. zł.
+		</label>
+	
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='wiadro' /> wiadro 2 szt. zł.
+		</label>
 
-	const newP = document.createElement("p");
-	newP.innerHTML = "Możesz kupić:";
-	newP.classList.add("pStyles");
-	document.querySelector("#infoHero").appendChild(newP); 
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='puklerz' /> puklerz 6 szt. zł.
+		</label>
 
-	for (let i = 0; i<marketItems.length; i++){
-		const newBtn = document.createElement("button"); 
-		newBtn.innerHTML = marketItems[i];
-		newBtn.classList.add("btnAccept");
-		document.querySelector("#infoHero").appendChild(newBtn); 
-		
-		
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='śledzie' /> śledzie 1 szt. zł.
+		</label>
+
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='koc' /> koc 2 szt. zł.
+		</label>
+
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='sztylet' /> sztylet 4 szt. zł.
+		</label>
+
+		<label class='pStyles'>
+			<input type='checkbox' name='item' value='miecz' /> miecz 10 szt. zł.
+		</label>
+	</div>	
+
+	<div class='displayFlex'>
+		<button id='buyItem' class='btnAccept'>kup</button>
+		<button id='resetChoose' class='redBtn'>reset</button>
+	</div>
+	`;
+
+	const items = document.querySelectorAll("#itemsBuy > label > input");
+
+	for (const item of items) {
+  		item.addEventListener('click', function(event) {
+			if(item.checked == true){
+				console.log("checked");
+			}else{
+				console.log("not checked");
+			}
+  		})
 	}
-
-
-	console.log(document.querySelectorAll("#infoHero > button"));
-	const xcv = document.querySelectorAll("#infoHero > button");
-
-	for (const button of xcv) {
-		button.addEventListener('click', (event) =>{
-		  console.log(button.textContent);
-		})
-	  }
 });

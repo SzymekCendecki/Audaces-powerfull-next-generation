@@ -521,3 +521,6 @@ Utworzono nową lokalizację - targ - bez interakcji.
 Dodano rozglądanie się po targu.
   Dodano przechodzenie z targu na ulicę przed domem;
 Rozpoczęto pracę na możliwością kupowania rzeczy.
+
+11 marca 2020 - wersja 0.2.75a
+Projektowanie interfejsu kupowania przedmiotów na targu.

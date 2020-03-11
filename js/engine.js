@@ -60,18 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -153,6 +146,13 @@ var clearHero = exports.clearHero = function clearHero(hero) {
 };
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -161,7 +161,7 @@ var clearHero = exports.clearHero = function clearHero(hero) {
 
 var _arrays = __webpack_require__(3);
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var _name = __webpack_require__(4);
 
@@ -733,24 +733,11 @@ document.querySelector("#toStreet").addEventListener("click", function () {
 document.querySelector("#buyMarket").addEventListener("click", function () {
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = "";
+	var marketItems = ["włócznia 6zł", "wiadro 2zł", "puklerz 6zł", "śledzie2zł", "koc 2zł", "sztylet 4zł", "miecz 10zł"];
 
-	var marketItems = ["włócznia", "wiadro", "puklerz", "śledzie"];
+	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t';
 
-	var newP = document.createElement("p");
-	newP.innerHTML = "Możesz kupić:";
-	newP.classList.add("pStyles");
-	document.querySelector("#infoHero").appendChild(newP);
-
-	for (var i = 0; i < marketItems.length; i++) {
-		var _newBtn = document.createElement("button");
-		_newBtn.innerHTML = marketItems[i];
-		_newBtn.classList.add("btnAccept");
-		document.querySelector("#infoHero").appendChild(_newBtn);
-	}
-
-	console.log(document.querySelectorAll("#infoHero > button"));
-	var xcv = document.querySelectorAll("#infoHero > button");
+	var items = document.querySelectorAll("#itemsBuy > label > input");
 
 	var _iteratorNormalCompletion = true;
 	var _didIteratorError = false;
@@ -758,14 +745,18 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 
 	try {
 		var _loop = function _loop() {
-			var button = _step.value;
+			var item = _step.value;
 
-			button.addEventListener('click', function (event) {
-				console.log(button.textContent);
+			item.addEventListener('click', function (event) {
+				if (item.checked == true) {
+					console.log("checked");
+				} else {
+					console.log("not checked");
+				}
 			});
 		};
 
-		for (var _iterator = xcv[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+		for (var _iterator = items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 			_loop();
 		}
 	} catch (err) {
@@ -844,7 +835,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseName = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var chooseName = exports.chooseName = function chooseName(hero) {
 			document.querySelector("#name").addEventListener("click", function () {
@@ -885,7 +876,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseSex = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var chooseSex = exports.chooseSex = function chooseSex(hero) {
 	document.querySelector("#sex").addEventListener("click", function () {
@@ -928,7 +919,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseRace = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var chooseRace = exports.chooseRace = function chooseRace(hero) {
 
@@ -1004,7 +995,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseOccupation = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero) {
 	document.querySelector("#occupation").addEventListener("click", function () {
@@ -1045,7 +1036,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.choosePoints = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var choosePoints = exports.choosePoints = function choosePoints(hero) {
 	document.querySelector("#points").addEventListener("click", function () {
@@ -1153,7 +1144,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.chooseCharacterTraits = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseCharacterTraits(hero) {
     document.querySelector("#characterTraits").addEventListener("click", function () {
@@ -1653,7 +1644,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.preview = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var preview = exports.preview = function preview(hero) {
     document.querySelector("#preview").addEventListener("click", function () {
@@ -1677,7 +1668,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reset = undefined;
 
-var _functions = __webpack_require__(1);
+var _functions = __webpack_require__(0);
 
 var reset = exports.reset = function reset(hero) {
     document.querySelector("#reset").addEventListener("click", function () {

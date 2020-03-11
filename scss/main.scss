@@ -199,6 +199,13 @@ footer{
   height: 50%;
 }
 
+.itemsToBuy{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 @media screen and (max-width: 768px) {
   #gameTitle{
     font-size: 4em;

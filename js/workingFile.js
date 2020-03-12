@@ -507,7 +507,7 @@ document.querySelector("#toStreet").addEventListener("click", ()=>{
 document.querySelector("#buyMarket").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	const marketItems = ["włócznia 6zł", "wiadro 2zł", "puklerz 6zł", "śledzie2zł", "koc 2zł", "sztylet 4zł", "miecz 10zł"];
+	let allCost = 0;
 
 	document.querySelector("#infoHero").innerHTML = `
 	<p class='pStyles'>Możesz kupić:</p>
@@ -553,9 +553,103 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
   		item.addEventListener('click', function(event) {
 			if(item.checked == true){
 				console.log("checked");
+				console.log(item.value)
+
+				switch (item.value) {
+					case 'włócznia':
+					  
+					  allCost = allCost + 6;
+					  console.log(allCost);
+					  
+					  break;
+					case 'wiadro':
+					  allCost = allCost + 2;
+					  console.log(allCost);
+						break;
+				  
+					case 'puklerz':
+					  allCost = allCost + 6;
+					  console.log(allCost);
+					  break;
+					  
+				  case 'śledzie':
+					  allCost = allCost + 1;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'koc':
+					  allCost = allCost + 2;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'sztylet':
+					  allCost = allCost + 4;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'miecz':
+					  allCost = allCost + 10;
+					  console.log(allCost);
+				  break;
+				  
+				  }
 			}else{
 				console.log("not checked");
+				switch (item.value) {
+					case 'włócznia':
+					  
+					  allCost = allCost - 6;
+					  console.log(allCost);
+					  
+					  break;
+					case 'wiadro':
+					  allCost = allCost - 2;
+					  console.log(allCost);
+						break;
+				  
+					case 'puklerz':
+					  allCost = allCost - 6;
+					  console.log(allCost);
+					  break;
+					  
+				  case 'śledzie':
+					  allCost = allCost - 1;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'koc':
+					  allCost = allCost - 2;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'sztylet':
+					  allCost = allCost - 4;
+					  console.log(allCost);
+				  break;
+				  
+				  case 'miecz':
+					  allCost = allCost - 10;
+					  console.log(allCost);
+				  break;
+				  
+				  }
 			}
   		})
 	}
+
+
+	document.querySelector("#resetChoose").addEventListener("click", ()=>{
+		const allItems = document.querySelectorAll("#itemsBuy > label > input");
+
+		for(let i=0; i<allItems.length; i++){
+	
+			if(allItems[i].checked == true){
+				allItems[i].removeAttribute("checked");
+			}
+		}
+	});	
 });
+
+
+
+

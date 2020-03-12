@@ -733,7 +733,7 @@ document.querySelector("#toStreet").addEventListener("click", function () {
 document.querySelector("#buyMarket").addEventListener("click", function () {
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	var marketItems = ["włócznia 6zł", "wiadro 2zł", "puklerz 6zł", "śledzie2zł", "koc 2zł", "sztylet 4zł", "miecz 10zł"];
+	var allCost = 0;
 
 	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t';
 
@@ -750,8 +750,86 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 			item.addEventListener('click', function (event) {
 				if (item.checked == true) {
 					console.log("checked");
+					console.log(item.value);
+
+					switch (item.value) {
+						case 'włócznia':
+
+							allCost = allCost + 6;
+							console.log(allCost);
+
+							break;
+						case 'wiadro':
+							allCost = allCost + 2;
+							console.log(allCost);
+							break;
+
+						case 'puklerz':
+							allCost = allCost + 6;
+							console.log(allCost);
+							break;
+
+						case 'śledzie':
+							allCost = allCost + 1;
+							console.log(allCost);
+							break;
+
+						case 'koc':
+							allCost = allCost + 2;
+							console.log(allCost);
+							break;
+
+						case 'sztylet':
+							allCost = allCost + 4;
+							console.log(allCost);
+							break;
+
+						case 'miecz':
+							allCost = allCost + 10;
+							console.log(allCost);
+							break;
+
+					}
 				} else {
 					console.log("not checked");
+					switch (item.value) {
+						case 'włócznia':
+
+							allCost = allCost - 6;
+							console.log(allCost);
+
+							break;
+						case 'wiadro':
+							allCost = allCost - 2;
+							console.log(allCost);
+							break;
+
+						case 'puklerz':
+							allCost = allCost - 6;
+							console.log(allCost);
+							break;
+
+						case 'śledzie':
+							allCost = allCost - 1;
+							console.log(allCost);
+							break;
+
+						case 'koc':
+							allCost = allCost - 2;
+							console.log(allCost);
+							break;
+
+						case 'sztylet':
+							allCost = allCost - 4;
+							console.log(allCost);
+							break;
+
+						case 'miecz':
+							allCost = allCost - 10;
+							console.log(allCost);
+							break;
+
+					}
 				}
 			});
 		};
@@ -773,6 +851,17 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 			}
 		}
 	}
+
+	document.querySelector("#resetChoose").addEventListener("click", function () {
+		var allItems = document.querySelectorAll("#itemsBuy > label > input");
+
+		for (var i = 0; i < allItems.length; i++) {
+
+			if (allItems[i].checked == true) {
+				allItems[i].removeAttribute("checked");
+			}
+		}
+	});
 });
 
 /***/ }),

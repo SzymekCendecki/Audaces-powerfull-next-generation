@@ -524,3 +524,7 @@ Rozpoczęto pracę na możliwością kupowania rzeczy.
 
 11 marca 2020 - wersja 0.2.75a
 Projektowanie interfejsu kupowania przedmiotów na targu.
+
+12 marca 2020 - wersja 0.2.75b
+Dodanie zliczania cen przy zakupie przedmiotów. 
+  Rozpoczęcie pracy nad "grupowym odfajkowaniem" zaznaczonych przedmiotów.

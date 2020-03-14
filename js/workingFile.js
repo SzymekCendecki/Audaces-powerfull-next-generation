@@ -513,36 +513,37 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 	<p class='pStyles'>Możesz kupić:</p>
 	<div id='itemsBuy' class='displayFlex'>
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='włócznia' /> włócznia 6 szt. zł.
+			<input type='checkbox' name='item' value='włócznia' data-cost='6' /> włócznia 6 szt. zł.
 		</label>
 	
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='wiadro' /> wiadro 2 szt. zł.
+			<input type='checkbox' name='item' value='wiadro' data-cost='2' /> wiadro 2 szt. zł.
 		</label>
 
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='puklerz' /> puklerz 6 szt. zł.
+			<input type='checkbox' name='item' value='puklerz' data-cost='6' /> puklerz 6 szt. zł.
 		</label>
 
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='śledzie' /> śledzie 1 szt. zł.
+			<input type='checkbox' name='item' value='śledzie' data-cost='1' /> śledzie 1 szt. zł.
 		</label>
 
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='koc' /> koc 2 szt. zł.
+			<input type='checkbox' name='item' value='koc' data-cost='2' /> koc 2 szt. zł.
 		</label>
 
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='sztylet' /> sztylet 4 szt. zł.
+			<input type='checkbox' name='item' value='sztylet' data-cost='4' /> sztylet 4 szt. zł.
 		</label>
 
 		<label class='pStyles'>
-			<input type='checkbox' name='item' value='miecz' /> miecz 10 szt. zł.
+			<input type='checkbox' name='item' value='miecz' data-cost='10' /> miecz 10 szt. zł.
 		</label>
 	</div>	
 
 	<div class='displayFlex'>
 		<button id='buyItem' class='btnAccept'>kup</button>
+		<button id='chooseAll' class='btnAccept'>wszystko</button>
 		<button id='resetChoose' class='redBtn'>reset</button>
 	</div>
 	`;
@@ -637,17 +638,40 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
   		})
 	}
 
+	const itemsAll = document.querySelectorAll("#itemsBuy > label > input");
+
+	document.querySelector("#chooseAll").addEventListener("click", ()=>{
+        for (let i = 0; i < itemsAll.length; i++) {
+            if (itemsAll[i].type == 'checkbox')
+			itemsAll[i].checked = true;
+        }
+	});	
 
 	document.querySelector("#resetChoose").addEventListener("click", ()=>{
-		const allItems = document.querySelectorAll("#itemsBuy > label > input");
-
-		for(let i=0; i<allItems.length; i++){
-	
-			if(allItems[i].checked == true){
-				allItems[i].removeAttribute("checked");
-			}
-		}
+        for (let i = 0; i < itemsAll.length; i++) {
+            if (itemsAll[i].type == 'checkbox')
+			itemsAll[i].checked = false;
+        }
 	});	
+
+
+	document.querySelector("#buyItem").addEventListener("click", ()=>{
+		let b = 0;
+
+		for (let i = 0; i < itemsAll.length; i++) {
+
+			if(itemsAll[i].checked == true){
+				console.log(itemsAll[i].value);
+			}
+
+			console.log(itemsAll[i].dataset.cost);
+			b = b + parseInt(itemsAll[i].dataset.cost);
+		}
+		
+		console.log(b);
+	});	
+
+
 });
 
 

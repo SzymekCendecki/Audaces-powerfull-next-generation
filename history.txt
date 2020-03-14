@@ -528,3 +528,8 @@ Projektowanie interfejsu kupowania przedmiotów na targu.
 12 marca 2020 - wersja 0.2.75b
 Dodanie zliczania cen przy zakupie przedmiotów. 
   Rozpoczęcie pracy nad "grupowym odfajkowaniem" zaznaczonych przedmiotów.
+
+14 marca 2020 - wersja 0.2.75c
+Dodano przycisk zaznaczania wszystkich przedmiotów do kupienia.
+  Dodano zaznaczanie/odznaczanie przedmiotów do kupienia.
+Testowanie sumowania przedmiotów do kupienia.

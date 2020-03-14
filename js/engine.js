@@ -735,7 +735,7 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 
 	var allCost = 0;
 
-	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t';
+	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' data-cost=\'6\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' data-cost=\'2\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' data-cost=\'6\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' data-cost=\'1\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' data-cost=\'2\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' data-cost=\'4\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' data-cost=\'10\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'chooseAll\' class=\'btnAccept\'>wszystko</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t';
 
 	var items = document.querySelectorAll("#itemsBuy > label > input");
 
@@ -852,15 +852,34 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 		}
 	}
 
-	document.querySelector("#resetChoose").addEventListener("click", function () {
-		var allItems = document.querySelectorAll("#itemsBuy > label > input");
+	var itemsAll = document.querySelectorAll("#itemsBuy > label > input");
 
-		for (var i = 0; i < allItems.length; i++) {
-
-			if (allItems[i].checked == true) {
-				allItems[i].removeAttribute("checked");
-			}
+	document.querySelector("#chooseAll").addEventListener("click", function () {
+		for (var i = 0; i < itemsAll.length; i++) {
+			if (itemsAll[i].type == 'checkbox') itemsAll[i].checked = true;
 		}
+	});
+
+	document.querySelector("#resetChoose").addEventListener("click", function () {
+		for (var i = 0; i < itemsAll.length; i++) {
+			if (itemsAll[i].type == 'checkbox') itemsAll[i].checked = false;
+		}
+	});
+
+	document.querySelector("#buyItem").addEventListener("click", function () {
+		var b = 0;
+
+		for (var i = 0; i < itemsAll.length; i++) {
+
+			if (itemsAll[i].checked == true) {
+				console.log(itemsAll[i].value);
+			}
+
+			console.log(itemsAll[i].dataset.cost);
+			b = b + parseInt(itemsAll[i].dataset.cost);
+		}
+
+		console.log(b);
 	});
 });
 

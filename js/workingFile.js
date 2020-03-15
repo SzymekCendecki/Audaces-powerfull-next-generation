@@ -546,6 +546,7 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 		<button id='chooseAll' class='btnAccept'>wszystko</button>
 		<button id='resetChoose' class='redBtn'>reset</button>
 	</div>
+	<p id='warning' class='pStyles'></p>
 	`;
 
 	const items = document.querySelectorAll("#itemsBuy > label > input");
@@ -661,17 +662,18 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 		for (let i = 0; i < itemsAll.length; i++) {
 
 			if(itemsAll[i].checked == true){
-				console.log(itemsAll[i].value);
+				b = b + parseInt(itemsAll[i].dataset.cost);
+				if(b > gold){
+					document.querySelector('#warning').innerHTML = "Nie masz tyle zota!!!";
+					closeP("#warning");
+				}else{
+					document.querySelector('#warning').innerHTML = "Przedmioty zostały dodane do ekwipunku";
+					equip.push(itemsAll[i].value);
+					gold = gold - parseInt(itemsAll[i].dataset.cost);
+				}
 			}
-
-			console.log(itemsAll[i].dataset.cost);
-			b = b + parseInt(itemsAll[i].dataset.cost);
 		}
-		
-		console.log(b);
 	});	
-
-
 });
 
 

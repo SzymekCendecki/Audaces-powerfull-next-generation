@@ -735,7 +735,7 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 
 	var allCost = 0;
 
-	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' data-cost=\'6\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' data-cost=\'2\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' data-cost=\'6\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' data-cost=\'1\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' data-cost=\'2\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' data-cost=\'4\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' data-cost=\'10\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'chooseAll\' class=\'btnAccept\'>wszystko</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t';
+	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' data-cost=\'6\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' data-cost=\'2\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' data-cost=\'6\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' data-cost=\'1\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' data-cost=\'2\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' data-cost=\'4\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' data-cost=\'10\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'chooseAll\' class=\'btnAccept\'>wszystko</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
 
 	var items = document.querySelectorAll("#itemsBuy > label > input");
 
@@ -872,14 +872,17 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 		for (var i = 0; i < itemsAll.length; i++) {
 
 			if (itemsAll[i].checked == true) {
-				console.log(itemsAll[i].value);
+				b = b + parseInt(itemsAll[i].dataset.cost);
+				if (b > gold) {
+					document.querySelector('#warning').innerHTML = "Nie masz tyle zota!!!";
+					closeP("#warning");
+				} else {
+					document.querySelector('#warning').innerHTML = "Przedmioty zostały dodane do ekwipunku";
+					equip.push(itemsAll[i].value);
+					gold = gold - parseInt(itemsAll[i].dataset.cost);
+				}
 			}
-
-			console.log(itemsAll[i].dataset.cost);
-			b = b + parseInt(itemsAll[i].dataset.cost);
 		}
-
-		console.log(b);
 	});
 });
 

@@ -533,3 +533,6 @@ Dodanie zliczania cen przy zakupie przedmiotów.
 Dodano przycisk zaznaczania wszystkich przedmiotów do kupienia.
   Dodano zaznaczanie/odznaczanie przedmiotów do kupienia.
 Testowanie sumowania przedmiotów do kupienia.
+
+15 marca 2020 - wersja 0.2.75d
+Praca nad kupowaniem przedmiotów na targu.

@@ -735,155 +735,22 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 
 	var allCost = 0;
 
-	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'w\u0142\xF3cznia\' data-cost=\'6\' /> w\u0142\xF3cznia 6 szt. z\u0142.\n\t\t</label>\n\t\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'wiadro\' data-cost=\'2\' /> wiadro 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'puklerz\' data-cost=\'6\' /> puklerz 6 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'\u015Bledzie\' data-cost=\'1\' /> \u015Bledzie 1 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'koc\' data-cost=\'2\' /> koc 2 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'sztylet\' data-cost=\'4\' /> sztylet 4 szt. z\u0142.\n\t\t</label>\n\n\t\t<label class=\'pStyles\'>\n\t\t\t<input type=\'checkbox\' name=\'item\' value=\'miecz\' data-cost=\'10\' /> miecz 10 szt. z\u0142.\n\t\t</label>\n\t</div>\t\n\n\t<div class=\'displayFlex\'>\n\t\t<button id=\'buyItem\' class=\'btnAccept\'>kup</button>\n\t\t<button id=\'chooseAll\' class=\'btnAccept\'>wszystko</button>\n\t\t<button id=\'resetChoose\' class=\'redBtn\'>reset</button>\n\t</div>\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
+	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\n\t\t<button id=\'spear\' class=\'btnAccept\' data-cost=\'6\'>w\u0142\xF3cznia</button>\n\t\t<button id=\'bucket\' class=\'btnAccept\' data-cost=\'2\'>wiadro</button>\n\t\t<button id=\'buckler\' class=\'btnAccept\' data-cost=\'6\'>puklerz</button>\n\t\t<button id=\'herring\' class=\'btnAccept\' data-cost=\'1\'>\u015Bledzie</button>\n\t\t<button id=\'blanket\' class=\'btnAccept\' data-cost=\'2\'>koc</button>\n\t\t<button id=\'dagger\' class=\'btnAccept\' data-cost=\'4\'>sztylet</button>\n\t\t<button id=\'sword\' class=\'btnAccept\' data-cost=\'10\'>miecz</button>\n\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
 
-	var items = document.querySelectorAll("#itemsBuy > label > input");
+	var allItems = document.querySelectorAll("#itemsBuy > button");
 
-	var _iteratorNormalCompletion = true;
-	var _didIteratorError = false;
-	var _iteratorError = undefined;
+	console.log(allItems);
 
-	try {
-		var _loop = function _loop() {
-			var item = _step.value;
+	var _loop = function _loop(i) {
+		allItems[i].addEventListener("click", function () {
+			console.log(allItems[i].innerText);
+			console.log(allItems[i].dataset.cost);
+		});
+	};
 
-			item.addEventListener('click', function (event) {
-				if (item.checked == true) {
-					console.log("checked");
-					console.log(item.value);
-
-					switch (item.value) {
-						case 'włócznia':
-
-							allCost = allCost + 6;
-							console.log(allCost);
-
-							break;
-						case 'wiadro':
-							allCost = allCost + 2;
-							console.log(allCost);
-							break;
-
-						case 'puklerz':
-							allCost = allCost + 6;
-							console.log(allCost);
-							break;
-
-						case 'śledzie':
-							allCost = allCost + 1;
-							console.log(allCost);
-							break;
-
-						case 'koc':
-							allCost = allCost + 2;
-							console.log(allCost);
-							break;
-
-						case 'sztylet':
-							allCost = allCost + 4;
-							console.log(allCost);
-							break;
-
-						case 'miecz':
-							allCost = allCost + 10;
-							console.log(allCost);
-							break;
-
-					}
-				} else {
-					console.log("not checked");
-					switch (item.value) {
-						case 'włócznia':
-
-							allCost = allCost - 6;
-							console.log(allCost);
-
-							break;
-						case 'wiadro':
-							allCost = allCost - 2;
-							console.log(allCost);
-							break;
-
-						case 'puklerz':
-							allCost = allCost - 6;
-							console.log(allCost);
-							break;
-
-						case 'śledzie':
-							allCost = allCost - 1;
-							console.log(allCost);
-							break;
-
-						case 'koc':
-							allCost = allCost - 2;
-							console.log(allCost);
-							break;
-
-						case 'sztylet':
-							allCost = allCost - 4;
-							console.log(allCost);
-							break;
-
-						case 'miecz':
-							allCost = allCost - 10;
-							console.log(allCost);
-							break;
-
-					}
-				}
-			});
-		};
-
-		for (var _iterator = items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-			_loop();
-		}
-	} catch (err) {
-		_didIteratorError = true;
-		_iteratorError = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion && _iterator.return) {
-				_iterator.return();
-			}
-		} finally {
-			if (_didIteratorError) {
-				throw _iteratorError;
-			}
-		}
+	for (var i = 0; i < allItems.length; i++) {
+		_loop(i);
 	}
-
-	var itemsAll = document.querySelectorAll("#itemsBuy > label > input");
-
-	document.querySelector("#chooseAll").addEventListener("click", function () {
-		for (var i = 0; i < itemsAll.length; i++) {
-			if (itemsAll[i].type == 'checkbox') itemsAll[i].checked = true;
-		}
-	});
-
-	document.querySelector("#resetChoose").addEventListener("click", function () {
-		for (var i = 0; i < itemsAll.length; i++) {
-			if (itemsAll[i].type == 'checkbox') itemsAll[i].checked = false;
-		}
-	});
-
-	document.querySelector("#buyItem").addEventListener("click", function () {
-		var b = 0;
-
-		for (var i = 0; i < itemsAll.length; i++) {
-
-			if (itemsAll[i].checked == true) {
-				b = b + parseInt(itemsAll[i].dataset.cost);
-				if (b > gold) {
-					document.querySelector('#warning').innerHTML = "Nie masz tyle zota!!!";
-					closeP("#warning");
-				} else {
-					document.querySelector('#warning').innerHTML = "Przedmioty zostały dodane do ekwipunku";
-					equip.push(itemsAll[i].value);
-					gold = gold - parseInt(itemsAll[i].dataset.cost);
-				}
-			}
-		}
-	});
 });
 
 /***/ }),

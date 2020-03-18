@@ -512,168 +512,31 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 	document.querySelector("#infoHero").innerHTML = `
 	<p class='pStyles'>Możesz kupić:</p>
 	<div id='itemsBuy' class='displayFlex'>
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='włócznia' data-cost='6' /> włócznia 6 szt. zł.
-		</label>
-	
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='wiadro' data-cost='2' /> wiadro 2 szt. zł.
-		</label>
 
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='puklerz' data-cost='6' /> puklerz 6 szt. zł.
-		</label>
+		<button id='spear' class='btnAccept' data-cost='6'>włócznia</button>
+		<button id='bucket' class='btnAccept' data-cost='2'>wiadro</button>
+		<button id='buckler' class='btnAccept' data-cost='6'>puklerz</button>
+		<button id='herring' class='btnAccept' data-cost='1'>śledzie</button>
+		<button id='blanket' class='btnAccept' data-cost='2'>koc</button>
+		<button id='dagger' class='btnAccept' data-cost='4'>sztylet</button>
+		<button id='sword' class='btnAccept' data-cost='10'>miecz</button>
 
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='śledzie' data-cost='1' /> śledzie 1 szt. zł.
-		</label>
-
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='koc' data-cost='2' /> koc 2 szt. zł.
-		</label>
-
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='sztylet' data-cost='4' /> sztylet 4 szt. zł.
-		</label>
-
-		<label class='pStyles'>
-			<input type='checkbox' name='item' value='miecz' data-cost='10' /> miecz 10 szt. zł.
-		</label>
 	</div>	
-
-	<div class='displayFlex'>
-		<button id='buyItem' class='btnAccept'>kup</button>
-		<button id='chooseAll' class='btnAccept'>wszystko</button>
-		<button id='resetChoose' class='redBtn'>reset</button>
-	</div>
 	<p id='warning' class='pStyles'></p>
 	`;
 
-	const items = document.querySelectorAll("#itemsBuy > label > input");
+	const allItems = document.querySelectorAll("#itemsBuy > button");
 
-	for (const item of items) {
-  		item.addEventListener('click', function(event) {
-			if(item.checked == true){
-				console.log("checked");
-				console.log(item.value)
+	console.log(allItems);
 
-				switch (item.value) {
-					case 'włócznia':
-					  
-					  allCost = allCost + 6;
-					  console.log(allCost);
-					  
-					  break;
-					case 'wiadro':
-					  allCost = allCost + 2;
-					  console.log(allCost);
-						break;
-				  
-					case 'puklerz':
-					  allCost = allCost + 6;
-					  console.log(allCost);
-					  break;
-					  
-				  case 'śledzie':
-					  allCost = allCost + 1;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'koc':
-					  allCost = allCost + 2;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'sztylet':
-					  allCost = allCost + 4;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'miecz':
-					  allCost = allCost + 10;
-					  console.log(allCost);
-				  break;
-				  
-				  }
-			}else{
-				console.log("not checked");
-				switch (item.value) {
-					case 'włócznia':
-					  
-					  allCost = allCost - 6;
-					  console.log(allCost);
-					  
-					  break;
-					case 'wiadro':
-					  allCost = allCost - 2;
-					  console.log(allCost);
-						break;
-				  
-					case 'puklerz':
-					  allCost = allCost - 6;
-					  console.log(allCost);
-					  break;
-					  
-				  case 'śledzie':
-					  allCost = allCost - 1;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'koc':
-					  allCost = allCost - 2;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'sztylet':
-					  allCost = allCost - 4;
-					  console.log(allCost);
-				  break;
-				  
-				  case 'miecz':
-					  allCost = allCost - 10;
-					  console.log(allCost);
-				  break;
-				  
-				  }
-			}
-  		})
+	for(let i=0; i<allItems.length; i++){
+		allItems[i].addEventListener("click", ()=>{
+			console.log(allItems[i].innerText);
+			console.log(allItems[i].dataset.cost);
+		});
 	}
 
-	const itemsAll = document.querySelectorAll("#itemsBuy > label > input");
-
-	document.querySelector("#chooseAll").addEventListener("click", ()=>{
-        for (let i = 0; i < itemsAll.length; i++) {
-            if (itemsAll[i].type == 'checkbox')
-			itemsAll[i].checked = true;
-        }
-	});	
-
-	document.querySelector("#resetChoose").addEventListener("click", ()=>{
-        for (let i = 0; i < itemsAll.length; i++) {
-            if (itemsAll[i].type == 'checkbox')
-			itemsAll[i].checked = false;
-        }
-	});	
-
-
-	document.querySelector("#buyItem").addEventListener("click", ()=>{
-		let b = 0;
-
-		for (let i = 0; i < itemsAll.length; i++) {
-
-			if(itemsAll[i].checked == true){
-				b = b + parseInt(itemsAll[i].dataset.cost);
-				if(b > gold){
-					document.querySelector('#warning').innerHTML = "Nie masz tyle zota!!!";
-					closeP("#warning");
-				}else{
-					document.querySelector('#warning').innerHTML = "Przedmioty zostały dodane do ekwipunku";
-					equip.push(itemsAll[i].value);
-					gold = gold - parseInt(itemsAll[i].dataset.cost);
-				}
-			}
-		}
-	});	
+	
 });
 
 

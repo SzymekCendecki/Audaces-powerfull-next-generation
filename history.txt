@@ -536,3 +536,6 @@ Testowanie sumowania przedmiotów do kupienia.
 
 15 marca 2020 - wersja 0.2.75d
 Praca nad kupowaniem przedmiotów na targu.
+
+18 marca 2020 - wersja 0.2.75e
+Testowanie nowej wersji kupowania na targu.

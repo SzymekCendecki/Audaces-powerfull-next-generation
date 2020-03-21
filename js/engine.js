@@ -733,23 +733,66 @@ document.querySelector("#toStreet").addEventListener("click", function () {
 document.querySelector("#buyMarket").addEventListener("click", function () {
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	var allCost = 0;
-
 	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\n\t\t<button id=\'spear\' class=\'btnAccept\' data-cost=\'6\'>w\u0142\xF3cznia</button>\n\t\t<button id=\'bucket\' class=\'btnAccept\' data-cost=\'2\'>wiadro</button>\n\t\t<button id=\'buckler\' class=\'btnAccept\' data-cost=\'6\'>puklerz</button>\n\t\t<button id=\'herring\' class=\'btnAccept\' data-cost=\'1\'>\u015Bledzie</button>\n\t\t<button id=\'blanket\' class=\'btnAccept\' data-cost=\'2\'>koc</button>\n\t\t<button id=\'dagger\' class=\'btnAccept\' data-cost=\'4\'>sztylet</button>\n\t\t<button id=\'sword\' class=\'btnAccept\' data-cost=\'10\'>miecz</button>\n\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
 
 	var allItems = document.querySelectorAll("#itemsBuy > button");
 
-	console.log(allItems);
-
 	var _loop = function _loop(i) {
 		allItems[i].addEventListener("click", function () {
-			console.log(allItems[i].innerText);
-			console.log(allItems[i].dataset.cost);
+			if (allItems[i].dataset.cost <= gold) {
+				equip.push(allItems[i].innerText);
+				gold = gold - allItems[i].dataset.cost;
+				document.querySelector("#warning").innerHTML = 'Zakupiono przedmiot: ' + allItems[i].innerText + '.';
+			} else {
+				document.querySelector("#warning").innerHTML = 'Nie masz tyle z\u0142ota !!!';
+			}
 		});
 	};
 
 	for (var i = 0; i < allItems.length; i++) {
 		_loop(i);
+	}
+});
+
+document.querySelector("#sellMarket").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz sprzeda\u0107:</p>\n\t<div id=\'itemsSell\' class=\'displayFlex\'>\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
+
+	for (var i = 0; i < equip.length; i++) {
+		var btn = document.createElement("button");
+		var text = document.createTextNode('' + equip[i]);
+		btn.appendChild(text);
+		document.querySelector("#itemsSell").append(btn);
+		btn.classList.add("btnAccept");
+
+		if (btn.innerText == "paczka") {
+			btn.classList.remove("btnAccept");
+			btn.classList.add("redBtn");
+			btn.disabled = true;
+		} else {
+			btn.classList.add("btnAccept");
+			btn.disabled = false;
+			btn.dataset.cost = "1";
+		}
+	}
+
+	var btns = document.querySelectorAll("#itemsSell > button");
+
+	var _loop2 = function _loop2(_i) {
+		btns[_i].addEventListener("click", function () {
+			var index = equip.indexOf(btns[_i].innerText);
+
+			if (index !== -1) {
+				equip.splice(index, 1);
+				btns[_i].remove();
+			}
+			gold = gold + parseInt(btns[_i].dataset.cost);
+		});
+	};
+
+	for (var _i = 0; _i < btns.length; _i++) {
+		_loop2(_i);
 	}
 });
 

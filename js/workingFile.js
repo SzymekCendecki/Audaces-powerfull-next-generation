@@ -507,8 +507,6 @@ document.querySelector("#toStreet").addEventListener("click", ()=>{
 document.querySelector("#buyMarket").addEventListener("click", ()=>{
 	document.querySelector("#infoContainer").classList.remove("displayNone");
 
-	let allCost = 0;
-
 	document.querySelector("#infoHero").innerHTML = `
 	<p class='pStyles'>Możesz kupić:</p>
 	<div id='itemsBuy' class='displayFlex'>
@@ -527,16 +525,61 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 
 	const allItems = document.querySelectorAll("#itemsBuy > button");
 
-	console.log(allItems);
-
 	for(let i=0; i<allItems.length; i++){
 		allItems[i].addEventListener("click", ()=>{
-			console.log(allItems[i].innerText);
-			console.log(allItems[i].dataset.cost);
+			if(allItems[i].dataset.cost <= gold){
+				equip.push(allItems[i].innerText);
+				gold = gold - allItems[i].dataset.cost;
+				document.querySelector("#warning").innerHTML = `Zakupiono przedmiot: ${allItems[i].innerText}.`;
+			}else{
+				document.querySelector("#warning").innerHTML = `Nie masz tyle złota !!!`;
+			}
+		});
+	}	
+});
+
+document.querySelector("#sellMarket").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = `
+	<p class='pStyles'>Możesz sprzedać:</p>
+	<div id='itemsSell' class='displayFlex'>
+	</div>	
+	<p id='warning' class='pStyles'></p>
+	`;
+
+	for(let i=0; i<equip.length; i++){
+		const btn = document.createElement("button"); 
+		let text = document.createTextNode(`${equip[i]}`); 
+		btn.appendChild(text);  
+		document.querySelector("#itemsSell").append(btn);
+		btn.classList.add("btnAccept");
+
+		if(btn.innerText == "paczka"){
+			btn.classList.remove("btnAccept");
+			btn.classList.add("redBtn");
+			btn.disabled = true;
+		}else{
+			btn.classList.add("btnAccept");
+			btn.disabled = false;
+			btn.dataset.cost = "1";
+		}
+	}
+
+	let btns = document.querySelectorAll("#itemsSell > button");
+
+	for (let i=0; i<btns.length; i++){
+		btns[i].addEventListener("click", ()=>{
+			let index = equip.indexOf(btns[i].innerText);
+		
+			if (index !== -1){
+				equip.splice(index, 1);
+				btns[i].remove();
+			}
+			gold = gold + parseInt(btns[i].dataset.cost);
 		});
 	}
 
-	
 });
 
 

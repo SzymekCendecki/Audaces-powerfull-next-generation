@@ -542,3 +542,9 @@ Testowanie nowej wersji kupowania na targu.
 
 21 marca 2020 - wersja 0.2.75f
 Kupowanie i sprzedawanie przedmiotów działa.
+
+22 marca 2020 - wersja 0.2.75g
+Dodano pojawianie się informacji o sprzedaży przedmiotu na targu.
+  Dodano rozglądanie się po placy karawan.
+Dodano przechodzenie pomiędzy targiem a placem z karawanami.
+  Dodano pytanie się o podwózkę.

@@ -743,8 +743,10 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 				equip.push(allItems[i].innerText);
 				gold = gold - allItems[i].dataset.cost;
 				document.querySelector("#warning").innerHTML = 'Zakupiono przedmiot: ' + allItems[i].innerText + '.';
+				closeP("#warning");
 			} else {
 				document.querySelector("#warning").innerHTML = 'Nie masz tyle z\u0142ota !!!';
+				closeP("#warning");
 			}
 		});
 	};
@@ -788,12 +790,72 @@ document.querySelector("#sellMarket").addEventListener("click", function () {
 				btns[_i].remove();
 			}
 			gold = gold + parseInt(btns[_i].dataset.cost);
+
+			document.querySelector("#warning").innerHTML = 'Sprzedano przedmiot: ' + btns[_i].innerText;
+			closeP("#warning");
 		});
 	};
 
 	for (var _i = 0; _i < btns.length; _i++) {
 		_loop2(_i);
 	}
+});
+
+document.querySelector("#caravan").addEventListener("click", function () {
+	document.querySelector("#caravanBtns").classList.remove("displayNone");
+	document.querySelector("#marketBtns").classList.add("displayNone");
+
+	fetch(path + 'caravans.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.caravans;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#lookCaravan").addEventListener("click", function () {
+	fetch(path + 'caravans.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#toMarket").addEventListener("click", function () {
+	document.querySelector("#caravanBtns").classList.add("displayNone");
+	document.querySelector("#marketBtns").classList.remove("displayNone");
+
+	fetch(path + 'market.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.market;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
+document.querySelector("#ask").addEventListener("click", function () {
+	document.querySelector("#ask").remove();
+
+	fetch(path + 'caravans.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		var p = document.createElement("p");
+		p.append(data.ask);
+		document.querySelector("#first").appendChild(p);
+	}).catch(function (error) {
+		return console.error(error);
+	});
+
+	document.querySelector("#agree").classList.remove("displayNone");
+});
+
+document.querySelector("#agree").addEventListener("click", function () {
+	console.log("działa");
 });
 
 /***/ }),

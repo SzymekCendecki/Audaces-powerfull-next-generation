@@ -531,8 +531,10 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 				equip.push(allItems[i].innerText);
 				gold = gold - allItems[i].dataset.cost;
 				document.querySelector("#warning").innerHTML = `Zakupiono przedmiot: ${allItems[i].innerText}.`;
+				closeP("#warning");
 			}else{
 				document.querySelector("#warning").innerHTML = `Nie masz tyle złota !!!`;
+				closeP("#warning");
 			}
 		});
 	}	
@@ -577,11 +579,51 @@ document.querySelector("#sellMarket").addEventListener("click", ()=>{
 				btns[i].remove();
 			}
 			gold = gold + parseInt(btns[i].dataset.cost);
+
+			document.querySelector("#warning").innerHTML = `Sprzedano przedmiot: ${btns[i].innerText}`;
+				closeP("#warning");
 		});
 	}
 
 });
 
+document.querySelector("#caravan").addEventListener("click", ()=>{
+	document.querySelector("#caravanBtns").classList.remove("displayNone");
+	document.querySelector("#marketBtns").classList.add("displayNone");
 
+	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.caravans;
+	}).catch(error => console.error(error))
+});
 
+document.querySelector("#lookCaravan").addEventListener("click", ()=>{
+	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
+		document.querySelector("#third").innerHTML = data.lookAround;
+		closeP("#third");
+	}).catch(error => console.error(error))
+});
 
+document.querySelector("#toMarket").addEventListener("click", ()=>{
+	document.querySelector("#caravanBtns").classList.add("displayNone");
+	document.querySelector("#marketBtns").classList.remove("displayNone");
+
+	fetch(path + 'market.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.market;
+	}).catch(error => console.error(error))
+});
+
+document.querySelector("#ask").addEventListener("click", ()=>{
+	document.querySelector("#ask").remove();
+
+	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
+		let p = document.createElement("p");
+		p.append(data.ask);
+		document.querySelector("#first").appendChild(p);
+	}).catch(error => console.error(error))
+
+	document.querySelector("#agree").classList.remove("displayNone");
+});
+
+document.querySelector("#agree").addEventListener("click", ()=>{
+	console.log("działa");
+});

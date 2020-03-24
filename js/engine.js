@@ -855,7 +855,19 @@ document.querySelector("#ask").addEventListener("click", function () {
 });
 
 document.querySelector("#agree").addEventListener("click", function () {
-	console.log("działa");
+	fetch(path + 'caravans.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		var p = document.createElement("p");
+		p.append(data.agree);
+		document.querySelector("#first").appendChild(p);
+	}).catch(function (error) {
+		return console.error(error);
+	});
+
+	document.querySelector("#agree").remove();
+	document.querySelector("#caravanBtns").classList.add("displayNone");
+	document.querySelector("#journey").classList.remove("displayNone");
 });
 
 /***/ }),

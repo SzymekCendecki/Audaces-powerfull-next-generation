@@ -548,3 +548,6 @@ Dodano pojawianie się informacji o sprzedaży przedmiotu na targu.
   Dodano rozglądanie się po placy karawan.
 Dodano przechodzenie pomiędzy targiem a placem z karawanami.
   Dodano pytanie się o podwózkę.
+
+24 marca 2020 - wersja 0.2.75h
+Ukończono tworzenie lokacji: postój karawan.

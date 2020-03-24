@@ -625,5 +625,13 @@ document.querySelector("#ask").addEventListener("click", ()=>{
 });
 
 document.querySelector("#agree").addEventListener("click", ()=>{
-	console.log("działa");
+	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
+		let p = document.createElement("p");
+		p.append(data.agree);
+		document.querySelector("#first").appendChild(p);
+	}).catch(error => console.error(error))
+
+	document.querySelector("#agree").remove();
+	document.querySelector("#caravanBtns").classList.add("displayNone");
+	document.querySelector("#journey").classList.remove("displayNone");
 });

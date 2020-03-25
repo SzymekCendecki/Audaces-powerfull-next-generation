@@ -635,3 +635,14 @@ document.querySelector("#agree").addEventListener("click", ()=>{
 	document.querySelector("#caravanBtns").classList.add("displayNone");
 	document.querySelector("#journey").classList.remove("displayNone");
 });
+
+document.querySelector("#move").addEventListener("click", ()=>{
+
+	document.querySelector("#journey").classList.add("displayNone");
+	document.querySelector("#defenseCaravan").classList.remove("displayNone");
+
+	fetch(path + 'defense.json').then(response => response.json()).then(data => { 
+		document.querySelector("#first").innerHTML = data.main;
+	}).catch(error => console.error(error))
+
+});

@@ -551,3 +551,6 @@ Dodano przechodzenie pomiędzy targiem a placem z karawanami.
 
 24 marca 2020 - wersja 0.2.75h
 Ukończono tworzenie lokacji: postój karawan.
+
+25 marca 2020 - wersja 0.2.76
+Rozpoczęcie pracy nad obroną karawany.

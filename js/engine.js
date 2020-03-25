@@ -870,6 +870,20 @@ document.querySelector("#agree").addEventListener("click", function () {
 	document.querySelector("#journey").classList.remove("displayNone");
 });
 
+document.querySelector("#move").addEventListener("click", function () {
+
+	document.querySelector("#journey").classList.add("displayNone");
+	document.querySelector("#defenseCaravan").classList.remove("displayNone");
+
+	fetch(path + 'defense.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		document.querySelector("#first").innerHTML = data.main;
+	}).catch(function (error) {
+		return console.error(error);
+	});
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

@@ -646,3 +646,26 @@ document.querySelector("#move").addEventListener("click", ()=>{
 	}).catch(error => console.error(error))
 
 });
+
+document.querySelector("#prepareItems").addEventListener("click", ()=>{
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for(let i=0; i<equip.length; i++){
+		let newLabel = document.createElement("label");
+		newLabel.classList.add("pStyles");
+		
+		let newCheckbox = document.createElement("input");
+		newCheckbox.type = 'checkbox';
+		newCheckbox.id = equip[i];
+		
+		newLabel.append(newCheckbox);
+		newLabel.append(equip[i]);
+		document.querySelector("#infoHero").append(newLabel);		
+	}
+
+	document.querySelector("#paczka").parentElement.remove();
+
+
+});

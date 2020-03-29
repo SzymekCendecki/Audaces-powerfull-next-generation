@@ -554,3 +554,6 @@ Ukończono tworzenie lokacji: postój karawan.
 
 25 marca 2020 - wersja 0.2.76
 Rozpoczęcie pracy nad obroną karawany.
+
+29 marca 2020 - wersja 0.2.76a
+Rozpoczęcie pracy nad "walką".

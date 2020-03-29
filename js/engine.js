@@ -884,6 +884,27 @@ document.querySelector("#move").addEventListener("click", function () {
 	});
 });
 
+document.querySelector("#prepareItems").addEventListener("click", function () {
+	document.querySelector("#infoContainer").classList.remove("displayNone");
+
+	document.querySelector("#infoHero").innerHTML = "";
+
+	for (var i = 0; i < equip.length; i++) {
+		var newLabel = document.createElement("label");
+		newLabel.classList.add("pStyles");
+
+		var newCheckbox = document.createElement("input");
+		newCheckbox.type = 'checkbox';
+		newCheckbox.id = equip[i];
+
+		newLabel.append(newCheckbox);
+		newLabel.append(equip[i]);
+		document.querySelector("#infoHero").append(newLabel);
+	}
+
+	document.querySelector("#paczka").parentElement.remove();
+});
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {

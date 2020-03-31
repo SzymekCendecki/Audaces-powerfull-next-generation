@@ -557,3 +557,7 @@ Rozpoczęcie pracy nad obroną karawany.
 
 29 marca 2020 - wersja 0.2.76a
 Rozpoczęcie pracy nad "walką".
+
+31 marca 2020 - wersja 0.2.76b
+Poprwka tekstu walki.
+  Praca nad 'walką'.

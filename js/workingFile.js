@@ -667,5 +667,26 @@ document.querySelector("#prepareItems").addEventListener("click", ()=>{
 
 	document.querySelector("#paczka").parentElement.remove();
 
+	const newBtn = document.createElement("button");
+	newBtn.id = 'fightEquip';
+	newBtn.classList.add('btnAccept');
+	newBtn.textContent = 'zatwierdź';
+	document.querySelector("#infoHero").append(newBtn);
 
+	document.querySelector("#fightEquip").addEventListener("click", ()=>{
+		document.querySelector("#infoContainer").classList.add("displayNone");
+		document.querySelector("#infoHero").innerHTML = "";
+
+		fetch(path + 'defense.json').then(response => response.json()).then(data => { 
+			document.querySelector("#first").append(data.afterBattle);
+		}).catch(error => console.error(error))
+
+		document.querySelector("#prepareItems").classList.add("displayNone");
+		document.querySelector("#afterBattle").classList.remove("displayNone");
+	});
+
+});
+
+document.querySelector("#afterBattle").addEventListener("click", ()=>{
+	console.log("działa");
 });

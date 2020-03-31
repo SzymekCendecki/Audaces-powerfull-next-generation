@@ -903,6 +903,32 @@ document.querySelector("#prepareItems").addEventListener("click", function () {
 	}
 
 	document.querySelector("#paczka").parentElement.remove();
+
+	var newBtn = document.createElement("button");
+	newBtn.id = 'fightEquip';
+	newBtn.classList.add('btnAccept');
+	newBtn.textContent = 'zatwierdź';
+	document.querySelector("#infoHero").append(newBtn);
+
+	document.querySelector("#fightEquip").addEventListener("click", function () {
+		document.querySelector("#infoContainer").classList.add("displayNone");
+		document.querySelector("#infoHero").innerHTML = "";
+
+		fetch(path + 'defense.json').then(function (response) {
+			return response.json();
+		}).then(function (data) {
+			document.querySelector("#first").append(data.afterBattle);
+		}).catch(function (error) {
+			return console.error(error);
+		});
+
+		document.querySelector("#prepareItems").classList.add("displayNone");
+		document.querySelector("#afterBattle").classList.remove("displayNone");
+	});
+});
+
+document.querySelector("#afterBattle").addEventListener("click", function () {
+	console.log("działa");
 });
 
 /***/ }),

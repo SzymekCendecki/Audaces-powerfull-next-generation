@@ -179,6 +179,8 @@ var _preview = __webpack_require__(10);
 
 var _reset = __webpack_require__(11);
 
+var _inRoom = __webpack_require__(12);
+
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
 
@@ -576,8 +578,8 @@ var closeP = function closeP(p) {
 	}, 5000);
 };
 
-document.querySelector("#lookRoom").addEventListener("click", function () {
-	fetch(path + 'room.json').then(function (response) {
+var lookAround = function lookAround(a) {
+	fetch(path + a).then(function (response) {
 		return response.json();
 	}).then(function (data) {
 		document.querySelector("#third").innerHTML = data.lookAround;
@@ -585,6 +587,10 @@ document.querySelector("#lookRoom").addEventListener("click", function () {
 	}).catch(function (error) {
 		return console.error(error);
 	});
+};
+
+document.querySelector("#lookRoom").addEventListener("click", function () {
+	lookAround('room.json');
 });
 
 document.querySelector("#wardrobe").addEventListener("click", function () {
@@ -668,28 +674,11 @@ document.querySelector("#street").addEventListener("click", function () {
 });
 
 document.querySelector("#lookStreet").addEventListener("click", function () {
-	fetch(path + 'street.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	lookAround('street.json');
 });
 
 document.querySelector("#inRoom").addEventListener("click", function () {
-	document.querySelector("#roomBtns").classList.remove("displayNone");
-	document.querySelector("#streetBtns").classList.add("displayNone");
-
-	fetch(path + 'room.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		document.querySelector("#first").innerHTML = data.room2;
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	(0, _inRoom.inRoom)(document.querySelector("#roomBtns"), document.querySelector("#streetBtns"), path + 'room.json');
 });
 
 document.querySelector("#market").addEventListener("click", function () {
@@ -707,14 +696,7 @@ document.querySelector("#market").addEventListener("click", function () {
 });
 
 document.querySelector("#lookMarket").addEventListener("click", function () {
-	fetch(path + 'market.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	lookAround('market.json');
 });
 
 document.querySelector("#toStreet").addEventListener("click", function () {
@@ -815,14 +797,7 @@ document.querySelector("#caravan").addEventListener("click", function () {
 });
 
 document.querySelector("#lookCaravan").addEventListener("click", function () {
-	fetch(path + 'caravans.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	lookAround('caravans.json');
 });
 
 document.querySelector("#toMarket").addEventListener("click", function () {
@@ -1829,6 +1804,29 @@ var _functions = __webpack_require__(0);
 var reset = exports.reset = function reset(hero) {
     document.querySelector("#reset").addEventListener("click", function () {
         (0, _functions.clearHero)(hero);
+    });
+};
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var inRoom = exports.inRoom = function inRoom(a, b, c) {
+    a.classList.remove("displayNone");
+    b.classList.add("displayNone");
+
+    fetch(c).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        document.querySelector("#first").innerHTML = data.room2;
+    }).catch(function (error) {
+        return console.error(error);
     });
 };
 

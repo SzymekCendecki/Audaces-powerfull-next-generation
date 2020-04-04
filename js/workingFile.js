@@ -10,6 +10,7 @@ import{ choosePoints } from './manualCreator/points.js';
 import{ chooseCharacterTraits } from './manualCreator/characterTraits.js';
 import{ preview } from './manualCreator/preview.js';
 import{ reset } from './manualCreator/reset.js';
+import{ inRoom } from './inRoom';
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -385,11 +386,15 @@ const closeP = (p) =>{
 	}, 5000);
 }
 
-document.querySelector("#lookRoom").addEventListener("click", ()=>{
-	fetch(path + 'room.json').then(response => response.json()).then(data => { 
+let lookAround = (a) =>{
+	fetch(path + a).then(response => response.json()).then(data => { 
 		document.querySelector("#third").innerHTML = data.lookAround;	
 		closeP("#third");
 	}).catch(error => console.error(error))
+}
+
+document.querySelector("#lookRoom").addEventListener("click", ()=>{
+	lookAround('room.json');
 });
 
 document.querySelector("#wardrobe").addEventListener("click", ()=>{
@@ -461,21 +466,11 @@ document.querySelector("#street").addEventListener("click", ()=>{
 });
 
 document.querySelector("#lookStreet").addEventListener("click", ()=>{
-	fetch(path + 'street.json').then(response => response.json()).then(data => { 
-
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-			
-	}).catch(error => console.error(error))
+	lookAround('street.json');
 });
 
 document.querySelector("#inRoom").addEventListener("click", ()=>{
-	document.querySelector("#roomBtns").classList.remove("displayNone");
-	document.querySelector("#streetBtns").classList.add("displayNone");
-
-	fetch(path + 'room.json').then(response => response.json()).then(data => { 
-		document.querySelector("#first").innerHTML = data.room2;
-	}).catch(error => console.error(error))
+	inRoom(document.querySelector("#roomBtns"), document.querySelector("#streetBtns"), path + 'room.json');
 });
 
 document.querySelector("#market").addEventListener("click", ()=>{
@@ -489,10 +484,7 @@ document.querySelector("#market").addEventListener("click", ()=>{
 });
 
 document.querySelector("#lookMarket").addEventListener("click", ()=>{
-	fetch(path + 'market.json').then(response => response.json()).then(data => { 
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-	}).catch(error => console.error(error))
+	lookAround('market.json');
 });
 
 document.querySelector("#toStreet").addEventListener("click", ()=>{
@@ -597,10 +589,7 @@ document.querySelector("#caravan").addEventListener("click", ()=>{
 });
 
 document.querySelector("#lookCaravan").addEventListener("click", ()=>{
-	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
-		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
-	}).catch(error => console.error(error))
+	lookAround('caravans.json');
 });
 
 document.querySelector("#toMarket").addEventListener("click", ()=>{

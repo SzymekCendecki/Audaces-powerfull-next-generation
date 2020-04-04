@@ -69,3 +69,4 @@ export let clearHero = (hero) => {
 	hero.splice(13, 1, "");
 	hero.splice(14, 1, "");
   }	  
+  

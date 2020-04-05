@@ -145,6 +145,12 @@ var clearHero = exports.clearHero = function clearHero(hero) {
 	hero.splice(14, 1, "");
 };
 
+var closeP = exports.closeP = function closeP(p) {
+	setTimeout(function () {
+		document.querySelector(p).innerHTML = "";
+	}, 5000);
+};
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -180,6 +186,10 @@ var _preview = __webpack_require__(10);
 var _reset = __webpack_require__(11);
 
 var _inRoom = __webpack_require__(12);
+
+var _mainBtns = __webpack_require__(14);
+
+var _roomEvents = __webpack_require__(15);
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -475,70 +485,34 @@ document.querySelector("#play").addEventListener("click", function () {
 	});
 });
 
+var mainCont = document.querySelector("#mainContainer");
+var infoContainer = document.querySelector("#infoContainer");
+var infoHero = document.querySelector("#infoHero");
+
 document.querySelector("#features").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	var featuresHero = '<div class = "showHero">\n\t\t<p id=\'name\'>imi\u0119: ' + hero[0] + '</p>\n\t\t<p id=\'sex\'>p\u0142e\u0107: ' + hero[1] + '</p>\n\t\t<p id=\'race\'>rasa: ' + hero[2] + '</p>\n\t\t<p id=\'occupation\'>profesja: ' + hero[3] + '</p>\n\t\t<p id=\'force\'>si\u0142a: ' + hero[4] + '</p>\n\t\t<p id=\'strength\'>wytrzyma\u0142o\u015B\u0107: ' + hero[5] + '</p>\n\t\t<p id=\'dexterity\'>zr\u0119czno\u015B\u0107: ' + hero[6] + '</p>\n\t\t<p id=\'intelligence\'>inteligencja: ' + hero[7] + '</p>\n\t\t<p id=\'charisma\'>charyzma: ' + hero[8] + '</p>\n\t\t<p id=\'eyes\'>kolor oczu: <span id="eyesColor">' + hero[9] + '</span></p>\n\t\t<p id=\'hair\'>kolor w\u0142os\xF3w: <span id="hairColor">' + hero[10] + '</span></p>\n\t\t<p id=\'skin\'>kolor sk\xF3ry: <span id="skinColor">' + hero[11] + '</span></p>\n\t\t<p id=\'tattoo\'>tatua\u017Ce: ' + hero[12] + '</p>\n\t\t<p id=\'weight\'>waga: ' + hero[13] + ' kg</p>\n\t\t<p id=\'height\'>wzrost: ' + hero[14] + ' cm</p>\n\t</div>';
-
-	document.querySelector("#infoHero").innerHTML = "";
-	document.querySelector("#infoHero").innerHTML = featuresHero;
+	(0, _mainBtns.features)(infoContainer, hero, infoHero);
 });
 
 document.querySelector("#equip").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (var i = 0; i < equip.length; i++) {
-		var _p = document.createElement("p");
-		_p.append('' + equip[i]);
-		_p.classList.add("pStyles");
-		_p.classList.add("centerText");
-		document.querySelector("#infoHero").append(_p);
-	}
-
-	var p = document.createElement("p");
-	p.append('z\u0142oto: ' + gold);
-	p.classList.add("pStyles");
-	document.querySelector("#infoHero").append(p);
+	(0, _mainBtns.equipBtn)(infoContainer, infoHero, equip, gold);
 });
 
 document.querySelector("#skills").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (var i = 0; i < skills.length; i++) {
-		var p = document.createElement("p");
-		p.append('' + skills[i]);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
-	}
+	(0, _mainBtns.skillsBtn)(infoContainer, infoHero, skills);
 });
 
 document.querySelector("#tasks").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (var i = 0; i < tasks.length; i++) {
-		var p = document.createElement("p");
-		p.append('' + tasks[i]);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
-	}
+	(0, _mainBtns.tasksBtn)(infoContainer, infoHero, tasks);
 });
 
 document.querySelector("#close").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.add("displayNone");
-	document.querySelector("#infoHero").innerHTML = "";
+	infoContainer.classList.add("displayNone");
+	infoHero.innerHTML = "";
 });
 
 document.querySelector("#start").addEventListener("click", function () {
 	document.querySelector("#start").classList.add("displayNone");
-	document.querySelector("#mainContainer").innerHTML = "";
+	mainCont.innerHTML = "";
 
 	document.querySelector("#features").classList.remove("displayNone");
 	document.querySelector("#equip").classList.remove("displayNone");
@@ -551,17 +525,17 @@ document.querySelector("#start").addEventListener("click", function () {
 	var p = document.createElement("p");
 	p.id = "first";
 	p.classList.add("pStyles");
-	document.querySelector("#mainContainer").append(p);
+	mainCont.append(p);
 
 	var p2 = document.createElement("p");
 	p2.id = "second";
 	p2.classList.add("pStyles");
-	document.querySelector("#mainContainer").append(p2);
+	mainCont.append(p2);
 
 	var p3 = document.createElement("p");
 	p3.id = "third";
 	p3.classList.add("pStyles");
-	document.querySelector("#mainContainer").append(p3);
+	mainCont.append(p3);
 
 	fetch(path + 'room.json').then(function (response) {
 		return response.json();
@@ -572,18 +546,12 @@ document.querySelector("#start").addEventListener("click", function () {
 	});
 });
 
-var closeP = function closeP(p) {
-	setTimeout(function () {
-		document.querySelector(p).innerHTML = "";
-	}, 5000);
-};
-
 var lookAround = function lookAround(a) {
 	fetch(path + a).then(function (response) {
 		return response.json();
 	}).then(function (data) {
 		document.querySelector("#third").innerHTML = data.lookAround;
-		closeP("#third");
+		(0, _functions.closeP)("#third");
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -594,27 +562,7 @@ document.querySelector("#lookRoom").addEventListener("click", function () {
 });
 
 document.querySelector("#wardrobe").addEventListener("click", function () {
-
-	fetch(path + 'room.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-
-		if (equip.indexOf('płaszcz') == -1) {
-			document.querySelector("#second").innerHTML = data.fullWardrobe;
-		} else {
-			document.querySelector("#second").innerHTML = data.emptyWardrobe;
-			closeP("#second");
-		}
-
-		document.querySelector("#coat").addEventListener("click", function () {
-			equip.push('płaszcz');
-			document.querySelector("#second").innerHTML = "";
-			document.querySelector("#second").innerHTML = data.emptyWardrobe;
-			closeP("#second");
-		});
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	(0, _roomEvents.wardrobe)(path, document.querySelector("#second"), equip);
 });
 
 document.querySelector("#chest").addEventListener("click", function () {
@@ -626,14 +574,14 @@ document.querySelector("#chest").addEventListener("click", function () {
 			document.querySelector("#second").innerHTML = data.fullChest;
 		} else {
 			document.querySelector("#second").innerHTML = data.emptyChest;
-			closeP("#second");
+			(0, _functions.closeP)("#second");
 		}
 
 		document.querySelector("#coins").addEventListener("click", function () {
 			gold = 12;
 			document.querySelector("#second").innerHTML = "";
 			document.querySelector("#second").innerHTML = data.emptyChest;
-			closeP("#second");
+			(0, _functions.closeP)("#second");
 		});
 	}).catch(function (error) {
 		return console.error(error);
@@ -648,7 +596,7 @@ document.querySelector("#package").addEventListener("click", function () {
 		equip.push("paczka");
 		document.querySelector("#first").innerHTML = data.room2;
 		document.querySelector("#second").innerHTML = data.package;
-		closeP("#second");
+		(0, _functions.closeP)("#second");
 
 		document.querySelector("#roomBtns").removeChild(document.querySelector("#package"));
 	}).catch(function (error) {
@@ -713,9 +661,9 @@ document.querySelector("#toStreet").addEventListener("click", function () {
 });
 
 document.querySelector("#buyMarket").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\n\t\t<button id=\'spear\' class=\'btnAccept\' data-cost=\'6\'>w\u0142\xF3cznia</button>\n\t\t<button id=\'bucket\' class=\'btnAccept\' data-cost=\'2\'>wiadro</button>\n\t\t<button id=\'buckler\' class=\'btnAccept\' data-cost=\'6\'>puklerz</button>\n\t\t<button id=\'herring\' class=\'btnAccept\' data-cost=\'1\'>\u015Bledzie</button>\n\t\t<button id=\'blanket\' class=\'btnAccept\' data-cost=\'2\'>koc</button>\n\t\t<button id=\'dagger\' class=\'btnAccept\' data-cost=\'4\'>sztylet</button>\n\t\t<button id=\'sword\' class=\'btnAccept\' data-cost=\'10\'>miecz</button>\n\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
+	infoHero.innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\n\t\t<button id=\'spear\' class=\'btnAccept\' data-cost=\'6\'>w\u0142\xF3cznia</button>\n\t\t<button id=\'bucket\' class=\'btnAccept\' data-cost=\'2\'>wiadro</button>\n\t\t<button id=\'buckler\' class=\'btnAccept\' data-cost=\'6\'>puklerz</button>\n\t\t<button id=\'herring\' class=\'btnAccept\' data-cost=\'1\'>\u015Bledzie</button>\n\t\t<button id=\'blanket\' class=\'btnAccept\' data-cost=\'2\'>koc</button>\n\t\t<button id=\'dagger\' class=\'btnAccept\' data-cost=\'4\'>sztylet</button>\n\t\t<button id=\'sword\' class=\'btnAccept\' data-cost=\'10\'>miecz</button>\n\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
 
 	var allItems = document.querySelectorAll("#itemsBuy > button");
 
@@ -725,10 +673,10 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 				equip.push(allItems[i].innerText);
 				gold = gold - allItems[i].dataset.cost;
 				document.querySelector("#warning").innerHTML = 'Zakupiono przedmiot: ' + allItems[i].innerText + '.';
-				closeP("#warning");
+				(0, _functions.closeP)("#warning");
 			} else {
 				document.querySelector("#warning").innerHTML = 'Nie masz tyle z\u0142ota !!!';
-				closeP("#warning");
+				(0, _functions.closeP)("#warning");
 			}
 		});
 	};
@@ -739,9 +687,9 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 });
 
 document.querySelector("#sellMarket").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz sprzeda\u0107:</p>\n\t<div id=\'itemsSell\' class=\'displayFlex\'>\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
+	infoHero.innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz sprzeda\u0107:</p>\n\t<div id=\'itemsSell\' class=\'displayFlex\'>\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
 
 	for (var i = 0; i < equip.length; i++) {
 		var btn = document.createElement("button");
@@ -774,7 +722,7 @@ document.querySelector("#sellMarket").addEventListener("click", function () {
 			gold = gold + parseInt(btns[_i].dataset.cost);
 
 			document.querySelector("#warning").innerHTML = 'Sprzedano przedmiot: ' + btns[_i].innerText;
-			closeP("#warning");
+			(0, _functions.closeP)("#warning");
 		});
 	};
 
@@ -790,7 +738,7 @@ document.querySelector("#caravan").addEventListener("click", function () {
 	fetch(path + 'caravans.json').then(function (response) {
 		return response.json();
 	}).then(function (data) {
-		document.querySelector("#first").innerHTML = data.caravans;
+		first.innerHTML = data.caravans;
 	}).catch(function (error) {
 		return console.error(error);
 	});
@@ -860,9 +808,9 @@ document.querySelector("#move").addEventListener("click", function () {
 });
 
 document.querySelector("#prepareItems").addEventListener("click", function () {
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = "";
+	infoHero.innerHTML = "";
 
 	for (var i = 0; i < equip.length; i++) {
 		var newLabel = document.createElement("label");
@@ -874,7 +822,7 @@ document.querySelector("#prepareItems").addEventListener("click", function () {
 
 		newLabel.append(newCheckbox);
 		newLabel.append(equip[i]);
-		document.querySelector("#infoHero").append(newLabel);
+		infoHero.append(newLabel);
 	}
 
 	document.querySelector("#paczka").parentElement.remove();
@@ -883,11 +831,11 @@ document.querySelector("#prepareItems").addEventListener("click", function () {
 	newBtn.id = 'fightEquip';
 	newBtn.classList.add('btnAccept');
 	newBtn.textContent = 'zatwierdź';
-	document.querySelector("#infoHero").append(newBtn);
+	infoHero.append(newBtn);
 
 	document.querySelector("#fightEquip").addEventListener("click", function () {
-		document.querySelector("#infoContainer").classList.add("displayNone");
-		document.querySelector("#infoHero").innerHTML = "";
+		infoContainer.classList.add("displayNone");
+		infoHero.innerHTML = "";
 
 		fetch(path + 'defense.json').then(function (response) {
 			return response.json();
@@ -1828,6 +1776,109 @@ var inRoom = exports.inRoom = function inRoom(a, b, c) {
     }).catch(function (error) {
         return console.error(error);
     });
+};
+
+/***/ }),
+/* 13 */,
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var features = exports.features = function features(a, b, c) {
+	a.classList.remove("displayNone");
+
+	var featuresHero = "<div class = \"showHero\">\n\t\t<p id='name'>imi\u0119: " + b[0] + "</p>\n\t\t<p id='sex'>p\u0142e\u0107: " + b[1] + "</p>\n\t\t<p id='race'>rasa: " + b[2] + "</p>\n\t\t<p id='occupation'>profesja: " + b[3] + "</p>\n\t\t<p id='force'>si\u0142a: " + b[4] + "</p>\n\t\t<p id='strength'>wytrzyma\u0142o\u015B\u0107: " + b[5] + "</p>\n\t\t<p id='dexterity'>zr\u0119czno\u015B\u0107: " + b[6] + "</p>\n\t\t<p id='intelligence'>inteligencja: " + b[7] + "</p>\n\t\t<p id='charisma'>charyzma: " + b[8] + "</p>\n\t\t<p id='eyes'>kolor oczu: <span id=\"eyesColor\">" + b[9] + "</span></p>\n\t\t<p id='hair'>kolor w\u0142os\xF3w: <span id=\"hairColor\">" + b[10] + "</span></p>\n\t\t<p id='skin'>kolor sk\xF3ry: <span id=\"skinColor\">" + b[11] + "</span></p>\n\t\t<p id='tattoo'>tatua\u017Ce: " + b[12] + "</p>\n\t\t<p id='weight'>waga: " + b[13] + " kg</p>\n\t\t<p id='height'>wzrost: " + b[14] + " cm</p>\n\t</div>";
+
+	c.innerHTML = "";
+	c.innerHTML = featuresHero;
+};
+
+var equipBtn = exports.equipBtn = function equipBtn(a, b, equip, gold) {
+	a.classList.remove("displayNone");
+	b.innerHTML = "";
+
+	for (var i = 0; i < equip.length; i++) {
+		var _p = document.createElement("p");
+		_p.append("" + equip[i]);
+		_p.classList.add("pStyles");
+		_p.classList.add("centerText");
+		b.append(_p);
+	}
+
+	var p = document.createElement("p");
+	p.append("z\u0142oto: " + gold);
+	p.classList.add("pStyles");
+	b.append(p);
+};
+
+var skillsBtn = exports.skillsBtn = function skillsBtn(infoContainer, infoHero, skills) {
+	infoContainer.classList.remove("displayNone");
+
+	infoHero.innerHTML = "";
+
+	for (var i = 0; i < skills.length; i++) {
+		var p = document.createElement("p");
+		p.append("" + skills[i]);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		infoHero.append(p);
+	}
+};
+
+var tasksBtn = exports.tasksBtn = function tasksBtn(infoContainer, infoHero, tasks) {
+	infoContainer.classList.remove("displayNone");
+
+	infoHero.innerHTML = "";
+
+	for (var i = 0; i < tasks.length; i++) {
+		var p = document.createElement("p");
+		p.append("" + tasks[i]);
+		p.classList.add("pStyles");
+		p.classList.add("centerText");
+		infoHero.append(p);
+	}
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.wardrobe = undefined;
+
+var _functions = __webpack_require__(0);
+
+var wardrobe = exports.wardrobe = function wardrobe(path, second, equip) {
+	fetch(path + 'room.json').then(function (response) {
+		return response.json();
+	}).then(function (data) {
+
+		if (equip.indexOf('płaszcz') == -1) {
+			second.innerHTML = data.fullWardrobe;
+		} else {
+			second.innerHTML = data.emptyWardrobe;
+			(0, _functions.closeP)("#second");
+		}
+
+		document.querySelector("#coat").addEventListener("click", function () {
+			equip.push('płaszcz');
+			second.innerHTML = "";
+			second.innerHTML = data.emptyWardrobe;
+			(0, _functions.closeP)("#second");
+		});
+	}).catch(function (error) {
+		return console.error(error);
+	});
 };
 
 /***/ })

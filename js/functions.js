@@ -70,3 +70,8 @@ export let clearHero = (hero) => {
 	hero.splice(14, 1, "");
   }	  
   
+  export let closeP = (p) =>{
+		setTimeout(()=>{ 
+			document.querySelector(p).innerHTML = "";	
+		}, 5000);
+  }

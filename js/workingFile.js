@@ -1,6 +1,6 @@
 import { namesMan, namesWomen, races, occupation, sex, tatoo, equipWeapon, equipArmor, equipShield, equipOther, skillsWarrior, skillsCriminal, skillsWizard, warrior, criminal, wizard, human, halfOrc, orc, halfElv, elv, dwarf, gnome, halfling, goblin, troll, semiGiant, tattoo } from './arrays.js';
 
-import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, clearHero } from './functions.js';
+import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, clearHero, closeP } from './functions.js';
 
 import{ chooseName } from './manualCreator/name.js';
 import{ chooseSex } from './manualCreator/sex.js';
@@ -11,6 +11,8 @@ import{ chooseCharacterTraits } from './manualCreator/characterTraits.js';
 import{ preview } from './manualCreator/preview.js';
 import{ reset } from './manualCreator/reset.js';
 import{ inRoom } from './inRoom';
+import { features, equipBtn, skillsBtn, tasksBtn } from './mainBtns/mainBtns.js';
+import{ wardrobe } from './room/roomEvents.js';
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -270,86 +272,34 @@ document.querySelector("#play").addEventListener("click", ()=>{
 
 });
 
-document.querySelector("#features").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+const mainCont = document.querySelector("#mainContainer");
+const infoContainer = document.querySelector("#infoContainer");
+const infoHero = document.querySelector("#infoHero");
 
-	const featuresHero = `<div class = "showHero">
-		<p id='name'>imię: ${hero[0]}</p>
-		<p id='sex'>płeć: ${hero[1]}</p>
-		<p id='race'>rasa: ${hero[2]}</p>
-		<p id='occupation'>profesja: ${hero[3]}</p>
-		<p id='force'>siła: ${hero[4]}</p>
-		<p id='strength'>wytrzymałość: ${hero[5]}</p>
-		<p id='dexterity'>zręczność: ${hero[6]}</p>
-		<p id='intelligence'>inteligencja: ${hero[7]}</p>
-		<p id='charisma'>charyzma: ${hero[8]}</p>
-		<p id='eyes'>kolor oczu: <span id="eyesColor">${hero[9]}</span></p>
-		<p id='hair'>kolor włosów: <span id="hairColor">${hero[10]}</span></p>
-		<p id='skin'>kolor skóry: <span id="skinColor">${hero[11]}</span></p>
-		<p id='tattoo'>tatuaże: ${hero[12]}</p>
-		<p id='weight'>waga: ${hero[13]} kg</p>
-		<p id='height'>wzrost: ${hero[14]} cm</p>
-	</div>`;
-
-		document.querySelector("#infoHero").innerHTML = "";
-		document.querySelector("#infoHero").innerHTML = featuresHero;
+document.querySelector("#features").addEventListener("click", ()=>{ 
+	features(infoContainer, hero, infoHero); 
 });
 
 document.querySelector("#equip").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (let i=0; i<equip.length; i++){
-		let p = document.createElement("p");
-		p.append(`${equip[i]}`);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
-	}
-
-	let p = document.createElement("p");
-	p.append(`złoto: ` + gold);
-	p.classList.add("pStyles");
-	document.querySelector("#infoHero").append(p);
+	equipBtn(infoContainer, infoHero, equip, gold);
 });
 
 document.querySelector("#skills").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (let i=0; i<skills.length; i++){
-		let p = document.createElement("p");
-		p.append(`${skills[i]}`);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
-	}
+	skillsBtn(infoContainer, infoHero, skills);
 });
 
 document.querySelector("#tasks").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
-
-	document.querySelector("#infoHero").innerHTML = "";
-
-	for (let i=0; i<tasks.length; i++){
-		let p = document.createElement("p");
-		p.append(`${tasks[i]}`);
-		p.classList.add("pStyles");
-		p.classList.add("centerText");
-		document.querySelector("#infoHero").append(p);
-	}
+	tasksBtn(infoContainer, infoHero, tasks);
 });
 
 document.querySelector("#close").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.add("displayNone");
-	document.querySelector("#infoHero").innerHTML = "";
+	infoContainer.classList.add("displayNone");
+	infoHero.innerHTML = "";
 });
 
 document.querySelector("#start").addEventListener("click", ()=>{
 	document.querySelector("#start").classList.add("displayNone");
-	document.querySelector("#mainContainer").innerHTML = "";
+	mainCont.innerHTML = "";
 
 	document.querySelector("#features").classList.remove("displayNone");
 	document.querySelector("#equip").classList.remove("displayNone");
@@ -363,28 +313,22 @@ document.querySelector("#start").addEventListener("click", ()=>{
 		let p = document.createElement("p");
 		p.id = "first";
 		p.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p);
+		mainCont.append(p);
 
 		let p2 = document.createElement("p");
 		p2.id = "second";
 		p2.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p2);
+		mainCont.append(p2);
 
 		let p3 = document.createElement("p");
 		p3.id= "third";
 		p3.classList.add("pStyles");
-		document.querySelector("#mainContainer").append(p3);
+		mainCont.append(p3);
 
 	fetch(path + 'room.json').then(response => response.json()).then(data => { 	
 		p.append(data.room);
 	}).catch(error => console.error(error))
 });
-
-const closeP = (p) =>{
-	setTimeout(()=>{ 
-		document.querySelector(p).innerHTML = "";	
-	}, 5000);
-}
 
 let lookAround = (a) =>{
 	fetch(path + a).then(response => response.json()).then(data => { 
@@ -398,24 +342,7 @@ document.querySelector("#lookRoom").addEventListener("click", ()=>{
 });
 
 document.querySelector("#wardrobe").addEventListener("click", ()=>{
-
-	fetch(path + 'room.json').then(response => response.json()).then(data => { 
-
-		if(equip.indexOf('płaszcz') == -1){
-			document.querySelector("#second").innerHTML = data.fullWardrobe;
-		}else{
-			document.querySelector("#second").innerHTML = data.emptyWardrobe;
-			closeP("#second");
-		}
-
-		document.querySelector("#coat").addEventListener("click", ()=>{
-			equip.push('płaszcz');
-			document.querySelector("#second").innerHTML = "";
-			document.querySelector("#second").innerHTML = data.emptyWardrobe;
-			closeP("#second");		
-		});
-		
-	}).catch(error => console.error(error))
+	wardrobe(path, document.querySelector("#second"), equip);
 });
 
 document.querySelector("#chest").addEventListener("click", ()=>{
@@ -497,9 +424,9 @@ document.querySelector("#toStreet").addEventListener("click", ()=>{
 });
 
 document.querySelector("#buyMarket").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = `
+	infoHero.innerHTML = `
 	<p class='pStyles'>Możesz kupić:</p>
 	<div id='itemsBuy' class='displayFlex'>
 
@@ -533,9 +460,9 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 });
 
 document.querySelector("#sellMarket").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = `
+	infoHero.innerHTML = `
 	<p class='pStyles'>Możesz sprzedać:</p>
 	<div id='itemsSell' class='displayFlex'>
 	</div>	
@@ -584,7 +511,7 @@ document.querySelector("#caravan").addEventListener("click", ()=>{
 	document.querySelector("#marketBtns").classList.add("displayNone");
 
 	fetch(path + 'caravans.json').then(response => response.json()).then(data => { 
-		document.querySelector("#first").innerHTML = data.caravans;
+		first.innerHTML = data.caravans;
 	}).catch(error => console.error(error))
 });
 
@@ -637,9 +564,9 @@ document.querySelector("#move").addEventListener("click", ()=>{
 });
 
 document.querySelector("#prepareItems").addEventListener("click", ()=>{
-	document.querySelector("#infoContainer").classList.remove("displayNone");
+	infoContainer.classList.remove("displayNone");
 
-	document.querySelector("#infoHero").innerHTML = "";
+	infoHero.innerHTML = "";
 
 	for(let i=0; i<equip.length; i++){
 		let newLabel = document.createElement("label");
@@ -651,7 +578,7 @@ document.querySelector("#prepareItems").addEventListener("click", ()=>{
 		
 		newLabel.append(newCheckbox);
 		newLabel.append(equip[i]);
-		document.querySelector("#infoHero").append(newLabel);		
+		infoHero.append(newLabel);		
 	}
 
 	document.querySelector("#paczka").parentElement.remove();
@@ -660,11 +587,11 @@ document.querySelector("#prepareItems").addEventListener("click", ()=>{
 	newBtn.id = 'fightEquip';
 	newBtn.classList.add('btnAccept');
 	newBtn.textContent = 'zatwierdź';
-	document.querySelector("#infoHero").append(newBtn);
+	infoHero.append(newBtn);
 
 	document.querySelector("#fightEquip").addEventListener("click", ()=>{
-		document.querySelector("#infoContainer").classList.add("displayNone");
-		document.querySelector("#infoHero").innerHTML = "";
+		infoContainer.classList.add("displayNone");
+		infoHero.innerHTML = "";
 
 		fetch(path + 'defense.json').then(response => response.json()).then(data => { 
 			document.querySelector("#first").append(data.afterBattle);

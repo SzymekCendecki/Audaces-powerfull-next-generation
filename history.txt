@@ -571,3 +571,7 @@ Przeniesienie funkcji closeP do pliku functions.
   Przeniesienie linii kodu (odpowiadającego za wywoływanie informacji o ekwipunku, umiejętnościach, zadaniach oraz cechach bohatera do osobnego pliku mainBtns.js).)
 Rozpoczęcie przenoszenia linii kodu (odpowiadającego za zdarzenia w pokoju) do pliku roomEvents.js.
   Drobna optymalizacja, polegająca na przypsianiu do zmiennej document.querySelector() (z odpowiednim parametrem).
+
+6 kwietnia 2020 - wersja 0.2.76e
+Usunięcie zbędnych linii kodu w pliku functions.js.
+  Przeniesienie linii kodu (odpowiedzialnych za wyświetlanie tutorialu, info oraz licencji) do osobnego pliku.

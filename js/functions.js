@@ -18,26 +18,6 @@ export let newP = (data) =>{
 		mainContainer.appendChild(newP); 
 	}
 
-export let newBtn = (text, where, name) =>{
-	const newBtn = document.createElement("button");
-	let textBtn = document.createTextNode(text);
-	newBtn.appendChild(textBtn);
-	newBtn.setAttribute("id", name);
-	where.appendChild(newBtn);
-}
-
-export let newDiv = (where, name) =>{
-	const newDiv = document.createElement("div");
-	where.appendChild(newDiv);
-	newDiv.setAttribute("id", name);
-}
-
-export let newInput = (where, typeName, idName) => {
-	const newInput = document.createElement("input");
-	where.appendChild(newInput);
-	newInput.setAttribute("type", typeName);
-	newInput.setAttribute("id", idName);
-}
 
 export let rndFromArray = (nameArray, hero, position) => {
 		let draw = nameArray[Math.floor(Math.random() * nameArray.length)];

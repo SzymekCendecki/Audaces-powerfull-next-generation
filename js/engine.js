@@ -93,27 +93,6 @@ var newP = exports.newP = function newP(data) {
 	mainContainer.appendChild(newP);
 };
 
-var newBtn = exports.newBtn = function newBtn(text, where, name) {
-	var newBtn = document.createElement("button");
-	var textBtn = document.createTextNode(text);
-	newBtn.appendChild(textBtn);
-	newBtn.setAttribute("id", name);
-	where.appendChild(newBtn);
-};
-
-var newDiv = exports.newDiv = function newDiv(where, name) {
-	var newDiv = document.createElement("div");
-	where.appendChild(newDiv);
-	newDiv.setAttribute("id", name);
-};
-
-var newInput = exports.newInput = function newInput(where, typeName, idName) {
-	var newInput = document.createElement("input");
-	where.appendChild(newInput);
-	newInput.setAttribute("type", typeName);
-	newInput.setAttribute("id", idName);
-};
-
 var rndFromArray = exports.rndFromArray = function rndFromArray(nameArray, hero, position) {
 	var draw = nameArray[Math.floor(Math.random() * nameArray.length)];
 	hero.splice(position, 1, draw);
@@ -169,6 +148,8 @@ var _arrays = __webpack_require__(3);
 
 var _functions = __webpack_require__(0);
 
+var _info = __webpack_require__(15);
+
 var _name = __webpack_require__(4);
 
 var _sex = __webpack_require__(5);
@@ -187,9 +168,9 @@ var _reset = __webpack_require__(11);
 
 var _inRoom = __webpack_require__(12);
 
-var _mainBtns = __webpack_require__(14);
+var _mainBtns = __webpack_require__(13);
 
-var _roomEvents = __webpack_require__(15);
+var _roomEvents = __webpack_require__(14);
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -220,9 +201,6 @@ var showHero = function showHero(hero) {
 	mainContainer.innerHTML = showHero;
 };
 
-var gameTitle = document.querySelector("#gameTitle");
-var gameSubTitle = document.querySelector("#gameSubTitle");
-
 var info = document.querySelector("#info");
 var licence = document.querySelector("#licence");
 var tutorial = document.querySelector("#tutorial");
@@ -240,36 +218,15 @@ setTimeout(function () {
 }, 3000);
 
 info.addEventListener("click", function () {
-	mainContainer.innerHTML = '';
-	fetch(path + 'info.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		(0, _functions.newP)(data.info);
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	(0, _info.infoTxt)(mainContainer, path, _functions.newP);
 });
 
 licence.addEventListener("click", function () {
-	mainContainer.innerHTML = '';
-	fetch(path + 'licence.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		(0, _functions.newP)(data.licence);
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	(0, _info.licenceTxt)(mainContainer, path, _functions.newP);
 });
 
 tutorial.addEventListener("click", function () {
-	mainContainer.innerHTML = '';
-	fetch(path + 'tutorial.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		(0, _functions.newP)(data.tutorial);
-	}).catch(function (error) {
-		return console.error(error);
-	});
+	(0, _info.tutorialTxt)(mainContainer, path, _functions.newP);
 });
 
 newGame.addEventListener("click", function () {
@@ -1779,8 +1736,7 @@ var inRoom = exports.inRoom = function inRoom(a, b, c) {
 };
 
 /***/ }),
-/* 13 */,
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1845,7 +1801,7 @@ var tasksBtn = exports.tasksBtn = function tasksBtn(infoContainer, infoHero, tas
 };
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1879,6 +1835,49 @@ var wardrobe = exports.wardrobe = function wardrobe(path, second, equip) {
 	}).catch(function (error) {
 		return console.error(error);
 	});
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var infoTxt = exports.infoTxt = function infoTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'info.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.info);
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+var licenceTxt = exports.licenceTxt = function licenceTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'licence.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.licence);
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+var tutorialTxt = exports.tutorialTxt = function tutorialTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'tutorial.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.tutorial);
+    }).catch(function (error) {
+        return console.error(error);
+    });
 };
 
 /***/ })

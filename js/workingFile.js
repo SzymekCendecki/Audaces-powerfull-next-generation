@@ -2,6 +2,8 @@ import { namesMan, namesWomen, races, occupation, sex, tatoo, equipWeapon, equip
 
 import{ toFirstMenu, newP, newDiv, newInput, newBtn, rndFromArray, clearHero, closeP } from './functions.js';
 
+import{ infoTxt, licenceTxt, tutorialTxt } from './info/info.js';
+
 import{ chooseName } from './manualCreator/name.js';
 import{ chooseSex } from './manualCreator/sex.js';
 import{ chooseRace } from './manualCreator/race.js';
@@ -59,9 +61,6 @@ let showHero = (hero) =>{
     mainContainer.innerHTML = showHero;
 }
 
-	const gameTitle = document.querySelector("#gameTitle");
-	const gameSubTitle = document.querySelector("#gameSubTitle");
-		
 	const info = document.querySelector("#info");
 	const licence = document.querySelector("#licence");
 	const tutorial = document.querySelector("#tutorial");
@@ -77,24 +76,15 @@ let showHero = (hero) =>{
 	setTimeout( () => toFirstMenu(), 3000 );
 	
 	info.addEventListener("click", ()=>{
-		mainContainer.innerHTML = '';
-		fetch(path + 'info.json').then(response => response.json()).then(data => { 
-			newP(data.info);
-		}).catch(error => console.error(error))
+		infoTxt(mainContainer, path, newP);
 	});
 	
 	licence.addEventListener("click", ()=>{
-		mainContainer.innerHTML = '';
-		fetch(path + 'licence.json').then(response => response.json()).then(data => { 
-			newP(data.licence);
-		}).catch(error => console.error(error))
+		licenceTxt(mainContainer, path, newP);
 	});
 	
 	tutorial.addEventListener("click", ()=>{
-		mainContainer.innerHTML = '';
-		fetch(path + 'tutorial.json').then(response => response.json()).then(data => { 
-			newP(data.tutorial);
-		}).catch(error => console.error(error))
+		tutorialTxt(mainContainer, path, newP);
 	});
 	
 	newGame.addEventListener("click", ()=>{

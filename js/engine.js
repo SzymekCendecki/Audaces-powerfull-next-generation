@@ -148,29 +148,31 @@ var _arrays = __webpack_require__(3);
 
 var _functions = __webpack_require__(0);
 
-var _info = __webpack_require__(15);
+var _info = __webpack_require__(4);
 
-var _name = __webpack_require__(4);
+var _name = __webpack_require__(5);
 
-var _sex = __webpack_require__(5);
+var _sex = __webpack_require__(6);
 
-var _race = __webpack_require__(6);
+var _race = __webpack_require__(7);
 
-var _occupation = __webpack_require__(7);
+var _occupation = __webpack_require__(8);
 
-var _points = __webpack_require__(8);
+var _points = __webpack_require__(9);
 
-var _characterTraits = __webpack_require__(9);
+var _characterTraits = __webpack_require__(10);
 
-var _preview = __webpack_require__(10);
+var _preview = __webpack_require__(11);
 
-var _reset = __webpack_require__(11);
+var _reset = __webpack_require__(12);
 
-var _inRoom = __webpack_require__(12);
+var _streetEvents = __webpack_require__(17);
 
-var _mainBtns = __webpack_require__(13);
+var _marketEvents = __webpack_require__(18);
 
-var _roomEvents = __webpack_require__(14);
+var _mainBtns = __webpack_require__(14);
+
+var _roomEvents = __webpack_require__(15);
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -583,64 +585,20 @@ document.querySelector("#lookStreet").addEventListener("click", function () {
 });
 
 document.querySelector("#inRoom").addEventListener("click", function () {
-	(0, _inRoom.inRoom)(document.querySelector("#roomBtns"), document.querySelector("#streetBtns"), path + 'room.json');
+	(0, _streetEvents.inRoom)(document.querySelector("#roomBtns"), document.querySelector("#streetBtns"), path + 'room.json');
 });
 
-document.querySelector("#market").addEventListener("click", function () {
-
-	document.querySelector("#streetBtns").classList.add("displayNone");
-	document.querySelector("#marketBtns").classList.remove("displayNone");
-
-	fetch(path + 'market.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		document.querySelector("#first").innerHTML = data.market;
-	}).catch(function (error) {
-		return console.error(error);
-	});
-});
+(0, _streetEvents.toMarket)(document.querySelector("#market"), document.querySelector("#streetBtns"), document.querySelector("#marketBtns"), path + 'market.json');
 
 document.querySelector("#lookMarket").addEventListener("click", function () {
 	lookAround('market.json');
 });
 
-document.querySelector("#toStreet").addEventListener("click", function () {
-	document.querySelector("#streetBtns").classList.remove("displayNone");
-	document.querySelector("#marketBtns").classList.add("displayNone");
-
-	fetch(path + 'street.json').then(function (response) {
-		return response.json();
-	}).then(function (data) {
-		document.querySelector("#first").innerHTML = data.street;
-	}).catch(function (error) {
-		return console.error(error);
-	});
-});
+(0, _marketEvents.toStreet)(document.querySelector("#toStreet"), document.querySelector("#streetBtns"), document.querySelector("#marketBtns"), path + 'street.json');
 
 document.querySelector("#buyMarket").addEventListener("click", function () {
-	infoContainer.classList.remove("displayNone");
-
-	infoHero.innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz kupi\u0107:</p>\n\t<div id=\'itemsBuy\' class=\'displayFlex\'>\n\n\t\t<button id=\'spear\' class=\'btnAccept\' data-cost=\'6\'>w\u0142\xF3cznia</button>\n\t\t<button id=\'bucket\' class=\'btnAccept\' data-cost=\'2\'>wiadro</button>\n\t\t<button id=\'buckler\' class=\'btnAccept\' data-cost=\'6\'>puklerz</button>\n\t\t<button id=\'herring\' class=\'btnAccept\' data-cost=\'1\'>\u015Bledzie</button>\n\t\t<button id=\'blanket\' class=\'btnAccept\' data-cost=\'2\'>koc</button>\n\t\t<button id=\'dagger\' class=\'btnAccept\' data-cost=\'4\'>sztylet</button>\n\t\t<button id=\'sword\' class=\'btnAccept\' data-cost=\'10\'>miecz</button>\n\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
-
-	var allItems = document.querySelectorAll("#itemsBuy > button");
-
-	var _loop = function _loop(i) {
-		allItems[i].addEventListener("click", function () {
-			if (allItems[i].dataset.cost <= gold) {
-				equip.push(allItems[i].innerText);
-				gold = gold - allItems[i].dataset.cost;
-				document.querySelector("#warning").innerHTML = 'Zakupiono przedmiot: ' + allItems[i].innerText + '.';
-				(0, _functions.closeP)("#warning");
-			} else {
-				document.querySelector("#warning").innerHTML = 'Nie masz tyle z\u0142ota !!!';
-				(0, _functions.closeP)("#warning");
-			}
-		});
-	};
-
-	for (var i = 0; i < allItems.length; i++) {
-		_loop(i);
-	}
+	(0, _marketEvents.buyList)(infoContainer, infoHero);
+	(0, _marketEvents.buyLoop)(equip, gold, document.querySelector("#warning"), (0, _functions.closeP)("#warning"));
 });
 
 document.querySelector("#sellMarket").addEventListener("click", function () {
@@ -668,7 +626,7 @@ document.querySelector("#sellMarket").addEventListener("click", function () {
 
 	var btns = document.querySelectorAll("#itemsSell > button");
 
-	var _loop2 = function _loop2(_i) {
+	var _loop = function _loop(_i) {
 		btns[_i].addEventListener("click", function () {
 			var index = equip.indexOf(btns[_i].innerText);
 
@@ -684,7 +642,7 @@ document.querySelector("#sellMarket").addEventListener("click", function () {
 	};
 
 	for (var _i = 0; _i < btns.length; _i++) {
-		_loop2(_i);
+		_loop(_i);
 	}
 });
 
@@ -867,6 +825,49 @@ var semiGiant = exports.semiGiant = [7, 7, -5, -3, 0];
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var infoTxt = exports.infoTxt = function infoTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'info.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.info);
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+var licenceTxt = exports.licenceTxt = function licenceTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'licence.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.licence);
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+var tutorialTxt = exports.tutorialTxt = function tutorialTxt(mainContainer, path, newP) {
+    mainContainer.innerHTML = '';
+    fetch(path + 'tutorial.json').then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        newP(data.tutorial);
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 			value: true
 });
 exports.chooseName = undefined;
@@ -901,7 +902,7 @@ var chooseName = exports.chooseName = function chooseName(hero) {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -944,7 +945,7 @@ var chooseSex = exports.chooseSex = function chooseSex(hero) {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1020,7 +1021,7 @@ var chooseRace = exports.chooseRace = function chooseRace(hero) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1061,7 +1062,7 @@ var chooseOccupation = exports.chooseOccupation = function chooseOccupation(hero
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1169,7 +1170,7 @@ var choosePoints = exports.choosePoints = function choosePoints(hero) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1669,7 +1670,7 @@ var chooseCharacterTraits = exports.chooseCharacterTraits = function chooseChara
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1693,7 +1694,7 @@ var preview = exports.preview = function preview(hero) {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1713,30 +1714,8 @@ var reset = exports.reset = function reset(hero) {
 };
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var inRoom = exports.inRoom = function inRoom(a, b, c) {
-    a.classList.remove("displayNone");
-    b.classList.add("displayNone");
-
-    fetch(c).then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        document.querySelector("#first").innerHTML = data.room2;
-    }).catch(function (error) {
-        return console.error(error);
-    });
-};
-
-/***/ }),
-/* 13 */
+/* 13 */,
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1801,7 +1780,7 @@ var tasksBtn = exports.tasksBtn = function tasksBtn(infoContainer, infoHero, tas
 };
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1838,7 +1817,8 @@ var wardrobe = exports.wardrobe = function wardrobe(path, second, equip) {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1847,37 +1827,85 @@ var wardrobe = exports.wardrobe = function wardrobe(path, second, equip) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var infoTxt = exports.infoTxt = function infoTxt(mainContainer, path, newP) {
-    mainContainer.innerHTML = '';
-    fetch(path + 'info.json').then(function (response) {
+var inRoom = exports.inRoom = function inRoom(a, b, c) {
+    a.classList.remove("displayNone");
+    b.classList.add("displayNone");
+
+    fetch(c).then(function (response) {
         return response.json();
     }).then(function (data) {
-        newP(data.info);
+        document.querySelector("#first").innerHTML = data.room2;
     }).catch(function (error) {
         return console.error(error);
     });
 };
 
-var licenceTxt = exports.licenceTxt = function licenceTxt(mainContainer, path, newP) {
-    mainContainer.innerHTML = '';
-    fetch(path + 'licence.json').then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        newP(data.licence);
-    }).catch(function (error) {
-        return console.error(error);
+var toMarket = exports.toMarket = function toMarket(a, b, c, d) {
+    a.addEventListener("click", function () {
+        b.classList.add("displayNone");
+        c.classList.remove("displayNone");
+
+        fetch(d).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            document.querySelector("#first").innerHTML = data.market;
+        }).catch(function (error) {
+            return console.error(error);
+        });
     });
 };
 
-var tutorialTxt = exports.tutorialTxt = function tutorialTxt(mainContainer, path, newP) {
-    mainContainer.innerHTML = '';
-    fetch(path + 'tutorial.json').then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        newP(data.tutorial);
-    }).catch(function (error) {
-        return console.error(error);
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var toStreet = exports.toStreet = function toStreet(a, b, c, d) {
+    a.addEventListener("click", function () {
+        b.classList.remove("displayNone");
+        c.classList.add("displayNone");
+
+        fetch(d).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            document.querySelector("#first").innerHTML = data.street;
+        }).catch(function (error) {
+            return console.error(error);
+        });
     });
+};
+
+var buyList = exports.buyList = function buyList(a, b) {
+    a.classList.remove("displayNone");
+
+    b.innerHTML = "\n    <p class='pStyles'>Mo\u017Cesz kupi\u0107:</p>\n    <div id='itemsBuy' class='displayFlex'>\n\n        <button id='spear' class='btnAccept' data-cost='6'>w\u0142\xF3cznia</button>\n        <button id='bucket' class='btnAccept' data-cost='2'>wiadro</button>\n        <button id='buckler' class='btnAccept' data-cost='6'>puklerz</button>\n        <button id='herring' class='btnAccept' data-cost='1'>\u015Bledzie</button>\n        <button id='blanket' class='btnAccept' data-cost='2'>koc</button>\n        <button id='dagger' class='btnAccept' data-cost='4'>sztylet</button>\n        <button id='sword' class='btnAccept' data-cost='10'>miecz</button>\n\n    </div>\t\n    <p id='warning' class='pStyles'></p>\n    ";
+};
+
+var buyLoop = exports.buyLoop = function buyLoop(b, c, d, e) {
+    var allItems = document.querySelectorAll("#itemsBuy > button");
+
+    var _loop = function _loop(i) {
+        allItems[i].addEventListener("click", function () {
+            if (allItems[i].dataset.cost <= c) {
+                b.push(allItems[i].innerText);
+                c = c - allItems[i].dataset.cost;
+                d.innerHTML = "Zakupiono przedmiot: " + allItems[i].innerText + ".";
+                e;
+            } else {
+                d.innerHTML = "Nie masz tyle z\u0142ota !!!";
+                e;
+            }
+        });
+    };
+
+    for (var i = 0; i < allItems.length; i++) {
+        _loop(i);
+    }
 };
 
 /***/ })

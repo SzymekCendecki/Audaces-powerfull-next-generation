@@ -575,3 +575,6 @@ Rozpoczęcie przenoszenia linii kodu (odpowiadającego za zdarzenia w pokoju) do
 6 kwietnia 2020 - wersja 0.2.76e
 Usunięcie zbędnych linii kodu w pliku functions.js.
   Przeniesienie linii kodu (odpowiedzialnych za wyświetlanie tutorialu, info oraz licencji) do osobnego pliku.
+
+9 kwietnia 2020 - wersja 0.2.76f
+Przenieszenie linii kodu do plików zewnętrznych.

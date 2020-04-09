@@ -12,7 +12,11 @@ import{ choosePoints } from './manualCreator/points.js';
 import{ chooseCharacterTraits } from './manualCreator/characterTraits.js';
 import{ preview } from './manualCreator/preview.js';
 import{ reset } from './manualCreator/reset.js';
-import{ inRoom } from './inRoom';
+
+import{ inRoom, toMarket } from './street/streetEvents.js';
+
+import{ toStreet, buyList, buyLoop } from './market/marketEvents.js'
+
 import { features, equipBtn, skillsBtn, tasksBtn } from './mainBtns/mainBtns.js';
 import{ wardrobe } from './room/roomEvents.js';
 
@@ -390,63 +394,17 @@ document.querySelector("#inRoom").addEventListener("click", ()=>{
 	inRoom(document.querySelector("#roomBtns"), document.querySelector("#streetBtns"), path + 'room.json');
 });
 
-document.querySelector("#market").addEventListener("click", ()=>{
-
-	document.querySelector("#streetBtns").classList.add("displayNone");
-	document.querySelector("#marketBtns").classList.remove("displayNone");
-	
-	fetch(path + 'market.json').then(response => response.json()).then(data => { 
-		document.querySelector("#first").innerHTML = data.market;
-	}).catch(error => console.error(error))
-});
+toMarket(document.querySelector("#market"), document.querySelector("#streetBtns"), document.querySelector("#marketBtns"), path + 'market.json');
 
 document.querySelector("#lookMarket").addEventListener("click", ()=>{
 	lookAround('market.json');
 });
 
-document.querySelector("#toStreet").addEventListener("click", ()=>{
-	document.querySelector("#streetBtns").classList.remove("displayNone");
-	document.querySelector("#marketBtns").classList.add("displayNone");
-
-	fetch(path + 'street.json').then(response => response.json()).then(data => { 
-		document.querySelector("#first").innerHTML = data.street;
-	}).catch(error => console.error(error))
-});
+toStreet(document.querySelector("#toStreet"), document.querySelector("#streetBtns"), document.querySelector("#marketBtns"), path + 'street.json');
 
 document.querySelector("#buyMarket").addEventListener("click", ()=>{
-	infoContainer.classList.remove("displayNone");
-
-	infoHero.innerHTML = `
-	<p class='pStyles'>Możesz kupić:</p>
-	<div id='itemsBuy' class='displayFlex'>
-
-		<button id='spear' class='btnAccept' data-cost='6'>włócznia</button>
-		<button id='bucket' class='btnAccept' data-cost='2'>wiadro</button>
-		<button id='buckler' class='btnAccept' data-cost='6'>puklerz</button>
-		<button id='herring' class='btnAccept' data-cost='1'>śledzie</button>
-		<button id='blanket' class='btnAccept' data-cost='2'>koc</button>
-		<button id='dagger' class='btnAccept' data-cost='4'>sztylet</button>
-		<button id='sword' class='btnAccept' data-cost='10'>miecz</button>
-
-	</div>	
-	<p id='warning' class='pStyles'></p>
-	`;
-
-	const allItems = document.querySelectorAll("#itemsBuy > button");
-
-	for(let i=0; i<allItems.length; i++){
-		allItems[i].addEventListener("click", ()=>{
-			if(allItems[i].dataset.cost <= gold){
-				equip.push(allItems[i].innerText);
-				gold = gold - allItems[i].dataset.cost;
-				document.querySelector("#warning").innerHTML = `Zakupiono przedmiot: ${allItems[i].innerText}.`;
-				closeP("#warning");
-			}else{
-				document.querySelector("#warning").innerHTML = `Nie masz tyle złota !!!`;
-				closeP("#warning");
-			}
-		});
-	}	
+	buyList(infoContainer, infoHero);
+	buyLoop(equip, gold, document.querySelector("#warning"), closeP("#warning"));
 });
 
 document.querySelector("#sellMarket").addEventListener("click", ()=>{

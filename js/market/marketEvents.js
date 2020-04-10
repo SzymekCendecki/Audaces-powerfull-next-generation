@@ -30,6 +30,7 @@ export let buyList = (a, b) =>{
 }
 
 export let buyLoop = (b, c, d, e) =>{
+    console.log(c);
     const allItems = document.querySelectorAll("#itemsBuy > button");
     for(let i=0; i<allItems.length; i++){
         allItems[i].addEventListener("click", ()=>{
@@ -42,6 +43,54 @@ export let buyLoop = (b, c, d, e) =>{
                 d.innerHTML = `Nie masz tyle złota !!!`;
                 e;
             }
+        });
+    }
+}
+
+export let sellList = (a, b) =>{
+    a.classList.remove("displayNone");
+
+	b.innerHTML = `
+	<p class='pStyles'>Możesz sprzedać:</p>
+	<div id='itemsSell' class='displayFlex'>
+	</div>	
+	<p id='warning' class='pStyles'></p>
+	`;
+}
+
+export let sellLoop = (a, b, c, d, e) =>{
+    for(let i=0; i<a.length; i++){
+        const btn = document.createElement("button"); 
+        let text = document.createTextNode(`${a[i]}`); 
+        btn.appendChild(text);  
+        b.append(btn);
+        btn.classList.add("btnAccept");
+
+        if(btn.innerText == "paczka"){
+            btn.classList.remove("btnAccept");
+            btn.classList.add("redBtn");
+            btn.disabled = true;
+        }else{
+            btn.classList.add("btnAccept");
+            btn.disabled = false;
+            btn.dataset.cost = "1";
+        }
+    }
+
+    let btns = document.querySelectorAll("#itemsSell > button");
+
+    for (let i=0; i<btns.length; i++){
+        btns[i].addEventListener("click", ()=>{
+            let index = a.indexOf(btns[i].innerText);
+    
+            if (index !== -1){
+                a.splice(index, 1);
+                btns[i].remove();
+            }
+            c = c + parseInt(btns[i].dataset.cost);
+
+            d.innerHTML = `Sprzedano przedmiot: ${btns[i].innerText}`;
+            e;
         });
     }
 }

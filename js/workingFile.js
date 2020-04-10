@@ -15,7 +15,7 @@ import{ reset } from './manualCreator/reset.js';
 
 import{ inRoom, toMarket } from './street/streetEvents.js';
 
-import{ toStreet, buyList, buyLoop } from './market/marketEvents.js'
+import{ toStreet, buyList, buyLoop, sellList, sellLoop } from './market/marketEvents.js'
 
 import { features, equipBtn, skillsBtn, tasksBtn } from './mainBtns/mainBtns.js';
 import{ wardrobe } from './room/roomEvents.js';
@@ -408,50 +408,8 @@ document.querySelector("#buyMarket").addEventListener("click", ()=>{
 });
 
 document.querySelector("#sellMarket").addEventListener("click", ()=>{
-	infoContainer.classList.remove("displayNone");
-
-	infoHero.innerHTML = `
-	<p class='pStyles'>Możesz sprzedać:</p>
-	<div id='itemsSell' class='displayFlex'>
-	</div>	
-	<p id='warning' class='pStyles'></p>
-	`;
-
-	for(let i=0; i<equip.length; i++){
-		const btn = document.createElement("button"); 
-		let text = document.createTextNode(`${equip[i]}`); 
-		btn.appendChild(text);  
-		document.querySelector("#itemsSell").append(btn);
-		btn.classList.add("btnAccept");
-
-		if(btn.innerText == "paczka"){
-			btn.classList.remove("btnAccept");
-			btn.classList.add("redBtn");
-			btn.disabled = true;
-		}else{
-			btn.classList.add("btnAccept");
-			btn.disabled = false;
-			btn.dataset.cost = "1";
-		}
-	}
-
-	let btns = document.querySelectorAll("#itemsSell > button");
-
-	for (let i=0; i<btns.length; i++){
-		btns[i].addEventListener("click", ()=>{
-			let index = equip.indexOf(btns[i].innerText);
-		
-			if (index !== -1){
-				equip.splice(index, 1);
-				btns[i].remove();
-			}
-			gold = gold + parseInt(btns[i].dataset.cost);
-
-			document.querySelector("#warning").innerHTML = `Sprzedano przedmiot: ${btns[i].innerText}`;
-				closeP("#warning");
-		});
-	}
-
+	sellList(infoContainer, infoHero);
+	sellLoop(equip, document.querySelector("#itemsSell"), gold, document.querySelector("#warning"), closeP("#warning"));
 });
 
 document.querySelector("#caravan").addEventListener("click", ()=>{

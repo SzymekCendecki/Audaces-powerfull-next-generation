@@ -166,13 +166,13 @@ var _preview = __webpack_require__(11);
 
 var _reset = __webpack_require__(12);
 
-var _streetEvents = __webpack_require__(17);
+var _streetEvents = __webpack_require__(13);
 
-var _marketEvents = __webpack_require__(18);
+var _marketEvents = __webpack_require__(14);
 
-var _mainBtns = __webpack_require__(14);
+var _mainBtns = __webpack_require__(15);
 
-var _roomEvents = __webpack_require__(15);
+var _roomEvents = __webpack_require__(16);
 
 //indexs for hero
 //0-name, 1-sex, 2-race, 3-occupation, 4-force, 5-strength, 6-dexterity, 7-intelligence, 8-charisma, 9-eyes color, 10-hair color, 11-skin color, 12 - tattoo, 13 - weight, 14-height
@@ -602,48 +602,8 @@ document.querySelector("#buyMarket").addEventListener("click", function () {
 });
 
 document.querySelector("#sellMarket").addEventListener("click", function () {
-	infoContainer.classList.remove("displayNone");
-
-	infoHero.innerHTML = '\n\t<p class=\'pStyles\'>Mo\u017Cesz sprzeda\u0107:</p>\n\t<div id=\'itemsSell\' class=\'displayFlex\'>\n\t</div>\t\n\t<p id=\'warning\' class=\'pStyles\'></p>\n\t';
-
-	for (var i = 0; i < equip.length; i++) {
-		var btn = document.createElement("button");
-		var text = document.createTextNode('' + equip[i]);
-		btn.appendChild(text);
-		document.querySelector("#itemsSell").append(btn);
-		btn.classList.add("btnAccept");
-
-		if (btn.innerText == "paczka") {
-			btn.classList.remove("btnAccept");
-			btn.classList.add("redBtn");
-			btn.disabled = true;
-		} else {
-			btn.classList.add("btnAccept");
-			btn.disabled = false;
-			btn.dataset.cost = "1";
-		}
-	}
-
-	var btns = document.querySelectorAll("#itemsSell > button");
-
-	var _loop = function _loop(_i) {
-		btns[_i].addEventListener("click", function () {
-			var index = equip.indexOf(btns[_i].innerText);
-
-			if (index !== -1) {
-				equip.splice(index, 1);
-				btns[_i].remove();
-			}
-			gold = gold + parseInt(btns[_i].dataset.cost);
-
-			document.querySelector("#warning").innerHTML = 'Sprzedano przedmiot: ' + btns[_i].innerText;
-			(0, _functions.closeP)("#warning");
-		});
-	};
-
-	for (var _i = 0; _i < btns.length; _i++) {
-		_loop(_i);
-	}
+	(0, _marketEvents.sellList)(infoContainer, infoHero);
+	(0, _marketEvents.sellLoop)(equip, document.querySelector("#itemsSell"), gold, document.querySelector("#warning"), (0, _functions.closeP)("#warning"));
 });
 
 document.querySelector("#caravan").addEventListener("click", function () {
@@ -1714,8 +1674,146 @@ var reset = exports.reset = function reset(hero) {
 };
 
 /***/ }),
-/* 13 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var inRoom = exports.inRoom = function inRoom(a, b, c) {
+    a.classList.remove("displayNone");
+    b.classList.add("displayNone");
+
+    fetch(c).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        document.querySelector("#first").innerHTML = data.room2;
+    }).catch(function (error) {
+        return console.error(error);
+    });
+};
+
+var toMarket = exports.toMarket = function toMarket(a, b, c, d) {
+    a.addEventListener("click", function () {
+        b.classList.add("displayNone");
+        c.classList.remove("displayNone");
+
+        fetch(d).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            document.querySelector("#first").innerHTML = data.market;
+        }).catch(function (error) {
+            return console.error(error);
+        });
+    });
+};
+
+/***/ }),
 /* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var toStreet = exports.toStreet = function toStreet(a, b, c, d) {
+    a.addEventListener("click", function () {
+        b.classList.remove("displayNone");
+        c.classList.add("displayNone");
+
+        fetch(d).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            document.querySelector("#first").innerHTML = data.street;
+        }).catch(function (error) {
+            return console.error(error);
+        });
+    });
+};
+
+var buyList = exports.buyList = function buyList(a, b) {
+    a.classList.remove("displayNone");
+
+    b.innerHTML = "\n    <p class='pStyles'>Mo\u017Cesz kupi\u0107:</p>\n    <div id='itemsBuy' class='displayFlex'>\n\n        <button id='spear' class='btnAccept' data-cost='6'>w\u0142\xF3cznia</button>\n        <button id='bucket' class='btnAccept' data-cost='2'>wiadro</button>\n        <button id='buckler' class='btnAccept' data-cost='6'>puklerz</button>\n        <button id='herring' class='btnAccept' data-cost='1'>\u015Bledzie</button>\n        <button id='blanket' class='btnAccept' data-cost='2'>koc</button>\n        <button id='dagger' class='btnAccept' data-cost='4'>sztylet</button>\n        <button id='sword' class='btnAccept' data-cost='10'>miecz</button>\n\n    </div>\t\n    <p id='warning' class='pStyles'></p>\n    ";
+};
+
+var buyLoop = exports.buyLoop = function buyLoop(b, c, d, e) {
+    console.log(c);
+    var allItems = document.querySelectorAll("#itemsBuy > button");
+
+    var _loop = function _loop(i) {
+        allItems[i].addEventListener("click", function () {
+            if (allItems[i].dataset.cost <= c) {
+                b.push(allItems[i].innerText);
+                c = c - allItems[i].dataset.cost;
+                d.innerHTML = "Zakupiono przedmiot: " + allItems[i].innerText + ".";
+                e;
+            } else {
+                d.innerHTML = "Nie masz tyle z\u0142ota !!!";
+                e;
+            }
+        });
+    };
+
+    for (var i = 0; i < allItems.length; i++) {
+        _loop(i);
+    }
+};
+
+var sellList = exports.sellList = function sellList(a, b) {
+    a.classList.remove("displayNone");
+
+    b.innerHTML = "\n\t<p class='pStyles'>Mo\u017Cesz sprzeda\u0107:</p>\n\t<div id='itemsSell' class='displayFlex'>\n\t</div>\t\n\t<p id='warning' class='pStyles'></p>\n\t";
+};
+
+var sellLoop = exports.sellLoop = function sellLoop(a, b, c, d, e) {
+    for (var i = 0; i < a.length; i++) {
+        var btn = document.createElement("button");
+        var text = document.createTextNode("" + a[i]);
+        btn.appendChild(text);
+        b.append(btn);
+        btn.classList.add("btnAccept");
+
+        if (btn.innerText == "paczka") {
+            btn.classList.remove("btnAccept");
+            btn.classList.add("redBtn");
+            btn.disabled = true;
+        } else {
+            btn.classList.add("btnAccept");
+            btn.disabled = false;
+            btn.dataset.cost = "1";
+        }
+    }
+
+    var btns = document.querySelectorAll("#itemsSell > button");
+
+    var _loop2 = function _loop2(_i) {
+        btns[_i].addEventListener("click", function () {
+            var index = a.indexOf(btns[_i].innerText);
+
+            if (index !== -1) {
+                a.splice(index, 1);
+                btns[_i].remove();
+            }
+            c = c + parseInt(btns[_i].dataset.cost);
+
+            d.innerHTML = "Sprzedano przedmiot: " + btns[_i].innerText;
+            e;
+        });
+    };
+
+    for (var _i = 0; _i < btns.length; _i++) {
+        _loop2(_i);
+    }
+};
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1780,7 +1878,7 @@ var tasksBtn = exports.tasksBtn = function tasksBtn(infoContainer, infoHero, tas
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1814,98 +1912,6 @@ var wardrobe = exports.wardrobe = function wardrobe(path, second, equip) {
 	}).catch(function (error) {
 		return console.error(error);
 	});
-};
-
-/***/ }),
-/* 16 */,
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var inRoom = exports.inRoom = function inRoom(a, b, c) {
-    a.classList.remove("displayNone");
-    b.classList.add("displayNone");
-
-    fetch(c).then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        document.querySelector("#first").innerHTML = data.room2;
-    }).catch(function (error) {
-        return console.error(error);
-    });
-};
-
-var toMarket = exports.toMarket = function toMarket(a, b, c, d) {
-    a.addEventListener("click", function () {
-        b.classList.add("displayNone");
-        c.classList.remove("displayNone");
-
-        fetch(d).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            document.querySelector("#first").innerHTML = data.market;
-        }).catch(function (error) {
-            return console.error(error);
-        });
-    });
-};
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var toStreet = exports.toStreet = function toStreet(a, b, c, d) {
-    a.addEventListener("click", function () {
-        b.classList.remove("displayNone");
-        c.classList.add("displayNone");
-
-        fetch(d).then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            document.querySelector("#first").innerHTML = data.street;
-        }).catch(function (error) {
-            return console.error(error);
-        });
-    });
-};
-
-var buyList = exports.buyList = function buyList(a, b) {
-    a.classList.remove("displayNone");
-
-    b.innerHTML = "\n    <p class='pStyles'>Mo\u017Cesz kupi\u0107:</p>\n    <div id='itemsBuy' class='displayFlex'>\n\n        <button id='spear' class='btnAccept' data-cost='6'>w\u0142\xF3cznia</button>\n        <button id='bucket' class='btnAccept' data-cost='2'>wiadro</button>\n        <button id='buckler' class='btnAccept' data-cost='6'>puklerz</button>\n        <button id='herring' class='btnAccept' data-cost='1'>\u015Bledzie</button>\n        <button id='blanket' class='btnAccept' data-cost='2'>koc</button>\n        <button id='dagger' class='btnAccept' data-cost='4'>sztylet</button>\n        <button id='sword' class='btnAccept' data-cost='10'>miecz</button>\n\n    </div>\t\n    <p id='warning' class='pStyles'></p>\n    ";
-};
-
-var buyLoop = exports.buyLoop = function buyLoop(b, c, d, e) {
-    var allItems = document.querySelectorAll("#itemsBuy > button");
-
-    var _loop = function _loop(i) {
-        allItems[i].addEventListener("click", function () {
-            if (allItems[i].dataset.cost <= c) {
-                b.push(allItems[i].innerText);
-                c = c - allItems[i].dataset.cost;
-                d.innerHTML = "Zakupiono przedmiot: " + allItems[i].innerText + ".";
-                e;
-            } else {
-                d.innerHTML = "Nie masz tyle z\u0142ota !!!";
-                e;
-            }
-        });
-    };
-
-    for (var i = 0; i < allItems.length; i++) {
-        _loop(i);
-    }
 };
 
 /***/ })

@@ -578,3 +578,6 @@ Usunięcie zbędnych linii kodu w pliku functions.js.
 
 9 kwietnia 2020 - wersja 0.2.76f
 Przenieszenie linii kodu do plików zewnętrznych.
+
+10 kwietnia 2020 - wersja 0.2.76g
+Przeniesienie linii kodu (sprzedawanie przedmiotów na targu) do pliku marketEvents.js. Do poprawy dodawanie i odejmowanie złota w ekwipunku.

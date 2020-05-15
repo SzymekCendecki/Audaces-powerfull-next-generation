@@ -576,8 +576,8 @@ Rozpoczęcie przenoszenia linii kodu (odpowiadającego za zdarzenia w pokoju) do
 Usunięcie zbędnych linii kodu w pliku functions.js.
   Przeniesienie linii kodu (odpowiedzialnych za wyświetlanie tutorialu, info oraz licencji) do osobnego pliku.
 
-9 kwietnia 2020 - wersja 0.2.76f
-Przenieszenie linii kodu do plików zewnętrznych.
+14 maja 2020 
+Dodanie pliku world.json - opis świata Audaces (rozpoczęcie).
 
-10 kwietnia 2020 - wersja 0.2.76g
-Przeniesienie linii kodu (sprzedawanie przedmiotów na targu) do pliku marketEvents.js. Do poprawy dodawanie i odejmowanie złota w ekwipunku.
+15 maja 2020
+Praca nad opisem świata.

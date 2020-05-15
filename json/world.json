@@ -1,3 +1,8 @@
 {
-    "description":"Na początku był chaos. Z niego wyłoniło się czterech głównych Bogów: ognia, wody, ziemii oraz powietrza. Przez eony trwała wojna Bogów o dominację nad pozostałymi. Gdy po tysiącach lat wojna nie przyniosła rozstrzygnięcia Bogowie stworzyli Ziemię, z pięcioma kontynentami. Po jednym dla każdego z Bogów oraz jeden ukryty."
+    "description":"Na początku był chaos. Z niego wyłoniło się czterech głównych Bogów: ognia, wody, ziemii oraz powietrza. Przez eony trwała wojna Bogów o dominację nad pozostałymi. Gdy po tysiącach lat wojna nie przyniosła rozstrzygnięcia Bogowie stworzyli Ziemię, z pięcioma kontynentami. Po jednym dla każdego z Bogów oraz jeden ukryty.",
+    "fireLand":"Kontynent pokryty w większości sawanną. Wzdłuż zachodniego brzegu rozciąga się wąski pas pustyni. Na południowym krańcu kontynetu znajduje się dżungla, która zajmuje 1/4 kontynentu. ",
+    "earthLand":"Ten kontynent niemal w całości pokrywają góry oraz wzgórza (prawie 70%). ",
+    "waterLand":"To nie tyle kontynet, co kilka archipelagów oraz kilkanaście atoli.",
+    "airLand":"Kontynent pokryty trawiastymi równinami, niewielkimi wzgórzami.",
+    "hiddenLand":"Legendy głoszą, iż kontynent jest pierwszą siedzibą Bogów."
 }

@@ -581,3 +581,6 @@ Dodanie pliku world.json - opis świata Audaces (rozpoczęcie).
 
 15 maja 2020
 Praca nad opisem świata.
+
+17 maja 2020 
+Praca nad opisem świat cd.

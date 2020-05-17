@@ -1,8 +1,8 @@
 {
-    "description":"Na początku był chaos. Z niego wyłoniło się czterech głównych Bogów: ognia, wody, ziemii oraz powietrza. Przez eony trwała wojna Bogów o dominację nad pozostałymi. Gdy po tysiącach lat wojna nie przyniosła rozstrzygnięcia Bogowie stworzyli Ziemię, z pięcioma kontynentami. Po jednym dla każdego z Bogów oraz jeden ukryty.",
-    "fireLand":"Kontynent pokryty w większości sawanną. Wzdłuż zachodniego brzegu rozciąga się wąski pas pustyni. Na południowym krańcu kontynetu znajduje się dżungla, która zajmuje 1/4 kontynentu. ",
-    "earthLand":"Ten kontynent niemal w całości pokrywają góry oraz wzgórza (prawie 70%). ",
-    "waterLand":"To nie tyle kontynet, co kilka archipelagów oraz kilkanaście atoli.",
-    "airLand":"Kontynent pokryty trawiastymi równinami, niewielkimi wzgórzami.",
-    "hiddenLand":"Legendy głoszą, iż kontynent jest pierwszą siedzibą Bogów."
+    "description":"Na początku był chaos. Z niego wyłoniło się czterech głównych Bogów: ognia, wody, ziemii oraz powietrza. Przez eony trwała wojna Bogów o dominację nad pozostałymi. Gdy po tysiącach lat wojna nie przyniosła rozstrzygnięcia Bogowie stworzyli Ziemię, z pięcioma kontynentami. Po jednym dla każdego z Bogów oraz jeden wspólny. Każdy z czterech kontynentów naznaczony był energią danego Boga, miał symbolizować Boski żywioł. Na podstawie tych żywiołów powstała magia specyficzna dla każdego kontynentu.",
+    "fireLand":"Vartucan - kontynent Boga ognia. Tropikalny klimat. Wzdłuż zachodniego brzegu rozciąga się wąski pas pustyni. Północną część pokrywają lasy tropikalne. Południową stanowi sawanna. Kontynent zamieszkują głównie elfy (w części północnej) i ludzie (w części południowej).",
+    "earthLand":"Kidrano - kontynent Boga ziemii. Ten kontynent niemal w całości pokrywają góry oraz wzgórza (prawie 70%). To kraina krasnoludów, gnomów oraz niziołków. Krasnoludy i gnomy zamieszkuja kopalnie - miasta, które po także pełnia funkcję zamków. Na nielicznych nizinach zamieszkują niziołki.",
+    "waterLand":"Sandrana - kontynent Boga wody. To najmniejszy kontynent. Głównie pokryty gęstymi lasami, z bardzo dużą ilością jezior. Wokół kontynentu znajdują się mnóstwo wysp oraz atoli. Na tym kontynencie znajduje się tylko jedno miasto. Kontynent zamieszkują głównie gobliny, trole oraz orki. Co dziwne w jedyne miasto zdominowali ludzie. na wyspach okalających kontynent znajduje się wiele pirackich twierdz.",
+    "airLand":"Berost - kontynent Boga powietrza. Kontynent pokryty trawiastymi równinami oraz niewielkimi wzgórzami.",
+    "fifthLand":"To najbardziej zróżnicowany kontynent ze wszystkich. Posiada wszystkie cechy pozostałych. Legendy głoszą, iż kontynent jest pierwszą siedzibą Bogów. "
 }

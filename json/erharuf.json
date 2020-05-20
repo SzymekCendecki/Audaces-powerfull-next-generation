@@ -1,0 +1,8 @@
+{
+    "erharuf":"Jest miastem portowym. Ostatnim miastem przed dzikimi pustkowiami (tzw. 'ziemią niczyją'). Erharuf składa się z dzielnic: rzemieślniczej (zwana handlową), mieszczańskiej, najemników, doków oraz zamku.",
+    "docks":"Doki - dzielnica portowa miasta, składająca się głównie z magazynów portowych. Zamieszkują ją głównie pracownicy portu i magazynów oraz miejscowa biedota. W tawernach tej dzielnicy rekrutuje się marynarzy lub wynajmuje się typów z półświatka przestępczego. W nich można usłyszeć także niesamowite historie ze świata.",
+    "artisianDistric":"Dzielnica rzemieślnicza jest centrum handlowym miasta. Znajduje się pomiędzy dokami a dzielnicą mieszczańską.",
+    "mercenaryDistrict":"To bardziej koszary niż dzielnica. Tutaj znajdują się także siedziby cechów kupieckich.",
+    "middleClassDistrict":"Dzielnica mieszczańska jest dzielnicą bogatych kupców oraz czarodziejów. Biedota nie ma do niej wstępu. Znajduje sie pomiędzy dzielnicą rzemieślniczą a zamkiem.", 
+    "castle":"Zamek jest siedzibą panującego."
+}

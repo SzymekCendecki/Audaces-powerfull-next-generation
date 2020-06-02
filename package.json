@@ -25,6 +25,10 @@
     "gulp-autoprefixer": "^6.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
+    "lodash": "^4.17.15",
+    "lodash.template": "^4.5.0",
+    "mem": "^6.1.0",
+    "minimatch": "^3.0.4",
     "nodemailer": "^6.3.0",
     "webpack": "^3.11.0"
   }
